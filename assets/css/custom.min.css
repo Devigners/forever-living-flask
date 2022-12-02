@@ -1,0 +1,17 @@
+.nav-title{
+    line-height: 20px;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 767px) {
+    .bg-xs-white{
+        background-color: white !important;
+    }
+    .header-top-dropdown.dropdown-box-style .header-search-points button{
+        font-size: 12px !important;
+        padding: 10px !important;
+    }
+    .header-top-dropdown.dropdown-box-style .header-search-points + .header-search-points{
+        margin-left: 5px;
+    }
+}
