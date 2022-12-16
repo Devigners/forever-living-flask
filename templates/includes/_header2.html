@@ -1,0 +1,94 @@
+{% include "includes/_head.html" %}
+
+<!--[if lte IE 9]>
+	<p class="browserupgrade">
+		You are using an <strong>outdated</strong> browser. Please
+		<a href="https://browsehappy.com/">upgrade your browser</a> to improve your
+		experience and security.
+	</p>
+<![endif]-->
+<a href="#top" class="back-to-top" id="backto-top"
+	><i class="fal fa-arrow-up"></i
+></a>
+<!-- Start Header -->
+<header class="header axil-header header-style-2">
+	<div class="axil-header-top">
+		<div class="container">
+			<div class="d-flex justify-content-between">
+				<div class="header-top-dropdown">
+					<div class="top-header-points">
+						<button type="button">USA</button>
+					</div>
+					<div class="top-header-points">
+						<button type="button">Washington D.C.</button>
+					</div>
+				</div>
+				<div class="header-top-link">
+					<ul class="quick-link">
+						<li><a href="">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Start Mainmenu Area  -->
+	<div id="axil-sticky-placeholder"></div>
+	<div class="axil-mainmenu">
+		<div class="container">
+			<div class="header-navbar">
+				<div class="header-brand">
+					<a href="{{ url_for('index') }}" class="nav-title">
+						<b
+							>FOREVER <br class="d-none" />
+							LIVING</b
+						>
+					</a>
+				</div>
+				<div class="header-main-nav">
+					<!-- Start Mainmanu Nav -->
+					<nav class="mainmenu-nav">
+						<button class="mobile-close-btn mobile-nav-toggler">
+							<i class="fas fa-times"></i>
+						</button>
+						<div class="mobile-nav-brand">
+							<a href="{{ url_for('index') }}" class="nav-title">
+								<b
+									>FOREVER <br class="d-block d-md-none" />
+									LIVING</b
+								>
+							</a>
+						</div>
+						<ul class="mainmenu justify-content-start">
+							<li><a href="{{ url_for('shop') }}">Shop</a></li>
+							<li><a href="#">Category</a></li>
+							<li><a href="{{ url_for('blogs') }}">Blogs</a></li>
+						</ul>
+					</nav>
+					<!-- End Mainmanu Nav -->
+				</div>
+				<div class="header-action">
+					<ul class="action-list">
+						<li class="axil-mobile-toggle">
+							<button class="menu-btn mobile-nav-toggler">
+								<i class="flaticon-menu-2"></i>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Mainmenu Area -->
+	<div class="header-top-campaign">
+		<div class="container position-relative">
+			<div class="campaign-content">
+				<div class="campaign-countdown"></div>
+				<p>
+					Open Doors To A World Of Fashion Get
+					<br class="d-md-none d-block" /><a href="#">Get Your Offer</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- End Header -->
