@@ -13,61 +13,68 @@
 ></a>
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
-	<div class="header-top-campaign">
-		<div class="container position-relative">
-			<div class="campaign-content">
-				<div class="campaign-countdown"></div>
-				<p>
-					Open Doors To A World Of Fashion Get
-					<br class="d-md-none d-block" /><a href="#">Get Your Offer</a>
-				</p>
-			</div>
-		</div>
-	</div>
-	<!-- Start Header Top Area  -->
-	<div class="axil-header-top bg-white pt-md-4 pb-md-4">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-2 col-sm-3 col-5">
-					<div class="header-brand">
-						<a href="{{ url_for('index') }}" class="nav-title">
-							<b
-								>FOREVER <br class="d-block d-md-none" />
-								LIVING</b
-							>
-						</a>
-						<a href="{{ url_for('index') }}" class="logo logo-light">
-							<b
-								>FOREVER <br class="d-block d-md-none" />
-								LIVING</b
-							>
-						</a>
+	<div class="axil-header-top pb-0">
+		<div class="container pb-2">
+			<div class="d-flex justify-content-between">
+				<div class="header-top-dropdown">
+					<div class="top-header-points">
+						<button type="button">USA</button>
+					</div>
+					<div class="top-header-points">
+						<button type="button">Washington D.C.</button>
 					</div>
 				</div>
-				<div class="col-lg-10 col-sm-9 col-7">
-					<div class="header-top-dropdown dropdown-box-style">
-						<div class="axil-search mr-0">
-							<button type="submit" class="icon wooc-btn-search">
-								<i class="far fa-search"></i>
-							</button>
-							<input
-								type="search"
-								class="placeholder product-search-input"
-								name="search2"
-								id="search2"
-								value=""
-								maxlength="128"
-								placeholder="What are you looking for...."
-								autocomplete="off"
-							/>
+				<div class="header-top-link">
+					<ul class="quick-link">
+						<li><a href="">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="bg-white pt-md-4 pb-md-4">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-2 col-sm-3 col-5">
+						<div class="header-brand">
+							<a href="{{ url_for('index') }}" class="nav-title">
+								<b
+									>FOREVER <br class="d-block d-md-none" />
+									LIVING</b
+								>
+							</a>
+							<a href="{{ url_for('index') }}" class="logo logo-light">
+								<b
+									>FOREVER <br class="d-block d-md-none" />
+									LIVING</b
+								>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-10 col-sm-9 col-7">
+						<div class="header-top-dropdown dropdown-box-style">
+							<div class="axil-search mr-0">
+								<button type="submit" class="icon wooc-btn-search">
+									<i class="far fa-search"></i>
+								</button>
+								<input
+									type="search"
+									class="placeholder product-search-input"
+									name="search2"
+									id="search2"
+									value=""
+									maxlength="128"
+									placeholder="What are you looking for...."
+									autocomplete="off"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Header Top Area  -->
 
+	<div id="axil-sticky-placeholder"></div>
 	<!-- Start Mainmenu Area  -->
 	<div class="axil-mainmenu aside-category-menu">
 		<div class="container">
@@ -78,348 +85,7 @@
 							<span class="icon"><i class="fal fa-bars"></i></span>
 							<span class="text">Categories</span>
 						</button>
-						<nav class="department-nav-menu">
-							<button class="sidebar-close">
-								<i class="fas fa-times"></i>
-							</button>
-							<ul class="nav-menu-list">
-								<li>
-									<a href="#" class="nav-link has-megamenu">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-01.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Fashion</span>
-									</a>
-									<div class="department-megamenu">
-										<div class="department-megamenu-wrap">
-											<div class="department-submenu-wrap">
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Men</h3>
-													<ul>
-														<li><a href="shop.html">T-shirts</a></li>
-														<li><a href="shop-sidebar.html">Shirts</a></li>
-														<li><a href="shop.html">Jeans</a></li>
-													</ul>
-													<h3 class="submenu-heading">Baby</h3>
-													<ul>
-														<li><a href="shop.html">Baby Cloths</a></li>
-														<li>
-															<a href="shop-sidebar.html">Baby Gear</a>
-														</li>
-														<li><a href="shop.html">Baby Toddler</a></li>
-														<li>
-															<a href="shop-sidebar.html">Baby Toys</a>
-														</li>
-													</ul>
-												</div>
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Women</h3>
-													<ul>
-														<li><a href="shop.html">Jeans</a></li>
-														<li>
-															<a href="shop-sidebar.html">T-shirts</a>
-														</li>
-														<li><a href="shop.html">Shirts</a></li>
-														<li><a href="shop.html">Tops</a></li>
-														<li>
-															<a href="shop-sidebar.html">Jumpsuits</a>
-														</li>
-														<li><a href="shop.html">Coats</a></li>
-														<li><a href="shop-sidebar.html">Sweater</a></li>
-													</ul>
-												</div>
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Accessories</h3>
-													<ul>
-														<li><a href="shop.html">Handbag</a></li>
-														<li><a href="shop.html">Shoes</a></li>
-														<li><a href="shop.html">Wallets</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="featured-product">
-												<h3 class="featured-heading">Featured</h3>
-												<div class="product-list">
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature1.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature2.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature3.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature4.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-												</div>
-												<a href="#" class="axil-btn btn-bg-primary"
-													>See All Offers</a
-												>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="#" class="nav-link has-megamenu">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-02.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Electronics</span>
-									</a>
-									<div class="department-megamenu">
-										<div class="department-megamenu-wrap">
-											<div class="department-submenu-wrap">
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Men</h3>
-													<ul>
-														<li><a href="shop.html">T-shirts</a></li>
-														<li><a href="shop-sidebar.html">Shirts</a></li>
-														<li><a href="shop.html">Jeans</a></li>
-													</ul>
-													<h3 class="submenu-heading">Baby</h3>
-													<ul>
-														<li><a href="shop.html">Baby Cloths</a></li>
-														<li>
-															<a href="shop-sidebar.html">Baby Gear</a>
-														</li>
-														<li><a href="shop.html">Baby Toddler</a></li>
-														<li>
-															<a href="shop-sidebar.html">Baby Toys</a>
-														</li>
-													</ul>
-												</div>
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Women</h3>
-													<ul>
-														<li><a href="shop.html">Jeans</a></li>
-														<li>
-															<a href="shop-sidebar.html">T-shirts</a>
-														</li>
-														<li><a href="shop.html">Shirts</a></li>
-														<li><a href="shop.html">Tops</a></li>
-														<li>
-															<a href="shop-sidebar.html">Jumpsuits</a>
-														</li>
-														<li><a href="shop.html">Coats</a></li>
-														<li><a href="shop-sidebar.html">Sweater</a></li>
-													</ul>
-												</div>
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Accessories</h3>
-													<ul>
-														<li><a href="shop.html">Handbag</a></li>
-														<li><a href="shop.html">Shoes</a></li>
-														<li><a href="shop.html">Wallets</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="featured-product">
-												<h3 class="featured-heading">Featured</h3>
-												<div class="product-list">
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature1.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature2.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature3.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature4.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-												</div>
-												<a href="#" class="axil-btn btn-bg-primary"
-													>See All Offers</a
-												>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="#" class="nav-link has-megamenu">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-03.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Home Decor</span>
-									</a>
-									<div class="department-megamenu">
-										<div class="department-megamenu-wrap">
-											<div class="department-submenu-wrap">
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Men</h3>
-													<ul>
-														<li><a href="shop.html">T-shirts</a></li>
-														<li><a href="shop-sidebar.html">Shirts</a></li>
-														<li><a href="shop.html">Jeans</a></li>
-													</ul>
-													<h3 class="submenu-heading">Baby</h3>
-													<ul>
-														<li><a href="shop.html">Baby Cloths</a></li>
-														<li>
-															<a href="shop-sidebar.html">Baby Gear</a>
-														</li>
-														<li><a href="shop.html">Baby Toddler</a></li>
-														<li>
-															<a href="shop-sidebar.html">Baby Toys</a>
-														</li>
-													</ul>
-												</div>
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Women</h3>
-													<ul>
-														<li><a href="shop.html">Jeans</a></li>
-														<li>
-															<a href="shop-sidebar.html">T-shirts</a>
-														</li>
-														<li><a href="shop.html">Shirts</a></li>
-														<li><a href="shop.html">Tops</a></li>
-														<li>
-															<a href="shop-sidebar.html">Jumpsuits</a>
-														</li>
-														<li><a href="shop.html">Coats</a></li>
-														<li><a href="shop-sidebar.html">Sweater</a></li>
-													</ul>
-												</div>
-												<div class="department-submenu">
-													<h3 class="submenu-heading">Accessories</h3>
-													<ul>
-														<li><a href="shop.html">Handbag</a></li>
-														<li><a href="shop.html">Shoes</a></li>
-														<li><a href="shop.html">Wallets</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="featured-product">
-												<h3 class="featured-heading">Featured</h3>
-												<div class="product-list">
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature1.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature2.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature3.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-													<div class="item-product">
-														<a href="#"
-															><img
-																src="assets/images/product/product-feature4.png"
-																alt="Featured Product"
-														/></a>
-													</div>
-												</div>
-												<a href="#" class="axil-btn btn-bg-primary"
-													>See All Offers</a
-												>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="#" class="nav-link">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-04.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Medicine</span>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="nav-link">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-05.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Furniture</span>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="nav-link">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-06.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Crafts</span>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="nav-link">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-07.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Accessories</span>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="nav-link">
-										<span class="menu-icon"
-											><img src="{{ url_for('static',
-											filename='images/product/categories/cat-08.png') }}"
-											alt="Department" /></span
-										>
-										<span class="menu-text">Camera</span>
-									</a>
-								</li>
-							</ul>
-						</nav>
+						{% include "includes/_categories_sidebar.html" %}
 					</aside>
 				</div>
 				<div class="header-main-nav">
@@ -436,11 +102,26 @@
 								>
 							</a>
 						</div>
-						<ul class="mainmenu">
-							<li><a href="{{ url_for('shop') }}">Shop</a></li>
-							<li><a href="#">Category</a></li>
-							<li><a href="{{ url_for('blogs') }}">Blogs</a></li>
-						</ul>
+						<div class="d-flex w-100 justify-content-between align-items-center">
+							<ul class="mainmenu">
+								<li><a href="{{ url_for('index') }}">Shop</a></li>
+								<li><a href="{{ url_for('shop') }}">Products</a></li>
+								<li><a href="{{ url_for('blogs') }}">Blogs</a></li>
+							</ul>
+							<div class="mainmenu-nav-title fadeInDown">
+								<div class="d-flex align-items-center">
+									<button type="submit" class="axil-search">
+										<i class="far fa-search"></i>
+									</button>
+									<a href="{{ url_for('index') }}" class="">
+										<b
+											>FOREVER <br class="d-block d-md-none" />
+											LIVING</b
+										>
+									</a>
+								</div>
+							</div>
+						</div>
 					</nav>
 					<!-- End Mainmanu Nav -->
 				</div>

@@ -1,21 +1,94 @@
-.nav-title{
-    line-height: 20px;
-    font-size: 16px;
+.nav-title {
+	line-height: 20px;
+	font-size: 16px;
 }
 
 @media screen and (max-width: 767px) {
-    .bg-xs-white{
-        background-color: white !important;
-    }
-    .header-top-dropdown.dropdown-box-style .header-search-points button{
-        font-size: 12px !important;
-        padding: 10px !important;
-    }
-    .header-top-dropdown.dropdown-box-style .header-search-points + .header-search-points{
-        margin-left: 5px;
-    }
+	.bg-xs-white {
+		background-color: white !important;
+	}
+	.header-top-dropdown.dropdown-box-style .header-search-points button {
+		font-size: 12px !important;
+		padding: 10px !important;
+	}
+	.header-top-dropdown.dropdown-box-style
+		.header-search-points
+		+ .header-search-points {
+		margin-left: 5px;
+	}
 }
 
-.mr-0{
-    margin-right: 0px !important;
+.mr-0 {
+	margin-right: 0px !important;
+}
+
+.mainmenu-nav-title {
+	display: none;
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+.mainmenu-nav-title a {
+	white-space: nowrap;
+}
+
+.mainmenu-nav-title .axil-search {
+	background-color: transparent;
+    border-radius: 100%;
+    border: 1px solid #f3f3f3;
+    height: 30px;
+    width: 30px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.axil-sticky .mainmenu-nav-title {
+	display: block;
+}
+
+@-webkit-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fadeInDown {
+	-webkit-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+}
+
+.department-menu-col{
+	max-width: calc(250px + 30px) !important;
+}
+
+.header-department .department-nav-menu{
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.header-department.active .department-nav-menu{
+	visibility: visible;
+	opacity: 1;
 }
