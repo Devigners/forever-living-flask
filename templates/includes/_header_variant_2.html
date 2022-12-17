@@ -1,4 +1,4 @@
-{% include "includes/_head.html" %}
+{% include "includes/_head_assets.html" %}
 
 <!--[if lte IE 9]>
 	<p class="browserupgrade">
@@ -12,25 +12,7 @@
 ></a>
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
-	<div class="axil-header-top">
-		<div class="container">
-			<div class="d-flex justify-content-between">
-				<div class="header-top-dropdown">
-					<div class="top-header-points">
-						<button type="button">USA</button>
-					</div>
-					<div class="top-header-points">
-						<button type="button">Washington D.C.</button>
-					</div>
-				</div>
-				<div class="header-top-link">
-					<ul class="quick-link">
-						<li><a href="">Contact Us</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+	{% include "includes/_top_bar.html" %}
 	<!-- Start Mainmenu Area  -->
 	<div id="axil-sticky-placeholder"></div>
 	<div class="axil-mainmenu">
