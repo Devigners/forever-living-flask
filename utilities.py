@@ -32,6 +32,12 @@ def getProductsWithCategory(category, return_list=True):
     else:
         return specific_category_products[needed_columns]
 
+def getProductsGroupByCategory():
+    category_json = {}
+    for category in getCategories():
+        category_json[category] = getProductsWithCategory(category)
+    return category_json
+
 def findCsvFilenames( path_to_dir, suffix=".csv" ):
     filenames = listdir(path_to_dir)
     return [ filename for filename in filenames if filename.endswith( suffix ) ]
