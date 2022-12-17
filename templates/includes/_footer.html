@@ -510,9 +510,12 @@
 		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 		<script>
+
+			function navbarActive (url) {
+				$(".mainmenu a[href='" + url + "']").addClass("active");
+			}
+
 			$(function () {
-				$(".mainmenu a[href='" + window.location.pathname + "']").addClass("active");
+				navbarActive(window.location.pathname);
 			})
 		</script>
-	</body>
-</html>

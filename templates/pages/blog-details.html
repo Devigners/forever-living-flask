@@ -466,3 +466,12 @@
 </main>
 
 {% endblock %}
+
+
+{% block scripts %}
+	<script>
+		$(function () {
+			navbarActive("{{ url_for('blogs') }}");
+		})
+	</script>
+{% endblock %}
