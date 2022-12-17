@@ -92,3 +92,28 @@
 	visibility: visible;
 	opacity: 1;
 }
+
+.top-header-points .h-select-group {
+	border: 1px solid rgb(204, 204, 204, 0.3);
+	padding-left: 10px;
+	border-radius: 2px;
+}
+
+.top-header-points select {
+	border: none;
+	height: auto;
+	padding: 2px 25px 2px 0;
+	background-position: 90%;
+}
+
+.top-header-points input {
+	border: none;
+	height: auto;
+	background: transparent !important;
+	padding: 0;
+	color: white;
+}
+
+.top-header-points + .top-header-points{
+	margin-left: 20px;
+}

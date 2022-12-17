@@ -18,16 +18,19 @@
 			<div class="d-flex justify-content-between">
 				<div class="header-top-dropdown">
 					<div class="top-header-points">
-						<button type="button">USA</button>
+						<div class="h-select-group d-flex align-items-center">
+							<select>
+								<option>South Asia</option>
+								<option>Korea</option>
+							</select>
+						</div>
 					</div>
 					<div class="top-header-points">
-						<button type="button">Washington D.C.</button>
+						<div class="d-flex align-items-center">
+							<i class="far fa-search"></i> &nbsp;&nbsp;
+							<input placeholder="Search your area..." />
+						</div>
 					</div>
-				</div>
-				<div class="header-top-link">
-					<ul class="quick-link">
-						<li><a href="">Contact Us</a></li>
-					</ul>
 				</div>
 			</div>
 		</div>
@@ -102,7 +105,9 @@
 								>
 							</a>
 						</div>
-						<div class="d-flex w-100 justify-content-between align-items-center">
+						<div
+							class="d-flex w-100 justify-content-between align-items-center"
+						>
 							<ul class="mainmenu">
 								<li><a href="{{ url_for('index') }}">Shop</a></li>
 								<li><a href="{{ url_for('shop') }}">Products</a></li>

@@ -6783,7 +6783,7 @@ button.axil-btn.wishlist-btn:hover:before {
 	background: var(--color-primary);
 	margin-bottom: 0;
 	display: flex;
-	padding: 17px 30px;
+	padding: 19px 30px;
 	position: relative;
 }
 @media only screen and (max-width: 991px) {
