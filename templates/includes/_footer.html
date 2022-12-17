@@ -27,19 +27,28 @@
 						<span class="card-text">Accept For</span>
 						<ul class="payment-icons-bottom quick-link">
 							<li>
-								<img src="{{ url_for('static',
-								filename='images/icons/cart/cart-1.png') }}" alt="paypal
-								cart" />
+								<img
+									src="{{ url_for('static',
+								filename='images/icons/cart/cart-1.png') }}"
+									alt="paypal
+								cart"
+								/>
 							</li>
 							<li>
-								<img src="{{ url_for('static',
-								filename='images/icons/cart/cart-2.png') }}" alt="paypal
-								cart" />
+								<img
+									src="{{ url_for('static',
+								filename='images/icons/cart/cart-2.png') }}"
+									alt="paypal
+								cart"
+								/>
 							</li>
 							<li>
-								<img src="{{ url_for('static',
-								filename='images/icons/cart/cart-5.png') }}" alt="paypal
-								cart" />
+								<img
+									src="{{ url_for('static',
+								filename='images/icons/cart/cart-5.png') }}"
+									alt="paypal
+								cart"
+								/>
 							</li>
 						</ul>
 					</div>
@@ -485,37 +494,36 @@
 	</div>
 </div>
 
-
-		<!-- JS
+<!-- JS
 			============================================ -->
-		<!-- Modernizer JS -->
-		<script src="{{ url_for('static', filename='js/vendor/modernizr.min.js') }}"></script>
-		<!-- jQuery JS -->
-		<script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
-		<!-- Bootstrap JS -->
-		<script src="{{ url_for('static', filename='js/vendor/popper.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/slick.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/js.cookie.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/jquery-ui.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/jquery.countdown.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/sal.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/jquery.magnific-popup.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/imagesloaded.pkgd.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/isotope.pkgd.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/counterup.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/vendor/waypoints.min.js') }}"></script>
+<!-- Modernizer JS -->
+<script src="{{ url_for('static', filename='js/vendor/modernizr.min.js') }}"></script>
+<!-- jQuery JS -->
+<script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+<!-- Bootstrap JS -->
+<script src="{{ url_for('static', filename='js/vendor/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/slick.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/js.cookie.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery-ui.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery.countdown.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/sal.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/counterup.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/waypoints.min.js') }}"></script>
 
-		<!-- Main JS -->
-		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<!-- Main JS -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-		<script>
+<script>
+	function navbarActive(url) {
+		$(".mainmenu a[href='" + url + "']").addClass("active");
+	}
 
-			function navbarActive (url) {
-				$(".mainmenu a[href='" + url + "']").addClass("active");
-			}
+	$(function () {
+		navbarActive(window.location.pathname);
+	});
 
-			$(function () {
-				navbarActive(window.location.pathname);
-			})
-		</script>
+</script>

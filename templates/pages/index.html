@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-lg-3 department-menu-col">
 					{% include "includes/_categories_sidebar.html" %}
-				</div>	
+				</div>
 				<div class="col-lg-9">
 					<div class="slider-offset-left">
 						<div class="row row--20">
@@ -92,7 +92,7 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
 	</div>
@@ -106,7 +106,10 @@
 				<div class="col">
 					<div class="service-box">
 						<div class="icon">
-							<img src="{{ url_for('static', filename='images/icons/service1.png') }}" alt="Service" />
+							<img
+								src="{{ url_for('static', filename='images/icons/service1.png') }}"
+								alt="Service"
+							/>
 						</div>
 						<h6 class="title">Fast &amp; Secure Delivery</h6>
 					</div>
@@ -114,7 +117,10 @@
 				<div class="col">
 					<div class="service-box">
 						<div class="icon">
-							<img src="{{ url_for('static', filename='images/icons/service2.png') }}" alt="Service" />
+							<img
+								src="{{ url_for('static', filename='images/icons/service2.png') }}"
+								alt="Service"
+							/>
 						</div>
 						<h6 class="title">100% Guarantee On Product</h6>
 					</div>
@@ -122,7 +128,10 @@
 				<div class="col">
 					<div class="service-box">
 						<div class="icon">
-							<img src="{{ url_for('static', filename='images/icons/service3.png') }}" alt="Service" />
+							<img
+								src="{{ url_for('static', filename='images/icons/service3.png') }}"
+								alt="Service"
+							/>
 						</div>
 						<h6 class="title">24 Hour Return Policy</h6>
 					</div>
@@ -130,7 +139,10 @@
 				<div class="col">
 					<div class="service-box">
 						<div class="icon">
-							<img src="{{ url_for('static', filename='images/icons/service4.png') }}" alt="Service" />
+							<img
+								src="{{ url_for('static', filename='images/icons/service4.png') }}"
+								alt="Service"
+							/>
 						</div>
 						<h6 class="title">24 Hour Return Policy</h6>
 					</div>
@@ -138,7 +150,10 @@
 				<div class="col">
 					<div class="service-box">
 						<div class="icon">
-							<img src="{{ url_for('static', filename='images/icons/service5.png') }}" alt="Service" />
+							<img
+								src="{{ url_for('static', filename='images/icons/service5.png') }}"
+								alt="Service"
+							/>
 						</div>
 						<h6 class="title">Next Level Pro Quality</h6>
 					</div>
@@ -159,13 +174,17 @@
 					>
 					<h2 class="title">Our Skin Care Products</h2>
 				</div>
-				<div class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide" >
-					{% for product in skin_care_products %}
+				<div
+					class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
+				>
+					{% for product in products %}
 
 					<div class="slick-single-layout">
 						<div class="axil-product product-style-four">
 							<div class="thumbnail">
-								<a href="{{ url_for('productDetails', id=products.index(product)) }}">
+								<a
+									href="{{ url_for('productDetails', id=products.index(product)) }}"
+								>
 									<img
 										data-sal="fade"
 										data-sal-delay="100"
@@ -190,7 +209,11 @@
 							<div class="product-content">
 								<div class="inner">
 									<h5 class="title">
-										<a href="{{ url_for('productDetails', id=products.index(product)) }}"> {{ product[1] }} </a>
+										<a
+											href="{{ url_for('productDetails', id=products.index(product)) }}"
+										>
+											{{ product[1] }}
+										</a>
 									</h5>
 									<div class="product-price-variant">
 										<span class="price">{{ product[2] }}</span>
@@ -199,7 +222,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					{% endfor %}
 				</div>
 			</div>
@@ -252,11 +275,10 @@
 				<div class="col-xl-3 col-lg-4 col-sm-6">
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
-							<a href="{{ url_for('productDetails', id=products.index(product)) }}">
-								<img
-									src="{{ product[0] }}"
-									alt="Product Images"
-								/>
+							<a
+								href="{{ url_for('productDetails', id=products.index(product)) }}"
+							>
+								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
 							<div class="product-hover-action">
 								<ul class="cart-action">
@@ -269,7 +291,10 @@
 						<div class="product-content">
 							<div class="inner">
 								<h5 class="title">
-									<a href="{{ url_for('productDetails', id=products.index(product)) }}">{{ product[1] }}</a>
+									<a
+										href="{{ url_for('productDetails', id=products.index(product)) }}"
+										>{{ product[1] }}</a
+									>
 								</h5>
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
@@ -282,7 +307,9 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center mt--20 mt_sm--0">
-					<a href="{{ url_for('shop') }}" class="axil-btn btn-bg-lighter btn-load-more"
+					<a
+						href="{{ url_for('shop') }}"
+						class="axil-btn btn-bg-lighter btn-load-more"
 						>View All Products</a
 					>
 				</div>
@@ -313,5 +340,111 @@
 	</div>
 	<!-- End Axil Newsletter Area  -->
 </main>
+
+<div id="product-clone" style="display: none">
+	<div class="slick-single-layout">
+		<div class="axil-product product-style-four">
+			<div class="thumbnail">
+				<a
+					href="__PRODUCT_URL__"
+				>
+					<img
+						data-sal="fade"
+						data-sal-delay="100"
+						data-sal-duration="1500"
+						src="__PRODUCT_IMAGE__"
+						alt="Product Images"
+					/>
+					<img
+						class="hover-img"
+						src="__PRODUCT_IMAGE__"
+						alt="Product Images"
+					/>
+				</a>
+				<div class="product-hover-action">
+					<ul class="cart-action">
+						<li class="select-option">
+							<a href="">Go to Website</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="product-content">
+				<div class="inner">
+					<h5 class="title">
+						<a
+							href="__PRODUCT_URL__"
+						>
+							__PRODUCT_NAME__
+						</a>
+					</h5>
+					<div class="product-price-variant">
+						<span class="price">__PRODUCT_PRICE__</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="top-banner-clone" style="display: none">
+	<div class="single-slide slick-slide">
+		<div class="main-slider-content">
+			<span class="subtitle"
+				><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span
+			>
+			<h1 class="title">__PRODUCT_NAME__</h1>
+			<div class="shop-btn">
+				<a href="__PRODUCT_WEBSITE_URL__" class="axil-btn"
+					>Shop Now <i class="fal fa-long-arrow-right"></i
+				></a>
+			</div>
+		</div>
+		<div class="main-slider-thumb">
+			<img
+				src="__PRODUCT_IMAGE__"
+				alt="Product"
+			/>
+		</div>
+	</div>
+</div>
+
+{% endblock %} {% block scripts %}
+<script>
+	const allProducts = {{ productsGroupByCategory|tojson|safe }};
+	$("body").on("click", ".nav-menu-list li", function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		var category = $this.find(".menu-text").text();
+		// Data
+		var data = allProducts[category];
+		$('.new-arrivals-product-activation').slick('removeSlide', null, null, true);
+		$('.slider-activation-one').slick('removeSlide', null, null, true);
+		$('.product-area .title').text(`Our ${category} Products`)
+		let html = ''
+		let carouselHtml = ''
+		let i = 0;
+		data.forEach((product) => {
+			html += $('#product-clone').html().replace(/__PRODUCT_IMAGE__/g, product[0])
+			.replace(/__PRODUCT_NAME__/g, product[1])
+			.replace(/__PRODUCT_PRICE__/g, product[2])
+			.replace(/__PRODUCT_WEBSITE_URL__/g, product[9])
+			.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);
+			if (i < 4) {
+				carouselHtml += $('#top-banner-clone').html().replace(/__PRODUCT_IMAGE__/g, product[0])
+				.replace(/__PRODUCT_NAME__/g, product[1])
+				.replace(/__PRODUCT_WEBSITE_URL__/g, "{{ url_for('shop') }}")
+				.replace(/__PRODUCT_CATEGORY__/g, category);
+			}
+			i++;
+		});
+		$('.new-arrivals-product-activation').slick('slickAdd', html);
+		$('.slider-activation-one').slick('slickAdd', carouselHtml);
+		sal({
+			threshold: 0.3,
+			once: true,
+		});
+	});
+</script>
 
 {% endblock %}

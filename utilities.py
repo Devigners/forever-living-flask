@@ -2,7 +2,7 @@ from os import listdir
 import pandas as pd
 
 needed_columns = ['Image', 'post_title', 'Price', 'Description', 'Usage', 'quantities', 'Ingredients', 'Tags', 'review_stars', 'Original URL', 'aus_categories']
-products = pd.read_csv('static\\data\\products\\forever_products_en_au.csv')
+products = pd.read_csv('static/data/products/forever_products_en_au.csv')
 products['review_stars'].fillna(0.0, inplace = True)
 products['total_reviews'].fillna('', inplace = True)
 products['quantities'].fillna('', inplace = True)
