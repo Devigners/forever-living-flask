@@ -6111,7 +6111,7 @@ button.axil-btn.wishlist-btn:hover:before {
 }
 .header-style-2 .axil-header-top {
 	background-color: var(--color-heading);
-	padding: 6px 0;
+	padding: 0 0 6px;
 }
 .header-style-5 .header-top-dropdown .dropdown .dropdown-toggle {
 	color: #c2c2cc;

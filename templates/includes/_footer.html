@@ -162,7 +162,7 @@
 									<div class="product-rating">
 										<div class="star-rating">
 											<img
-												src="assets/images/icons/rate.png"
+												src="{{ url_for('static', filename='images/icons/rate.png') }}"
 												alt="Rate Images"
 											/>
 										</div>
@@ -508,5 +508,11 @@
 
 		<!-- Main JS -->
 		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+		<script>
+			$(function () {
+				$(".mainmenu a[href='" + window.location.pathname + "']").addClass("active");
+			})
+		</script>
 	</body>
 </html>

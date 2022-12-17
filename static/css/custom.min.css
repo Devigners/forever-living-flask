@@ -117,3 +117,8 @@
 .top-header-points + .top-header-points{
 	margin-left: 20px;
 }
+
+.top-bar {
+	background-color: var(--color-heading);
+    padding: 6px 0;
+}
