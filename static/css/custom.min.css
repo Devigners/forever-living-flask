@@ -151,3 +151,7 @@
 	margin-bottom: 0;
 	border: none;
 }
+
+.main-slider-style-2 .main-slider-content .title {
+    font-size: 38px !important;
+}
