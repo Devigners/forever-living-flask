@@ -527,31 +527,37 @@
 		navbarActive(window.location.pathname);
 	});
 
+	const locations = JSON.parse(`{{ localities|tojson|safe }}`);
+
 	$("#search-area").easyAutocomplete({
-		data: [
-			{
-				name: "Apple",
-				url: "https://www.apple.com/",
-			},
-			{
-				name: "Microsoft",
-				url: "https://www.microsoft.com/",
-			},
-			{
-				name: "Google",
-				url: "https://www.google.com/",
-			},
-			{
-				name: "Amazon",
-				url: "https://www.amazon.com/",
-			},
-			{
-				name: "Facebook",
-				url: "https://www.facebook.com/",
-			},
-		],
+		data: locations,
 		getValue: "name",
 		theme: "square",
 		cssClasses: "search-area-container",
+		list: {
+			maxNumberOfElements: 1000,
+			match: {
+				enabled: true,
+			},
+			onClickEvent: function () {
+				var value = $("#search-area").getSelectedItemData().name;
+				$("#search-area").val(value).trigger("change");
+			},
+			onShowListEvent: function () {
+				$(".easy-autocomplete-container").addClass("border");
+			},
+			onHideListEvent: function () {
+				$(".easy-autocomplete-container").removeClass("border");
+			},
+		},
 	});
+
+	// on change select-country
+	$("#select-country").change(function () {
+		var country = $(this).val();
+		window.location.href = "/country/" + country;
+	});
+
+	var country = "{{ country }}";
+	$("#select-country").val(country ?? "");
 </script>

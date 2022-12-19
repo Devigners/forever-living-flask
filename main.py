@@ -22,12 +22,12 @@ ALLOWED_EXTENSIONS = {'csv'}
 # index page with country name
 @app.route('/country/<country>', methods=['GET', 'POST'])
 def country(country = 'unitedstates'):
-    return render_template('pages/index.html', categories=getCategories(), products = all_products, productsGroupByCategory = getProductsGroupByCategory(), localities = findLocalities(country))
+    return render_template('pages/index.html', categories=getCategories(), products = all_products, productsGroupByCategory = getProductsGroupByCategory(), country=country, localities = findLocalities(country))
 
 # index page
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('pages/index.html', categories=getCategories(), products = all_products, productsGroupByCategory = getProductsGroupByCategory(), localities = findLocalities('unitedstates'))
+    return render_template('pages/index.html', categories=getCategories(), products = all_products, productsGroupByCategory = getProductsGroupByCategory(), country="unitedstates", localities = findLocalities('unitedstates'))
 
 
 # shop page

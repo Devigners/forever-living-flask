@@ -39,9 +39,9 @@ def getProductsGroupByCategory():
     return category_json
 
 def findLocalities(required_country = 'unitedstates'):
-    countries_codes = {'australia': 'AU', 'unitedstates':'US', 'canada':'CA', 'great britain':'GB'}
+    countries_codes = {'australia': 'AU', 'unitedstates':'US', 'canada':'CA', 'greatbritain':'GB'}
     required_country_code = countries_codes[required_country]
-    data = pd.read_csv('static\\data\\countries\\'+required_country_code+' data.csv').values.tolist()
+    data = pd.read_csv('static/data/countries/'+required_country_code+' data.csv').values.tolist()
 
     localities = []
     for row in data:
