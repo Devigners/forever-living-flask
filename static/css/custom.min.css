@@ -122,3 +122,14 @@
 	background-color: var(--color-heading);
     padding: 6px 0;
 }
+
+#search-area{
+	padding: 5px 43px 5px 0;
+    font-size: 16px;
+    border: none;
+    font-style: normal;
+}
+
+#search-area + .easy-autocomplete-container li{
+	margin: 0 !important;
+}

@@ -513,6 +513,7 @@
 <script src="{{ url_for('static', filename='js/vendor/isotope.pkgd.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/vendor/counterup.js') }}"></script>
 <script src="{{ url_for('static', filename='js/vendor/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery.easy-autocomplete.min.js') }}"></script>
 
 <!-- Main JS -->
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -526,4 +527,31 @@
 		navbarActive(window.location.pathname);
 	});
 
+	$("#search-area").easyAutocomplete({
+		data: [
+			{
+				name: "Apple",
+				url: "https://www.apple.com/",
+			},
+			{
+				name: "Microsoft",
+				url: "https://www.microsoft.com/",
+			},
+			{
+				name: "Google",
+				url: "https://www.google.com/",
+			},
+			{
+				name: "Amazon",
+				url: "https://www.amazon.com/",
+			},
+			{
+				name: "Facebook",
+				url: "https://www.facebook.com/",
+			},
+		],
+		getValue: "name",
+		theme: "square",
+		cssClasses: "search-area-container",
+	});
 </script>
