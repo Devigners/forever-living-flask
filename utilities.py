@@ -38,27 +38,22 @@ def getProductsGroupByCategory():
         category_json[category] = getProductsWithCategory(category)
     return category_json
 
-def findCsvFilenames( path_to_dir, suffix=".csv" ):
-    filenames = listdir(path_to_dir)
-    return [ filename for filename in filenames if filename.endswith( suffix ) ]
+def findLocalities(required_country = 'unitedstates'):
+    countries_codes = {'australia': 'AU', 'unitedstates':'US', 'canada':'CA', 'great britain':'GB'}
+    required_country_code = countries_codes[required_country]
+    data = pd.read_csv('static\\data\\countries\\'+required_country_code+' data.csv').values.tolist()
 
-def findLocalities():
-    filenames = findCsvFilenames("static\\data\\countries")
+    localities = []
+    for row in data:
+        entry = []
+        for item in row:
+            if isinstance(item, str):
+                entry.append(item)
+        localities.append(entry)
 
-    for name in filenames:
-        country_code = name[:name.find(' ')]
-        data = pd.read_csv('static\\data\\countries\\'+name).values.tolist()
-
-        localities = []
-        for row in data:
-            entry = []
-            for item in row:
-                if isinstance(item, str):
-                    entry.append(item)
-            localities.append(entry)
-
-        strings = []
-        for locality in localities:
-            strings.append(', '.join(locality))
-        locality_dict[country_code] = strings
-    return locality_dict
+    country_localities = []
+    for locality in localities:
+        # add your search url here
+        country_localities.append({'name': ', '.join(locality), 'url': '#'})
+    
+    return country_localities
