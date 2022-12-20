@@ -538,9 +538,12 @@
 		var $this = $(this);
 		var value = $this.val();
 		// Data
-		// search in all products from index 1
+		// search in all products from index 1 and 3
 		var data = allProducts["All Products"].filter((product) => {
-			return product[1].toLowerCase().includes(value.toLowerCase());
+			return (
+				product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+				product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
+			);
 		});
 		if(value){
 			$(".search-result-header").show();
