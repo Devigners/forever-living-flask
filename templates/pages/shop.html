@@ -57,7 +57,7 @@
 				<div class="col-xl-3 col-lg-4 col-sm-6">
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
-							<a href="{{ url_for('productDetails', id=products.index(product)) }}">
+							<a href="{{ url_for('productDetails', country=country, id=products.index(product)) }}">
 								<img
 									src="{{ product[0] }}"
 									alt="Product Images"
@@ -74,7 +74,7 @@
 						<div class="product-content">
 							<div class="inner">
 								<h5 class="title">
-									<a href="{{ url_for('productDetails', id=products.index(product)) }}">{{ product[1] }}</a>
+									<a href="{{ url_for('productDetails', country=country, id=products.index(product)) }}">{{ product[1] }}</a>
 								</h5>
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>

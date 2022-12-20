@@ -21,7 +21,7 @@
 												>
 												<h1 class="title">Bloosom Smat Watch</h1>
 												<div class="shop-btn">
-													<a href="{{ url_for('shop') }}" class="axil-btn"
+													<a href="{{ url_for('shop', country=country) }}" class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
 												</div>
@@ -40,7 +40,7 @@
 												>
 												<h1 class="title">Delux Brand Watch</h1>
 												<div class="shop-btn">
-													<a href="{{ url_for('shop') }}" class="axil-btn"
+													<a href="{{ url_for('shop', country=country) }}" class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
 												</div>
@@ -59,7 +59,7 @@
 												>
 												<h1 class="title">Bloosom Smat Watch</h1>
 												<div class="shop-btn">
-													<a href="{{ url_for('shop') }}" class="axil-btn"
+													<a href="{{ url_for('shop', country=country) }}" class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
 												</div>
@@ -183,7 +183,7 @@
 						<div class="axil-product product-style-four">
 							<div class="thumbnail">
 								<a
-									href="{{ url_for('productDetails', id=products.index(product)) }}"
+									href="{{ url_for('productDetails', country=country, id=products.index(product)) }}"
 								>
 									<img
 										data-sal="fade"
@@ -210,7 +210,7 @@
 								<div class="inner">
 									<h5 class="title">
 										<a
-											href="{{ url_for('productDetails', id=products.index(product)) }}"
+											href="{{ url_for('productDetails', country=country, id=products.index(product)) }}"
 										>
 											{{ product[1] }}
 										</a>
@@ -276,7 +276,7 @@
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', id=products.index(product)) }}"
+								href="{{ url_for('productDetails', country=country, id=products.index(product)) }}"
 							>
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
@@ -292,7 +292,7 @@
 							<div class="inner">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', id=products.index(product)) }}"
+										href="{{ url_for('productDetails', country=country, id=products.index(product)) }}"
 										>{{ product[1] }}</a
 									>
 								</h5>
@@ -308,7 +308,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center mt--20 mt_sm--0">
 					<a
-						href="{{ url_for('shop') }}"
+						href="{{ url_for('shop', country=country) }}"
 						class="axil-btn btn-bg-lighter btn-load-more"
 						>View All Products</a
 					>
@@ -431,7 +431,7 @@
 					.html()
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
-					.replace(/__PRODUCT_WEBSITE_URL__/g, "{{ url_for('shop') }}")
+					.replace(/__PRODUCT_WEBSITE_URL__/g, "{{ url_for('shop', country=country) }}")
 					.replace(/__PRODUCT_CATEGORY__/g, category);
 			}
 			i++;

@@ -527,7 +527,7 @@
 		navbarActive(window.location.pathname);
 	});
 
-	const locations = JSON.parse(`{{ localities|tojson|safe }}`);
+	const locations = {{ localities|tojson|safe }};
 
 	$("#search-area").easyAutocomplete({
 		data: locations,
@@ -540,8 +540,9 @@
 				enabled: true,
 			},
 			onClickEvent: function () {
-				var value = $("#search-area").getSelectedItemData().name;
-				$("#search-area").val(value).trigger("change");
+				var data = $("#search-area").getSelectedItemData();
+				$("#search-area").val(data.value).trigger("change");
+				window.location.href = data.url;
 			},
 			onShowListEvent: function () {
 				$(".easy-autocomplete-container").addClass("border");

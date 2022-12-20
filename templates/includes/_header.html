@@ -91,8 +91,8 @@
 						>
 							<ul class="mainmenu">
 								<li><a href="{{ url_for('index') }}">Shop</a></li>
-								<li><a href="{{ url_for('shop') }}">Products</a></li>
-								<li><a href="{{ url_for('blogs') }}">Blogs</a></li>
+								<li><a href="{{ url_for('shop', country=country) }}">Products</a></li>
+								<li><a href="{{ url_for('blogs', country=country) }}">Blogs</a></li>
 							</ul>
 							<div class="mainmenu-nav-title fadeInDown">
 								<div class="d-flex align-items-center">

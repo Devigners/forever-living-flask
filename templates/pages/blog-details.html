@@ -471,7 +471,7 @@
 {% block scripts %}
 	<script>
 		$(function () {
-			navbarActive("{{ url_for('blogs') }}");
+			navbarActive("{{ url_for('blogs', country=country) }}");
 		})
 	</script>
 {% endblock %}
