@@ -21,7 +21,9 @@
 												>
 												<h1 class="title">Bloosom Smat Watch</h1>
 												<div class="shop-btn">
-													<a href="{{ url_for('shop', country=country) }}" class="axil-btn"
+													<a
+														href="{{ url_for('shop', country=country) }}"
+														class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
 												</div>
@@ -40,7 +42,9 @@
 												>
 												<h1 class="title">Delux Brand Watch</h1>
 												<div class="shop-btn">
-													<a href="{{ url_for('shop', country=country) }}" class="axil-btn"
+													<a
+														href="{{ url_for('shop', country=country) }}"
+														class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
 												</div>
@@ -59,7 +63,9 @@
 												>
 												<h1 class="title">Bloosom Smat Watch</h1>
 												<div class="shop-btn">
-													<a href="{{ url_for('shop', country=country) }}" class="axil-btn"
+													<a
+														href="{{ url_for('shop', country=country) }}"
+														class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
 												</div>
@@ -341,6 +347,43 @@
 	<!-- End Axil Newsletter Area  -->
 </main>
 
+<!-- Header Search Modal End -->
+<div class="header-search-modal" id="header-search-modal">
+	<button class="card-close sidebar-close">
+		<i class="fas fa-times"></i>
+	</button>
+	<div class="header-search-wrap">
+		<div class="card-header">
+			<form action="#">
+				<div class="input-group">
+					<input
+						type="search"
+						class="form-control"
+						name="prod-search"
+						id="prod-search"
+						placeholder="Write Something...."
+					/>
+					<button type="submit" class="axil-btn btn-bg-primary">
+						<i class="far fa-search"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="card-body">
+			<div class="search-result-header">
+				<h6 class="title" id="total-result-found">Result Found</h6>
+				<a href="{{ url_for('shop', country=country) }}" class="view-all"
+					>View All</a
+				>
+			</div>
+			<div class="psearch-results">
+				<div class="text-center">No product found!!</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Header Search Modal End -->
+
 <div id="product-clone" style="display: none">
 	<div class="slick-single-layout">
 		<div class="axil-product product-style-four">
@@ -396,14 +439,56 @@
 	</div>
 </div>
 
+<div id="search-product-clone" style="display: none">
+	<div class="axil-product-list">
+		<div class="thumbnail">
+			<a>
+				<img
+					style="
+						width: 120px;
+						height: 120px;
+						object-fit: cover;
+						object-position: center;
+					"
+					data-image="0"
+				/>
+			</a>
+		</div>
+		<div class="product-content">
+			<h6 class="product-title">
+				<a href="">__PRODUCT_NAME__</a>
+			</h6>
+			<div class="product-price-variant">
+				<span class="price current-price">__PRODUCT_PRICE__</span>
+			</div>
+			<div class="product-cart">
+				<a href="__PRODUCT_WEBSITE_URL__" target="_blank" class="cart-btn">
+					<i class="fal fa-eye"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 {% endblock %} {% block scripts %}
 <script>
+	$("body").on('click', ".axil-search", function (e) {
+		$("#prod-search").val("");
+		$(".search-result-header").hide();
+	});
+
 	const allProducts = {{ productsGroupByCategory|tojson|safe }};
 
 	$("body").on("click", ".nav-menu-list li", function (e) {
 		e.preventDefault();
 		var $this = $(this);
+		$(".nav-menu-list li").removeClass("active");
+		$this.addClass("active");
 		var category = $this.find(".menu-text").text();
+		$("html, body").animate({scrollTop: 0,},"300");
+
+		$('.department-nav-menu').removeClass('open')
+		$('.sticky-header').removeClass('open').removeAttr('style')
 		// Data
 		var data = allProducts[category];
 		$(".new-arrivals-product-activation").slick(
@@ -431,7 +516,10 @@
 					.html()
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
-					.replace(/__PRODUCT_WEBSITE_URL__/g, "{{ url_for('shop', country=country) }}")
+					.replace(
+						/__PRODUCT_WEBSITE_URL__/g,
+						"{{ url_for('shop', country=country) }}"
+					)
 					.replace(/__PRODUCT_CATEGORY__/g, category);
 			}
 			i++;
@@ -442,6 +530,39 @@
 			threshold: 0.3,
 			once: true,
 		});
+	});
+
+	// on change prod-search
+	$("body").on("input change", "#prod-search", function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		var value = $this.val();
+		// Data
+		// search in all products from index 1
+		var data = allProducts["All Products"].filter((product) => {
+			return product[1].toLowerCase().includes(value.toLowerCase());
+		});
+		if(value){
+			$(".search-result-header").show();
+			$("#total-result-found").show().text(`${data.length} Results Found`);
+			// clone #search-product-clone and replace data and append to .psearch-results
+			let html = "";
+			data.forEach((product) => {
+				html += $("#search-product-clone")
+					.html()
+					.replace(/data-image="0"/g, `src="${product[0]}"`)
+					.replace(/__PRODUCT_NAME__/g, product[1])
+					.replace(/__PRODUCT_PRICE__/g, product[2])
+					.replace(/__PRODUCT_WEBSITE_URL__/g, product[9]);
+			});
+			$(".psearch-results").html(html);
+			if(data.length == 0){
+				$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
+			}
+		}else{
+			$("#total-result-found").show().text(`0 Results Found`);
+			$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
+		}
 	});
 </script>
 

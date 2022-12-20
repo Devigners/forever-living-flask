@@ -97,6 +97,7 @@
 	border: 1px solid rgb(204, 204, 204, 0.3);
 	padding-left: 10px;
 	border-radius: 2px;
+	min-width: 143px;
 }
 
 .top-header-points select {
@@ -154,4 +155,28 @@
 
 .main-slider-style-2 .main-slider-content .title {
     font-size: 38px !important;
+}
+
+
+.nav-menu-list li.active .menu-text{
+	color: var(--color-primary);
+}
+
+@media screen and (max-width: 1199px){
+	.department-nav-menu{
+		height: 100% !important;
+	}
+}
+
+@media screen and (max-width: 768px){
+	.easy-autocomplete{
+		position: inherit !important;
+	}
+	.main-slider-style-2 .main-slider-content .title {
+		font-size: 24px !important;
+	}
+}
+
+.department-nav-menu .sidebar-close {
+    z-index: 1000 !important;
 }
