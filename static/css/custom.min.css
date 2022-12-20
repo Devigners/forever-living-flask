@@ -175,6 +175,9 @@
 	.main-slider-style-2 .main-slider-content .title {
 		font-size: 24px !important;
 	}
+	.mainmenu-nav-title{
+		display: none !important;
+	}
 }
 
 .department-nav-menu .sidebar-close {
