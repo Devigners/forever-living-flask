@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 from utilities import *
 import os
 
-# folders to work with 
+# folders to work with
 countries_folder = os.path.join('static', 'data', 'countries')
 countries_folder = os.path.join('static', 'data', 'products')
 images_folder = os.path.join('static', 'images')
@@ -11,7 +11,7 @@ countries = ['AU', 'US', 'CA', 'GB']
 controller = data()
 all_products = None
 
-# flask app name 
+# flask app name
 app = Flask(__name__)
 app.config['IMAGE_FOLDER'] = images_folder
 app.config['COUNTRY_FOLDER'] = countries_folder
@@ -20,50 +20,61 @@ app.config['COUNTRY_FOLDER'] = countries_folder
 ALLOWED_EXTENSIONS = {'csv'}
 
 # index page
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     global all_products
     country = 'unitedstates'
     controller.setCountry(country)
     all_products = controller.getProducts()
-    
-    return render_template('pages/index.html', categories=controller.getCategories(), products = all_products, productsGroupByCategory = controller.getProductsGroupByCategory(), country=country, localities = controller.findLocalities(country))
+
+    return render_template('pages/index.html', categories=controller.getCategories(), products=all_products, productsGroupByCategory=controller.getProductsGroupByCategory(), country=country, localities=controller.findLocalities(country))
 
 # index page with country name
-@app.route('/country/<country>', methods=['GET', 'POST'])
-@app.route('/country/<country>/<restArea>', methods=['GET', 'POST'])
-def country(country, restArea = None):
+
+
+@app.route('/<country>', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>', methods=['GET', 'POST'])
+def country(country, restArea=None):
     global all_products
     controller.setCountry(country)
     all_products = controller.getProducts()
-    
-    return render_template('pages/index.html', categories=controller.getCategories(), products = all_products, productsGroupByCategory = controller.getProductsGroupByCategory(), country=country, localities = controller.findLocalities(country))
+
+    return render_template('pages/index.html', categories=controller.getCategories(), products=all_products, productsGroupByCategory=controller.getProductsGroupByCategory(), country=country, localities=controller.findLocalities(country), restArea=restArea)
 
 # shop page
+
+
+@app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
 @app.route('/<country>/shop', methods=['GET', 'POST'])
-def shop(country):
+def shop(country, restArea=None):
     global all_products
-    return render_template('pages/shop.html', categories=controller.getCategories(), products=all_products, country=country, localities = controller.findLocalities(country))
+    return render_template('pages/shop.html', categories=controller.getCategories(), products=all_products, country=country, localities=controller.findLocalities(country), restArea=restArea)
 
 
 # blog page
+@app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
 @app.route('/<country>/blogs', methods=['GET', 'POST'])
-def blogs(country):
-    return render_template('pages/blogs.html',country=country , localities = controller.findLocalities(country))
+def blogs(country, restArea=None):
+    return render_template('pages/blogs.html', country=country, localities=controller.findLocalities(country), restArea=restArea)
 
 
 # blog page
+@app.route('/<country>/<restArea>/blog-details', methods=['GET', 'POST'])
 @app.route('/<country>/blog-details', methods=['GET', 'POST'])
-def blogDetails(country):
-    return render_template('pages/blog-details.html',country=country , localities = controller.findLocalities(country))
+def blogDetails(country, restArea=None):
+    return render_template('pages/blog-details.html', country=country, localities=controller.findLocalities(country), restArea=restArea)
 
 
 # product details
+@app.route('/<country>/<restArea>/product/details/<int:id>', methods=['GET', 'POST'])
 @app.route('/<country>/product/details/<int:id>', methods=['GET', 'POST'])
-def productDetails(country, id):
+def productDetails(country, id, restArea=None):
     print('Category:', all_products[id][10])
-    print('Items:', len(controller.getProductsWithCategory(category=all_products[id][10])))
-    return render_template('pages/single-product.html', country=country, product = all_products[id], similar_products = controller.getProductsWithCategory(category=all_products[id][10]), all_products=all_products, localities = controller.findLocalities(country))
+    print('Items:', len(controller.getProductsWithCategory(
+        category=all_products[id][10])))
+    return render_template('pages/single-product.html', country=country, product=all_products[id], similar_products=controller.getProductsWithCategory(category=all_products[id][10]), all_products=all_products, localities=controller.findLocalities(country), restArea=restArea)
 
 
 if __name__ == '__main__':

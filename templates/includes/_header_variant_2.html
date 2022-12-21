@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="header-navbar">
 				<div class="header-brand">
-					<a href="{{ url_for('index') }}" class="nav-title">
+					<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="nav-title">
 						<b
 							>FOREVER <br class="d-none" />
 							LIVING</b
@@ -33,7 +33,7 @@
 							<i class="fas fa-times"></i>
 						</button>
 						<div class="mobile-nav-brand">
-							<a href="{{ url_for('index') }}" class="nav-title">
+							<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="nav-title">
 								<b
 									>FOREVER <br class="d-block d-md-none" />
 									LIVING</b
@@ -41,9 +41,9 @@
 							</a>
 						</div>
 						<ul class="mainmenu justify-content-start">
-							<li><a href="{{ url_for('index') }}">Shop</a></li>
-							<li><a href="{{ url_for('shop', country=country) }}">Products</a></li>
-							<li><a href="{{ url_for('blogs', country=country) }}">Blogs</a></li>
+							<li><a href="{{ url_for('country', restArea=restArea, country=country) }}">Shop</a></li>
+							<li><a href="{{ url_for('shop', restArea=restArea, country=country) }}">Products</a></li>
+							<li><a href="{{ url_for('blogs', restArea=restArea, country=country) }}">Blogs</a></li>
 						</ul>
 					</nav>
 					<!-- End Mainmanu Nav -->

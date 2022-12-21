@@ -20,10 +20,10 @@
 				<div class="row align-items-center">
 					<div class="col-lg-2 col-sm-3 col-5">
 						<div class="header-brand pt-4">
-							<a href="{{ url_for('index') }}" class="nav-title">
+							<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="nav-title">
 								<b>FOREVER LIVING</b>
 							</a>
-							<a href="{{ url_for('index') }}" class="logo logo-light">
+							<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="logo logo-light">
 								<b>FOREVER LIVING</b>
 							</a>
 						</div>
@@ -73,7 +73,7 @@
 							<i class="fas fa-times"></i>
 						</button>
 						<div class="mobile-nav-brand">
-							<a href="index.html" class="logo">
+							<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="logo">
 								<b>FOREVER LIVING</b>
 							</a>
 						</div>
@@ -81,16 +81,16 @@
 							class="d-flex w-100 justify-content-between align-items-center"
 						>
 							<ul class="mainmenu">
-								<li><a href="{{ url_for('index') }}">Shop</a></li>
-								<li><a href="{{ url_for('shop', country=country) }}">Products</a></li>
-								<li><a href="{{ url_for('blogs', country=country) }}">Blogs</a></li>
+								<li><a href="{{ url_for('country', restArea=restArea, country=country) }}">Shop</a></li>
+								<li><a href="{{ url_for('shop', restArea=restArea, country=country) }}">Products</a></li>
+								<li><a href="{{ url_for('blogs', restArea=restArea, country=country) }}">Blogs</a></li>
 							</ul>
 							<div class="mainmenu-nav-title fadeInDown">
 								<div class="d-flex align-items-center">
 									<button type="submit" class="axil-search">
 										<i class="far fa-search"></i>
 									</button>
-									<a href="{{ url_for('index') }}" class="">
+									<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="">
 										<b>FOREVER LIVING</b>
 									</a>
 								</div>
