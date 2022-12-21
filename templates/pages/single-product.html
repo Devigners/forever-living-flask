@@ -14,14 +14,8 @@
 										class="single-product-thumbnail product-large-thumbnail-3 axil-product"
 									>
 										<div class="thumbnail">
-											<a
-												href="{{ product[0] }}"
-												class="popup-zoom"
-											>
-												<img
-													src="{{ product[0] }}"
-													alt="Product Images"
-												/>
+											<a href="{{ product[0] }}" class="popup-zoom">
+												<img src="{{ product[0] }}" alt="Product Images" />
 											</a>
 										</div>
 									</div>
@@ -32,20 +26,50 @@
 					<div class="col-lg-5 mb--40">
 						<div class="single-product-content">
 							<div class="inner">
-								<h2 class="product-title">{{ product[1] }}</h2>
-								<span class="price-amount mb-0">{{ product[2] }}</span>
-								<div class="product-rating"></div>
+								<h5 class="item-no">Item # 2738</h5>
+								<h2 class="product-title mb-2">{{ product[1] }}</h2>
+								<div class="product-rating">
+									<div class="star-rating" data-rating="2.7">
+										<i class="fas fa-star-half-alt"></i>
+										<i class="fas fa-star-half-alt"></i>
+										<i class="fas fa-star-half-alt"></i>
+										<i class="fas fa-star-half-alt"></i>
+										<i class="fas fa-star-half-alt"></i>
+									</div>
+									<div class="review-link">
+										<a href="#">3.7 (6 reviews)</a>
+									</div>
+								</div>
 
-								<p class="description">
-									{{ product[3] }}
+								<p class="description mb-0">
+									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+									Impedit reiciendis harum officia, officiis iusto nam possimus
+									odio quas minus ut, sequi totam nisi assumenda illo aliquid
+									aliquam in consequuntur deserunt?
 								</p>
+
+								<hr class="my-5" />
+
+								<p class="description mb-0"><b>Usage:</b> {{ product[4] }}</p>
+
+								<hr class="my-5" />
+
+								<span class="price-amount mb-5"
+									>{{ product[2] }}
+									<small
+										style="font-size: 16px; color: #7b7b7b; font-weight: normal"
+										>for 2KG</small
+									></span
+								>
 
 								<!-- Start Product Action Wrapper  -->
 								<div class="product-action-wrapper d-flex-center w-50">
 									<!-- Start Product Action  -->
 									<ul class="product-action d-flex-center mb--0">
 										<li class="add-to-cart m-0">
-											<a href="{{ product[9] }}" class="axil-btn btn-bg-primary">Go to Website</a>
+											<a href="{{ product[9] }}" class="axil-btn btn-bg-primary"
+												>Go to Website</a
+											>
 										</li>
 									</ul>
 									<!-- End Product Action  -->
@@ -59,10 +83,54 @@
 		</div>
 		<!-- End .single-product-thumb -->
 	</div>
-	<!-- End Shop Area  -->
-
+	<div class="container">
+		<div class="product-detail-section">
+			<h4>Description</h4>
+			<p>
+				Protein and vitamin powered nutrition• Perfect balance of protein and
+				carbohydrates\r\n• Great meal on the go\r\n• No added preservatives\r\n•
+				Delicious vanilla flavor\r\n• Gluten freeWhether you’re looking to lose
+				weight, gain muscle or need an energy boost, Forever Lite® is the ideal
+				meal on the go. Mix with milk or your favorite juice for a nutritious
+				kick of vitamins, minerals and protein. Forever Lite® is a healthy and
+				delicious way to keep your fitness goals on track.Forever Lite® makes a
+				great snack or meal replacement that delivers key vitamins, minerals,
+				carbohydrates and protein to provide key nutrients while helping to
+				reduce cravings and support your weight loss goals.When mixed with skim
+				milk, soy milk or fruit juice, a Forever Lite® shake can be a healthy,
+				tasty way to manage your weight. If you’re using this shake mix to
+				replace one or two meals a day, eat at least one nutritiously-complete,
+				low calorie meal including fresh fruit, vegetables, whole grains and
+				lean protein. Raise a glass to looking and feeling better.
+			</p>
+		</div>
+		<hr class="my-5 w-50" />
+		<div class="product-detail-section">
+			<h4>Ingredients</h4>
+			<p>
+				Soy protein isolate, fructose, fructooligosaccharides, dicalcium
+				phosphate, natural vanilla flavor, guar gum, Aminogen®†† (patented
+				protease blend), safflower oil, soy lecithin, disodium phosphate,
+				ascorbic acid, sucralose, d-alpha-tocopheryl acetate, biotin, beta
+				carotene, niacinamide, vitamin A palmitate, zinc oxide, d-calcium
+				pantothenate, potassium iodide, cholecalciferol, pyridoxine
+				hydrochloride, brewer’s yeast, thiamine hydrochloride, riboflavin,
+				chromium chloride, folic acid, spirulina, cyanocobalamin, sodium
+				selenite. Contains: Soy\r\n\r\nContains milk and soy ingredients.
+				Manufactured in a facility that processed eggs, peanuts, tree nuts and
+				wheat.
+			</p>
+			<ul class="ingredients mt-3">
+				<li><span>ForeverLite</span></li>
+				<li><span>ForeverLivingLite</span></li>
+				<li><span>BestSellers</span></li>
+			</ul>
+		</div>
+	</div>
 	<!-- Start Recently Viewed Product Area  -->
-	<div class="axil-product-area bg-color-white axil-section-gap pb--50 pb_sm--30">
+	<div
+		class="axil-product-area bg-color-white axil-section-gap pb--50 pb_sm--30"
+	>
 		<div class="container">
 			<div class="section-title-wrapper">
 				<span class="title-highlighter highlighter-primary"
@@ -75,11 +143,10 @@
 				<div class="col-xl-3 col-lg-4 col-sm-6">
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
-							<a href="{{ url_for('productDetails', country=country, restArea=restArea, id=all_products.index(product)) }}">
-								<img
-									src="{{ product[0] }}"
-									alt="Product Images"
-								/>
+							<a
+								href="{{ url_for('productDetails', country=country, restArea=restArea, id=all_products.index(product)) }}"
+							>
+								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
 							<div class="product-hover-action">
 								<ul class="cart-action">
@@ -92,7 +159,10 @@
 						<div class="product-content">
 							<div class="inner">
 								<h5 class="title">
-									<a href="{{ url_for('productDetails', country=country, restArea=restArea, id=all_products.index(product)) }}">{{ product[1] }}</a>
+									<a
+										href="{{ url_for('productDetails', country=country, restArea=restArea, id=all_products.index(product)) }}"
+										>{{ product[1] }}</a
+									>
 								</h5>
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
@@ -105,7 +175,9 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center mt--20 mt_sm--0">
-					<a href="{{ url_for('shop', country=country, restArea=restArea) }}" class="axil-btn btn-bg-lighter btn-load-more"
+					<a
+						href="{{ url_for('shop', country=country, restArea=restArea) }}"
+						class="axil-btn btn-bg-lighter btn-load-more"
 						>View All Products</a
 					>
 				</div>
@@ -136,4 +208,21 @@
 	<!-- End Axil Newsletter Area  -->
 </main>
 
+{% endblock %} {% block scripts %}
+<script>
+	$(".star-rating").each(function () {
+		var rating = $(this).data("rating");
+		var starRating = "";
+		for (var i = 1; i <= 5; i++) {
+			if (i <= rating) {
+				starRating += '<i class="fas fa-star"></i>';
+			} else if (i === Math.ceil(rating) && !Number.isInteger(rating)) {
+				starRating += '<i class="fas fa-star-half-alt"></i>';
+			} else {
+				starRating += '<i class="far fa-star"></i>';
+			}
+		}
+		$(this).html(starRating);
+	});
+</script>
 {% endblock %}
