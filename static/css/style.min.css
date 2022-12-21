@@ -6857,9 +6857,13 @@ button.axil-btn.wishlist-btn:hover:before {
 	transition: var(--transition);
 	z-index: 5;
 	padding: 0 10px !important;
+}
+
+.axil-mainmenu .department-nav-menu{
 	height: 398px !important;
 	overflow: auto;
 }
+
 .department-nav-menu .nav-menu-list {
 	padding: 0;
 	margin-bottom: 0 !important;

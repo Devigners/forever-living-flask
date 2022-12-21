@@ -231,5 +231,32 @@
 	text-align: center;
 	color: #9b9b9b;
 	padding: 4px 11px;
-	background-color: #EDEDED;
+	background-color: #ededed;
+}
+
+.axil-main-slider-area .department-nav-menu {
+	overflow: initial !important;
+}
+
+@media screen and (max-width: 768px) {
+	.main-slider-style-2 .slider-box-wrap .single-slide {
+		flex-direction: column-reverse;
+		align-items: flex-start;
+	}
+
+	.main-slider-style-2 .slider-box-wrap .main-slider-thumb {
+		margin: 0 auto 20px !important;
+		padding: 10px;
+		border-radius: 5px !important;
+		width: 100%;
+	}
+
+	.main-slider-style-2 .slider-box-wrap .main-slider-content .title {
+		margin-bottom: 0 !important;
+	}
+
+	.single-product-box {
+		display: none;
+	}
+
 }

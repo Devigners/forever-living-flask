@@ -41,7 +41,7 @@
 								</div>
 							</div>
 							<div class="col-lg-3">
-								<div class="slider-product-box" style="height: 100%;">
+								<div class="slider-product-box single-product-box" style="height: 100%;">
 									<div class="product-thumb">
 										<a href="#">
 											<img
@@ -56,6 +56,65 @@
 									<span class="price">{{ products[4][2] }}</span>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="product-area pb--50">
+						<div class="section-title-wrapper">
+							<span class="title-highlighter highlighter-primary"
+								><i class="far fa-shopping-basket"></i>New Arrivals</span
+							>
+							<h2 class="title">Our Skin Care Products</h2>
+						</div>
+						<div
+							class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
+						>
+							{% for product in products %}
+		
+							<div class="slick-single-layout">
+								<div class="axil-product product-style-four">
+									<div class="thumbnail">
+										<a
+											href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
+										>
+											<img
+												data-sal="fade"
+												data-sal-delay="100"
+												data-sal-duration="1500"
+												src="{{ product[0] }}"
+												alt="Product Images"
+											/>
+											<img
+												class="hover-img"
+												src="{{ product[0] }}"
+												alt="Product Images"
+											/>
+										</a>
+										<div class="product-hover-action">
+											<ul class="cart-action">
+												<li class="select-option">
+													<a href="{{ product[9] }}">Go to Website</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="product-content">
+										<div class="inner">
+											<h5 class="title">
+												<a
+													href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
+												>
+													{{ product[1] }}
+												</a>
+											</h5>
+											<div class="product-price-variant">
+												<span class="price">{{ product[2] }}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+		
+							{% endfor %}
 						</div>
 					</div>
 				</div>
@@ -127,74 +186,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Start New Arrivals Product Area  -->
-	<div
-		class="axil-new-arrivals-product-area fullwidth-container bg-color-white axil-section-gap pb--0"
-	>
-		<div class="container ml--xxl-0">
-			<div class="product-area pb--50">
-				<div class="section-title-wrapper">
-					<span class="title-highlighter highlighter-primary"
-						><i class="far fa-shopping-basket"></i>New Arrivals</span
-					>
-					<h2 class="title">Our Skin Care Products</h2>
-				</div>
-				<div
-					class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
-				>
-					{% for product in products %}
-
-					<div class="slick-single-layout">
-						<div class="axil-product product-style-four">
-							<div class="thumbnail">
-								<a
-									href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
-								>
-									<img
-										data-sal="fade"
-										data-sal-delay="100"
-										data-sal-duration="1500"
-										src="{{ product[0] }}"
-										alt="Product Images"
-									/>
-									<img
-										class="hover-img"
-										src="{{ product[0] }}"
-										alt="Product Images"
-									/>
-								</a>
-								<div class="product-hover-action">
-									<ul class="cart-action">
-										<li class="select-option">
-											<a href="{{ product[9] }}">Go to Website</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="product-content">
-								<div class="inner">
-									<h5 class="title">
-										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
-										>
-											{{ product[1] }}
-										</a>
-									</h5>
-									<div class="product-price-variant">
-										<span class="price">{{ product[2] }}</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End New Arrivals Product Area  -->
 
 	<!-- Start Expolre Product Area  -->
 	<div class="axil-product-area bg-color-white axil-section-gap">
