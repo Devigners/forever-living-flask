@@ -218,6 +218,7 @@
 
 .ingredients li {
 	padding: 5px;
+	margin: 0 !important;
 }
 
 .ingredients li span {

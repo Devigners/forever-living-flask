@@ -74,7 +74,7 @@ def productDetails(country, id, restArea=None):
     print('Category:', all_products[id][10])
     print('Items:', len(controller.getProductsWithCategory(
         category=all_products[id][10])))
-    return render_template('pages/single-product.html', country=country, product=all_products[id], similar_products=controller.getProductsWithCategory(category=all_products[id][10]), all_products=all_products, localities=controller.findLocalities(country), restArea=restArea)
+    return render_template('pages/single-product.html', country=country, product=all_products[id], product_tags=all_products[id][7].split(','), similar_products=controller.getProductsWithCategory(category=all_products[id][10]), all_products=all_products, localities=controller.findLocalities(country), restArea=restArea)
 
 
 if __name__ == '__main__':
