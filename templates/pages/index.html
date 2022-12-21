@@ -512,6 +512,12 @@
 				product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
 			);
 		});
+		
+		data = data.filter(
+			(product, index, self) =>
+				index === self.findIndex((t) => t[1] === product[1])
+		);
+
 		if(value){
 			$(".search-result-header").show();
 			$("#total-result-found").show().text(`${data.length} Results Found`);
