@@ -34,8 +34,8 @@ def index():
 # index page with country name
 
 
-@app.route('/<country>', methods=['GET', 'POST'])
-@app.route('/<country>/<restArea>', methods=['GET', 'POST'])
+@app.route('/home/<country>', methods=['GET', 'POST'])
+@app.route('/home/<country>/<restArea>', methods=['GET', 'POST'])
 def country(country, restArea=None):
     global all_products
     controller.setCountry(country)
