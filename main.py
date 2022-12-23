@@ -1,25 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
-from werkzeug.utils import secure_filename
+from flask import Flask, render_template
 from utilities import *
-import os
 
 # folders to work with
-countries_folder = os.path.join('static', 'data', 'countries')
-countries_folder = os.path.join('static', 'data', 'products')
-images_folder = os.path.join('static', 'images')
-countries = ['AU', 'US', 'CA', 'GB']
 controller = data()
 all_products = None
 
 # flask app name
 app = Flask(__name__)
-app.config['IMAGE_FOLDER'] = images_folder
-app.config['COUNTRY_FOLDER'] = countries_folder
-
-# allowed data file extensions
-ALLOWED_EXTENSIONS = {'csv'}
-
-# index page
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -31,6 +18,7 @@ def index():
 
     return render_template('pages/index.html', categories=controller.getCategories(), products=all_products, productsGroupByCategory=controller.getProductsGroupByCategory(), country=country, localities=controller.findLocalities(country))
 
+
 # index page with country name
 
 
@@ -39,8 +27,6 @@ def index():
 def country(country, restArea=None):
     global all_products
     controller.setCountry(country)
-    all_products = controller.getProducts()
-
     return render_template('pages/index.html', categories=controller.getCategories(), products=all_products, productsGroupByCategory=controller.getProductsGroupByCategory(), country=country, localities=controller.findLocalities(country), restArea=restArea)
 
 # shop page
