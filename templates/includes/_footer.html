@@ -247,7 +247,10 @@
 <script src="{{ url_for('static', filename='js/vendor/jquery.easy-autocomplete.min.js') }}"></script>
 
 <!--For google translate-->
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script
+	type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+></script>
 
 <!-- Main JS -->
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -257,11 +260,11 @@
 		new google.translate.TranslateElement({
 			pageLanguage: 'en',
 			autoDisplay: 'true',
-			includedLanguages:'en,zh,hi,es,fr,ar,bn,ru,pt,id,ur,de,ja,sw,mr,te,tr,ta,pa,ko,vi,ha,jv,it,th,gu,kn,fa,pl,fil,ps,uk,yo,ml,or,my,om,uz,ro,sd,tl', 
+			includedLanguages:'en,zh,hi,es,fr,ar,bn,ru,pt,id,ur,de,ja,sw,mr,te,tr,ta,pa,ko,vi,ha,jv,it,th,gu,kn,fa,pl,fil,ps,uk,yo,ml,or,my,om,uz,ro,sd,tl',
 			layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
 		}, 'google_translate_element');
 	}
-	
+
 	function navbarActive(url) {
 		$(".mainmenu a[href='" + url + "']").addClass("active");
 	}
@@ -270,7 +273,15 @@
 		navbarActive(window.location.pathname);
 	});
 
-	const locations = {{ localities|tojson|safe }};
+	var country = "{{ country }}" ?? "unitedstates";
+	var locations = {{ localities|tojson|safe }};
+	locations = locations.map((location) => {
+		return {
+			name: location,
+			url: "/home/"+country+'/'+ location.replace(/, /g, "-").replace(/ /g, ''),
+		};
+	});
+
 
 	$("#search-area").easyAutocomplete({
 		data: locations,
@@ -302,7 +313,6 @@
 		window.location.href = "/" + country;
 	});
 
-	var country = "{{ country }}";
 	$("#select-country").val(country ?? "");
 
 	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

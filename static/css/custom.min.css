@@ -98,6 +98,7 @@
 	padding-left: 10px;
 	border-radius: 2px;
 	min-width: 143px;
+	min-height: 36px;
 }
 
 .top-header-points select {
@@ -258,5 +259,21 @@
 	.single-product-box {
 		display: none;
 	}
+}
 
+body {
+	top: 0 !important;
+}
+
+.goog-te-gadget span,
+.goog-te-banner-frame {
+	display: none !important;
+}
+
+.goog-te-gadget {
+	color: var(--color-heading) !important;
+}
+
+.goog-te-gadget > div {
+	color: white !important;
 }

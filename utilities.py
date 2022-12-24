@@ -58,7 +58,7 @@ class data():
         return category_json
 
     def findLocalities(self, required_country):
-        my_file = open("static\\data\\countries\\" +
+        my_file = open("static/data/countries/" +
                        self.country_code[required_country] + " data.txt", "r")
         data = my_file.read()
         data_into_list = data.split("\n")
