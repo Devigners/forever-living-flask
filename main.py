@@ -3,7 +3,6 @@ from utilities import *
 
 # folders to work with
 controller = data()
-all_products = None
 categories = None
 localities = None
 product_with_categories = None
@@ -14,7 +13,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    global all_products, categories
+    global categories, product_with_categories, localities
     country = 'unitedstates'
     controller.setCountry(country)
     categories = controller.getCategories()
@@ -27,15 +26,19 @@ def index():
 @ app.route('/home/<country>', methods=['GET', 'POST'])
 @ app.route('/home/<country>/<restArea>', methods=['GET', 'POST'])
 def country(country, restArea=None):
+    global categories, product_with_categories, localities
     controller.setCountry(country)
-    return render_template('pages/index.html', categories=categories, country=country, localities=localities, restArea=restArea)
+    categories = controller.getCategories()
+    localities = controller.findLocalities(country)
+    product_with_categories = controller.getProductsGroupByCategory()
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
 
 
 # shop page
 @ app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
 @ app.route('/<country>/shop', methods=['GET', 'POST'])
 def shop(country, restArea=None):
-    global all_products
+    global all_products, product_with_categories, localities, categories
     return render_template('pages/shop.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
 
 
