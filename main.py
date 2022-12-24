@@ -36,7 +36,7 @@ def country(country, restArea=None):
 @ app.route('/<country>/shop', methods=['GET', 'POST'])
 def shop(country, restArea=None):
     global all_products
-    return render_template('pages/shop.html', categories=categories, products=all_products, country=country, localities=localities, restArea=restArea)
+    return render_template('pages/shop.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
 
 
 # blog page

@@ -15,7 +15,7 @@ class data():
     def setCountry(self, country):
         self.country = country
         self.needed_columns = ['Image', 'post_title', 'Price', 'Description', 'Usage', 'quantities',
-                               'Ingredients', 'Tags', 'review_stars', 'Original URL',
+                               'Ingredients', 'Tags', 'review_stars', 'affiliate_link',
                                self.country_categoryNames[self.country],
                                'SKU', 'short_description', 'total_reviews']
         self.products = pd.read_csv(
