@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
-from os import listdir
+from flask import url_for
 import pandas as pd
 
 
@@ -59,24 +58,8 @@ class data():
         return category_json
 
     def findLocalities(self, required_country):
-        countries_codes_file = {
-            'australia': 'AU', 'unitedstates': 'US', 'canada': 'CA', 'greatbritain': 'GB'}
-        required_country_code = countries_codes_file[required_country]
-        data = pd.read_csv('static//data//countries//' +
-                           required_country_code+' data.csv').values.tolist()
-
-        localities = []
-        for row in data:
-            entry = []
-            for item in row:
-                if isinstance(item, str):
-                    entry.append(item)
-            localities.append(entry)
-
-        country_localities = []
-        for locality in localities:
-            # add your search url here
-            country_localities.append({'name': ', '.join(locality), 'url': url_for(
-                'country', country=required_country, restArea='-'.join([i.replace(' ', '') for i in locality]))})
-
-        return country_localities
+        my_file = open("static\\data\\countries\\US data.txt", "r")
+        data = my_file.read()
+        data_into_list = data.split("\n")
+        my_file.close()
+        return data_into_list
