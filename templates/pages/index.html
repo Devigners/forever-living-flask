@@ -14,7 +14,7 @@
 							<div class="col-lg-9">
 								<div class="slider-box-wrap">
 									<div class="slider-activation-one axil-slick-dots">
-										{% for product in products[0:3] %}
+									{% for product in productsGroupByCategory['All Products'][:3] %}
 										<div class="single-slide slick-slide">
 											<div class="main-slider-content">
 												<span class="subtitle"> {{ product[10] }}</span
@@ -45,15 +45,15 @@
 									<div class="product-thumb">
 										<a href="#">
 											<img
-												src="{{ products[4][0] }}"
+												src="{{ productsGroupByCategory['All Products'][4][0] }}"
 												alt="Product"
 											/>
 										</a>
 									</div>
 									<h6 class="title">
-										<a href="{{ products[4][9] }}">{{ products[4][1] }}</a>
+										<a href="{{ productsGroupByCategory['All Products'][4][9] }}">{{ productsGroupByCategory['All Products'][4][1] }}</a>
 									</h6>
-									<span class="price">{{ products[4][2] }}</span>
+									<span class="price">{{ productsGroupByCategory['All Products'][4][2] }}</span>
 								</div>
 							</div>
 						</div>
@@ -68,13 +68,13 @@
 						<div
 							class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
 						>
-							{% for product in products %}
+							{% for product in productsGroupByCategory['All Products'] %}
 		
 							<div class="slick-single-layout">
 								<div class="axil-product product-style-four">
 									<div class="thumbnail">
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, id=productsGroupByCategory['All Products'].index(product)) }}"
 										>
 											<img
 												data-sal="fade"
@@ -101,7 +101,7 @@
 										<div class="inner">
 											<h5 class="title">
 												<a
-													href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
+													href="{{ url_for('productDetails', country=country, restArea=restArea, id=productsGroupByCategory['All Products'].index(product)) }}"
 												>
 													{{ product[1] }}
 												</a>
@@ -197,12 +197,12 @@
 				<h2 class="title">Explore our Products</h2>
 			</div>
 			<div class="row row--15">
-				{% for product in products[:8] %}
+				{% for product in productsGroupByCategory['All Products'][:8] %}
 				<div class="col-xl-3 col-lg-4 col-sm-6">
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
+								href="{{ url_for('productDetails', country=country, restArea=restArea, id=productsGroupByCategory['All Products'].index(product)) }}"
 							>
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
@@ -218,7 +218,7 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, id=products.index(product)) }}"
+										href="{{ url_for('productDetails', country=country, restArea=restArea, id=productsGroupByCategory['All Products'].index(product)) }}"
 										>{{ product[1] }}</a
 									>
 								</h5>

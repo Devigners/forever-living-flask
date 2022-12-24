@@ -253,8 +253,13 @@
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 <script>
-	function googleTranslateElementInit() {
-		new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+	 function googleTranslateElementInit() {
+		new google.translate.TranslateElement({
+			pageLanguage: 'en',
+			autoDisplay: 'true',
+			includedLanguages:'en,zh,hi,es,fr,ar,bn,ru,pt,id,ur,de,ja,sw,mr,te,tr,ta,pa,ko,vi,ha,jv,it,th,gu,kn,fa,pl,fil,ps,uk,yo,ml,or,my,om,uz,ro,sd,tl', 
+			layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+		}, 'google_translate_element');
 	}
 	
 	function navbarActive(url) {
@@ -279,7 +284,7 @@
 			},
 			onClickEvent: function () {
 				var data = $("#search-area").getSelectedItemData();
-				$("#search-area").val(data.value).trigger("change");
+				$("#search-area").val(data).trigger("change");
 				window.location.href = data.url;
 			},
 			onShowListEvent: function () {

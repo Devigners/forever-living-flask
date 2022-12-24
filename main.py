@@ -6,6 +6,7 @@ controller = data()
 all_products = None
 categories = None
 localities = None
+product_with_categories = None
 
 # flask app name
 app = Flask(__name__)
@@ -16,11 +17,10 @@ def index():
     global all_products, categories
     country = 'unitedstates'
     controller.setCountry(country)
-    all_products = controller.getProducts()
     categories = controller.getCategories()
     localities = controller.findLocalities(country)
-
-    return render_template('pages/index.html', categories=categories, products=all_products, country=country, localities=localities)
+    product_with_categories = controller.getProductsGroupByCategory()
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities)
 
 
 # index page with country name
@@ -28,7 +28,7 @@ def index():
 @ app.route('/home/<country>/<restArea>', methods=['GET', 'POST'])
 def country(country, restArea=None):
     controller.setCountry(country)
-    return render_template('pages/index.html', categories=categories, products=all_products, country=country, localities=localities, restArea=restArea)
+    return render_template('pages/index.html', categories=categories, country=country, localities=localities, restArea=restArea)
 
 
 # shop page

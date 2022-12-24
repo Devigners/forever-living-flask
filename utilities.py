@@ -10,7 +10,7 @@ class data():
         self.country_categoryNames = {'australia': 'aus_categories', 'unitedstates': 'us_categories',
                                       'canada': 'can_categories', 'greatbritain': 'uk_categories'}
         self.country_code = {
-            'australia': 'au', 'unitedstates': 'us', 'canada': 'ca', 'greatbritain': 'GB'}
+            'australia': 'au', 'unitedstates': 'us', 'canada': 'ca', 'greatbritain': 'gb'}
 
     def setCountry(self, country):
         self.country = country
@@ -58,7 +58,8 @@ class data():
         return category_json
 
     def findLocalities(self, required_country):
-        my_file = open("static\\data\\countries\\US data.txt", "r")
+        my_file = open("static\\data\\countries\\" +
+                       self.country_code[required_country] + " data.txt", "r")
         data = my_file.read()
         data_into_list = data.split("\n")
         my_file.close()
