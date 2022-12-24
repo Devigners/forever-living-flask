@@ -43,7 +43,7 @@
 									<select class="single-select" id="category-filter">
 										<option value="" disabled selected>Select Category</option>
 										{% for category in categories %}
-										<option>{{ category }}</option>
+											<option>{{ category }}</option>
 										{% endfor %}
 									</select>
 									<!-- End Single Select  -->
@@ -54,11 +54,11 @@
 				</div>
 			</div>
 			<div class="row row--15" id="product-lists">
-				{% for product in productsGroupByCategory['All Products'] %}
+				{% for product in productsGroupByCategory[categories[0]] %}
 				<div class="col-xl-3 col-lg-4 col-sm-6">
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
-							<a href="{{ url_for('productDetails', country=country, restArea=restArea, id=productsGroupByCategory['All Products'].index(product)) }}">
+							<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}">
 								<img
 									src="{{ product[0] }}"
 									alt="Product Images"
@@ -75,7 +75,7 @@
 						<div class="product-content">
 							<div class="inner text-center">
 								<h5 class="title">
-									<a href="{{ url_for('productDetails', country=country, restArea=restArea, id=productsGroupByCategory['All Products'].index(product)) }}">{{ product[1] }}</a>
+									<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}">{{ product[1] }}</a>
 								</h5>
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
@@ -116,7 +116,7 @@
 {% endblock %}
 {% block scripts %}
 <script>
-	const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, id=478649) }}";
+	const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, name='sf') }}";
 	const allProducts = {{ productsGroupByCategory|tojson }};
 	// log
 	console.log(allProducts);

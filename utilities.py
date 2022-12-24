@@ -1,5 +1,6 @@
 from flask import url_for
 import pandas as pd
+import json
 
 
 class data():
@@ -11,6 +12,7 @@ class data():
                                       'canada': 'can_categories', 'greatbritain': 'uk_categories'}
         self.country_code = {
             'australia': 'au', 'unitedstates': 'us', 'canada': 'ca', 'greatbritain': 'gb'}
+        self.categories = None
 
     def setCountry(self, country):
         self.country = country
@@ -24,18 +26,23 @@ class data():
         self.products['total_reviews'].fillna('', inplace=True)
         self.products['quantities'].fillna('', inplace=True)
         self.products['Usage'].fillna('', inplace=True)
+        self.categories = self.getCategories()
 
     def getCountry(self):
         return self.country
 
     def getCategories(self):
-        return list(set(self.products[self.country_categoryNames[self.country]].to_list()))
+        with open('static\\data\\products\\categories.json') as json_file:
+            data = json.load(json_file)
+        return data[self.country_code[self.country]]
 
-    def getProductsCards(self, return_list=True):
+    def getProduct_with_name(self, name, return_list=True):
+        all_products = self.getProducts(return_list=False)
+
         if (return_list):
-            return self.products[['Image', 'post_title', 'Price']].values.tolist()
+            return all_products[all_products['post_title'] == name].values.tolist()
         else:
-            return self.products[['Image', 'post_title', 'Price']]
+            return all_products[all_products['post_title'] == name]
 
     def getProducts(self, return_list=True):
         if (return_list):
