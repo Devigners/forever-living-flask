@@ -32,8 +32,8 @@ def index():
 
 
 # index page with country name
-@ app.route('/home/<country>', methods=['GET', 'POST'])
-@ app.route('/home/<country>/<restArea>', methods=['GET', 'POST'])
+@ app.route('/<country>/home', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/home', methods=['GET', 'POST'])
 def country(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories

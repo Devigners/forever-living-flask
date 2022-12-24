@@ -277,3 +277,27 @@ body {
 .goog-te-gadget > div {
 	color: white !important;
 }
+
+
+@media screen and (max-width: 768px) {
+	.axil-product{
+		border: 1px solid #ebebeb;
+		border-radius: 4px !important;
+	}
+	.axil-product.mt--40{
+		margin-top: 25px !important;
+	}
+	.service-box{
+		padding: 30px 15px;
+	}
+	.header-brand{
+		padding-bottom: 10px !important;
+	}
+	.social-share{
+		text-align: center;
+		margin: 0 !important;
+	}
+	.copyright-left p {
+		text-align: center !important;
+	}
+}

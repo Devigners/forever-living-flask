@@ -11,7 +11,7 @@
 				</div>
 				<div class="col-xl-6 col-lg-12">
 					<div class="copyright-left">
-						<p style="text-align: right">Copyright 2022 BuyAloeProducts.com</p>
+						<p style="text-align: right">Copyright 2022 foreverliving-products.com</p>
 					</div>
 				</div>
 			</div>
@@ -274,11 +274,21 @@
 	});
 
 	var country = "{{ country }}" ?? "unitedstates";
+	var restArea = "{{ restArea }}" !== "None" ? "{{ restArea }}" : "";
 	var locations = {{ localities|tojson|safe }};
+	var url = window.location.pathname === "/" ? "home" : window.location.pathname;
+	if (url.includes(country)) {
+		url = url.replace(`/${country}`, "");
+	}
+	if (url.includes(restArea)) {
+		url = url.replace(`/${restArea}`, "");
+	}
+	
 	locations = locations.map((location) => {
+		var locationURL = location.replace(/, /g, "-").replace(/ /g, '');
 		return {
 			name: location,
-			url: "/home/"+country+'/'+ location.replace(/, /g, "-").replace(/ /g, ''),
+			url: `/${country}/${locationURL}/${url}`,
 		};
 	});
 
@@ -295,7 +305,7 @@
 			},
 			onClickEvent: function () {
 				var data = $("#search-area").getSelectedItemData();
-				$("#search-area").val(data).trigger("change");
+				$("#search-area").val(data.name).trigger("change");
 				window.location.href = data.url;
 			},
 			onShowListEvent: function () {
@@ -310,7 +320,7 @@
 	// on change select-country
 	$("#select-country").change(function () {
 		var country = $(this).val();
-		window.location.href = "/home/" + country;
+		window.location.href = "/" + country + "/"+url;
 	});
 
 	$("#select-country").val(country ?? "");

@@ -4326,7 +4326,7 @@ button.axil-btn.wishlist-btn:hover:before {
 }
 .main-slider-style-2 .slider-offset-left {
 	margin-top: 10px;
-	margin-bottom: 70px;
+	margin-bottom: 40px;
 }
 @media only screen and (max-width: 1199px) {
 	.main-slider-style-2 .slider-offset-left {
@@ -6943,10 +6943,10 @@ button.axil-btn.wishlist-btn:hover:before {
 	font-size: 14px;
 	font-weight: 500;
 	color: #999;
-	padding: 13px 0;
-	border-bottom: 1px solid #f3f3f3;
+	padding: 10px 0;
 	position: relative;
 }
+
 @media only screen and (max-width: 1199px) {
 	.department-nav-menu .nav-link {
 		font-size: 16px;
@@ -12190,11 +12190,19 @@ body.open .closeMask {
 	margin-bottom: 0;
 }
 .axil-section-gap {
-	padding: 80px 0;
+	padding: 50px 0;
 }
+
+.axil-section-gap-sm {
+	padding: 40px 0;
+}
+
 @media only screen and (max-width: 767px) {
 	.axil-section-gap {
-		padding: 60px 0;
+		padding: 30px 0;
+	}
+	.axil-section-gap-sm {
+		padding: 30px 0;
 	}
 }
 .axil-section-gapcommon {

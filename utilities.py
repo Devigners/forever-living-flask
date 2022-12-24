@@ -32,7 +32,7 @@ class data():
         return self.country
 
     def getCategories(self):
-        with open('static\\data\\products\\categories.json') as json_file:
+        with open('static/data/products/categories.json') as json_file:
             data = json.load(json_file)
         return data[self.country_code[self.country]]
 
