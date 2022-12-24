@@ -124,15 +124,13 @@
 	// #category-filter on change filter products
 	$("#category-filter").on("change", function () {
 		const category = $(this).val();
-		const filteredProducts = allProducts.filter((product) => {
-			return product[10] === category;
-		});
+		const filteredProducts = allProducts[category];
 		// clear products
 		$("#product-lists").html('');
 		$(".axil-product").remove();
 		// add filtered products
 		filteredProducts.forEach((product) => {
-			const url = dummyURl.replace("478649", allProducts.indexOf(product));
+			const url = dummyURl.replace("478649", filteredProducts.indexOf(product));
 
 			$("#product-lists").append(`
 				<div class="col-xl-3 col-lg-4 col-sm-6">
