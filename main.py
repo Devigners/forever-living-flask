@@ -7,6 +7,7 @@ categories = None
 localities = None
 country = None
 product_with_categories = None
+all_products = None
 
 # flask app name
 app = Flask(__name__)
@@ -27,8 +28,9 @@ def update_var(new_country):
 def index():
     country = 'unitedstates'
     update_var(country)
-    global product_with_categories, localities, categories
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities)
+    global product_with_categories, localities, categories, all_products
+    all_products = controller.getProducts()
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, all_products=all_products)
 
 
 # index page with country name
@@ -36,8 +38,10 @@ def index():
 @ app.route('/<country>/<restArea>/home', methods=['GET', 'POST'])
 def country(country, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
+    global product_with_categories, localities, categories, all_products
+    if (all_products == None):
+        all_products = controller.getProducts()
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, all_products=all_products)
 
 
 # shop page
@@ -53,6 +57,7 @@ def shop(country, restArea=None):
 @ app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
 @ app.route('/<country>/blogs', methods=['GET', 'POST'])
 def blogs(country, restArea=None):
+    global localities
     if (localities == None):
         localities = controller.findLocalities(country)
     return render_template('pages/blogs.html', country=country, localities=localities, restArea=restArea)
@@ -62,6 +67,7 @@ def blogs(country, restArea=None):
 @ app.route('/<country>/<restArea>/blog-details', methods=['GET', 'POST'])
 @ app.route('/<country>/blog-details', methods=['GET', 'POST'])
 def blogDetails(country, restArea=None):
+    global localities
     if (localities == None):
         localities = controller.findLocalities(country)
     return render_template('pages/blog-details.html', country=country, localities=localities, restArea=restArea)

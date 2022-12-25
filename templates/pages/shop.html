@@ -1,169 +1,173 @@
 {% extends "layouts/app.html" %} {% block content %}
 
 <main class="main-wrapper">
-	<!-- Start Breadcrumb Area  -->
-	<div class="axil-breadcrumb-area">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6 col-md-8">
-					<div class="inner">
-						<ul class="axil-breadcrumb">
-							<li class="axil-breadcrumb-item">
-								<a href="index.html">Home</a>
-							</li>
-							<li class="separator"></li>
-							<li class="axil-breadcrumb-item active" aria-current="page">
-								Products
-							</li>
-						</ul>
-						<h1 class="title">Explore All Products</h1>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-4">
-					<div class="inner">
-						<div class="bradcrumb-thumb">
-							<img src="{{ url_for('static', filename='images/product/product-45.png') }}" alt="Image" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Breadcrumb Area  -->
-	<!-- Start Shop Area  -->
-	<div class="axil-shop-area axil-section-gap bg-color-white">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="axil-shop-top">
-						<div class="row">
-							<div class="col-lg-9">
-								<div class="category-select">
-									<!-- Start Single Select  -->
-									<select class="single-select" id="category-filter">
-										<option value="" disabled selected>Select Category</option>
-										{% for category in categories %}
-											<option>{{ category }}</option>
-										{% endfor %}
-									</select>
-									<!-- End Single Select  -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row row--15" id="product-lists">
-				{% for product in productsGroupByCategory[categories[0]] %}
-				<div class="col-xl-3 col-lg-4 col-sm-6">
-					<div class="axil-product product-style-one has-color-pick mt--40">
-						<div class="thumbnail">
-							<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}">
-								<img
-									src="{{ product[0] }}"
-									alt="Product Images"
-								/>
-							</a>
-							<div class="product-hover-action">
-								<ul class="cart-action">
-									<li class="select-option">
-										<a href="{{ product[9] }}" target="_blank">Go to Website</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="product-content">
-							<div class="inner text-center">
-								<h5 class="title">
-									<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}">{{ product[1] }}</a>
-								</h5>
-								<div class="product-price-variant">
-									<span class="price current-price">{{ product[2] }}</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-		<!-- End .container -->
-	</div>
-	<!-- End Shop Area  -->
-	<!-- Start Axil Newsletter Area  -->
-	<div class="axil-newsletter-area axil-section-gap pt--0">
-		<div class="container">
-			<div class="etrade-newsletter-wrapper bg_image bg_image--5">
-				<div class="newsletter-content">
-					<span class="title-highlighter highlighter-primary2"
-						><i class="fas fa-envelope-open"></i>Newsletter</span
-					>
-					<h2 class="title mb--40 mb_sm--30">Get weekly update</h2>
-					<div class="input-group newsletter-form">
-						<div class="position-relative newsletter-inner mb--15">
-							<input placeholder="example@gmail.com" type="text" />
-						</div>
-						<button type="submit" class="axil-btn mb--15">Subscribe</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End .container -->
-	</div>
-	<!-- End Axil Newsletter Area  -->
+  <!-- Start Breadcrumb Area  -->
+  <div class="axil-breadcrumb-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-8">
+          <div class="inner">
+            <ul class="axil-breadcrumb">
+              <li class="axil-breadcrumb-item">
+                <a href="index.html">Home</a>
+              </li>
+              <li class="separator"></li>
+              <li class="axil-breadcrumb-item active" aria-current="page">
+                Products
+              </li>
+            </ul>
+            <h1 class="title">Explore All Products</h1>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-4">
+          <div class="inner">
+            <div class="bradcrumb-thumb">
+              <img
+                src="{{ url_for('static', filename='images/product/product-45.png') }}"
+                alt="Image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Breadcrumb Area  -->
+  <!-- Start Shop Area  -->
+  <div class="axil-shop-area axil-section-gap bg-color-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="axil-shop-top">
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="category-select">
+                  <!-- Start Single Select  -->
+                  <select class="single-select" id="category-filter">
+                    <option value="" disabled selected>Select Category</option>
+                    {% for category in categories %}
+                    <option>{{ category }}</option>
+                    {% endfor %}
+                  </select>
+                  <!-- End Single Select  -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row--15" id="product-lists">
+        {% for product in productsGroupByCategory[categories[0]] %}
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="axil-product product-style-one has-color-pick mt--40">
+            <div class="thumbnail">
+              <a
+                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+              >
+                <img src="{{ product[0] }}" alt="Product Images" />
+              </a>
+              <div class="product-hover-action">
+                <ul class="cart-action">
+                  <li class="select-option">
+                    <a href="{{ product[9] }}" target="_blank">See Product</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="product-content">
+              <div class="inner text-center">
+                <h5 class="title">
+                  <a
+                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+                    >{{ product[1] }}</a
+                  >
+                </h5>
+                <div class="product-price-variant">
+                  <span class="price current-price">{{ product[2] }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- End .container -->
+  </div>
+  <!-- End Shop Area  -->
+  <!-- Start Axil Newsletter Area  -->
+  <div class="axil-newsletter-area axil-section-gap pt--0">
+    <div class="container">
+      <div class="etrade-newsletter-wrapper bg_image bg_image--5">
+        <div class="newsletter-content">
+          <span class="title-highlighter highlighter-primary2"
+            ><i class="fas fa-envelope-open"></i>Newsletter</span
+          >
+          <h2 class="title mb--40 mb_sm--30">Get weekly update</h2>
+          <div class="input-group newsletter-form">
+            <div class="position-relative newsletter-inner mb--15">
+              <input placeholder="example@gmail.com" type="text" />
+            </div>
+            <button type="submit" class="axil-btn mb--15">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End .container -->
+  </div>
+  <!-- End Axil Newsletter Area  -->
 </main>
 
-{% endblock %}
-{% block scripts %}
+{% endblock %} {% block scripts %}
 <script>
-	const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, name='sf') }}";
-	const allProducts = {{ productsGroupByCategory|tojson }};
-	// log
-	console.log(allProducts);
+  const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, name='sf') }}";
+  const allProducts = {{ productsGroupByCategory|tojson }};
+  // log
+  console.log(allProducts);
 
-	// #category-filter on change filter products
-	$("#category-filter").on("change", function () {
-		const category = $(this).val();
-		const filteredProducts = allProducts[category];
-		// clear products
-		$("#product-lists").html('');
-		$(".axil-product").remove();
-		// add filtered products
-		filteredProducts.forEach((product) => {
-			const url = dummyURl.replace("478649", filteredProducts.indexOf(product));
+  // #category-filter on change filter products
+  $("#category-filter").on("change", function () {
+  	const category = $(this).val();
+  	const filteredProducts = allProducts[category];
+  	// clear products
+  	$("#product-lists").html('');
+  	$(".axil-product").remove();
+  	// add filtered products
+  	filteredProducts.forEach((product) => {
+  		const url = dummyURl.replace("478649", filteredProducts.indexOf(product));
 
-			$("#product-lists").append(`
-				<div class="col-xl-3 col-lg-4 col-sm-6">
-					<div class="axil-product product-style-one has-color-pick mt--40">
-						<div class="thumbnail">
-							<a href="${url}">
-								<img
-									src="${product[0]}"
-									alt="Product Images"
-								/>
-							</a>
-							<div class="product-hover-action">
-								<ul class="cart-action">
-									<li class="select-option">
-										<a href="${product[9]}" target="_blank">Go to Website</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="product-content">
-							<div class="inner text-center">
-								<h5 class="title">
-									<a href="${url}">${product[1]}</a>
-								</h5>
-								<div class="product-price-variant">
-									<span class="price current-price">${product[2]}</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			`);
-		});
-	});
+  		$("#product-lists").append(`
+  			<div class="col-xl-3 col-lg-4 col-sm-6">
+  				<div class="axil-product product-style-one has-color-pick mt--40">
+  					<div class="thumbnail">
+  						<a href="${url}">
+  							<img
+  								src="${product[0]}"
+  								alt="Product Images"
+  							/>
+  						</a>
+  						<div class="product-hover-action">
+  							<ul class="cart-action">
+  								<li class="select-option">
+  									<a href="${product[9]}" target="_blank">Go to Website</a>
+  								</li>
+  							</ul>
+  						</div>
+  					</div>
+  					<div class="product-content">
+  						<div class="inner text-center">
+  							<h5 class="title">
+  								<a href="${url}">${product[1]}</a>
+  							</h5>
+  							<div class="product-price-variant">
+  								<span class="price current-price">${product[2]}</span>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		`);
+  	});
+  });
 </script>
 {% endblock %}
