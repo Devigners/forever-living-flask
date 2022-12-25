@@ -5,7 +5,7 @@
 	<div class="axil-main-slider-area main-slider-style-2">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 department-menu-col">
+				<div class="col-lg-3 col-md-12 department-menu-col">
 					{% include "includes/_categories_sidebar.html" %}
 				</div>
 				<div class="col-lg-9">
@@ -63,50 +63,34 @@
 						</div>
 					</div>
 					<div
-						class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20"
+						class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20"
 					>
 						<div class="col">
-							<div class="service-box">
-								<div class="icon">
-									<img
-										src="{{ url_for('static', restArea=restArea, filename='images/icons/service1.png') }}"
-										alt="Service"
-									/>
-								</div>
-								<h6 class="title">Fast &amp; Secure Delivery</h6>
+							<div class="home-service-box" data-color="green">
+								<h5>Free Shipping</h5>
+								<h6>Click to get</h6>
+								<button>Get Now</button>
 							</div>
 						</div>
 						<div class="col">
-							<div class="service-box">
-								<div class="icon">
-									<img
-										src="{{ url_for('static', restArea=restArea, filename='images/icons/service2.png') }}"
-										alt="Service"
-									/>
-								</div>
-								<h6 class="title">100% Guarantee On Product</h6>
+							<div class="home-service-box" data-color="light-blue">
+								<h5>10% Off</h5>
+								<h6>Special Discount</h6>
+								<ul class="timer-box">
+									<li class="days">0d</li>
+									<li class="hours">0h</li>
+									<li class="minutes">0m</li>
+									<li class="seconds">0s</li>
+								</ul>
+								<button>Get Now</button>
 							</div>
 						</div>
 						<div class="col">
-							<div class="service-box">
-								<div class="icon">
-									<img
-										src="{{ url_for('static', restArea=restArea, filename='images/icons/service3.png') }}"
-										alt="Service"
-									/>
-								</div>
-								<h6 class="title">24 Hour Return Policy</h6>
-							</div>
-						</div>
-						<div class="col">
-							<div class="service-box">
-								<div class="icon">
-									<img
-										src="{{ url_for('static', restArea=restArea, filename='images/icons/service4.png') }}"
-										alt="Service"
-									/>
-								</div>
-								<h6 class="title">24 Hour Return Policy</h6>
+							<div class="home-service-box" data-color="purple">
+								<h5>Join & Save</h5>
+								<h6>Instanly</h6>
+								<h4>5% Off</h4>
+								<button>Get Now</button>
 							</div>
 						</div>
 					</div>
@@ -390,118 +374,144 @@
 
 {% endblock %} {% block scripts %}
 <script>
-	$("body").on('click', ".axil-search", function (e) {
-		$("#prod-search").val("");
-		$(".search-result-header").hide();
-	});
-
-	const allProducts = {{ productsGroupByCategory|tojson|safe }};
-
-	$("body").on("click", ".nav-menu-list li", function (e) {
-		e.preventDefault();
-		var $this = $(this);
-		$(".nav-menu-list li").removeClass("active");
-		$this.addClass("active");
-		var category = $this.find(".menu-text").text();
-
-		// if screen is mobile scroll to top
-		if ($(window).width() < 768) {
-			$("html, body").animate({ scrollTop: 0 }, "slow");
-		}
-
-		$('.department-nav-menu').removeClass('open')
-		$('.sticky-header').removeClass('open').removeAttr('style')
-		// Data
-		var data = allProducts[category];
-		$(".new-arrivals-product-activation").slick(
-			"removeSlide",
-			null,
-			null,
-			true
-		);
-		$(".slider-activation-one").slick("removeSlide", null, null, true);
-		$(".product-area .title").text(`Our ${category} Products`);
-		let html = "";
-		let carouselHtml = "";
-		let i = 0;
-		data.forEach((product) => {
-			html += $("#product-clone")
-				.html()
-				.replace(/data-image="0"/g, `src="${product[0]}"`)
-				.replace(/data-image="1"/g, `src="${product[0]}"`)
-				.replace(/__PRODUCT_NAME__/g, product[1])
-				.replace(/__PRODUCT_PRICE__/g, product[2])
-				.replace(/__PRODUCT_WEBSITE_URL__/g, product[9])
-				.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);
-			if (i < 3) {
-				carouselHtml += $("#top-banner-clone")
-					.html()
-					.replace(/data-image="0"/g, `src="${product[0]}"`)
-					.replace(/__PRODUCT_NAME__/g, product[1])
-					.replace(
-						/__PRODUCT_WEBSITE_URL__/g,
-						"{{ url_for('shop', restArea=restArea, country=country) }}"
-					)
-					.replace(/__PRODUCT_CATEGORY__/g, category);
-			}
-			// if product is 4th append to .slider-product-box
-			if (i == 4) {
-				$(".slider-product-box").find('img').attr('src', product[0])
-				$(".slider-product-box").find('.title a').text(product[1]).attr('href', product[9])
-				$(".slider-product-box").find('.price').text(product[2])
-			}
-			i++;
-			return;
+		$("body").on('click', ".axil-search", function (e) {
+			$("#prod-search").val("");
+			$(".search-result-header").hide();
 		});
-		$(".new-arrivals-product-activation").slick("slickAdd", html);
-		$(".slider-activation-one").slick("slickAdd", carouselHtml);
-		sal({
-			threshold: 0.3,
-			once: true,
-		});
-	});
 
-	// on change prod-search
-	$("body").on("input change", "#prod-search", function (e) {
-		e.preventDefault();
-		var $this = $(this);
-		var value = $this.val();
-		// Data
-		// search in all products from index 1 and 3
-		var data = allProducts["All Products"].filter((product) => {
-			return (
-				product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-				product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
+		const allProducts = {{ productsGroupByCategory|tojson|safe }};
+
+		$("body").on("click", ".nav-menu-list li", function (e) {
+			e.preventDefault();
+			var $this = $(this);
+			$(".nav-menu-list li").removeClass("active");
+			$this.addClass("active");
+			var category = $this.find(".menu-text").text();
+
+			// if screen is mobile scroll to top
+			if ($(window).width() < 768) {
+				$("html, body").animate({ scrollTop: 0 }, "slow");
+			}
+
+			$('.department-nav-menu').removeClass('open')
+			$('.sticky-header').removeClass('open').removeAttr('style')
+			// Data
+			var data = allProducts[category];
+			$(".new-arrivals-product-activation").slick(
+				"removeSlide",
+				null,
+				null,
+				true
 			);
-		});
-
-		data = data.filter(
-			(product, index, self) =>
-				index === self.findIndex((t) => t[1] === product[1])
-		);
-
-		if(value){
-			$(".search-result-header").show();
-			$("#total-result-found").show().text(`${data.length} Results Found`);
-			// clone #search-product-clone and replace data and append to .psearch-results
+			$(".slider-activation-one").slick("removeSlide", null, null, true);
+			$(".product-area .title").text(`Our ${category} Products`);
 			let html = "";
+			let carouselHtml = "";
+			let i = 0;
 			data.forEach((product) => {
-				html += $("#search-product-clone")
+				html += $("#product-clone")
 					.html()
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
+					.replace(/data-image="1"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
-					.replace(/__PRODUCT_WEBSITE_URL__/g, product[9]);
+					.replace(/__PRODUCT_WEBSITE_URL__/g, product[9])
+					.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);
+				if (i < 3) {
+					carouselHtml += $("#top-banner-clone")
+						.html()
+						.replace(/data-image="0"/g, `src="${product[0]}"`)
+						.replace(/__PRODUCT_NAME__/g, product[1])
+						.replace(
+							/__PRODUCT_WEBSITE_URL__/g,
+							"{{ url_for('shop', restArea=restArea, country=country) }}"
+						)
+						.replace(/__PRODUCT_CATEGORY__/g, category);
+				}
+				// if product is 4th append to .slider-product-box
+				if (i == 4) {
+					$(".slider-product-box").find('img').attr('src', product[0])
+					$(".slider-product-box").find('.title a').text(product[1]).attr('href', product[9])
+					$(".slider-product-box").find('.price').text(product[2])
+				}
+				i++;
+				return;
 			});
-			$(".psearch-results").html(html);
-			if(data.length == 0){
+			$(".new-arrivals-product-activation").slick("slickAdd", html);
+			$(".slider-activation-one").slick("slickAdd", carouselHtml);
+			sal({
+				threshold: 0.3,
+				once: true,
+			});
+		});
+
+		// on change prod-search
+		$("body").on("input change", "#prod-search", function (e) {
+			e.preventDefault();
+			var $this = $(this);
+			var value = $this.val();
+			// Data
+			// search in all products from index 1 and 3
+			var data = allProducts["All Products"].filter((product) => {
+				return (
+					product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+					product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
+				);
+			});
+
+			data = data.filter(
+				(product, index, self) =>
+					index === self.findIndex((t) => t[1] === product[1])
+			);
+
+			if(value){
+				$(".search-result-header").show();
+				$("#total-result-found").show().text(`${data.length} Results Found`);
+				// clone #search-product-clone and replace data and append to .psearch-results
+				let html = "";
+				data.forEach((product) => {
+					html += $("#search-product-clone")
+						.html()
+						.replace(/data-image="0"/g, `src="${product[0]}"`)
+						.replace(/__PRODUCT_NAME__/g, product[1])
+						.replace(/__PRODUCT_PRICE__/g, product[2])
+						.replace(/__PRODUCT_WEBSITE_URL__/g, product[9]);
+				});
+				$(".psearch-results").html(html);
+				if(data.length == 0){
+					$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
+				}
+			}else{
+				$("#total-result-found").show().text(`0 Results Found`);
 				$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
 			}
-		}else{
-			$("#total-result-found").show().text(`0 Results Found`);
-			$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
-		}
-	});
+		});
+
+
+		$(function () {
+			var timerBox = $(".timer-box");
+			var days = timerBox.find(".days");
+			var hours = timerBox.find(".hours");
+			var minutes = timerBox.find(".minutes");
+			var seconds = timerBox.find(".seconds");
+			var time = new Date("2022-12-31 00:00:00").getTime();
+			console.log(time)
+			var x = setInterval(function () {
+				var now = new Date().getTime();
+				var distance = time - now;
+				days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}d`);
+				hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h`);
+				minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}m`);
+				seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}s`);
+				if (distance < 0) {
+					clearInterval(x);
+					days.text("0d");
+					hours.text("0h");
+					minutes.text("0m");
+					seconds.text("0s");
+				}
+			}, 1000);
+		})
 </script>
 
 {% endblock %}

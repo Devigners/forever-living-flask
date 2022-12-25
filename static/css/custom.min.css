@@ -106,6 +106,23 @@
 	height: auto;
 	padding: 2px 25px 2px 0;
 	background-position: 90%;
+	color: white !important;
+}
+
+select.white {
+	background: url(../images/icons/arrow-icon-white.png) 95% center no-repeat
+		rgba(0, 0, 0, 0) !important;
+	background-size: 10px !important;
+}
+
+.top-header-points .goog-te-combo {
+	background: url(../images/icons/arrow-icon-white.png) 95% center no-repeat
+		rgba(0, 0, 0, 0) !important;
+	background-size: 10px !important;
+}
+
+.top-header-points .fa-search {
+	color: white !important;
 }
 
 .top-header-points input {
@@ -121,7 +138,11 @@
 }
 
 .top-bar {
-	background-color: var(--color-heading);
+	background: linear-gradient(90.04deg, #5aa654 0%, #40a687 100%);
+	background: -webkit-linear-gradient(90.04deg, #5aa654 0%, #40a687 100%);
+	background: -moz-linear-gradient(90.04deg, #5aa654 0%, #40a687 100%);
+	background: -o-linear-gradient(90.04deg, #5aa654 0%, #40a687 100%);
+	background: -ms-linear-gradient(90.04deg, #5aa654 0%, #40a687 100%);
 	padding: 6px 0;
 }
 
@@ -130,6 +151,11 @@
 	font-size: 16px;
 	border: none;
 	font-style: normal;
+	box-shadow: none !important;
+	color: white !important;
+}
+#search-area::placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
 }
 
 #search-area + .easy-autocomplete-container li {
@@ -165,6 +191,12 @@
 @media screen and (max-width: 1199px) {
 	.department-nav-menu {
 		height: 100% !important;
+	}
+	.department-menu-col {
+		width: 100% !important;
+	}
+	.department-menu-col + .col-lg-9{
+		width: 100% !important;
 	}
 }
 
@@ -271,33 +303,160 @@ body {
 }
 
 .goog-te-gadget {
-	color: var(--color-heading) !important;
+	color: transparent !important;
 }
 
 .goog-te-gadget > div {
 	color: white !important;
 }
 
-
 @media screen and (max-width: 768px) {
-	.axil-product{
+	.axil-product {
 		border: 1px solid #ebebeb;
 		border-radius: 4px !important;
 	}
-	.axil-product.mt--40{
+	.axil-product.mt--40 {
 		margin-top: 25px !important;
 	}
-	.service-box{
+	.service-box {
 		padding: 30px 15px;
 	}
-	.header-brand{
+	.header-brand {
 		padding-bottom: 10px !important;
 	}
-	.social-share{
+	.social-share {
 		text-align: center;
 		margin: 0 !important;
 	}
 	.copyright-left p {
 		text-align: center !important;
+	}
+}
+
+.home-service-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 40px 24px calc(52px + 24px + 30px);
+	border-radius: 8px;
+	position: relative;
+	height: 100%;
+}
+
+.home-service-box button {
+	color: white;
+	position: absolute;
+	width: calc(100% - 48px);
+	height: 58px;
+	border-radius: 6px;
+	bottom: 24px;
+	left: 24px;
+	font-size: 16px;
+	color: white !important;
+}
+
+
+.home-service-box[data-color="green"]{
+	background: rgba(180, 245, 175, 0.5) !important;
+}
+
+.home-service-box[data-color="green"] h4{
+	color: #5AA654 !important;
+}
+.home-service-box[data-color="green"] button{
+	background-color: #5AA654	!important;
+}
+
+.home-service-box[data-color="light-blue"]{
+	background: rgba(162, 191, 245, 0.5) !important;
+}
+
+.home-service-box[data-color="light-blue"] h4{
+	color: #3577F0 !important;
+}
+.home-service-box[data-color="light-blue"] button{
+	background-color: #3577F0	!important;
+}
+
+.home-service-box[data-color="purple"]{
+	background: rgba(209, 198, 225, 0.5) !important;
+}
+
+.home-service-box[data-color="purple"] h4{
+	color: #7354A6 !important;
+}
+.home-service-box[data-color="purple"] button{
+	background-color: #7354A6	!important;
+}
+
+.home-service-box h5{
+	color: #555353 !important;
+	font-size: 40px;
+	margin: 0;
+	line-height: 60px;
+	letter-spacing: -1.5px;
+}
+
+.home-service-box h6{
+	color: #9A9A9A	!important;
+	font-size: 18px;
+	margin: 0;
+	line-height: 27px;
+	font-weight: 400;
+}
+
+.home-service-box h4{
+	color: #9A9A9A	!important;
+	font-size: 32px;
+	margin: 30px 0 0;
+	line-height: 32px;
+	letter-spacing: -1.5px;
+}
+
+.home-service-box .timer-box{
+	display: flex;
+	padding-left: 0;
+	margin: 30px 0 0;
+	list-style: none;
+	align-items: center;
+	justify-content: center;
+}
+
+.home-service-box .timer-box li{
+	background-color: white;
+	padding: 8px;
+	font-size: 20px;
+	line-height: 20px;
+	color: #3577F0 !important;
+	border-radius: 3px;
+	margin: 0 !important;
+}
+
+.home-service-box .timer-box li + li {
+	margin-left: 8px !important;
+}
+
+@media screen and (max-width: 768px) {
+	.home-service-box {
+		padding: 30px 15px calc(52px + 24px + 30px);
+		margin-bottom: 20px !important;
+		height: auto !important;
+	}
+	.home-service-box h5{
+		font-size: 30px;
+		line-height: 40px;
+	}
+	.home-service-box h6{
+		font-size: 16px;
+		line-height: 24px;
+	}
+	.home-service-box h4{
+		font-size: 24px;
+		line-height: 24px;
+	}
+	.home-service-box .timer-box li{
+		font-size: 16px;
+		line-height: 16px;
 	}
 }
