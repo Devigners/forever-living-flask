@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from utilities import *
 
 # folders to work with
@@ -77,10 +77,16 @@ def blogDetails(country, restArea=None):
 def productDetails(country, name, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories
-    product = controller.getProduct_with_name(name)[0]
-    product_category = controller.categories[product[len(
-        product)-len(categories):].index(1)]
-    return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, product_with_categories=product_with_categories[product_category][:4], localities=localities, restArea=restArea)
+    product = controller.getProduct_with_name(name)
+
+    if (product):
+        product = product[0]
+        print(product[len(product)-len(categories)-1:-1])
+        product_category = controller.categories[product[len(
+            product)-len(categories)-1:-1].index(1)]
+        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, product_with_categories=product_with_categories[product_category][:4], localities=localities, restArea=restArea)
+    else:
+        return redirect(url_for('country', country=country, restArea=restArea), code=302)
 
 
 if __name__ == '__main__':

@@ -9,7 +9,7 @@
           <div class="inner">
             <ul class="axil-breadcrumb">
               <li class="axil-breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="{{ url_for('country', country=country, restArea=restArea) }}">Home</a>
               </li>
               <li class="separator"></li>
               <li class="axil-breadcrumb-item active" aria-current="page">
@@ -62,7 +62,7 @@
           <div class="axil-product product-style-one has-color-pick mt--40">
             <div class="thumbnail">
               <a
-                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
               >
                 <img src="{{ product[0] }}" alt="Product Images" />
               </a>
@@ -78,7 +78,7 @@
               <div class="inner text-center">
                 <h5 class="title">
                   <a
-                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
                     >{{ product[1] }}</a
                   >
                 </h5>

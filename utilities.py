@@ -21,10 +21,13 @@ class data():
 
         self.needed_columns = ['Image', 'post_title', 'Price', 'Description', 'Usage', 'quantities',
                                'Ingredients', 'Tags', 'review_stars', 'affiliate_link',
-                               'SKU', 'short_description', 'total_reviews'] + self.categories
+                               'SKU', 'short_description', 'total_reviews', 'url_name'] + self.categories
 
         self.products = pd.read_csv(
             'static/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
+        self.products['url_name'] = [
+            i.replace(' ', '-') for i in self.products['post_title'].values.tolist()]
+        print(self.products['url_name'])
         self.products['review_stars'].fillna(0.0, inplace=True)
         self.products['total_reviews'].fillna('', inplace=True)
         self.products['quantities'].fillna('', inplace=True)
@@ -37,11 +40,15 @@ class data():
 
     def getProduct_with_name(self, name, return_list=True):
         all_products = self.products
+        product = all_products[all_products['url_name'] == name]
 
-        if (return_list):
-            return all_products[all_products['post_title'] == name].values.tolist()
+        if (len(product.values.tolist()) > 0):
+            if (return_list):
+                return product.values.tolist()
+            else:
+                return product
         else:
-            return all_products[all_products['post_title'] == name]
+            return False
 
     def getProductsWithCategory(self, category, return_list=True):
         specific_category_products = self.products[self.products[category] == 1]

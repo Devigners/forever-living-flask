@@ -14,15 +14,15 @@
 							<div class="col-lg-9">
 								<div class="slider-box-wrap">
 									<div class="slider-activation-one axil-slick-dots">
-										{% for product in productsGroupByCategory['New Products'][:3]
+										{% for product in productsGroupByCategory[categories[0]][:3]
 										%}
 										<div class="single-slide slick-slide">
 											<div class="main-slider-content">
-												<span class="subtitle">New Products</span>
+												<span class="subtitle">{{ categories[0] }}</span>
 												<h1 class="title">{{ product[1] }}</h1>
 												<div class="shop-btn">
 													<a
-														href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+														href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 														class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
@@ -44,18 +44,18 @@
 									<div class="product-thumb">
 										<a href="#">
 											<img
-												src="{{ productsGroupByCategory['New Products'][0][0] }}"
+												src="{{ productsGroupByCategory[categories[0]][0][0] }}"
 												alt="Product"
 											/>
 										</a>
 									</div>
 									<h6 class="title">
-										<a href="{{ productsGroupByCategory['New Products'][0][9] }}"
-											>{{ productsGroupByCategory['New Products'][0][1] }}</a
+										<a href="{{ productsGroupByCategory[categories[0]][0][9] }}"
+											>{{ productsGroupByCategory[categories[0]][0][1] }}</a
 										>
 									</h6>
 									<span class="price"
-										>{{ productsGroupByCategory['New Products'][0][2] }}</span
+										>{{ productsGroupByCategory[categories[0]][0][2] }}</span
 									>
 								</div>
 							</div>
@@ -107,18 +107,18 @@
 					<span class="title-highlighter highlighter-primary"
 						><i class="far fa-shopping-basket"></i>New Arrivals</span
 					>
-					<h2 class="title">Our New Products</h2>
+					<h2 class="title">Our {{ categories[0] }}Products</h2>
 				</div>
 				<div
 					class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
 				>
-					{% for product in productsGroupByCategory['New Products'] %}
+					{% for product in productsGroupByCategory[categories[0]] %}
 
 					<div class="slick-single-layout">
 						<div class="axil-product product-style-four">
 							<div class="thumbnail">
 								<a
-									href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+									href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 								>
 									<img
 										data-sal="fade"
@@ -137,7 +137,7 @@
 									<ul class="cart-action">
 										<li class="select-option">
 											<a
-												href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+												href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 												>See Product</a
 											>
 										</li>
@@ -148,7 +148,7 @@
 								<div class="inner">
 									<h5 class="title">
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 										>
 											{{ product[1] }}
 										</a>
@@ -177,12 +177,12 @@
 				<h2 class="title">Explore Our Products</h2>
 			</div>
 			<div class="row row--15">
-				{% for product in productsGroupByCategory[categories[0]][:4] %}
+				{% for product in productsGroupByCategory[categories[1]][:4] %}
 				<div class="col-xl-3 col-lg-4 col-sm-6">
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 							>
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
@@ -190,7 +190,7 @@
 								<ul class="cart-action">
 									<li class="select-option">
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 											target="_blank"
 											>See Product</a
 										>
@@ -202,7 +202,7 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[1]) }}"
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 										>{{ product[1] }}</a
 									>
 								</h5>
