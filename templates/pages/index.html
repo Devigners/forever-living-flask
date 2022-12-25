@@ -439,6 +439,13 @@
 			i++;
 			return;
 		});
+		$(".new-arrivals-product-activation").slick("slickAdd", html);
+		$(".slider-activation-one").slick("slickAdd", carouselHtml);
+		sal({
+			threshold: 0.3,
+			once: true,
+		});
+	});
 
 	// on change prod-search
 	$("body").on("input", "#prod-search", function (e) {
@@ -453,95 +460,60 @@
 				product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
 				product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
 			);
-			$(".slider-activation-one").slick("removeSlide", null, null, true);
-			$(".product-area .title").text(`Our ${category} Products`);
+		});
+
+		data = data.filter(
+			(product, index, self) =>
+				index === self.findIndex((t) => t[1] === product[1])
+		);
+
+		if(value){
+			$(".search-result-header").show();
+			$("#total-result-found").show().text(`${data.length} Results Found`);
+			// clone #search-product-clone and replace data and append to .psearch-results
 			let html = "";
-			let carouselHtml = "";
-			let i = 0;
 			data.forEach((product) => {
-				html += $("#product-clone")
+				html += $("#search-product-clone")
 					.html()
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
-					.replace(/data-image="1"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
 				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[1]))
 			});
-			$(".new-arrivals-product-activation").slick("slickAdd", html);
-			$(".slider-activation-one").slick("slickAdd", carouselHtml);
-			sal({
-				threshold: 0.3,
-				once: true,
-			});
-		});
-
-		// on change prod-search
-		$("body").on("input change", "#prod-search", function (e) {
-			e.preventDefault();
-			var $this = $(this);
-			var value = $this.val();
-			// Data
-			// search in all products from index 1 and 3
-			var data = allProducts["All Products"].filter((product) => {
-				return (
-					product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-					product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
-				);
-			});
-
-			data = data.filter(
-				(product, index, self) =>
-					index === self.findIndex((t) => t[1] === product[1])
-			);
-
-			if(value){
-				$(".search-result-header").show();
-				$("#total-result-found").show().text(`${data.length} Results Found`);
-				// clone #search-product-clone and replace data and append to .psearch-results
-				let html = "";
-				data.forEach((product) => {
-					html += $("#search-product-clone")
-						.html()
-						.replace(/data-image="0"/g, `src="${product[0]}"`)
-						.replace(/__PRODUCT_NAME__/g, product[1])
-						.replace(/__PRODUCT_PRICE__/g, product[2])
-						.replace(/__PRODUCT_WEBSITE_URL__/g, product[9]);
-				});
-				$(".psearch-results").html(html);
-				if(data.length == 0){
-					$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
-				}
-			}else{
-				$("#total-result-found").show().text(`0 Results Found`);
+			$(".psearch-results").html(html);
+			if(data.length == 0){
 				$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
 			}
-		});
-
-
-		$(function () {
-			var timerBox = $(".timer-box");
-			var days = timerBox.find(".days");
-			var hours = timerBox.find(".hours");
-			var minutes = timerBox.find(".minutes");
-			var seconds = timerBox.find(".seconds");
-			var time = new Date("2022-12-31 00:00:00").getTime();
-			console.log(time)
-			var x = setInterval(function () {
-				var now = new Date().getTime();
-				var distance = time - now;
-				days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}d`);
-				hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h`);
-				minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}m`);
-				seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}s`);
-				if (distance < 0) {
-					clearInterval(x);
-					days.text("0d");
-					hours.text("0h");
-					minutes.text("0m");
-					seconds.text("0s");
-				}
-			}, 1000);
-		})
+		}else{
+			$("#total-result-found").show().text(`0 Results Found`);
+			$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
+		}
+	});
+	
+	$(function () {
+		var timerBox = $(".timer-box");
+		var days = timerBox.find(".days");
+		var hours = timerBox.find(".hours");
+		var minutes = timerBox.find(".minutes");
+		var seconds = timerBox.find(".seconds");
+		var time = new Date("2022-12-31 00:00:00").getTime();
+		console.log(time)
+		var x = setInterval(function () {
+			var now = new Date().getTime();
+			var distance = time - now;
+			days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}d`);
+			hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h`);
+			minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}m`);
+			seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}s`);
+			if (distance < 0) {
+				clearInterval(x);
+				days.text("0d");
+				hours.text("0h");
+				minutes.text("0m");
+				seconds.text("0s");
+			}
+		}, 1000);
+	})
 </script>
 
 {% endblock %}
