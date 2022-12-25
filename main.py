@@ -78,8 +78,9 @@ def productDetails(country, name, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories
     product = controller.getProduct_with_name(name)[0]
-    print(product[14])
-    return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, product_with_categories=product_with_categories[categories[0]][:4], localities=localities, restArea=restArea)
+    product_category = controller.categories[product[len(
+        product)-len(categories):].index(1)]
+    return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, product_with_categories=product_with_categories[product_category][:4], localities=localities, restArea=restArea)
 
 
 if __name__ == '__main__':
