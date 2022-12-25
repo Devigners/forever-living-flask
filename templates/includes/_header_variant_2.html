@@ -1,6 +1,11 @@
 {% include "includes/_head_assets.html" %}
 <div class="page-loader">
-	<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+	<div class="lds-ellipsis">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 </div>
 <!--[if lte IE 9]>
 	<p class="browserupgrade">
@@ -17,37 +22,65 @@
 	<div class="axil-mainmenu">
 		<div class="container">
 			<div class="header-navbar">
-				<div class="header-brand">
-					<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="nav-title">
+				<div class="header-brand pb-0 w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 0 !important; padding-right: 15px;">
+					<a
+						href="{{ url_for('country', restArea=restArea, country=country) }}"
+						class="nav-title"
+					>
 						<b
 							>FOREVER <br class="d-none" />
 							LIVING</b
 						>
 					</a>
+					{% if request.MOBILE %}
+					<div class="h-select-group navbar-lang">
+						<div id="google_translate_element"></div>
+					</div>
+					{% else %} {% endif %}
 				</div>
 				<div class="header-main-nav">
 					<!-- Start Mainmanu Nav -->
-					<nav class="mainmenu-nav">
-						<button class="mobile-close-btn mobile-nav-toggler">
-							<i class="fas fa-times"></i>
-						</button>
-						<div class="mobile-nav-brand">
-							<a href="{{ url_for('country', restArea=restArea, country=country) }}" class="nav-title">
-								<b
-									>FOREVER <br class="d-block d-md-none" />
-									LIVING</b
+					<div class="">
+						<nav class="mainmenu-nav">
+							<button class="mobile-close-btn mobile-nav-toggler">
+								<i class="fas fa-times"></i>
+							</button>
+							<div class="mobile-nav-brand">
+								<a
+									href="{{ url_for('country', restArea=restArea, country=country) }}"
+									class="nav-title"
 								>
-							</a>
-						</div>
-						<ul class="mainmenu justify-content-start">
-							<li><a href="{{ url_for('country', restArea=restArea, country=country) }}">Shop</a></li>
-							<li><a href="{{ url_for('shop', restArea=restArea, country=country) }}">Products</a></li>
-							<li><a href="{{ url_for('blogs', restArea=restArea, country=country) }}">Blogs</a></li>
-						</ul>
-					</nav>
+									<b
+										>FOREVER <br class="d-block d-md-none" />
+										LIVING</b
+									>
+								</a>
+							</div>
+							<ul class="mainmenu justify-content-start">
+								<li>
+									<a
+										href="{{ url_for('country', restArea=restArea, country=country) }}"
+										>Shop</a
+									>
+								</li>
+								<li>
+									<a
+										href="{{ url_for('shop', restArea=restArea, country=country) }}"
+										>Products</a
+									>
+								</li>
+								<li>
+									<a
+										href="{{ url_for('blogs', restArea=restArea, country=country) }}"
+										>Blogs</a
+									>
+								</li>
+							</ul>
+						</nav>
+					</div>
 					<!-- End Mainmanu Nav -->
 				</div>
-				<div class="header-action">
+				<div class="header-action mt-0">
 					<ul class="action-list">
 						<li class="axil-mobile-toggle">
 							<button class="menu-btn mobile-nav-toggler">

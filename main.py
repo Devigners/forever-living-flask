@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect
 from utilities import *
+from flask_mobility import Mobility
 
 # folders to work with
 controller = data()
@@ -10,6 +11,7 @@ product_with_categories = None
 
 # flask app name
 app = Flask(__name__)
+Mobility(app)
 
 
 def update_var(new_country):

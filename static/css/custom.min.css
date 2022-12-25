@@ -533,3 +533,22 @@ body {
 	background-color: white;
 	z-index: 20000000000 !important;
 }
+
+.navbar-lang .goog-te-combo {
+	height: 35px !important;
+}
+
+/* scroll hide .mainmenu */
+.mainmenu::-webkit-scrollbar {
+	display: none;
+}
+
+.mainmenu {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+@media screen and (max-width: 768px) {
+	.navbar-lang .goog-te-combo {
+		padding: 0 25px 0 10px;
+	}
+}

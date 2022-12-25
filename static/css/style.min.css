@@ -7279,6 +7279,7 @@ button.axil-btn.wishlist-btn:hover:before {
 		height: 100%;
 		overflow-y: auto;
 		margin: 0;
+		width: 100%;
 	}
 	.header-main-nav .mainmenu-nav .mainmenu > li {
 		margin: 10px 0 !important;
@@ -16189,4 +16190,3 @@ body.open .closeMask {
 		margin-bottom: 100px;
 	}
 }
-/*# sourceMappingURL=../maps/style.min.css.map */
