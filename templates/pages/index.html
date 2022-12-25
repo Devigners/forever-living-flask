@@ -474,7 +474,7 @@
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
-				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[1]))
+				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]))
 			});
 			$(".psearch-results").html(html);
 			if(data.length == 0){
