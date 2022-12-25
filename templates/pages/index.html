@@ -284,7 +284,7 @@
 						id="prod-search"
 						placeholder="Search your product here"
 					/>
-					<button type="submit" class="axil-btn btn-bg-primary">
+					<button type="submit" class="axil-btn btn-bg-primary">f
 						<i class="far fa-search"></i>
 					</button>
 				</div>
@@ -319,7 +319,7 @@
 				<div class="product-hover-action">
 					<ul class="cart-action">
 						<li class="select-option">
-							<a href="">Go to Website</a>
+							<a href="">See Product</a>
 						</li>
 					</ul>
 				</div>
@@ -380,8 +380,8 @@
 				<span class="price current-price">__PRODUCT_PRICE__</span>
 			</div>
 			<div class="product-cart">
-				<a href="__PRODUCT_WEBSITE_URL__" target="_blank" class="cart-btn">
-					<i class="fal fa-eye"></i>
+				<a href="__PRODUCT_WEBSITE_URL__" class="cart-btn">
+					<i class="fal fa-arrow-right"></i>
 				</a>
 			</div>
 		</div>
@@ -395,7 +395,9 @@
 		$(".search-result-header").hide();
 	});
 
-	const allProducts = {{ productsGroupByCategory|tojson|safe }};
+	const allProducts_byCategory = {{ productsGroupByCategory|tojson|safe }};
+	const allProducts = {{ all_products|tojson|safe }};
+	var productUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_') }}"
 
 	$("body").on("click", ".nav-menu-list li", function (e) {
 		e.preventDefault();
@@ -412,7 +414,7 @@
 		$('.department-nav-menu').removeClass('open')
 		$('.sticky-header').removeClass('open').removeAttr('style')
 		// Data
-		var data = allProducts[category];
+		var data = allProducts_byCategory[category];
 		$(".new-arrivals-product-activation").slick(
 			"removeSlide",
 			null,
@@ -431,7 +433,7 @@
 				.replace(/data-image="1"/g, `src="${product[0]}"`)
 				.replace(/__PRODUCT_NAME__/g, product[1])
 				.replace(/__PRODUCT_PRICE__/g, product[2])
-				.replace(/__PRODUCT_WEBSITE_URL__/g, product[9])
+				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[1]))
 				.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);
 			if (i < 3) {
 				carouselHtml += $("#top-banner-clone")
@@ -462,13 +464,14 @@
 	});
 
 	// on change prod-search
-	$("body").on("input change", "#prod-search", function (e) {
+	$("body").on("input", "#prod-search", function (e) {
 		e.preventDefault();
 		var $this = $(this);
 		var value = $this.val();
 		// Data
 		// search in all products from index 1 and 3
-		var data = allProducts["All Products"].filter((product) => {
+
+		var data = allProducts.filter((product) => {
 			return (
 				product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
 				product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
@@ -491,7 +494,7 @@
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
-					.replace(/__PRODUCT_WEBSITE_URL__/g, product[9]);
+				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[1]))
 			});
 			$(".psearch-results").html(html);
 			if(data.length == 0){
