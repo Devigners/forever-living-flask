@@ -71,7 +71,7 @@ class data():
 
     def findLocalities(self, required_country):
         my_file = open("static/data/countries/" +
-                       self.country_code[required_country] + " data.txt", "r")
+                       self.country_code[required_country] + " data.txt", "r", encoding='windows-1252')
         data = my_file.read()
         data_into_list = data.split("\n")
         my_file.close()
