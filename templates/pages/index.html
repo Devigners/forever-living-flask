@@ -463,10 +463,9 @@
 				index === self.findIndex((t) => t[1] === product[1])
 		);
 
-		if(value){
+		if(value.trim()){
 			$(".search-result-header").show();
 			$("#total-result-found").show().text(`${data.length} Results Found`);
-			// clone #search-product-clone and replace data and append to .psearch-results
 			let html = "";
 			data.forEach((product) => {
 				html += $("#search-product-clone")
