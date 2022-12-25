@@ -551,4 +551,11 @@ body {
 	.navbar-lang .goog-te-combo {
 		padding: 0 25px 0 10px;
 	}
+	.header-brand{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-right: 15px;
+	}
 }
