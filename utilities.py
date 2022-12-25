@@ -27,7 +27,6 @@ class data():
             'static/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
         self.products['url_name'] = [
             i.replace(' ', '-') for i in self.products['post_title'].values.tolist()]
-        print(self.products['url_name'])
         self.products['review_stars'].fillna(0.0, inplace=True)
         self.products['total_reviews'].fillna('', inplace=True)
         self.products['quantities'].fillna('', inplace=True)
