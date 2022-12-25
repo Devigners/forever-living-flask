@@ -199,7 +199,7 @@ select.white {
 	.department-menu-col {
 		width: 100% !important;
 	}
-	.department-menu-col + .col-lg-9{
+	.department-menu-col + .col-lg-9 {
 		width: 100% !important;
 	}
 }
@@ -360,65 +360,64 @@ body {
 	color: white !important;
 }
 
-
-.home-service-box[data-color="green"]{
+.home-service-box[data-color="green"] {
 	background: rgba(180, 245, 175, 0.5) !important;
 }
 
-.home-service-box[data-color="green"] h4{
-	color: #5AA654 !important;
+.home-service-box[data-color="green"] h4 {
+	color: #5aa654 !important;
 }
-.home-service-box[data-color="green"] button{
-	background-color: #5AA654	!important;
+.home-service-box[data-color="green"] button {
+	background-color: #5aa654 !important;
 }
 
-.home-service-box[data-color="light-blue"]{
+.home-service-box[data-color="light-blue"] {
 	background: rgba(162, 191, 245, 0.5) !important;
 }
 
-.home-service-box[data-color="light-blue"] h4{
-	color: #3577F0 !important;
+.home-service-box[data-color="light-blue"] h4 {
+	color: #3577f0 !important;
 }
-.home-service-box[data-color="light-blue"] button{
-	background-color: #3577F0	!important;
+.home-service-box[data-color="light-blue"] button {
+	background-color: #3577f0 !important;
 }
 
-.home-service-box[data-color="purple"]{
+.home-service-box[data-color="purple"] {
 	background: rgba(209, 198, 225, 0.5) !important;
 }
 
-.home-service-box[data-color="purple"] h4{
-	color: #7354A6 !important;
+.home-service-box[data-color="purple"] h4 {
+	color: #7354a6 !important;
 }
-.home-service-box[data-color="purple"] button{
-	background-color: #7354A6	!important;
+.home-service-box[data-color="purple"] button {
+	background-color: #7354a6 !important;
 }
 
-.home-service-box h5{
+.home-service-box h5 {
 	color: #555353 !important;
-	font-size: 40px;
+	font-size: 36px;
 	margin: 0;
 	line-height: 60px;
 	letter-spacing: -1.5px;
 }
 
-.home-service-box h6{
-	color: #9A9A9A	!important;
+.home-service-box h6 {
+	color: #9a9a9a !important;
 	font-size: 18px;
 	margin: 0;
 	line-height: 27px;
 	font-weight: 400;
 }
 
-.home-service-box h4{
-	color: #9A9A9A	!important;
+.home-service-box h4 {
+	color: #9a9a9a !important;
 	font-size: 32px;
 	margin: 30px 0 0;
 	line-height: 32px;
 	letter-spacing: -1.5px;
 }
 
-.home-service-box .timer-box{
+.home-service-box .timer-box {
 	display: flex;
 	padding-left: 0;
 	margin: 30px 0 0;
@@ -427,12 +426,12 @@ body {
 	justify-content: center;
 }
 
-.home-service-box .timer-box li{
+.home-service-box .timer-box li {
 	background-color: white;
 	padding: 8px;
 	font-size: 20px;
 	line-height: 20px;
-	color: #3577F0 !important;
+	color: #3577f0 !important;
 	border-radius: 3px;
 	margin: 0 !important;
 }
@@ -447,20 +446,90 @@ body {
 		margin-bottom: 20px !important;
 		height: auto !important;
 	}
-	.home-service-box h5{
+	.home-service-box h5 {
 		font-size: 30px;
 		line-height: 40px;
 	}
-	.home-service-box h6{
+	.home-service-box h6 {
 		font-size: 16px;
 		line-height: 24px;
 	}
-	.home-service-box h4{
+	.home-service-box h4 {
 		font-size: 24px;
 		line-height: 24px;
 	}
-	.home-service-box .timer-box li{
+	.home-service-box .timer-box li {
 		font-size: 16px;
 		line-height: 16px;
 	}
+}
+
+.lds-ellipsis {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+.lds-ellipsis div {
+	position: absolute;
+	top: 33px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: var(--color-secondary);
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+	left: 8px;
+	animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+	left: 8px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+	left: 32px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+	left: 56px;
+	animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes lds-ellipsis3 {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+@keyframes lds-ellipsis2 {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(24px, 0);
+	}
+}
+
+
+.page-loader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	z-index: 20000000000 !important;
 }

@@ -256,6 +256,11 @@
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 <script>
+
+	$(function  () {
+		$('.page-loader').fadeOut('fast');
+	})
+
 	 function googleTranslateElementInit() {
 		new google.translate.TranslateElement({
 			pageLanguage: 'en',
