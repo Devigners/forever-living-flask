@@ -122,8 +122,6 @@
 <script>
   const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, name='sf') }}";
   const allProducts = {{ productsGroupByCategory|tojson }};
-  // log
-  console.log(allProducts);
 
   // #category-filter on change filter products
   $("#category-filter").on("change", function () {

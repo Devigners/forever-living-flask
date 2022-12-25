@@ -14,8 +14,8 @@
                     class="single-product-thumbnail product-large-thumbnail-3 axil-product"
                   >
                     <div class="thumbnail">
-                      <a href="{{ product[0] }}" class="popup-zoom">
-                        <img src="{{ product[0] }}" alt="Product Images" />
+                      <a href="{{ product[9] }}" class="popup-zoom">
+                        <img src="{{ product[9] }}" alt="Product Images" />
                       </a>
                     </div>
                   </div>
@@ -26,26 +26,26 @@
           <div class="col-lg-5 mb--40">
             <div class="single-product-content">
               <div class="inner">
-                <h5 class="item-no">{{ product[11] }}</h5>
+                <h5 class="item-no">{{ product[2] }}</h5>
                 <h2 class="product-title mb-2">{{ product[1] }}</h2>
                 <div class="product-rating">
-                  <div class="star-rating" data-rating="{{ product[8] }}">
+                  <div class="star-rating" data-rating="{{ product[12] }}">
                   </div>
                   <div class="review-link">
-                    <a href="#">{{ product[8] }} ({{ product[13] }})</a>
+                    <a href="#">{{ product[12] }} ({{ product[11] }})</a>
                   </div>
                 </div>
 
-                <p class="description mb-0">{{ product[12] }}</p>
+                <p class="description mb-0">{{ product[3] }}</p>
 
                 <hr class="my-5" />
 
-                <p class="description mb-0"><b>Usage:</b> {{ product[4] }}</p>
+                <p class="description mb-0"><b>Usage:</b> {{ product[8] }}</p>
 
                 <hr class="my-5" />
 
                 <span class="price-amount mb-5"
-                  >{{ product[2] }}
+                  >{{ product[4] }}
                   <small
                     style="font-size: 16px; color: #7b7b7b; font-weight: normal"
                     >for {{ product[5] }}</small
@@ -57,7 +57,7 @@
                   <!-- Start Product Action  -->
                   <ul class="product-action d-flex-center mb--0">
                     <li class="add-to-cart m-0">
-                      <a href="{{ product[9] }}" class="axil-btn btn-bg-primary"
+                      <a href="{{ product[10] }}" class="axil-btn btn-bg-primary"
                         >Go to Website</a
                       >
                     </li>
@@ -76,12 +76,12 @@
   <div class="container">
     <div class="product-detail-section">
       <h4>Description</h4>
-      <p>{{ product[3] }}</p>
+      <p>{{ product[7] }}</p>
     </div>
     <hr class="my-5 w-50" />
     <div class="product-detail-section">
       <h4>Ingredients</h4>
-      <p>{{ product[6] }}</p>
+      <p>{{ product[13] }}</p>
       <ul class="ingredients mt-3">
         {% for tag in product_tags %}
         <li><span>{{ tag }}</span></li>

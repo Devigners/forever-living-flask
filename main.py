@@ -7,19 +7,20 @@ categories = None
 localities = None
 country = None
 product_with_categories = None
-all_products = None
 
 # flask app name
 app = Flask(__name__)
 
 
 def update_var(new_country):
-    global all_products, product_with_categories, localities, categories, country
-
+    global product_with_categories, localities, categories, country
     if (country == None or country != new_country):
         country = new_country
+        # during setting country, we get all the data from small products file as wel. self.products is set now.
         controller.setCountry(new_country)
-        categories = controller.getCategories()
+        # categories were already set. We are just fetching it now.
+        categories = controller.categories
+        # getting products group by category will -> should give {'category_name': [list of products]}
         product_with_categories = controller.getProductsGroupByCategory()
         localities = controller.findLocalities(new_country)
 
@@ -29,8 +30,7 @@ def index():
     country = 'unitedstates'
     update_var(country)
     global product_with_categories, localities, categories, all_products
-    all_products = controller.getProducts()
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, all_products=all_products)
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities)
 
 
 # index page with country name
@@ -39,9 +39,7 @@ def index():
 def country(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories, all_products
-    if (all_products == None):
-        all_products = controller.getProducts()
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, all_products=all_products)
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
 
 
 # shop page
@@ -63,7 +61,7 @@ def blogs(country, restArea=None):
     return render_template('pages/blogs.html', country=country, localities=localities, restArea=restArea)
 
 
-# blog page
+# blog details page
 @ app.route('/<country>/<restArea>/blog-details', methods=['GET', 'POST'])
 @ app.route('/<country>/blog-details', methods=['GET', 'POST'])
 def blogDetails(country, restArea=None):
@@ -73,15 +71,15 @@ def blogDetails(country, restArea=None):
     return render_template('pages/blog-details.html', country=country, localities=localities, restArea=restArea)
 
 
-# product details
+# product details page
 @ app.route('/<country>/<restArea>/product/details/<name>', methods=['GET', 'POST'])
 @ app.route('/<country>/product/details/<name>', methods=['GET', 'POST'])
 def productDetails(country, name, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories
     product = controller.getProduct_with_name(name)[0]
-
-    return render_template('pages/single-product.html', product=product, country=country, product_with_categories=product_with_categories[categories[0]][:4], localities=localities, restArea=restArea)
+    print(product[14])
+    return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, product_with_categories=product_with_categories[categories[0]][:4], localities=localities, restArea=restArea)
 
 
 if __name__ == '__main__':

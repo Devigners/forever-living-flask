@@ -175,7 +175,7 @@
 				<span class="title-highlighter highlighter-primary">
 					<i class="far fa-shopping-basket"></i> Our Products</span
 				>
-				<h2 class="title">Explore our Products</h2>
+				<h2 class="title">Explore Our Products</h2>
 			</div>
 			<div class="row row--15">
 				{% for product in productsGroupByCategory[categories[0]][:4] %}
@@ -380,7 +380,7 @@
 	});
 
 	const allProducts_byCategory = {{ productsGroupByCategory|tojson|safe }};
-	const allProducts = {{ all_products|tojson|safe }};
+	const allProducts = {{ productsGroupByCategory['All Products']|tojson|safe }};
 	var productUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_') }}"
 
 	$("body").on("click", ".nav-menu-list li", function (e) {
