@@ -406,7 +406,7 @@
 			true
 		);
 		$(".slider-activation-one").slick("removeSlide", null, null, true);
-		$(".product-area .title").text(`Our ${category} Products`);
+		$(".product-area .title").text(`Our ${category.replace(/Products/g, '')} Products`);
 		let html = "";
 		let carouselHtml = "";
 		let i = 0;
