@@ -57,20 +57,20 @@ def shop(country, restArea=None):
 @ app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
 @ app.route('/<country>/blogs', methods=['GET', 'POST'])
 def blogs(country, restArea=None):
-    global localities
+    global localities, product_with_categories
     if (localities == None):
         localities = controller.findLocalities(country)
-    return render_template('pages/blogs.html', country=country, localities=localities, restArea=restArea)
+    return render_template('pages/blogs.html', country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # blog details page
 @ app.route('/<country>/<restArea>/blog-details', methods=['GET', 'POST'])
 @ app.route('/<country>/blog-details', methods=['GET', 'POST'])
 def blogDetails(country, restArea=None):
-    global localities
+    global localities, product_with_categories
     if (localities == None):
         localities = controller.findLocalities(country)
-    return render_template('pages/blog-details.html', country=country, localities=localities, restArea=restArea)
+    return render_template('pages/blog-details.html', country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # product details page
@@ -86,7 +86,7 @@ def productDetails(country, name, restArea=None):
         print(product[len(product)-len(categories)-1:-1])
         product_category = controller.categories[product[len(
             product)-len(categories)-1:-1].index(1)]
-        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, product_with_categories=product_with_categories[product_category][:4], localities=localities, restArea=restArea)
+        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories[product_category][:4], localities=localities, restArea=restArea)
     else:
         return redirect(url_for('country', country=country, restArea=restArea), code=302)
 
