@@ -67,7 +67,7 @@
 						<div class="col">
 							<div class="home-service-box" data-color="green">
 								<h5>Free Shipping</h5>
-								<h6>Click to get</h6>
+								<img src="{{ url_for('static', filename='images/icons/drop-shipping.png') }}" alt="" class="mt-4">
 								<button>Get Now</button>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 									<li><span class="minutes">0</span>m</li>
 									<li><span class="seconds">0</span>s</li>
 								</ul>
-								<button>Get Now</button>
+								<button href="https://thealoeveraco.shop/QIunDW3C">Get Now</button>
 							</div>
 						</div>
 						<div class="col">
@@ -167,9 +167,9 @@
 									<div class="product-price-variant">
 										<span class="price">{{ product[2] }}</span>
 									</div>
-									<h5 class="title">
+									<h6 class="description">
 										{{ product[11] }}
-									</h5>
+									</h6>
 								</div>
 							</div>
 						</div>
@@ -230,9 +230,9 @@
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
 								</div>
-								<h5 class="title">
+								<h6 class="description">
 									{{ product[11] }}
-								</h5>
+								</h6>
 							</div>
 						</div>
 					</div>
@@ -308,6 +308,9 @@
 					<div class="product-price-variant">
 						<span class="price">__PRODUCT_PRICE__</span>
 					</div>
+					<h5 class="description">
+						__PRODUCT_DESCRIPTION__
+					</h5>
 				</div>
 			</div>
 		</div>
@@ -376,6 +379,7 @@
 				.replace(/data-image="0"/g, `src="${product[0]}"`)
 				.replace(/data-image="1"/g, `src="${product[0]}"`)
 				.replace(/__PRODUCT_NAME__/g, product[1])
+				.replace(/__PRODUCT_DESCRIPTION__/g, product[11])
 				.replace(/__PRODUCT_PRICE__/g, product[2])
 				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[1]))
 				.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);

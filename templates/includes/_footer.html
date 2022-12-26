@@ -470,6 +470,12 @@
 		$('.select-box .show-value').html($('.select-item[value="'+country+'"]').html())
 	}
 
+	$('body').on('click', 'button[href]', function () {
+		var $this = $(this);
+		var href = $this.attr('href');
+		window.location.href = href;
+	})
+
 </script>
 <!--For google translate-->
 <script type="text/javascript" 

@@ -7499,7 +7499,10 @@ button.axil-btn.wishlist-btn:hover:before {
 	}
 }
 .mainmenu > li {
-	margin: 0 24px;
+	margin: 0 14px;
+}
+.mainmenu > li  + li{
+	margin-left: 24px !important;
 }
 @media only screen and (max-width: 1199px) {
 	.mainmenu > li {
