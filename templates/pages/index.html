@@ -76,10 +76,10 @@
 								<h5>10% Off</h5>
 								<h6>Special Discount</h6>
 								<ul class="timer-box">
-									<li class="days">0d</li>
-									<li class="hours">0h</li>
-									<li class="minutes">0m</li>
-									<li class="seconds">0s</li>
+									<li><span class="days">0</span>d</li>
+									<li><span class="hours">0</span>h</li>
+									<li><span class="minutes">0</span>m</li>
+									<li><span class="seconds">0</span>s</li>
 								</ul>
 								<button>Get Now</button>
 							</div>
@@ -251,45 +251,11 @@
 	<!-- End Axil Newsletter Area  -->
 </main>
 
-<!-- Header Search Modal End -->
-<div class="header-search-modal" id="header-search-modal">
-	<button class="card-close sidebar-close">
-		<i class="fas fa-times"></i>
-	</button>
-	<div class="header-search-wrap">
-		<div class="card-header">
-			<form action="#">
-				<div class="input-group">
-					<input
-						type="search"
-						class="form-control"
-						name="prod-search"
-						id="prod-search"
-						placeholder="Search your product here"
-					/>
-					<button type="submit" class="axil-btn btn-bg-primary">f
-						<i class="far fa-search"></i>
-					</button>
-				</div>
-			</form>
-		</div>
-		<div class="card-body">
-			<div class="search-result-header">
-				<h6 class="title" id="total-result-found">Result Found</h6>
-			</div>
-			<div class="psearch-results">
-				<div class="text-center">No product found!!</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Header Search Modal End -->
-
 <div id="product-clone" style="display: none">
 	<div class="slick-single-layout">
 		<div class="axil-product product-style-four">
 			<div class="thumbnail">
-				<a href="__PRODUCT_URL__">
+				<a href="__PRODUCT_WEBSITE_URL__">
 					<img
 						data-sal="fade"
 						data-sal-delay="100"
@@ -302,7 +268,7 @@
 				<div class="product-hover-action">
 					<ul class="cart-action">
 						<li class="select-option">
-							<a href="">See Product</a>
+							<a href="__PRODUCT_WEBSITE_URL__">See Product</a>
 						</li>
 					</ul>
 				</div>
@@ -310,7 +276,7 @@
 			<div class="product-content">
 				<div class="inner">
 					<h5 class="title">
-						<a href="__PRODUCT_URL__"> __PRODUCT_NAME__ </a>
+						<a href="__PRODUCT_WEBSITE_URL__"> __PRODUCT_NAME__ </a>
 					</h5>
 					<div class="product-price-variant">
 						<span class="price">__PRODUCT_PRICE__</span>
@@ -340,37 +306,6 @@
 	</div>
 </div>
 
-<div id="search-product-clone" style="display: none">
-	<div class="axil-product-list">
-		<div class="thumbnail">
-			<a>
-				<img
-					style="
-						width: 120px;
-						height: 120px;
-						object-fit: cover;
-						object-position: center;
-					"
-					data-image="0"
-				/>
-			</a>
-		</div>
-		<div class="product-content">
-			<h6 class="product-title">
-				<a href="">__PRODUCT_NAME__</a>
-			</h6>
-			<div class="product-price-variant">
-				<span class="price current-price">__PRODUCT_PRICE__</span>
-			</div>
-			<div class="product-cart">
-				<a href="__PRODUCT_WEBSITE_URL__" class="cart-btn">
-					<i class="fal fa-arrow-right"></i>
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
-
 {% endblock %} {% block scripts %}
 <script>
 	$("body").on('click', ".axil-search", function (e) {
@@ -379,7 +314,6 @@
 	});
 
 	const allProducts_byCategory = {{ productsGroupByCategory|tojson|safe }};
-	const allProducts = {{ productsGroupByCategory['All Products']|tojson|safe }};
 	var productUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_') }}"
 
 	$("body").on("click", ".nav-menu-list li", function (e) {
@@ -443,48 +377,6 @@
 		});
 	});
 
-	// on change prod-search
-	$("body").on("input", "#prod-search", function (e) {
-		e.preventDefault();
-		var $this = $(this);
-		var value = $this.val();
-		// Data
-		// search in all products from index 1 and 3
-
-		var data = allProducts.filter((product) => {
-			return (
-				product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-				product[3].toLowerCase().indexOf(value.toLowerCase()) > -1
-			);
-		});
-
-		data = data.filter(
-			(product, index, self) =>
-				index === self.findIndex((t) => t[1] === product[1])
-		);
-
-		if(value.trim()){
-			$(".search-result-header").show();
-			$("#total-result-found").show().text(`${data.length} Results Found`);
-			let html = "";
-			data.forEach((product) => {
-				html += $("#search-product-clone")
-					.html()
-					.replace(/data-image="0"/g, `src="${product[0]}"`)
-					.replace(/__PRODUCT_NAME__/g, product[1])
-					.replace(/__PRODUCT_PRICE__/g, product[2])
-				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]))
-			});
-			$(".psearch-results").html(html);
-			if(data.length == 0){
-				$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
-			}
-		}else{
-			$("#total-result-found").show().text(`0 Results Found`);
-			$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
-		}
-	});
-	
 	$(function () {
 		var timerBox = $(".timer-box");
 		var days = timerBox.find(".days");
@@ -492,14 +384,13 @@
 		var minutes = timerBox.find(".minutes");
 		var seconds = timerBox.find(".seconds");
 		var time = new Date("2022-12-31 00:00:00").getTime();
-		console.log(time)
 		var x = setInterval(function () {
 			var now = new Date().getTime();
 			var distance = time - now;
-			days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}d`);
-			hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h`);
-			minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}m`);
-			seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}s`);
+			days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}`);
+			hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`);
+			minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`);
+			seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}`);
 			if (distance < 0) {
 				clearInterval(x);
 				days.text("0d");

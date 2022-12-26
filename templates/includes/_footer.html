@@ -6,7 +6,7 @@
 			<div class="row align-items-center">
 				<div class="col-xl-6 col-lg-12">
 					<div class="social-share">
-						<p>200 Captains Row Chelsea, Massachusetts, USA 02150</p>
+						<p><b>Registered Address</b>: 200 Captains Row Chelsea, Massachusetts, USA 02150</p>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-12">
@@ -225,9 +225,72 @@
 </div>
 <!-- Product Quick View Modal End -->
 
-<!-- JS
-			============================================ -->
-<!-- Modernizer JS -->
+<!-- Header Search Modal End -->
+<div class="header-search-modal" id="header-search-modal">
+	<button class="card-close sidebar-close">
+		<i class="fas fa-times"></i>
+	</button>
+	<div class="header-search-wrap">
+		<div class="card-header">
+			<form action="#">
+				<div class="input-group">
+					<input
+						type="search"
+						class="form-control"
+						name="prod-search"
+						id="prod-search"
+						placeholder="Search your product here"
+					/>
+					<button type="submit" class="axil-btn btn-bg-primary">f
+						<i class="far fa-search"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="card-body">
+			<div class="search-result-header">
+				<h6 class="title" id="total-result-found">Result Found</h6>
+			</div>
+			<div class="psearch-results">
+				<div class="text-center">No product found!!</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Header Search Modal End -->
+
+<!-- Product Search Filter clone -->
+<div id="search-product-clone" style="display: none">
+	<div class="axil-product-list">
+		<div class="thumbnail">
+			<a>
+				<img
+					style="
+						width: 120px;
+						height: 120px;
+						object-fit: cover;
+						object-position: center;
+					"
+					data-image="0"
+				/>
+			</a>
+		</div>
+		<div class="product-content">
+			<h6 class="product-title">
+				<a href="">__PRODUCT_NAME__</a>
+			</h6>
+			<div class="product-price-variant">
+				<span class="price current-price">__PRODUCT_PRICE__</span>
+			</div>
+			<div class="product-cart">
+				<a href="__PRODUCT_WEBSITE_URL__" class="cart-btn">
+					<i class="fal fa-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script src="{{ url_for('static', filename='js/vendor/modernizr.min.js') }}"></script>
 <!-- jQuery JS -->
 <script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
@@ -248,10 +311,13 @@
 
 
 <!-- Main JS -->
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}?v=1.1"></script>
 
 <script>
 
+	// on change prod-search
+	const allProducts = {{ productsGroupByCategory['All Products']|tojson|safe }};
+	var dummyProductUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_') }}"
 	$(function  () {
 		$('.page-loader').fadeOut('fast');
 	})
@@ -291,6 +357,49 @@
 			url: `/${country}/${locationURL}/${url}`,
 		};
 	});
+
+	$("body").on("input", "#prod-search", function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		var value = $this.val();
+		// Data
+		// search in all products from index 1 and 3
+
+		var data = allProducts.filter((product) => {
+			return (
+				product[1].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+				product[3].toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+				product[10].replace(/item# /g, '').toLowerCase().indexOf(value.toLowerCase()) > -1
+			);
+		});
+
+		data = data.filter(
+			(product, index, self) =>
+				index === self.findIndex((t) => t[1] === product[1])
+		);
+
+		if(value.trim()){
+			$(".search-result-header").show();
+			$("#total-result-found").show().text(`${data.length} Results Found`);
+			let html = "";
+			data.forEach((product) => {
+				html += $("#search-product-clone")
+					.html()
+					.replace(/data-image="0"/g, `src="${product[0]}"`)
+					.replace(/__PRODUCT_NAME__/g, product[1])
+					.replace(/__PRODUCT_PRICE__/g, product[2])
+				.replace(/__PRODUCT_WEBSITE_URL__/g, dummyProductUrl.replace(/_PRODUCT_NAME_/g, product[13]))
+			});
+			$(".psearch-results").html(html);
+			if(data.length == 0){
+				$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
+			}
+		}else{
+			$("#total-result-found").show().text(`0 Results Found`);
+			$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
+		}
+	});
+	
 
 
 	$("#search-area").easyAutocomplete({
@@ -334,6 +443,33 @@
 		s1.setAttribute('crossorigin','*');
 		s0.parentNode.insertBefore(s1,s0);
 	})();
+
+
+	// on click .select-box
+	$("body").on("click", ".select-box .show-value", function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		var $selectBox = $this.closest(".select-box");
+		$selectBox.toggleClass("open");
+	});
+
+	// on click .select-box
+	$("body").on("click", ".select-box .select-item", function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		var $selectBox = $this.closest(".select-box");
+		$selectBox.toggleClass("open");
+		var val = $this.attr("value");
+		$this.addClass("selected").siblings().removeClass("selected");
+		$selectBox.find('.show-value').html($this.html())
+		window.location.href = "/" + val + "/"+url;
+	});
+
+	if(country){
+		$('.select-item[value="'+country+'"]').addClass('selected').siblings().removeClass('selected');
+		$('.select-box .show-value').html($('.select-item[value="'+country+'"]').html())
+	}
+
 </script>
 <!--For google translate-->
 <script type="text/javascript" 

@@ -37,7 +37,11 @@
 				".department-nav-menu"
 			);
 			axilInit.sideOffcanvasToggle(".filter-toggle", ".axil-shop-sidebar");
-			axilInit.sideOffcanvasToggle(".axil-search", "#header-search-modal");
+			axilInit.sideOffcanvasToggle(
+				".axil-search",
+				"#header-search-modal",
+				"#prod-search"
+			);
 			axilInit.sideOffcanvasToggle(
 				".popup-close, .closeMask",
 				"#offer-popup-modal"
@@ -904,7 +908,7 @@
 			}
 		},
 
-		sideOffcanvasToggle: function (selectbtn, openElement) {
+		sideOffcanvasToggle: function (selectbtn, openElement, autoFocus) {
 			$("body").on("click", selectbtn, function (e) {
 				e.preventDefault();
 
@@ -912,6 +916,11 @@
 					wrapp = $this.parents("body"),
 					wrapMask = $("<div / >").addClass("closeMask"),
 					cartDropdown = $(openElement);
+				if (autoFocus && cartDropdown.find(autoFocus).length && !cartDropdown.hasClass("open")) {
+					setTimeout(function () {
+						cartDropdown.find(autoFocus).focus();
+					}, 300);
+				}
 
 				if (!cartDropdown.hasClass("open")) {
 					wrapp.addClass("open");

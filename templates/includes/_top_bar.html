@@ -4,12 +4,39 @@
 			<div class="header-top-dropdown">
 				<div class="top-header-points">
 					<div class="h-select-group d-flex align-items-center">
-						<select id="select-country" class="white">
-							<option value="unitedstates">🇺🇸&nbsp;United States</option>
-							<option value="greatbritain">🇬🇧&nbsp;Great Britain</option>
-							<option value="australia">🇦🇺&nbsp;Australia</option>
-							<option value="canada">🇨🇦&nbsp;Canada</option>
-						</select>
+						<div class="select-box">
+							<div class="show-value"></div>
+							<div class="select-dropdown">
+								<div class="select-item" value="unitedstates">
+									<img
+										src="{{ url_for('static', filename='images/countries/usa.jpg') }}"
+										alt=""
+									/>
+									United States
+								</div>
+								<div class="select-item" value="greatbritain">
+									<img
+										src="{{ url_for('static', filename='images/countries/english.png') }}"
+										alt=""
+									/>
+									Great Britain
+								</div>
+								<div class="select-item" value="australia">
+									<img
+										src="{{ url_for('static', filename='images/countries/Australia.jpg') }}"
+										alt=""
+									/>
+									Australia
+								</div>
+								<div class="select-item" value="canada">
+									<img
+										src="{{ url_for('static', filename='images/countries/canada.jpg') }}"
+										alt=""
+									/>
+									Canada
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="top-header-points">

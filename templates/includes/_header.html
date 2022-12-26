@@ -48,15 +48,14 @@
 					{% else %} {% endif %}
 					<div class="col-lg-10 col-sm-9 col-7">
 						<div class="header-top-dropdown dropdown-box-style">
-							<div class="axil-search mr-0">
+							<div class="axil-search search-bar mr-0">
 								<button type="submit" class="icon wooc-btn-search">
 									<i class="far fa-search"></i>
 								</button>
 								<input
 									type="search"
 									class="placeholder product-search-input"
-									name="search2"
-									id="search2"
+									readonly
 									value=""
 									maxlength="128"
 									placeholder="What are you looking for...."
@@ -104,14 +103,8 @@
 							<ul class="mainmenu">
 								<li>
 									<a
-										href="{{ url_for('country', restArea=restArea, country=country) }}"
-										>Shop</a
-									>
-								</li>
-								<li>
-									<a
 										href="{{ url_for('shop', restArea=restArea, country=country) }}"
-										>Products</a
+										>Shop</a
 									>
 								</li>
 								<li>
@@ -138,7 +131,10 @@
 					</nav>
 					<!-- End Mainmanu Nav -->
 				</div>
-				<div class="header-action">
+				<div class="header-action d-flex align-items-center">
+					<button type="submit" class="axil-search header-variant-2-search d-block d-lg-none">
+						<i class="far fa-search"></i>
+					</button>
 					<ul class="action-list">
 						<li class="axil-mobile-toggle">
 							<button class="menu-btn mobile-nav-toggler">

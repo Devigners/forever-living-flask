@@ -22,7 +22,7 @@
 	<div class="axil-mainmenu">
 		<div class="container">
 			<div class="header-navbar">
-				<div class="header-brand pb-0" style="padding-bottom: 0 !important;">
+				<div class="header-brand pb-0" style="padding-bottom: 0 !important">
 					<a
 						href="{{ url_for('country', restArea=restArea, country=country) }}"
 						class="nav-title"
@@ -58,14 +58,8 @@
 						<ul class="mainmenu justify-content-start">
 							<li>
 								<a
-									href="{{ url_for('country', restArea=restArea, country=country) }}"
-									>Shop</a
-								>
-							</li>
-							<li>
-								<a
 									href="{{ url_for('shop', restArea=restArea, country=country) }}"
-									>Products</a
+									>Shop</a
 								>
 							</li>
 							<li>
@@ -78,7 +72,10 @@
 					</nav>
 					<!-- End Mainmanu Nav -->
 				</div>
-				<div class="header-action mt-0">
+				<div class="header-action mt-0 d-flex align-items-center">
+					<button type="submit" class="axil-search header-variant-2-search">
+						<i class="far fa-search"></i>
+					</button>
 					<ul class="action-list">
 						<li class="axil-mobile-toggle">
 							<button class="menu-btn mobile-nav-toggler">
