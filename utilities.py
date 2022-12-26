@@ -27,7 +27,7 @@ class data():
         self.products = pd.read_csv(
             'static/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
         self.products['url_name'] = [
-            re.findall("[a-zA-Z0-9-]+", i.replace(' ', '-'))[0] for i in self.products['post_title'].values.tolist()]
+            re.findall("[a-zA-Z0-9-]+", i.replace('-', '').replace(' ', '-').lower())[0] for i in self.products['post_title'].values.tolist()]
         self.products['review_stars'].fillna(0.0, inplace=True)
         self.products['total_reviews'].fillna('', inplace=True)
         self.products['quantities'].fillna('', inplace=True)

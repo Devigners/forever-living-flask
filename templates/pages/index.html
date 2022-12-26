@@ -135,18 +135,29 @@
 								</a>
 								<div class="product-hover-action">
 									<ul class="cart-action">
-										<li class="select-option">
-											<a
-												href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
-												>See Product</a
-											>
-										</li>
+										<ul class="cart-action">
+											<li class="select-option">
+												<a
+													href="{{ product[9] }}"
+													target="_blank"
+													>Go to Website</a
+												>
+											</li>
+											<li class="select-option">
+												<a
+													href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+													target="_blank"
+													>See Product</a
+												>
+											</li>
+										</ul>
 									</ul>
 								</div>
 							</div>
 							<div class="product-content">
 								<div class="inner">
 									<h5 class="title">
+										
 										<a
 											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 										>
@@ -156,6 +167,9 @@
 									<div class="product-price-variant">
 										<span class="price">{{ product[2] }}</span>
 									</div>
+									<h5 class="title">
+										{{ product[11] }}
+									</h5>
 								</div>
 							</div>
 						</div>
@@ -190,6 +204,13 @@
 								<ul class="cart-action">
 									<li class="select-option">
 										<a
+											href="{{ product[9] }}"
+											target="_blank"
+											>Go to Website</a
+										>
+									</li>
+									<li class="select-option">
+										<a
 											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 											target="_blank"
 											>See Product</a
@@ -209,6 +230,9 @@
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
 								</div>
+								<h5 class="title">
+									{{ product[11] }}
+								</h5>
 							</div>
 						</div>
 					</div>
@@ -268,7 +292,10 @@
 				<div class="product-hover-action">
 					<ul class="cart-action">
 						<li class="select-option">
-							<a href="__PRODUCT_WEBSITE_URL__">See Product</a>
+							<a href="__PRODUCT_WEBSITE_URL__">Go to Website</a>
+						</li>
+						<li class="select-option">
+							<a href="__PRODUCT_WEBSITE_URL__">See Detials</a>
 						</li>
 					</ul>
 				</div>

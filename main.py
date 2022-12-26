@@ -86,7 +86,7 @@ def productDetails(country, name, restArea=None):
         print(product[len(product)-len(categories)-1:-1])
         product_category = controller.categories[product[len(
             product)-len(categories)-1:-1].index(1)]
-        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories[product_category][:4], localities=localities, restArea=restArea)
+        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=product_category, localities=localities, restArea=restArea)
     else:
         return redirect(url_for('country', country=country, restArea=restArea), code=302)
 
