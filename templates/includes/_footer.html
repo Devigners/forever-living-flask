@@ -442,6 +442,9 @@
 		s1.charset='UTF-8';
 		s1.setAttribute('crossorigin','*');
 		s0.parentNode.insertBefore(s1,s0);
+		window.Tawk_API.customStyle = {
+			zIndex : 1
+		};
 	})();
 
 
@@ -470,11 +473,20 @@
 		$('.select-box .show-value').html($('.select-item[value="'+country+'"]').html())
 	}
 
+	// outside click of select-box
+	$(document).on("click", function (e) {
+		var $target = $(e.target);
+		if (!$target.closest(".select-box").length) {
+			$(".select-box").removeClass("open");
+		}
+	});
+
 	$('body').on('click', 'button[href]', function () {
 		var $this = $(this);
 		var href = $this.attr('href');
 		window.location.href = href;
 	})
+	
 
 </script>
 <!--For google translate-->

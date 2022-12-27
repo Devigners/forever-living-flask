@@ -3705,7 +3705,7 @@ button.axil-btn.wishlist-btn:hover:before {
 	color: var(--color-body);
 	border: none;
 	border-radius: 6px;
-	z-index: 2;
+	z-index: 1;
 }
 .axil-slick-arrow .slide-arrow:before {
 	content: "";

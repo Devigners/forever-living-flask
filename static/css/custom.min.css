@@ -813,8 +813,10 @@ body {
 	white-space: nowrap;
 }
 
-.axil-sticky .profile-details{
-	display: none !important;
+@media screen and (min-width: 1199px) {
+	.axil-sticky .profile-details{
+		display: none !important;
+	}
 }
 
 @media screen and (max-width: 991px) {
@@ -857,4 +859,23 @@ body {
 		flex-direction: column;
 		justify-content: flex-start !important;
 	}
+}
+
+@media screen and (max-width: 767px) {
+	.department-nav-menu{
+		padding-top: 20px !important;
+	}
+}
+
+
+.widget-visible{
+	z-index: 10 !important;
+}
+
+.aside-category-menu .header-department .closeMask {
+	display: none !important;
+}
+
+.header-search-modal{
+	z-index: 1000000 !important;
 }
