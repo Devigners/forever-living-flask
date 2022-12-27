@@ -865,6 +865,9 @@ body {
 	.department-nav-menu{
 		padding-top: 20px !important;
 	}
+	.profile-details .popover-details::after{
+		display: none;
+	}
 }
 
 
