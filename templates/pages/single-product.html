@@ -31,7 +31,7 @@
                 <div class="product-rating">
                   <div class="star-rating" data-rating="{{ product[12] }}">
                   </div>
-                  <div class="review-link">
+                  <div class="reSee-link">
                     <a href="#">{{ product[12] }} ({{ product[11] }})</a>
                   </div>
                 </div>
@@ -49,11 +49,16 @@
 
                 <span class="price-amount mb-5"
                   >{{ product[4] }}
-                  <small
-                    style="font-size: 16px; color: #7b7b7b; font-weight: normal"
-                    >for {{ product[5] }}</small
-                  ></span
-                >
+                  
+                  {% if product[5] == "" %}
+                  {% else %}
+                    <small
+                      style="font-size: 16px; color: #7b7b7b; font-weight: normal"
+                      >for {{ product[5] }}</small
+                    >
+                  {% endif %}
+                  
+                </span>
 
                 <!-- Start Product Action Wrapper  -->
                 <div class="product-action-wrapper d-flex-center w-50">
@@ -61,7 +66,7 @@
                   <ul class="product-action d-flex-center mb--0">
                     <li class="add-to-cart m-0">
                       <a href="{{ product[10] }}" class="axil-btn btn-bg-primary"
-                        >Go to Website</a
+                        >Buy Now</a
                       >
                     </li>
                   </ul>
@@ -92,7 +97,7 @@
       </ul>
     </div>
   </div>
-  <!-- Start Recently Viewed Product Area  -->
+  <!-- Start Recently Seeed Product Area  -->
   <div
     class="axil-product-area bg-color-white axil-section-gap pb--50 pb_sm--30"
   >
@@ -119,14 +124,14 @@
 										<a
 											href="{{ product[9] }}"
 											target="_blank"
-											>Go to Website</a
+											>Buy Now</a
 										>
 									</li>
 									<li class="select-option">
 										<a
 											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
 											target="_blank"
-											>See Product</a
+											>See Details</a
 										>
 									</li>
 								</ul>
@@ -157,13 +162,13 @@
           <a
             href="{{ url_for('shop', country=country, restArea=restArea) }}"
             class="axil-btn btn-bg-lighter btn-load-more"
-            >View All Products</a
+            >See All Products</a
           >
         </div>
       </div>
     </div>
   </div>
-  <!-- End Recently Viewed Product Area  -->
+  <!-- End Recently Seeed Product Area  -->
   <!-- Start Axil Newsletter Area  -->
   <div class="axil-newsletter-area axil-section-gap pt--0">
     <div class="container">
