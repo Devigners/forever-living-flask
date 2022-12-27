@@ -6867,6 +6867,11 @@ button.axil-btn.wishlist-btn:hover:before {
 .department-nav-menu .nav-menu-list {
 	padding: 0;
 	margin-bottom: 0 !important;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.department-nav-menu .nav-menu-list::-webkit-scrollbar {
+	display: none;
 }
 @media only screen and (max-width: 1199px) {
 	.department-nav-menu {
