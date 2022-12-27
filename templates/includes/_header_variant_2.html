@@ -40,35 +40,52 @@
 				</div>
 				<div class="header-main-nav">
 					<!-- Start Mainmanu Nav -->
-					<nav class="mainmenu-nav">
-						<button class="mobile-close-btn mobile-nav-toggler">
-							<i class="fas fa-times"></i>
-						</button>
-						<div class="mobile-nav-brand">
-							<a
-								href="{{ url_for('country', restArea=restArea, country=country) }}"
-								class="nav-title"
-							>
-								<b
-									>FOREVER <br class="d-block d-md-none" />
-									LIVING</b
+					<nav class="mainmenu-nav d-flex justify-content-between w-100">
+						<div>
+							<button class="mobile-close-btn mobile-nav-toggler">
+								<i class="fas fa-times"></i>
+							</button>
+							<div class="mobile-nav-brand">
+								<a
+									href="{{ url_for('country', restArea=restArea, country=country) }}"
+									class="nav-title"
 								>
-							</a>
+									<b
+										>FOREVER <br class="d-block d-md-none" />
+										LIVING</b
+									>
+								</a>
+							</div>
+							<ul class="mainmenu justify-content-start">
+								<li>
+									<a
+										href="{{ url_for('shop', restArea=restArea, country=country) }}"
+										>Shop</a
+									>
+								</li>
+								<li>
+									<a
+										href="{{ url_for('blogs', restArea=restArea, country=country) }}"
+										>Blogs</a
+									>
+								</li>
+							</ul>
 						</div>
-						<ul class="mainmenu justify-content-start">
-							<li>
-								<a
-									href="{{ url_for('shop', restArea=restArea, country=country) }}"
-									>Shop</a
-								>
-							</li>
-							<li>
-								<a
-									href="{{ url_for('blogs', restArea=restArea, country=country) }}"
-									>Blogs</a
-								>
-							</li>
-						</ul>
+						<div class="profile-details">
+							<div class="inner">
+								<h5>Kapil Singla</h5>
+								<h6>FLP ID: 200002416566</h6>
+								<div class="popover-details-wrapper">
+									<div class="popover-details">
+										<h6>Independent Distributor Since Jan 2011</h6>
+										<a href="mailto:yourflpdistributor@gmail.com"
+											>yourflpdistributor@gmail.com</a
+										>
+									</div>
+								</div>
+							</div>
+							<div class="dummy-profile-image"></div>
+						</div>
 					</nav>
 					<!-- End Mainmanu Nav -->
 				</div>
