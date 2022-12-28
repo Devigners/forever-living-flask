@@ -6,12 +6,17 @@
 			<div class="row align-items-center">
 				<div class="col-xl-6 col-lg-12">
 					<div class="social-share">
-						<p><b>Registered Address</b>: 200 Captains Row Chelsea, Massachusetts, USA 02150</p>
+						<p>
+							<b>Registered Address</b>: 200 Captains Row Chelsea,
+							Massachusetts, USA 02150
+						</p>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-12">
 					<div class="copyright-left">
-						<p style="text-align: right">Copyright 2022 foreverliving-products.com</p>
+						<p style="text-align: right">
+							Copyright 2022 foreverliving-products.com
+						</p>
 					</div>
 				</div>
 			</div>
@@ -241,7 +246,8 @@
 						id="prod-search"
 						placeholder="Search your product here"
 					/>
-					<button type="submit" class="axil-btn btn-bg-primary">f
+					<button type="submit" class="axil-btn btn-bg-primary">
+						f
 						<i class="far fa-search"></i>
 					</button>
 				</div>
@@ -261,7 +267,7 @@
 
 <!-- Product Search Filter clone -->
 <div id="search-product-clone" style="display: none">
-	<div class="axil-product-list">
+	<div class="axil-product-list search-product-item">
 		<div class="thumbnail">
 			<a>
 				<img
@@ -283,9 +289,17 @@
 				<span class="price current-price">__PRODUCT_PRICE__</span>
 			</div>
 			<div class="product-cart">
-				<a href="__PRODUCT_WEBSITE_URL__" class="cart-btn">
-					<i class="fal fa-arrow-right"></i>
-				</a>
+				<ul class="cart-action">
+					<li class="select-option">
+						<a href="__PRODUCT_EXTERNAL_URL__" target="_blank">Buy Now</a>
+					</li>
+					<li class="select-option">
+						<a
+							href="__PRODUCT_WEBSITE_URL__"
+							>See Details</a
+						>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -308,7 +322,6 @@
 <script src="{{ url_for('static', filename='js/vendor/counterup.js') }}"></script>
 <script src="{{ url_for('static', filename='js/vendor/waypoints.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/vendor/jquery.easy-autocomplete.min.js') }}"></script>
-
 
 <!-- Main JS -->
 <script src="{{ url_for('static', filename='js/main.js') }}?v=1.1"></script>
@@ -349,7 +362,7 @@
 	if (url.includes(restArea)) {
 		url = url.replace(`/${restArea}`, "");
 	}
-	
+
 	locations = locations.map((location) => {
 		var locationURL = location.replace(/, /g, "-").replace(/ /g, '');
 		return {
@@ -388,6 +401,7 @@
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
+					.replace(/__PRODUCT_EXTERNAL_URL__/g, product[9])
 				.replace(/__PRODUCT_WEBSITE_URL__/g, dummyProductUrl.replace(/_PRODUCT_NAME_/g, product[13]))
 			});
 			$(".psearch-results").html(html);
@@ -399,7 +413,7 @@
 			$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
 		}
 	});
-	
+
 
 
 	$("#search-area").easyAutocomplete({
@@ -486,10 +500,9 @@
 		var href = $this.attr('href');
 		window.location.href = href;
 	})
-	
-
 </script>
 <!--For google translate-->
-<script type="text/javascript" 
- src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script>
+<script
+	type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+></script>
