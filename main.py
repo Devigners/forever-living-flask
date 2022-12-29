@@ -7,6 +7,7 @@ import regex as re
 controller = data()
 categories = None
 localities = None
+states = None
 country = None
 product_with_categories = None
 
@@ -16,7 +17,7 @@ Mobility(app)
 
 
 def update_var(new_country):
-    global product_with_categories, localities, categories, country
+    global product_with_categories, localities, categories, country, states
     if (country == None or country != new_country):
         country = new_country
         # during setting country, we get all the data from small products file as wel. self.products is set now.
@@ -25,7 +26,7 @@ def update_var(new_country):
         categories = controller.categories
         # getting products group by category will -> should give {'category_name': [list of products]}
         product_with_categories = controller.getProductsGroupByCategory()
-        localities = controller.findLocalities(new_country)
+        states, localities = controller.findLocalities(new_country)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -35,7 +36,7 @@ def index(country=None, restArea=None):
     if (not country):
         country = 'unitedstates'
     update_var(country)
-    global product_with_categories, localities, categories
+    global product_with_categories, localities, categories, states
 
     if (restArea):
         name, img_file = controller.getFlag(country, ' '.join(
@@ -43,12 +44,12 @@ def index(country=None, restArea=None):
     else:
         name, img_file = controller.getFlag(country)
 
-    return render_template('pages/home.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, restArea=restArea, localities=localities, flag_data=(name, img_file))
+    return render_template('pages/home.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, restArea=restArea, localities=localities, states=states, flag_data=(name, img_file))
 
 
 # index page with country name
-@ app.route('/<country>/<restArea>/home', methods=['GET', 'POST'])
-@ app.route('/<country>/home', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
+@ app.route('/<country>/shop', methods=['GET', 'POST'])
 def country(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories, all_products, controller
@@ -63,8 +64,8 @@ def country(country, restArea=None):
 
 
 # about us page
-@ app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
-@ app.route('/<country>/shop', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/products', methods=['GET', 'POST'])
+@ app.route('/<country>/products', methods=['GET', 'POST'])
 def shop(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories

@@ -111,8 +111,10 @@
 		<div class="container">
 			<hr class="my-5 w-100" />
 			<div class="product-detail-section">
-			  <h4>Description</h4>
-			  <p>Forever Living products is available in all states of America: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming, states of America. After such a strong presence of Forever Living Reps are available in all major cities and towns. We can't list all places on this page but here are interesting ones to name few: Chelsea and Abbotsford in Wisconsin, Elgin and Gilmore in Arizona, Lake City and Georgetown in Arkansas. On West coast we have Lindsay, Saratoga, The Sea Ranch, Lake Tahoe, Bradley. FLP in Colorado Springs, Palm Beach, Venice, Tampa, North Miami Beach, Moscow, Cleveland and Milan Georgia. Moving to a state of Illinois with cool places like Rockford, Elgin, Oakland, Paloma and Carman. Not to forget Westlake and Flatwoods from Lousiana. Then Star City, Bim and Minora. Two cities from South Carolina Simpsonville & Effingham. More places in Pennsylvania starting with Arona then Dudley, Oxford, Woodland and Midland. Wow, that is a interesting combination.</p>
+			  <h4>Delivering Throughout {{ country.title() }}</h4>
+			  {% for state in states %}
+			  	<a href="{{ url_for('country', country=country, restArea=state.replace(' ','')) }}">{{ state }}, </a>
+			  {% endfor %}
 			</div>
 		</div>
 	</div>

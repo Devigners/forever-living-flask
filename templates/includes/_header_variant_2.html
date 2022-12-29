@@ -27,10 +27,7 @@
 						href="{{ url_for('index', restArea=restArea, country=country) }}"
 						class="nav-title"
 					>
-						<b
-							>FOREVER <br class="d-none" />
-							LIVING</b
-						>
+						<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="80" height="80" />
 					</a>
 					{% if request.MOBILE %}
 					<div class="h-select-group navbar-lang">
@@ -50,10 +47,8 @@
 									href="{{ url_for('index', restArea=restArea, country=country) }}"
 									class="nav-title"
 								>
-									<b
-										>FOREVER <br class="d-block d-md-none" />
-										LIVING</b
-									>
+									<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="80" height="80" />
+								
 								</a>
 							</div>
 							<ul class="mainmenu justify-content-start">
@@ -65,8 +60,14 @@
 								</li>
 								<li>
 									<a
-										href="{{ url_for('shop', restArea=restArea, country=country) }}"
+										href="{{ url_for('country', restArea=restArea, country=country) }}"
 										>Shop</a
+									>
+								</li>
+								<li>
+									<a
+										href="{{ url_for('shop', restArea=restArea, country=country) }}"
+										>Products</a
 									>
 								</li>
 								<li>

@@ -29,13 +29,15 @@
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="nav-title"
 							>
-								<b>FOREVER LIVING</b>
+								<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="60" height="60" />
+
 							</a>
 							<a
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo logo-light"
 							>
-								<b>FOREVER LIVING</b>
+								<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="60" height="60" />
+
 							</a>
 						</div>
 					</div>
@@ -94,7 +96,8 @@
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo"
 							>
-								<b>FOREVER LIVING</b>
+								<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="60" height="60" />
+
 							</a>
 						</div>
 						<div
@@ -109,8 +112,14 @@
 								</li>
 								<li>
 									<a
-										href="{{ url_for('shop', restArea=restArea, country=country) }}"
+										href="{{ url_for('country', restArea=restArea, country=country) }}"
 										>Shop</a
+									>
+								</li>
+								<li>
+									<a
+										href="{{ url_for('shop', restArea=restArea, country=country) }}"
+										>Products</a
 									>
 								</li>
 								<li>

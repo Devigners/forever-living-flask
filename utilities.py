@@ -82,7 +82,16 @@ class data():
         data = my_file.read()
         data_into_list = data.split("\n")
         my_file.close()
-        return data_into_list
+
+        # finding states
+        states = []
+        for entry in data_into_list:
+            if (',' not in entry):
+                states.append(entry)
+            else:
+                break
+
+        return states, data_into_list
 
     def getFlag(self, country, restArea=None):
         with open('static/data/flags/'+self.country_code[country]+'.json') as json_file:
