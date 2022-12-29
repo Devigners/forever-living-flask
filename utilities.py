@@ -13,6 +13,10 @@ class data():
                                       'canada': 'can_categories', 'greatbritain': 'uk_categories'}
         self.country_code = {
             'australia': 'au', 'unitedstates': 'us', 'canada': 'ca', 'greatbritain': 'gb'}
+
+        self.country_fullName = {
+            'australia': 'Australia', 'unitedstates': 'United States', 'canada': 'Canada', 'greatbritain': 'Great Britain'}
+
         self.categories = None
         self.category_json = None
 
@@ -27,7 +31,8 @@ class data():
         self.products = pd.read_csv(
             'static/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
         self.products['url_name'] = [
-            re.findall("[a-zA-Z0-9-]+", i.replace('-', '').replace(' ', '-').lower())[0] for i in self.products['post_title'].values.tolist()]
+            re.sub(r'[-]+', '-', i.replace('®', '').replace(
+                '™', '').replace('-', '').replace(' ', '-').lower()) for i in self.products['post_title'].values.tolist()]
         self.products['review_stars'].fillna(0.0, inplace=True)
         self.products['total_reviews'].fillna('', inplace=True)
         self.products['quantities'].fillna('', inplace=True)
@@ -65,7 +70,9 @@ class data():
         for category in self.categories:
             prods = self.getProductsWithCategory(category)
             self.category_json[category] = prods
-            self.category_json['All Products'].extend(prods)
+            for prod in prods:
+                if (prod not in self.category_json['All Products']):
+                    self.category_json['All Products'].append(prod)
 
         return self.category_json
 
@@ -76,3 +83,17 @@ class data():
         data_into_list = data.split("\n")
         my_file.close()
         return data_into_list
+
+    def getFlag(self, country, restArea=None):
+        with open('static/data/flags/'+self.country_code[country]+'.json') as json_file:
+            data = json.load(json_file)
+
+        if (restArea):
+            print(restArea)
+            if (restArea in data.keys()):
+                return restArea, data[restArea]
+            else:
+                return self.country_fullName[country], data['Country']
+        else:
+
+            return self.country_fullName[country], data['Country']

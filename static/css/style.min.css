@@ -4484,14 +4484,12 @@ button.axil-btn.wishlist-btn:hover:before {
 .main-slider-style-2 .slider-product-box .product-thumb {
 	position: relative;
 	z-index: 1;
-	border-radius: 100%;
 	height: 170px;
 	width: 170px;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
 	margin: 0 auto 35px;
 }
 

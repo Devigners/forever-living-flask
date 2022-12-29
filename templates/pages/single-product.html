@@ -114,7 +114,7 @@
           <div class="axil-product product-style-one has-color-pick mt--40">
             <div class="thumbnail">
               <a
-                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}"
               >
                 <img src="{{ product[0] }}" alt="Product Images" />
               </a>
@@ -129,7 +129,7 @@
 									</li>
 									<li class="select-option">
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}"
 											target="_blank"
 											>See Details</a
 										>
@@ -141,7 +141,7 @@
               <div class="inner text-center">
                 <h5 class="title">
                   <a
-                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}"
                     >{{ product[1] }}</a
                   >
                 </h5>

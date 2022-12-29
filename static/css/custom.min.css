@@ -728,13 +728,13 @@ body {
 .floating-btn div:nth-child(1) {
 	top: -90px;
 	right: 10px;
-	background-color: #e7e2f0;
+	background-color: #c3b9d4;
 }
 
 .floating-btn div:nth-child(2) {
 	top: 75px;
 	right: 14px;
-	background-color: #d0dffa;
+	background-color: #afbdd9;
 }
 
 .profile-details {

@@ -1,0 +1,22 @@
+Admin Panel - 
+
+- Dynamic
+    - CSV Uploading 
+        - countries
+        - Products
+    - Products -> New Countries introduce
+    - Optimization of that CSV with python -> Generating Optimized CSV
+
+    - Blogs Uploading
+    - Blogs Editing
+
+    - Single Product Editing
+    - Product Deletion
+    - Mailchimp Functionality <->
+        - Functionality needed is - Automated blog sending functionality
+    - Automatically adjoining scraper with admin panel
+
+    - Offers Cards Handling <- Already finalized acc. to sir
+        - 50% off etc
+        - Join and Save
+        - Discounts

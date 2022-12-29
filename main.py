@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect
 from utilities import *
 from flask_mobility import Mobility
+import regex as re
 
 # folders to work with
 controller = data()
@@ -31,7 +32,9 @@ def update_var(new_country):
 def index():
     country = 'unitedstates'
     update_var(country)
-    global product_with_categories, localities, categories, all_products
+    global product_with_categories, localities, categories, all_products, controller
+
+    name, img_file = controller.getFlag(country)
     return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities)
 
 
@@ -40,8 +43,15 @@ def index():
 @ app.route('/<country>/<restArea>/home', methods=['GET', 'POST'])
 def country(country, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, all_products
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
+    global product_with_categories, localities, categories, all_products, controller
+
+    if (restArea):
+        name, img_file = controller.getFlag(country, ' '.join(
+            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
+    else:
+        name, img_file = controller.getFlag(country)
+
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, flag_data=(name, img_file))
 
 
 # shop page
@@ -74,19 +84,19 @@ def blogDetails(country, restArea=None):
 
 
 # product details page
-@ app.route('/<country>/<restArea>/product/details/<name>', methods=['GET', 'POST'])
-@ app.route('/<country>/product/details/<name>', methods=['GET', 'POST'])
-def productDetails(country, name, restArea=None):
+@ app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
+@ app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
+def productDetails(country, name, category, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories
     product = controller.getProduct_with_name(name)
 
+    category = ' '.join(category.split('-')).title()
+
     if (product):
         product = product[0]
         print(product[len(product)-len(categories)-1:-1])
-        product_category = controller.categories[product[len(
-            product)-len(categories)-1:-1].index(1)]
-        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=product_category, localities=localities, restArea=restArea)
+        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=category, localities=localities, restArea=restArea)
     else:
         return redirect(url_for('country', country=country, restArea=restArea), code=302)
 

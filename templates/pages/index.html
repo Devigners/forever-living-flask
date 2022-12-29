@@ -22,7 +22,7 @@
 												<h1 class="title">{{ product[1] }}</h1>
 												<div class="shop-btn">
 													<a
-														href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+														href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
 														class="axil-btn"
 														>Shop Now <i class="fal fa-long-arrow-right"></i
 													></a>
@@ -44,18 +44,13 @@
 									<div class="product-thumb">
 										<a href="#">
 											<img
-												src="{{ productsGroupByCategory[categories[0]][0][0] }}"
+												src="{{ flag_data[1] }}"
 												alt="Product"
 											/>
 										</a>
 									</div>
-									<h6 class="title">
-										<a href="{{ productsGroupByCategory[categories[0]][0][9] }}"
-											>{{ productsGroupByCategory[categories[0]][0][1] }}</a
-										>
-									</h6>
 									<span class="price"
-										>{{ productsGroupByCategory[categories[0]][0][2] }}</span
+										>{{ flag_data[0] }}</span
 									>
 								</div>
 							</div>
@@ -118,7 +113,7 @@
 						<div class="axil-product product-style-four">
 							<div class="thumbnail">
 								<a
-									href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+									href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
 								>
 									<img
 										data-sal="fade"
@@ -145,7 +140,7 @@
 											</li>
 											<li class="select-option">
 												<a
-													href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+													href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
 													target="_blank"
 													>See Details</a
 												>
@@ -159,7 +154,7 @@
 									<h5 class="title">
 										
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
 										>
 											{{ product[1] }}
 										</a>
@@ -196,7 +191,7 @@
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}"
 							>
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
@@ -211,7 +206,7 @@
 									</li>
 									<li class="select-option">
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}"
 											target="_blank"
 											>See Details</a
 										>
@@ -223,7 +218,7 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}"
 										>{{ product[1] }}</a
 									>
 								</h5>
@@ -344,7 +339,7 @@
 	});
 
 	const allProducts_byCategory = {{ productsGroupByCategory|tojson|safe }};
-	var productUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_') }}"
+	var productUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='_PRODUCT_CATEGORY_') }}"
 
 	$("body").on("click", ".nav-menu-list li", function (e) {
 		e.preventDefault();
@@ -362,6 +357,8 @@
 		$('.sticky-header').removeClass('open').removeAttr('style')
 		// Data
 		var data = allProducts_byCategory[category];
+		const replacing_category = category.replace(' ','-').toLowerCase();
+
 		$(".new-arrivals-product-activation").slick(
 			"removeSlide",
 			null,
@@ -381,21 +378,15 @@
 				.replace(/__PRODUCT_NAME__/g, product[1])
 				.replace(/__PRODUCT_DESCRIPTION__/g, product[11])
 				.replace(/__PRODUCT_PRICE__/g, product[2])
-				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[1]))
+				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]).replace(/_PRODUCT_CATEGORY_/g, replacing_category))
 				.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);
 			if (i < 3) {
 				carouselHtml += $("#top-banner-clone")
 					.html()
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
-					.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[1]))
+					.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]).replace(/_PRODUCT_CATEGORY_/g, replacing_category))
 					.replace(/__PRODUCT_CATEGORY__/g, category);
-			}
-			// if product is 4th append to .slider-product-box
-			if (i == 4) {
-				$(".slider-product-box").find('img').attr('src', product[0])
-				$(".slider-product-box").find('.title a').text(product[1]).attr('href', product[9])
-				$(".slider-product-box").find('.price').text(product[2])
 			}
 			i++;
 			return;

@@ -52,7 +52,7 @@
           <div class="axil-product product-style-one has-color-pick mt--40">
             <div class="thumbnail">
               <a
-                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}"
               >
                 <img src="{{ product[0] }}" alt="Product Images" />
               </a>
@@ -67,7 +67,7 @@
 									</li>
 									<li class="select-option">
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}">See Details</a>
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">See Details</a>
 									</li>
 								</ul>
               </div>
@@ -76,7 +76,7 @@
               <div class="inner text-center">
                 <h5 class="title">
                   <a
-                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13]) }}"
+                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}"
                     >{{ product[1] }}</a
                   >
                 </h5>
@@ -121,19 +121,21 @@
 
 {% endblock %} {% block scripts %}
 <script>
-  const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, name='478649') }}";
+  const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, name='478649', category='replacement') }}";
   const shopProducts = {{ productsGroupByCategory|tojson }};
 
   // #category-filter on change filter products
   $("#category-filter").on("change", function () {
   	const category = $(this).val();
   	const filteredProducts = shopProducts[category];
+    const replacing_category = category.replace(' ','-').toLowerCase();
+
   	// clear products
   	$("#product-lists").html('');
   	$(".axil-product").remove();
   	// add filtered products
   	filteredProducts.forEach((product) => {
-      const url = dummyURl.replace('478649', product[13]);
+      const url = dummyURl.replace('478649', product[13]).replace('replacement', replacing_category);
 
   		$("#product-lists").append(`
   			<div class="col-xl-3 col-lg-4 col-sm-6">

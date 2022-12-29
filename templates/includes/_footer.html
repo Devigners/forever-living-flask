@@ -330,7 +330,7 @@
 
 	// on change prod-search
 	const allProducts = {{ productsGroupByCategory['All Products']|tojson|safe }};
-	var dummyProductUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_') }}"
+	var dummyProductUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='All Products') }}"
 	$(function  () {
 		$('.page-loader').fadeOut('fast');
 	})
