@@ -719,6 +719,24 @@ body {
 	overflow: hidden;
 }
 
+.single-blog h1, h2{
+	margin-bottom: 4px;
+	margin-top: 2%;
+}
+
+.single-blog h3{
+	font-size: var(--font-size-b1);
+	line-height: var(--line-height-b1);
+	font-family: var(--font-primary);
+	color: var(--color-body);
+	font-weight: var(--p-regular);
+}
+
+.single-blog ul{
+	margin-bottom: 0%;
+	margin-top: 0%;
+}
+
 .copyright-left a{
 	color: var(--color-body);
 }

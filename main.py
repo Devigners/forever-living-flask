@@ -7,6 +7,7 @@ import regex as re
 footer_country_code = {'australia': 'aus',
                        'unitedstates': 'usa', 'canada': 'can', 'greatbritain': 'gbr'}
 
+
 # folders to work with
 controller = data()
 categories = None
@@ -14,6 +15,7 @@ localities = None
 states = None
 country = None
 product_with_categories = None
+blogs = None
 
 # flask app name
 app = Flask(__name__)
@@ -86,20 +88,30 @@ def shop(country, restArea=None):
 @ app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
 @ app.route('/<country>/blogs', methods=['GET', 'POST'])
 def blogs(country, restArea=None):
-    global localities, product_with_categories
+    update_var(country)
+    global localities, product_with_categories, blogs
     if (localities == None):
         localities = controller.findLocalities(country)
-    return render_template('pages/blogs.html', footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+
+    blogs = controller.getBlogs()
+    return render_template('pages/blogs.html', blogs=blogs, footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # blog details page
-@ app.route('/<country>/<restArea>/blog-details', methods=['GET', 'POST'])
-@ app.route('/<country>/blog-details', methods=['GET', 'POST'])
-def blogDetails(country, restArea=None):
-    global localities, product_with_categories
+@ app.route('/<country>/<restArea>/blog-details/<id>', methods=['GET', 'POST'])
+@ app.route('/<country>/blog-details/<id>', methods=['GET', 'POST'])
+def blogDetails(country, id, restArea=None):
+    update_var(country)
+    global localities, product_with_categories, blogs
     if (localities == None):
         localities = controller.findLocalities(country)
-    return render_template('pages/blog-details.html', footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+
+    blogs = controller.getBlogs()
+    id = int(id)
+
+    print(blogs[id]['Content'])
+
+    return render_template('pages/blog-details.html', blog=blogs[id], footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # product details page

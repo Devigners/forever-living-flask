@@ -109,3 +109,4 @@ class data():
 
     def getBlogs(self):
         blogs_df = pd.read_csv('static\\data\\blogs\\blogs_small.csv')
+        return blogs_df.to_dict('ID')

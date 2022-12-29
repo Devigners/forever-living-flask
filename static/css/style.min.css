@@ -731,7 +731,7 @@ ol ul {
 	list-style: none;
 }
 .widget_rss ul li a,
-.tagcloud a,
+.tagcloud p,
 .comment-list .comment .reply-edit a.comment-reply-link,
 .axil-post-meta .post-meta-content .author-title a,
 .content-blog.format-quote .inner .content blockquote .title a,
@@ -11368,21 +11368,35 @@ body.open .closeMask {
 }
 .blog-grid .thumbnail img {
 	transition: 0.5s;
+	height: 275px;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
 }
+
+@media screen and (max-width: 768px) {
+	.blog-grid .thumbnail img{
+		height: 200px;
+	}
+}
+
 .blog-grid .thumbnail .blog-category {
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
 }
 .blog-grid .thumbnail .blog-category a {
-	background-color: rgba(255, 255, 255, 0.5);
-	border: 1px solid rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.7);
 	backdrop-filter: blur(25px);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	padding: 2px 10px;
 	border-radius: 4px;
 	color: var(--color-white);
 	font-size: 14px;
+}
+.blog-category a{
+	color: var(--color-border-dark) !important;
 }
 .blog-grid .content .title {
 	margin-bottom: 20px;
@@ -11431,6 +11445,10 @@ body.open .closeMask {
 }
 .axil-single-post.post-formate .content-block .post-thumbnail img {
 	border-radius: 6px;
+	height: 500px;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
 }
 .axil-single-post.post-video .format-video .thumbnail {
 	padding-top: 0;
@@ -11440,6 +11458,9 @@ body.open .closeMask {
 	padding-top: 80px;
 }
 @media only screen and (max-width: 991px) {
+	.axil-single-post.post-formate .content-block .post-thumbnail img  {
+		height: 300px;
+	}
 	.post-single-wrapper {
 		padding-top: 30px;
 	}
@@ -11681,7 +11702,7 @@ body.open .closeMask {
 	flex-wrap: wrap;
 	margin: -5px;
 }
-.tagcloud a {
+.tagcloud p {
 	border: 2px solid var(--color-border-light);
 	font-size: var(--font-size-b2) !important;
 	color: var(--color-body);

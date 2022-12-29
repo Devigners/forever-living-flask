@@ -28,29 +28,30 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="row g-5">
+						{% for blog_id in blogs.keys() %}
 						<div class="col-md-6">
 							<div class="content-blog blog-grid">
 								<div class="inner">
 									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
+										<a href="{{ url_for('blogDetails', restArea=restArea, country=country, id=blogs[blog_id]['ID']) }}">
 											<img
-												src="{{ url_for('static', filename='images/blog/blog-10.png') }}"
+												src="{{ url_for('static', filename=blogs[blog_id]['Image']) }}"
 												alt="Blog Images"
 											/>
 										</a>
 										<div class="blog-category">
-											<a href="#">Digital Art's</a>
+											<a href="#">{{ blogs[blog_id]['Categories'].split(',')[0] }}</a>
 										</div>
 									</div>
 									<div class="content">
 										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Keeping yourself safe when buying NFTs on eTrade</a
+											<a href="{{  url_for('blogDetails', restArea=restArea, country=country, id=blogs[blog_id]['ID']) }}"
+												>{{ blogs[blog_id]['Title'] }}</a
 											>
 										</h5>
 
 										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
+											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country, id=blogs[blog_id]['ID']) }}"
 												>Read More <i class="fal fa-long-arrow-right"></i
 											></a>
 										</div>
@@ -58,327 +59,20 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-11.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Photography</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Important updates for listing and delisting your
-												NFTs</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-12.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Music</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>10 tips for avoiding scams and staying safe on the
-												decentralized web</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-10.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Sports</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Keeping yourself safe when buying NFTs on eTrade</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-11.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Virtual Studio</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Important updates for listing and delisting your
-												NFTs</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-12.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Utility</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>10 tips for avoiding scams and staying safe on the
-												decentralized web</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-10.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Sketch</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Keeping yourself safe when buying NFTs on eTrade</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-11.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Digital Art's</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Important updates for listing and delisting your
-												NFTs</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-10.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Digital Art's</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Keeping yourself safe when buying NFTs on eTrade</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="content-blog blog-grid">
-								<div class="inner">
-									<div class="thumbnail">
-										<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}">
-											<img
-												src="{{ url_for('static', filename='images/blog/blog-11.png') }}"
-												alt="Blog Images"
-											/>
-										</a>
-										<div class="blog-category">
-											<a href="#">Photography</a>
-										</div>
-									</div>
-									<div class="content">
-										<h5 class="title">
-											<a href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Important updates for listing and delisting your
-												NFTs</a
-											>
-										</h5>
-
-										<div class="read-more-btn">
-											<a class="axil-btn right-icon" href="{{  url_for('blogDetails', restArea=restArea, country=country) }}"
-												>Read More <i class="fal fa-long-arrow-right"></i
-											></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="post-pagination">
-						<nav class="navigation pagination" aria-label="Products">
-							<ul class="page-numbers">
-								<li>
-									<span aria-current="page" class="page-numbers current"
-										>1</span
-									>
-								</li>
-								<li><a class="page-numbers" href="#">2</a></li>
-								<li><a class="page-numbers" href="#">3</a></li>
-								<li><a class="page-numbers" href="#">4</a></li>
-								<li><a class="page-numbers" href="#">5</a></li>
-								<li>
-									<a class="next page-numbers" href="#"
-										><i class="fal fa-arrow-right"></i
-									></a>
-								</li>
-							</ul>
-						</nav>
+						{% endfor %}
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<!-- Start Sidebar Area  -->
 					<aside class="axil-sidebar-area">
 						<!-- Start Single Widget  -->
-						<div class="axil-single-widget mt--40 widget_search">
-							<h6 class="widget-title">Search</h6>
-							<form class="blog-search" action="#">
-								<button class="search-button">
-									<i class="fal fa-search"></i>
-								</button>
-								<input type="text" placeholder="Search" />
-							</form>
-						</div>
-						<!-- End Single Widget  -->
-
-						<!-- Start Single Widget  -->
 						<div class="axil-single-widget mt--40 widget_archive">
 							<h6 class="widget-title">Archives List</h6>
 							<ul>
-								<li><a href="#">January 2020</a></li>
-								<li><a href="#">February 2020</a></li>
-								<li><a href="#">March 2020</a></li>
-								<li><a href="#">April 2020</a></li>
+								<li>January 2020</li>
+								<li>February 2020</li>
+								<li>March 2020</li>
+								<li>April 2020</li>
 							</ul>
 						</div>
 						<!-- End Single Widget  -->
@@ -387,14 +81,14 @@
 						<div class="axil-single-widget mt--40 widget_tag_cloud">
 							<h6 class="widget-title">Tags</h6>
 							<div class="tagcloud">
-								<a href="#">Design</a>
-								<a href="#">HTML</a>
-								<a href="#">Graphic</a>
-								<a href="#">Development</a>
-								<a href="#">UI/UX Design</a>
-								<a href="#">eCommerce</a>
-								<a href="#">CSS</a>
-								<a href="#">JS</a>
+								<p>Design</p>
+								<p>HTML</p>
+								<p>Graphic</p>
+								<p>Development</p>
+								<p>UI/UX Design</p>
+								<p>eCommerce</p>
+								<p>CSS</p>
+								<p>JS</p>
 							</div>
 						</div>
 						<!-- End Single Widget  -->
