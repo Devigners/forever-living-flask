@@ -63,6 +63,14 @@ def shop(country, restArea=None):
     return render_template('pages/shop.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
 
 
+# shop page
+@ app.route('/aboutus', methods=['GET', 'POST'])
+def about():
+    update_var(country)
+    global product_with_categories, localities, categories
+    return render_template('pages/about.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities)
+
+
 # blog page
 @ app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
 @ app.route('/<country>/blogs', methods=['GET', 'POST'])
