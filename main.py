@@ -29,18 +29,26 @@ def update_var(new_country):
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    country = 'unitedstates'
+@app.route('/<country>/', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>/', methods=['GET', 'POST'])
+def index(country=None, restArea=None):
+    if (not country):
+        country = 'unitedstates'
     update_var(country)
-    global product_with_categories, localities, categories, all_products, controller
+    global product_with_categories, localities, categories
 
-    name, img_file = controller.getFlag(country)
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, flag_data=(name, img_file))
+    if (restArea):
+        name, img_file = controller.getFlag(country, ' '.join(
+            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
+    else:
+        name, img_file = controller.getFlag(country)
+
+    return render_template('pages/home.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, restArea=restArea, localities=localities, flag_data=(name, img_file))
 
 
 # index page with country name
-@ app.route('/<country>/home', methods=['GET', 'POST'])
 @ app.route('/<country>/<restArea>/home', methods=['GET', 'POST'])
+@ app.route('/<country>/home', methods=['GET', 'POST'])
 def country(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories, all_products, controller
@@ -61,14 +69,6 @@ def shop(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories
     return render_template('pages/shop.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
-
-
-# shop page
-@ app.route('/aboutus', methods=['GET', 'POST'])
-def about():
-    update_var(country)
-    global product_with_categories, localities, categories
-    return render_template('pages/about.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities)
 
 
 # blog page

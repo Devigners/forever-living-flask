@@ -24,7 +24,7 @@
 			<div class="header-navbar">
 				<div class="header-brand pb-0" style="padding-bottom: 0 !important">
 					<a
-						href="{{ url_for('country', restArea=restArea, country=country) }}"
+						href="{{ url_for('index', restArea=restArea, country=country) }}"
 						class="nav-title"
 					>
 						<b
@@ -47,7 +47,7 @@
 							</button>
 							<div class="mobile-nav-brand">
 								<a
-									href="{{ url_for('country', restArea=restArea, country=country) }}"
+									href="{{ url_for('index', restArea=restArea, country=country) }}"
 									class="nav-title"
 								>
 									<b
@@ -59,6 +59,12 @@
 							<ul class="mainmenu justify-content-start">
 								<li>
 									<a
+										href="{{ url_for('index', restArea=restArea, country=country) }}"
+										>Home</a
+									>
+								</li>
+								<li>
+									<a
 										href="{{ url_for('shop', restArea=restArea, country=country) }}"
 										>Shop</a
 									>
@@ -67,12 +73,6 @@
 									<a
 										href="{{ url_for('blogs', restArea=restArea, country=country) }}"
 										>Blogs</a
-									>
-								</li>
-								<li>
-									<a
-										href="{{ url_for('about') }}"
-										>About Us</a
 									>
 								</li>
 							</ul>

@@ -355,7 +355,7 @@
 	var country = "{{ country }}" ?? "unitedstates";
 	var restArea = "{{ restArea }}" !== "None" ? "{{ restArea }}" : "";
 	var locations = {{ localities|tojson|safe }};
-	var url = window.location.pathname === "/" ? "home" : window.location.pathname;
+	var url = window.location.pathname === "/" ? "/" : window.location.pathname;
 	if (url.includes(country)) {
 		url = url.replace(`/${country}`, "");
 	}

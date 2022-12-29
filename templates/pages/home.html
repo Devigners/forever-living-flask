@@ -1,0 +1,147 @@
+{% extends "layouts/app.html" %} {% block content %}
+<main class="main-wrapper">
+	<!-- Start Breadcrumb Area  -->
+	<div class="axil-breadcrumb-area">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-8">
+					<div class="inner">
+						<ul class="axil-breadcrumb">
+							<li class="axil-breadcrumb-item">
+								<a href="{{ url_for('index') }}">Home</a>
+							</li>
+						</ul>
+						<h1 class="title">Forever Living Products</h1>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-8 d-flex justify-content-end">
+					<div class="inner">
+						<div class="product-thumb">
+							<a href="#">
+								<img
+									src="{{ flag_data[1] }}"
+									height="160"
+									width="160"
+									alt="Product"
+								/>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumb Area  -->
+
+	<!-- Start About Area  -->
+	<div class="axil-about-area about-style-1 axil-section-gap">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-xl-4 col-lg-6">
+					<div class="about-thumbnail">
+						<div class="thumbnail">
+							<img src="{{ url_for('static', filename='images/about/about-01.png') }}" alt="About Us" />
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-8 col-lg-6">
+					<div class="about-content content-right">
+						<h3 class="title">
+							About Forever Living Products Company
+						</h3>
+						<span class="text-heading">
+							Forever Living is the world largest aloe vera company in the world. Forever was founded in 1978 here in Phoenix, Arizona by a young gentleman called Rex Maughan. Together with experts on aloe Rex found a way to harvest and stabilize aloe vera which was one of the key ingredients to success of Forever Living. Imagine that you can suddenly have a product available across the world that is practically identical to a fresh cut aloe vera leaf - unbelievable. Not only in United States but around the globe.
+						</span>
+						<div class="row">
+							<div class="col-xl-6">
+								<p>
+									Then, for a company to thrive for over 42 years there is got to be a very powerful leadership and that's another greatness that Rex invested into - great group of people who worked hard, smart, ethical and proved the world that you can build something great working together.
+								</p>
+							</div>
+							<div class="col-xl-6">
+								<p class="mb--0">
+									Finally, true success of Forever Living Products is based on how products are distributed, promoted and provided to clients - which is quite different than a traditional way.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End About Area  -->
+
+	<!-- Start About Area  -->
+	<div class="axil-about-area about-style-2">
+		<div class="container">
+			<div class="row align-items-center mb--80">
+				<div class="col-lg-5 order-lg-2">
+					<div class="about-thumbnail">
+						<img src="{{ url_for('static', filename='images/about/about-03.png') }}" alt="about" />
+					</div>
+				</div>
+				<div class="col-lg-7 order-lg-1">
+					<div class="about-content content-left">
+						<h4 class="title">What Products do we have and how to order them?</h4>
+						<p>
+							Forever Living has a range of mostly aloe vera based products. Drinking products where Aloe Vera Gel is the world wide most popular product in Forever company. Following with other natural based drinks, then weight loss products, Bee hive products, Skin Care, Makeup, Nutrition and Supplements, Essential Oils and very fine set of Personal Care Products. Rex's philosophy is that Forever must make only the best products or otherwise product will not be made at all, hence products we have are best of it's kind. Quality is tested, checked, reviewed and approved by many organizations and hence Forever Living Products carry many accreditations, seals and approvals for quality and consistency. 
+						</p>
+						<a href="{{ url_for('country', country=country, restArea=restArea) }}" class="axil-btn btn-outline">Shop Now</a>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center mb--80 mb_sm--60">
+				<div class="col-lg-5">
+					<div class="about-thumbnail">
+						<img src="{{ url_for('static', filename='images/about/about-02.png') }}" alt="about" />
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<div class="about-content content-right">
+						<h4 class="title">Oliver - Forever Business Owner (Representative / Distributor)</h4>
+						<p>
+							My name is Oliver and I am very proud to be Forever Business Owner of Forever Living Products Company and truly represent Forever in United States, Canada and many other countries. I run my own business with Forever Living. I love Forever products, company's philosophy, ethical practices and lifestyle that Forever offers. I took the leap and soon realized that opportunity was even bigger than what I thought it was. Worked hard and my hard worked paid back multiple folds, giving a future for me and my family. Today, I help many new people take that leap and for those who treat it as a business they reap the benefits that Forever offers.
+						</p>
+						<a href="{{ url_for('country', country=country, restArea=restArea) }}" class="axil-btn btn-outline">Shop Now</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="container">
+			<hr class="my-5 w-100" />
+			<div class="product-detail-section">
+			  <h4>Description</h4>
+			  <p>Forever Living products is available in all states of America: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming, states of America. After such a strong presence of Forever Living Reps are available in all major cities and towns. We can't list all places on this page but here are interesting ones to name few: Chelsea and Abbotsford in Wisconsin, Elgin and Gilmore in Arizona, Lake City and Georgetown in Arkansas. On West coast we have Lindsay, Saratoga, The Sea Ranch, Lake Tahoe, Bradley. FLP in Colorado Springs, Palm Beach, Venice, Tampa, North Miami Beach, Moscow, Cleveland and Milan Georgia. Moving to a state of Illinois with cool places like Rockford, Elgin, Oakland, Paloma and Carman. Not to forget Westlake and Flatwoods from Lousiana. Then Star City, Bim and Minora. Two cities from South Carolina Simpsonville & Effingham. More places in Pennsylvania starting with Arona then Dudley, Oxford, Woodland and Midland. Wow, that is a interesting combination.</p>
+			</div>
+		</div>
+	</div>
+	<!-- End About Area  -->
+	
+	<!-- Start Axil Newsletter Area  -->
+	<div class="axil-newsletter-area axil-section-gap">
+		<div class="container">
+			<div class="etrade-newsletter-wrapper bg_image bg_image--12">
+				<div class="newsletter-content">
+					<span class="title-highlighter highlighter-primary2"
+						><i class="fas fa-envelope-open"></i>Newsletter</span
+					>
+					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
+					<div class="input-group newsletter-form">
+						<div class="position-relative newsletter-inner mb--15">
+							<input placeholder="example@gmail.com" type="text" />
+						</div>
+						<button type="submit" class="axil-btn mb--15">Subscribe</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End .container -->
+	</div>
+	<!-- End Axil Newsletter Area  -->
+
+	
+	
+</main>
+
+{% endblock %}

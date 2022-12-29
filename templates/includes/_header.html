@@ -26,13 +26,13 @@
 					<div class="col-lg-2 col-sm-3 col-7">
 						<div class="header-brand pt-4 pt-md-0">
 							<a
-								href="{{ url_for('country', restArea=restArea, country=country) }}"
+								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="nav-title"
 							>
-								<b>FOREVER LI234VING</b>
+								<b>FOREVER LIVING</b>
 							</a>
 							<a
-								href="{{ url_for('country', restArea=restArea, country=country) }}"
+								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo logo-light"
 							>
 								<b>FOREVER LIVING</b>
@@ -91,7 +91,7 @@
 						</button>
 						<div class="mobile-nav-brand">
 							<a
-								href="{{ url_for('country', restArea=restArea, country=country) }}"
+								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo"
 							>
 								<b>FOREVER LIVING</b>
@@ -100,7 +100,13 @@
 						<div
 							class="d-flex w-100 justify-content-between align-items-center mobile-nav-body"
 						>
-							<ul class="mainmenu">
+						<ul class="mainmenu">
+								<li>
+									<a
+										href="{{ url_for('index', restArea=restArea, country=country) }}"
+										>Home</a
+									>
+								</li>
 								<li>
 									<a
 										href="{{ url_for('shop', restArea=restArea, country=country) }}"
@@ -111,12 +117,6 @@
 									<a
 										href="{{ url_for('blogs', restArea=restArea, country=country) }}"
 										>Blogs</a
-									>
-								</li>
-								<li>
-									<a
-										href="{{ url_for('about') }}"
-										>About Us</a
 									>
 								</li>
 							</ul>
