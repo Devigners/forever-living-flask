@@ -719,6 +719,10 @@ body {
 	overflow: hidden;
 }
 
+.copyright-left a{
+	color: var(--color-body);
+}
+
 .floating-btn div a {
 	display: inline-block;
 	padding: 7px 20px;

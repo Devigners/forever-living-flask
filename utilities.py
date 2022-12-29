@@ -106,3 +106,6 @@ class data():
         else:
 
             return self.country_fullName[country], data['Country']
+
+    def getBlogs(self):
+        blogs_df = pd.read_csv('static\\data\\blogs\\blogs_small.csv')

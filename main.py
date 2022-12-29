@@ -3,6 +3,10 @@ from utilities import *
 from flask_mobility import Mobility
 import regex as re
 
+# footer links
+footer_country_code = {'australia': 'aus',
+                       'unitedstates': 'usa', 'canada': 'can', 'greatbritain': 'gbr'}
+
 # folders to work with
 controller = data()
 categories = None
@@ -29,9 +33,9 @@ def update_var(new_country):
         states, localities = controller.findLocalities(new_country)
 
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/<country>/', methods=['GET', 'POST'])
-@app.route('/<country>/<restArea>/', methods=['GET', 'POST'])
+@ app.route('/', methods=['GET', 'POST'])
+@ app.route('/<country>/', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/', methods=['GET', 'POST'])
 def index(country=None, restArea=None):
     if (not country):
         country = 'unitedstates'
@@ -44,7 +48,13 @@ def index(country=None, restArea=None):
     else:
         name, img_file = controller.getFlag(country)
 
-    return render_template('pages/home.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, restArea=restArea, localities=localities, states=states, flag_data=(name, img_file))
+    return render_template('pages/home.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, restArea=restArea, localities=localities, states=states, flag_data=(name, img_file))
+
+
+# Admin Panel Page
+@ app.route('/admin/kapilsingla/268468', methods=['GET', 'POST'])
+def admin():
+    return render_template('pages/admin.html')
 
 
 # index page with country name
@@ -60,7 +70,7 @@ def country(country, restArea=None):
     else:
         name, img_file = controller.getFlag(country)
 
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, flag_data=(name, img_file))
+    return render_template('pages/index.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, flag_data=(name, img_file))
 
 
 # about us page
@@ -69,7 +79,7 @@ def country(country, restArea=None):
 def shop(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories
-    return render_template('pages/shop.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
+    return render_template('pages/shop.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
 
 
 # blog page
@@ -79,7 +89,7 @@ def blogs(country, restArea=None):
     global localities, product_with_categories
     if (localities == None):
         localities = controller.findLocalities(country)
-    return render_template('pages/blogs.html', country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+    return render_template('pages/blogs.html', footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # blog details page
@@ -89,7 +99,7 @@ def blogDetails(country, restArea=None):
     global localities, product_with_categories
     if (localities == None):
         localities = controller.findLocalities(country)
-    return render_template('pages/blog-details.html', country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+    return render_template('pages/blog-details.html', footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # product details page
@@ -104,10 +114,9 @@ def productDetails(country, name, category, restArea=None):
 
     if (product):
         product = product[0]
-        print(product[len(product)-len(categories)-1:-1])
         return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=category, localities=localities, restArea=restArea)
     else:
-        return redirect(url_for('country', country=country, restArea=restArea), code=302)
+        return redirect(url_for('country', footer_country_code=footer_country_code[country], country=country, restArea=restArea), code=302)
 
 
 if __name__ == '__main__':
