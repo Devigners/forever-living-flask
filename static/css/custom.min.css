@@ -1001,3 +1001,15 @@ body {
 		line-height: 30px;
 	}
 }
+
+.video-thumbnail::after {
+	content: "";
+	background: url('./../images/icons/video-play-button.png') no-repeat center center;
+	background-size: 30px;
+	position: absolute;	
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: 0.3s;
+}

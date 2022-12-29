@@ -9598,6 +9598,7 @@ body.open .closeMask {
 	width: 80px;
 	height: auto;
 	transition: all 0.2s;
+	margin: 0 auto;
 }
 .small-thumb-wrapper .small-thumb-img:hover img,
 .small-thumb-wrapper .small-thumb-img.slick-current img {
