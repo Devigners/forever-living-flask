@@ -21,8 +21,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- End Breadcrumb Area  -->
-	<!-- Start Blog Area  -->
 	<div class="axil-blog-area axil-section-gap">
 		<div class="container">
 			<div class="row">
@@ -66,41 +64,19 @@
 					<!-- Start Sidebar Area  -->
 					<aside class="axil-sidebar-area">
 						<!-- Start Single Widget  -->
-						<div class="axil-single-widget mt--40 widget_archive">
-							<h6 class="widget-title">Archives List</h6>
-							<ul>
-								<li>January 2020</li>
-								<li>February 2020</li>
-								<li>March 2020</li>
-								<li>April 2020</li>
-							</ul>
-						</div>
-						<!-- End Single Widget  -->
-
-						<!-- Start Single Widget  -->
 						<div class="axil-single-widget mt--40 widget_tag_cloud">
-							<h6 class="widget-title">Tags</h6>
+							<h6 class="widget-title">Categories</h6>
 							<div class="tagcloud">
-								<p>Design</p>
-								<p>HTML</p>
-								<p>Graphic</p>
-								<p>Development</p>
-								<p>UI/UX Design</p>
-								<p>eCommerce</p>
-								<p>CSS</p>
-								<p>JS</p>
+								{% for category in blog_categories %}
+									<p>{{ category }}</p>
+								{% endfor %}
 							</div>
 						</div>
-						<!-- End Single Widget  -->
 					</aside>
-					<!-- End Sidebar Area -->
 				</div>
 			</div>
-			<!-- End post-pagination -->
 		</div>
-		<!-- End .container -->
 	</div>
-	<!-- End Blog Area  -->
 
 	<!-- Start Axil Newsletter Area  -->
 	<div class="axil-newsletter-area axil-section-gap pt--0">

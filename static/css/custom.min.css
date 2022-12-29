@@ -697,7 +697,7 @@ body {
 
 .floating-btn {
 	position: fixed;
-	top: 50%;
+	top: 33%;
 	right: -60px;
 	transform: translateY(-50%);
 	z-index: 10;

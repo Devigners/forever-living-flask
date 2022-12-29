@@ -94,7 +94,17 @@ def blogs(country, restArea=None):
         localities = controller.findLocalities(country)
 
     blogs = controller.getBlogs()
-    return render_template('pages/blogs.html', blogs=blogs, footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+
+    blog_categories = []
+    for blog_id in blogs.keys():
+        for category in blogs[blog_id]['Categories'].split(','):
+            if (category not in blog_categories):
+                blog_categories.append(category)
+
+    if ('Uncategorized' in blog_categories):
+        blog_categories.remove('Uncategorized')
+
+    return render_template('pages/blogs.html', blog_categories=blog_categories, blogs=blogs, footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # blog details page
@@ -108,8 +118,6 @@ def blogDetails(country, id, restArea=None):
 
     blogs = controller.getBlogs()
     id = int(id)
-
-    print(blogs[id]['Content'])
 
     return render_template('pages/blog-details.html', blog=blogs[id], footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
