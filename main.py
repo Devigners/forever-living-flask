@@ -35,7 +35,7 @@ def index():
     global product_with_categories, localities, categories, all_products, controller
 
     name, img_file = controller.getFlag(country)
-    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities)
+    return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, flag_data=(name, img_file))
 
 
 # index page with country name
@@ -54,7 +54,7 @@ def country(country, restArea=None):
     return render_template('pages/index.html', categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, flag_data=(name, img_file))
 
 
-# shop page
+# about us page
 @ app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
 @ app.route('/<country>/shop', methods=['GET', 'POST'])
 def shop(country, restArea=None):
