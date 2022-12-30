@@ -8,6 +8,40 @@ import math
 footer_country_code = {'australia': 'aus',
                        'unitedstates': 'usa', 'canada': 'can', 'greatbritain': 'gbr'}
 
+#
+# USA
+# FREE SHIPPING in USA Only: https://thealoeveraco.shop/jfYACnZc
+# JOIN & SAVE 5% : https://bit.ly/FLPJoinSave-USA
+# My Retail Store : https://bit.ly/FLPRetailStore-USA
+#
+# 5% OFF on retail store: https://thealoeveraco.shop/HEYrCuwo
+# 10% OFF on Retail Store : : https://thealoeveraco.shop/QIunDW3C
+# 15% OFF on retail store : https://thealoeveraco.shop/wbQW2rEH
+#
+# CANADA
+# JOIN & SAVE 5% : https://bit.ly/FLPJoinSave-CAN
+# My Retail Store CAN: https://bit.ly/FLPRetailStore-CAN
+#
+# 5% OFF on retail store: https://thealoeveraco.shop/ZHJSRv5m
+# 10% OFF on Retail Store : https://thealoeveraco.shop/WOVGEHb8
+# 15% OFF on retail store : https://thealoeveraco.shop/7MV6ZkIG
+#
+# AUSTRALIA
+# JOIN & SAVE 5% : https://bit.ly/FLPJoinSave-AUS
+# My Retail Store AUS: https://bit.ly/FLPRetailStore-AUS
+#
+# 5% OFF on retail store: https://thealoeveraco.shop/fTvVBTAm
+# 10% OFF on Retail Store : https://thealoeveraco.shop/J0527gGp
+# 15% OFF on retail store : https://thealoeveraco.shop/DLolWip7
+#
+#
+# UK
+# JOIN & SAVE 5%: https://bit.ly/FLPJoinSave-GBR
+# My Retail Store UK : https://bit.ly/FLPRetailStore-GBR
+#
+# 5% OFF on retail store: https://thealoeveraco.shop/m1m6hsyO
+# 10% OFF on Retail Store : https://thealoeveraco.shop/1QLH7Eh9
+# 15% OFF on retail store : https://thealoeveraco.shop/i2Y5dJzQ
 
 # folders to work with
 controller = data()
@@ -21,6 +55,11 @@ blogs = None
 # flask app name
 app = Flask(__name__)
 Mobility(app)
+
+
+@app.context_processor
+def utility_processor():
+    return dict(str=str)
 
 
 def update_var(new_country):
@@ -124,10 +163,6 @@ def blogDetails(country, id, restArea=None):
 
 # good thing found for using python functions in templates
 
-
-@app.context_processor
-def utility_processor():
-    return dict(str=str)
 
 # product details page
 
