@@ -29,7 +29,7 @@ class data():
                                'SKU', 'short_description', 'total_reviews', 'url_name'] + self.categories
 
         self.products = pd.read_csv(
-            'static/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
+            'static/web-assets/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
         self.products['url_name'] = [
             re.sub(r'[-]+', '-', i.replace('®', '').replace(
                 '™', '').replace('-', '').replace(' ', '-').lower()) for i in self.products['post_title'].values.tolist()]
@@ -39,7 +39,7 @@ class data():
         self.products['Usage'].fillna('', inplace=True)
 
     def getCategories(self):
-        with open('static/data/products/categories.json') as json_file:
+        with open('static/web-assets/data/products/categories.json') as json_file:
             data = json.load(json_file)
         return data[self.country_code[self.country]]
 
@@ -77,7 +77,7 @@ class data():
         return self.category_json
 
     def findLocalities(self, required_country):
-        my_file = open("static/data/countries/" +
+        my_file = open("static/web-assets/data/countries/" +
                        self.country_code[required_country] + " data.txt", "r", encoding='windows-1252')
         data = my_file.read()
         data_into_list = data.split("\n")
@@ -94,7 +94,7 @@ class data():
         return states, data_into_list
 
     def getFlag(self, country, restArea=None):
-        with open('static/data/flags/'+self.country_code[country]+'.json') as json_file:
+        with open('static/web-assets/data/flags/'+self.country_code[country]+'.json') as json_file:
             data = json.load(json_file)
 
         if (restArea):
@@ -108,5 +108,5 @@ class data():
             return self.country_fullName[country], data['Country']
 
     def getBlogs(self):
-        blogs_df = pd.read_csv('static\\data\\blogs\\blogs_small.csv')
+        blogs_df = pd.read_csv('static/web-assets/data/blogs/blogs_small.csv')
         return blogs_df.to_dict('ID')

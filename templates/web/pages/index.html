@@ -1,4 +1,4 @@
-{% extends "layouts/home.html" %} {% block content %}
+{% extends "web/layouts/home.html" %} {% block content %}
 
 <main class="main-wrapper">
 	<!-- Start Slider Area -->
@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="d-flex w-100">
 				<div class="department-menu-col">
-					{% include "includes/_categories_sidebar.html" %}
+					{% include "web/includes/_categories_sidebar.html" %}
 				</div>
 				<div class="banner-area">
 					<div class="slider-offset-left">
@@ -62,7 +62,7 @@
 						<div class="col">
 							<div class="home-service-box" data-color="green">
 								<h5>Free Shipping</h5>
-								<img src="{{ url_for('static', filename='images/icons/drop-shipping.png') }}" alt="" class="mt-4">
+								<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}" alt="" class="mt-4">
 								<button>Get Now</button>
 							</div>
 						</div>

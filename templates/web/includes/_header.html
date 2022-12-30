@@ -1,4 +1,4 @@
-{% include "includes/_head_assets.html" %}
+{% include "web/includes/_head_assets.html" %}
 
 <div class="page-loader">
 	<div class="lds-ellipsis">
@@ -19,7 +19,7 @@
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
 	<div class="axil-header-top pb-0">
-		{% include "includes/_top_bar.html" %}
+		{% include "web/includes/_top_bar.html" %}
 		<div class="bg-white pt-md-4 pb-md-4">
 			<div class="container">
 				<div class="row align-items-center">
@@ -29,14 +29,14 @@
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="nav-title"
 							>
-								<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="60" height="60" />
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="About Us" width="60" height="60" />
 
 							</a>
 							<a
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo logo-light"
 							>
-								<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="60" height="60" />
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="About Us" width="60" height="60" />
 
 							</a>
 						</div>
@@ -82,7 +82,7 @@
 							<span class="icon"><i class="fal fa-bars"></i></span>
 							<span class="text">Categories</span>
 						</button>
-						{% include "includes/_categories_sidebar.html" %}
+						{% include "web/includes/_categories_sidebar.html" %}
 					</aside>
 				</div>
 				<div class="header-main-nav">
@@ -96,7 +96,7 @@
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo"
 							>
-								<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="60" height="60" />
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="About Us" width="60" height="60" />
 
 							</a>
 						</div>

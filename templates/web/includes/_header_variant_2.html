@@ -1,4 +1,4 @@
-{% include "includes/_head_assets.html" %}
+{% include "web/includes/_head_assets.html" %}
 <div class="page-loader">
 	<div class="lds-ellipsis">
 		<div></div>
@@ -16,7 +16,7 @@
 <![endif]-->
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
-	{% include "includes/_top_bar.html" %}
+	{% include "web/includes/_top_bar.html" %}
 	<!-- Start Mainmenu Area  -->
 	<div id="axil-sticky-placeholder"></div>
 	<div class="axil-mainmenu">
@@ -27,7 +27,7 @@
 						href="{{ url_for('index', restArea=restArea, country=country) }}"
 						class="nav-title"
 					>
-						<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="80" height="80" />
+						<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="About Us" width="80" height="80" />
 					</a>
 					{% if request.MOBILE %}
 					<div class="h-select-group navbar-lang">
@@ -47,7 +47,7 @@
 									href="{{ url_for('index', restArea=restArea, country=country) }}"
 									class="nav-title"
 								>
-									<img src="{{ url_for('static', filename='images/logo.png') }}" alt="About Us" width="80" height="80" />
+									<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="About Us" width="80" height="80" />
 								
 								</a>
 							</div>

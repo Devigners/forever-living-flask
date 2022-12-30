@@ -51,13 +51,13 @@ def index(country=None, restArea=None):
     else:
         name, img_file = controller.getFlag(country)
 
-    return render_template('pages/home.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, restArea=restArea, localities=localities, states=states, flag_data=(name, img_file))
+    return render_template('web/pages/home.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, restArea=restArea, localities=localities, states=states, flag_data=(name, img_file))
 
 
 # Admin Panel Page
 @ app.route('/admin/kapilsingla/268468', methods=['GET', 'POST'])
 def admin():
-    return render_template('pages/admin.html')
+    return render_template('web/pages/admin.html')
 
 
 # index page with country name
@@ -73,7 +73,7 @@ def country(country, restArea=None):
     else:
         name, img_file = controller.getFlag(country)
 
-    return render_template('pages/index.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, flag_data=(name, img_file))
+    return render_template('web/pages/index.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, flag_data=(name, img_file))
 
 
 # about us page
@@ -82,7 +82,7 @@ def country(country, restArea=None):
 def shop(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories
-    return render_template('pages/shop.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
+    return render_template('web/pages/shop.html', footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
 
 
 # blog page
@@ -105,7 +105,7 @@ def blogs(country, restArea=None):
     if ('Uncategorized' in blog_categories):
         blog_categories.remove('Uncategorized')
 
-    return render_template('pages/blogs.html', blog_categories=blog_categories, blogs=blogs, footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+    return render_template('web/pages/blogs.html', blog_categories=blog_categories, blogs=blogs, footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 
 # blog details page
@@ -120,7 +120,7 @@ def blogDetails(country, id, restArea=None):
     blogs = controller.getBlogs()
     id = int(id)
 
-    return render_template('pages/blog-details.html', blog=blogs[id], footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+    return render_template('web/pages/blog-details.html', blog=blogs[id], footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
 # good thing found for using python functions in templates
 
@@ -144,7 +144,7 @@ def productDetails(country, name, category, restArea=None):
     if (product):
         product = product[0]
 
-        return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=category, localities=localities, restArea=restArea)
+        return render_template('web/pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=category, localities=localities, restArea=restArea)
     else:
         return redirect(url_for('country', footer_country_code=footer_country_code[country], country=country, restArea=restArea), code=302)
 
