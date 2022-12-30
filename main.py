@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect
 from utilities import *
 from flask_mobility import Mobility
 import regex as re
+import math
 
 # footer links
 footer_country_code = {'australia': 'aus',
@@ -121,8 +122,16 @@ def blogDetails(country, id, restArea=None):
 
     return render_template('pages/blog-details.html', blog=blogs[id], footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
 
+# good thing found for using python functions in templates
+
+
+@app.context_processor
+def utility_processor():
+    return dict(str=str)
 
 # product details page
+
+
 @ app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
 @ app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
 def productDetails(country, name, category, restArea=None):
@@ -134,6 +143,7 @@ def productDetails(country, name, category, restArea=None):
 
     if (product):
         product = product[0]
+
         return render_template('pages/single-product.html', product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=category, localities=localities, restArea=restArea)
     else:
         return redirect(url_for('country', footer_country_code=footer_country_code[country], country=country, restArea=restArea), code=302)

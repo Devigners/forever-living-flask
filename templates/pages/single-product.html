@@ -16,17 +16,20 @@
 										<div class="thumbnail">
 											<img src="{{ product[9] }}" alt="Product Images" />
 										</div>
-										<div class="thumbnail">
-											<iframe
-													width="100%"
-													height="612px"
-													src="https://player.vimeo.com/video/277219953?loop=1&autoplay=0"
-													title="Demo Background Sample Video"
-													frameborder="0"
-													allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-													allowfullscreen
-												></iframe>
-										</div>
+										{% if str(product[29]) == "nan" %}
+										{% else %}
+											<div class="thumbnail">
+												<iframe
+														width="100%"
+														height="612px"
+														src=" {{product[29]}} "
+														title="Demo Background Sample Video"
+														frameborder="0"
+														allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+														allowfullscreen
+													></iframe>
+											</div>
+										{% endif %}
 									</div>
 								</div>
 							</div>
@@ -35,9 +38,12 @@
 									<div class="small-thumb-img">
 										<img src="{{ product[9] }}" alt="thumb image" />
 									</div>
-									<div class="small-thumb-img video-thumbnail">
-										<img src="" data-vimeo-href="https://player.vimeo.com/video/277219953?loop=1&autoplay=0" alt="thumb image" />
-									</div>
+									{% if str(product[29]) == "nan" %}
+									{% else %}
+										<div class="small-thumb-img video-thumbnail">
+											<img src="" data-vimeo-href="{{product[29]}}" alt="thumb image" />
+										</div>
+									{% endif %}
 								</div>
 							</div>
 						</div>
