@@ -183,6 +183,10 @@ def productDetails(country, name, category, restArea=None):
     else:
         return redirect(url_for('country', footer_country_code=footer_country_code[country], country=country, restArea=restArea), code=302)
 
+@ app.route('/admin/dashboard', methods=['GET', 'POST'])
+def adminDashboard():
+    return render_template('admin/pages/dashboard.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
