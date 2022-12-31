@@ -365,11 +365,12 @@ body {
 	height: 100%;
 }
 
-.home-service-box button {
+.home-service-box button, .btn {
+	text-align: center;
 	color: white;
 	position: absolute;
 	width: calc(100% - 48px);
-	height: 58px;
+	line-height: 44px;
 	border-radius: 6px;
 	bottom: 24px;
 	left: 24px;
@@ -384,7 +385,7 @@ body {
 .home-service-box[data-color="green"] h4 {
 	color: #5aa654 !important;
 }
-.home-service-box[data-color="green"] button {
+.home-service-box[data-color="green"] .btn {
 	background-color: #5aa654 !important;
 }
 
@@ -395,7 +396,7 @@ body {
 .home-service-box[data-color="light-blue"] h4 {
 	color: #3577f0 !important;
 }
-.home-service-box[data-color="light-blue"] button {
+.home-service-box[data-color="light-blue"] .btn {
 	background-color: #3577f0 !important;
 }
 
@@ -406,7 +407,7 @@ body {
 .home-service-box[data-color="purple"] h4 {
 	color: #7354a6 !important;
 }
-.home-service-box[data-color="purple"] button {
+.home-service-box[data-color="purple"] .btn {
 	background-color: #7354a6 !important;
 }
 
