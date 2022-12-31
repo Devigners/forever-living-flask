@@ -8,27 +8,31 @@ import math
 footer_country_code = {'australia': 'aus',
                        'unitedstates': 'usa', 'canada': 'can', 'greatbritain': 'gbr'}
 
-offer_links = {
+country_specific = {
     'usa': {
         'shipping': 'https://thealoeveraco.shop/jfYACnZc',
         '5%_off': 'https://thealoeveraco.shop/HEYrCuwo',
         '10%_off': 'https://thealoeveraco.shop/QIunDW3C',
-        '15%_off': 'https://thealoeveraco.shop/wbQW2rEH'
+        '15%_off': 'https://thealoeveraco.shop/wbQW2rEH',
+        'phone': '+1 888 440 2563'
     },
     'gbr': {
         '5%_off': 'https://thealoeveraco.shop/ZHJSRv5m',
         '10%_off': 'https://thealoeveraco.shop/WOVGEHb8',
-        '15%_off': 'https://thealoeveraco.shop/7MV6ZkIG'
+        '15%_off': 'https://thealoeveraco.shop/7MV6ZkIG',
+        'phone': '+44 1926 626 629'
     },
     'can': {
         '5%_off': 'https://thealoeveraco.shop/fTvVBTAm',
         '10%_off': 'https://thealoeveraco.shop/J0527gGp',
-        '15%_off': 'https://thealoeveraco.shop/DLolWip7'
+        '15%_off': 'https://thealoeveraco.shop/DLolWip7',
+        'phone': '+1 888 440 2563'
     },
     'aus': {
         '5%_off': 'https://thealoeveraco.shop/m1m6hsyO',
         '10%_off': 'https://thealoeveraco.shop/1QLH7Eh9',
-        '15%_off': 'https://thealoeveraco.shop/i2Y5dJzQ'
+        '15%_off': 'https://thealoeveraco.shop/i2Y5dJzQ',
+        'phone': '+61 2 9635 3011'
     }
 }
 
@@ -51,7 +55,7 @@ def utility_processor():
 
 
 def update_var(new_country):
-    global product_with_categories, localities, categories, country, states, offer_links
+    global product_with_categories, localities, categories, country, states, country_specific
     if (country == None or country != new_country):
         country = new_country
         # during setting country, we get all the data from small products file as wel. self.products is set now.
@@ -70,7 +74,7 @@ def index(country=None, restArea=None):
     if (not country):
         country = 'unitedstates'
     update_var(country)
-    global product_with_categories, localities, categories, states, offer_links
+    global product_with_categories, localities, categories, states, country_specific
 
     if (restArea):
         name, img_file = controller.getFlag(country, ' '.join(
@@ -79,7 +83,15 @@ def index(country=None, restArea=None):
         name, img_file = controller.getFlag(country)
 
     context = {
-
+        'footer_country_code': footer_country_code[country],
+        'categories': categories,
+        'productsGroupByCategory': product_with_categories,
+        'country': country,
+        'restArea': restArea,
+        'localities': localities,
+        'states': states,
+        'flag_data': (name, img_file),
+        'offer_links': country_specific
     }
 
     return render_template('web/pages/home.html', **context)
@@ -96,7 +108,7 @@ def admin():
 @ app.route('/<country>/shop', methods=['GET', 'POST'])
 def country(country, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, all_products, controller, offer_links
+    global product_with_categories, localities, categories, all_products, controller, country_specific
 
     if (restArea):
         name, img_file = controller.getFlag(country, ' '.join(
@@ -104,7 +116,18 @@ def country(country, restArea=None):
     else:
         name, img_file = controller.getFlag(country)
 
-    return render_template('web/pages/index.html', offer_links=offer_links, footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea, flag_data=(name, img_file))
+    context = {
+        'offer_links': country_specific,
+        'footer_country_code': footer_country_code[country],
+        'categories': categories,
+        'productsGroupByCategory': product_with_categories,
+        'country': country,
+        'localities': localities,
+        'restArea': restArea,
+        'flag_data': (name, img_file)
+    }
+
+    return render_template('web/pages/index.html', **context)
 
 
 # about us page
@@ -112,8 +135,19 @@ def country(country, restArea=None):
 @ app.route('/<country>/products', methods=['GET', 'POST'])
 def shop(country, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, offer_links
-    return render_template('web/pages/shop.html', offer_links=offer_links, footer_country_code=footer_country_code[country], categories=categories, productsGroupByCategory=product_with_categories, country=country, localities=localities, restArea=restArea)
+    global product_with_categories, localities, categories, country_specific
+
+    context = {
+        'offer_links': country_specific,
+        'footer_country_code': footer_country_code[country],
+        'categories': categories,
+        'productsGroupByCategory': product_with_categories,
+        'country': country,
+        'localities': localities,
+        'restArea': restArea
+    }
+
+    return render_template('web/pages/shop.html', **context)
 
 
 # blog page
@@ -121,7 +155,7 @@ def shop(country, restArea=None):
 @ app.route('/<country>/blogs', methods=['GET', 'POST'])
 def blogs(country, restArea=None):
     update_var(country)
-    global localities, product_with_categories, blogs, offer_links
+    global localities, product_with_categories, blogs, country_specific
     if (localities == None):
         localities = controller.findLocalities(country)
 
@@ -136,7 +170,18 @@ def blogs(country, restArea=None):
     if ('Uncategorized' in blog_categories):
         blog_categories.remove('Uncategorized')
 
-    return render_template('web/pages/blogs.html', offer_links=offer_links, blog_categories=blog_categories, blogs=blogs, footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+    context = {
+        'offer_links': country_specific,
+        'blog_categories': blog_categories,
+        'blogs': blogs,
+        'footer_country_code': footer_country_code[country],
+        'country': country,
+        'localities': localities,
+        'restArea': restArea,
+        'productsGroupByCategory': product_with_categories
+    }
+
+    return render_template('web/pages/blogs.html', **context)
 
 
 # blog details page
@@ -144,36 +189,52 @@ def blogs(country, restArea=None):
 @ app.route('/<country>/blog-details/<id>', methods=['GET', 'POST'])
 def blogDetails(country, id, restArea=None):
     update_var(country)
-    global localities, product_with_categories, blogs, offer_links
+    global localities, product_with_categories, blogs, country_specific
     if (localities == None):
         localities = controller.findLocalities(country)
 
     blogs = controller.getBlogs()
     id = int(id)
 
-    return render_template('web/pages/blog-details.html', offer_links=offer_links, blog=blogs[id], footer_country_code=footer_country_code[country], country=country, localities=localities, restArea=restArea, productsGroupByCategory=product_with_categories)
+    context = {
+        'offer_links': country_specific,
+        'blog': blogs[id],
+        'footer_country_code': footer_country_code[country],
+        'country': country,
+        'localities': localities,
+        'restArea': restArea,
+        'productsGroupByCategory': product_with_categories
+    }
 
-# good thing found for using python functions in templates
+    return render_template('web/pages/blog-details.html', **context)
 
 
 # product details page
-
-
 @ app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
 @ app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
 def productDetails(country, name, category, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, offer_links
+    global product_with_categories, localities, categories, country_specific
     product = controller.getProduct_with_name(name)
 
     category = ' '.join(category.split('-')).title()
 
     if (product):
         product = product[0]
-
-        return render_template('web/pages/single-product.html', offer_links=offer_links, footer_country_code=footer_country_code[country], product=product, product_tags=product[14].split(','), country=country, productsGroupByCategory=product_with_categories, product_category=category, localities=localities, restArea=restArea)
+        context = {
+            'offer_links': country_specific,
+            'footer_country_code': footer_country_code[country],
+            'product_tags': product[14].split(','),
+            'country': country,
+            'productsGroupByCategory': product_with_categories,
+            'product_category': category,
+            'localities': localities,
+            'restArea': restArea,
+            'product': product
+        }
+        return render_template('web/pages/single-product.html', **context)
     else:
-        return redirect(url_for('country', offer_links=offer_links, footer_country_code=footer_country_code[country], country=country, restArea=restArea), code=302)
+        return redirect(url_for('country', country=country, restArea=restArea), code=302)
 
 
 @ app.route('/admin/dashboard', methods=['GET', 'POST'])

@@ -16,7 +16,7 @@
 										<div class="thumbnail">
 											<img src="{{ product[9] }}" alt="Product Images" />
 										</div>
-										{% if str(product[29]) == "nan" %}
+										{% if str(product[29]) == "nan" or str(product[29]) == "" %}
 										{% else %}
 											<div class="thumbnail">
 												<iframe
@@ -38,7 +38,7 @@
 									<div class="small-thumb-img">
 										<img src="{{ product[9] }}" alt="thumb image" />
 									</div>
-									{% if str(product[29]) == "nan" %}
+									{% if str(product[29]) == "nan" or str(product[29]) == "" %}
 									{% else %}
 										<div class="small-thumb-img video-thumbnail">
 											<img src="" data-vimeo-href="{{product[29]}}" alt="thumb image" />
@@ -89,8 +89,9 @@
 											<a
 												href="{{ product[10] }}"
 												class="axil-btn btn-bg-primary"
-												>Buy Now</a
 											>
+												Buy Now
+											</a>
 										</li>
 									</ul>
 									<!-- End Product Action  -->
