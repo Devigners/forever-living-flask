@@ -1,4 +1,5 @@
 {% extends "web/layouts/app.html" %} {% block content %}
+
 <main class="main-wrapper">
 	<!-- Start Breadcrumb Area  -->
 	<div class="axil-breadcrumb-area">
@@ -46,15 +47,28 @@
 				</div>
 				<div class="col-xl-8 col-lg-6">
 					<div class="about-content content-right">
-						<h3>
-							Forever Living History: Founded in 1978
-						</h3>
-						<span class="text-heading">
-							Forever Living Products Company is an American-based multi-level marketing company that specializes in health and beauty products. Founded in 1978, the company has grown from a small business to one of the world's largest producers of aloe vera and beehive-related products.
-						</span>
-						<p>
-							The company was founded by CEO Rex Maughan who wanted to build a successful and socially responsible business. He began his career with just two employees in Scottsdale, Arizona, and now employs more than 9,000 people worldwide. Forever Living Products has become one of the top 50 direct-selling companies with its product range spanning 150 countries worldwide. The company focuses on using natural ingredients for its products such as aloe vera and bee pollen to ensure that customers get only the highest quality items. 
-						</p>
+						{% if(restArea) %}
+							<h3>
+								Forever Living company in {{state_of_restArea}}
+							</h3>
+							<span class="text-heading">
+								We all know that Forever Living is the largest aloe vera company in the world. Question is what kind of presence forever has in the state of {{state_of_restArea}}? Well, very strong presence. {{state_of_restArea}} is great state and in {{state_of_restArea}} you can purchase Forever Living Products as well as become a representative or more known as distributor in {{state_of_restArea}}. In regards to information about {{state_of_restArea}}, here is some info you may want to know. From the Mexican border along the Pacific Sea is our {{state_of_restArea}}. It's known for diverse terrain and beaches, forests, mountains, vallies and deserts - just amazing. One of the most popular states in America. Come to find out for yourself.
+							</span>
+							<p>
+								There are Forever representatives in {{state_of_restArea}} where many are registered but may not necessarily sell products, but perhaps only purchase and use Forever products for personal use. If you need a Forever Living product in California then you are at the right place. If you are looking for local office, training center, product center or Forever location across {{state_of_restArea}} there might be some but they are usually organized by representatives themselves. To order some of Forever items click on the link below. In regards to the training sessions and presentations - once you become a member you will be informed about upcoming trainings in your area. 
+							</p>
+						{% else %}
+							<h3>
+								Forever Living History: Founded in 1978
+							</h3>
+							<span class="text-heading">
+								Forever Living Products Company is an American-based multi-level marketing company that specializes in health and beauty products. Founded in 1978, the company has grown from a small business to one of the world's largest producers of aloe vera and beehive-related products.
+							</span>
+							<p>
+								The company was founded by CEO Rex Maughan who wanted to build a successful and socially responsible business. He began his career with just two employees in Scottsdale, Arizona, and now employs more than 9,000 people worldwide. Forever Living Products has become one of the top 50 direct-selling companies with its product range spanning 150 countries worldwide. The company focuses on using natural ingredients for its products such as aloe vera and bee pollen to ensure that customers get only the highest quality items. 
+							</p>
+						{% endif %}
+
 						<div class="row">
 							<div class="col-xl-6">
 								<p>
@@ -103,7 +117,11 @@
 						<p>
 							The Forever Living Products Company boasts an impressive array of products which include nutritional supplements, skincare solutions, weight management solutions, and natural aloe-based beverages. All their products are designed to help people enjoy improved health and vitality, as well as enhanced physical appearance. The company also offers various accessories such as shampoos, conditioners, facial cleansers, and moisturizers that can be used in conjunction with their other products to maximize the results they offer. With this comprehensive selection of quality items available at competitive prices, Forever Living Products Company is certain to have something that will meet your individual needs. 
 						</p>
-						<a href="https://www.foreverliving-products.com/{{country}}/home" class="axil-btn btn-bg-primary">Visit Products</a>
+						{% if(restArea) %}
+							<a href="https://www.foreverliving-products.com/{{country}}/{{restArea}}/shop" class="axil-btn btn-bg-primary">Visit Products</a>
+						{% else %}
+							<a href="https://www.foreverliving-products.com/{{country}}/home" class="axil-btn btn-bg-primary">Visit Products</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -226,7 +244,7 @@
 							Second, find a sponsor or mentor (click here) who can guide you throughout your journey as a Forever Living product distributor and invite you to join our FLP family. Look for someone with experience in the industry so they can provide helpful advice and tips on how to make more profits in the long run. 
 						</p>
 
-						<a href="https://bit.ly/FLPJoinSave-{{footer_country_code.upper()}}" class="axil-btn btn-bg-primary">Join & Save 50% Off</a>
+						<a href="https://bit.ly/FLPJoinSave-{{footer_country_code.upper()}}" class="axil-btn btn-bg-primary">Join & Save 5% Off</a>
 					</div>
 				</div>
 			</div>
@@ -234,10 +252,23 @@
 		<div class="container">
 			<hr class="my-5 w-100" />
 			<div class="product-detail-section">
-			  <h4>Delivering Throughout {{ country.title() }}</h4>
-			  {% for state in states %}
-			  	<a href="{{ url_for('country', country=country, restArea=state.replace(' ','')) }}">{{ state }}, </a>
-			  {% endfor %}
+				{% if(restArea) %}
+					{% if(restArea != state_of_restArea.replace(' ', '')) %}
+						<h4>Delivering in Other Areas of {{ state_of_restArea }}</h4>
+					{% else %}
+						<h4>Delivering Throughout {{ state_of_restArea }}</h4>
+					{% endif %}
+
+					{% for state in states %}
+						<a href="{{ url_for('index', country=country, restArea=state_of_restArea.replace(' ', '')+'-'+state.replace(' ','')) }}">{{ state }}, </a>
+					{% endfor %}
+				{% else %}
+					<h4>Delivering Throughout {{ country.title() }}</h4>
+					{% for state in states %}
+						<a href="{{ url_for('index', country=country, restArea=state.replace(' ','')) }}">{{ state }}, </a>
+					{% endfor %}
+				{% endif %}
+				
 			</div>
 		</div>
 		<div class="container">

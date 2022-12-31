@@ -54,7 +54,7 @@ def utility_processor():
     return dict(str=str)
 
 
-def update_var(new_country):
+def update_var(new_country, restArea=None):
     global product_with_categories, localities, categories, country, states, country_specific
     if (country == None or country != new_country):
         country = new_country
@@ -64,7 +64,8 @@ def update_var(new_country):
         categories = controller.categories
         # getting products group by category will -> should give {'category_name': [list of products]}
         product_with_categories = controller.getProductsGroupByCategory()
-        states, localities = controller.findLocalities(new_country)
+
+    states, localities = controller.findLocalities(new_country, restArea)
 
 
 @ app.route('/', methods=['GET', 'POST'])
@@ -73,25 +74,33 @@ def update_var(new_country):
 def index(country=None, restArea=None):
     if (not country):
         country = 'unitedstates'
-    update_var(country)
+
+    state_of_restArea = None
+    if (restArea):
+        state_of_restArea = ' '.join(
+            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0]))
+
+        print('>>>>>>>>>>>>>', state_of_restArea)
+
+    update_var(country, state_of_restArea)
     global product_with_categories, localities, categories, states, country_specific
 
     if (restArea):
-        name, img_file = controller.getFlag(country, ' '.join(
-            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
+        name, img_file = controller.getFlag(country, state_of_restArea)
     else:
         name, img_file = controller.getFlag(country)
 
     context = {
+        'country': country,
+        'restArea': restArea,
         'footer_country_code': footer_country_code[country],
         'categories': categories,
         'productsGroupByCategory': product_with_categories,
-        'country': country,
-        'restArea': restArea,
         'localities': localities,
         'states': states,
         'flag_data': (name, img_file),
-        'offer_links': country_specific
+        'offer_links': country_specific,
+        'state_of_restArea': state_of_restArea
     }
 
     return render_template('web/pages/home.html', **context)

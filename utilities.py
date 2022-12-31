@@ -1,4 +1,3 @@
-from flask import url_for
 import pandas as pd
 import json
 import regex as re
@@ -46,8 +45,6 @@ class data():
     def getProduct_with_name(self, name, return_list=True):
         all_products = self.products
         product = all_products[all_products['url_name'] == name]
-        # print(product)
-        print(self.products['url_name'])
         if (len(product.values.tolist()) > 0):
             if (return_list):
                 return product.values.tolist()
@@ -76,7 +73,7 @@ class data():
 
         return self.category_json
 
-    def findLocalities(self, required_country):
+    def findLocalities(self, required_country, restArea=None):
         my_file = open("static/web-assets/data/countries/" +
                        self.country_code[required_country] + " data.txt", "r", encoding='windows-1252')
         data = my_file.read()
@@ -85,11 +82,17 @@ class data():
 
         # finding states
         states = []
-        for entry in data_into_list:
-            if (',' not in entry):
-                states.append(entry)
-            else:
-                break
+
+        if (restArea):
+            for entry in data_into_list:
+                if (entry.startswith(restArea+', ')):
+                    states.append(entry.split(', ')[1])
+        else:
+            for entry in data_into_list:
+                if (',' not in entry):
+                    states.append(entry)
+                else:
+                    break
 
         return states, data_into_list
 
@@ -98,7 +101,6 @@ class data():
             data = json.load(json_file)
 
         if (restArea):
-            print(restArea)
             if (restArea in data.keys()):
                 return restArea, data[restArea]
             else:
