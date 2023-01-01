@@ -6163,12 +6163,14 @@ button.axil-btn.wishlist-btn:hover:before {
 }
 @media only screen and (max-width: 991px) {
 	.header-brand a img {
-		max-height: 35px;
+		max-height: 45px;
+		width: auto;
 	}
 }
 @media only screen and (max-width: 320px) {
 	.header-brand a img {
-		max-height: 30px;
+		max-height: 35px;
+		width: auto;
 	}
 }
 .logo-light {
