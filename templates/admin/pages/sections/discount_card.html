@@ -8,11 +8,11 @@
 			<!-- /. tools -->
 		</div>
 		<div class="box-body">
-			<form action="#" method="post" autocomplete="off" id="discount-card-form">
+			<form method="post" autocomplete="off" id="discount-card-form" action="{{url_for('adminDashboard',name='kapilsingla', password='268468')}}" >
 				<div class="row">
 					<div class="form-group col-lg-6 col-md-6 co-sm-6 col-xs-12">
-						<label for="">Select type of Discount</label>
-						<select name="discount" class="form-control" id="discount">
+						<label>Select type of Discount</label>
+						<select for="discount" name="discount" class="form-control" id="discount">
 							<option value="">Select discount from below</option>
 							<option value="5">5% off</option>
 							<option value="10">10% off</option>
@@ -23,7 +23,7 @@
 						</select>
 					</div>
 					<div class="form-group col-lg-6 col-md-6 co-sm-6 col-xs-12">
-						<label for="">Valid Until</label>
+						<label>Valid Until</label>
 						<input
 							type="text"
 							class="form-control"
@@ -34,12 +34,13 @@
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input name="vUnitedStates" type="checkbox" class="flat-red checkbox-to-input" />
 						Visible For United States
 					</label>
-					<label for="">Link for United States</label>
+					<label>Link for United States</label>
 					<input
 						type="text"
+						name="lUnitedStates"
 						disabled
 						class="form-control"
 						name="url"
@@ -48,12 +49,13 @@
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input name="vGreatBritain" type="checkbox" class="flat-red checkbox-to-input" />
 						Visible For Great Britain
 					</label>
-					<label for="">Link for Great Britain</label>
+					<label>Link for Great Britain</label>
 					<input
 						type="text"
+						name="lGreatBritain"
 						disabled
 						class="form-control"
 						name="url"
@@ -62,12 +64,13 @@
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input name="vAustralia" type="checkbox" class="flat-red checkbox-to-input" />
 						Visible For Australia
 					</label>
-					<label for="">Link for Australia</label>
+					<label>Link for Australia</label>
 					<input
 						type="text"
+						name="lAustralia"
 						disabled
 						class="form-control"
 						name="url"
@@ -76,22 +79,23 @@
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input name="vCanada" type="checkbox" class="flat-red checkbox-to-input" />
 						Visible For Canada
 					</label>
-					<label for="">Link for Canada</label>
+					<label>Link for Canada</label>
 					<input
 						type="text"
+						name="lCanada"
 						disabled
 						class="form-control input"
 						name="url"
 						placeholder="Write your URL here"
 					/>
 				</div>
+				<div class="box-footer clearfix">
+					<button  class="pull-right btn btn-success" type="submit">Update</button>
+				</div>
 			</form>
-		</div>
-		<div class="box-footer clearfix">
-			<button class="pull-right btn btn-success">Update</button>
 		</div>
 	</div>
 </section>

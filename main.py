@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, url_for, request
 from utilities import *
 from flask_mobility import Mobility
 import regex as re
@@ -82,7 +82,11 @@ def index(country=None, restArea=None):
 
         print('>>>>>>>>>>>>>', state_of_restArea)
 
-    update_var(country, state_of_restArea)
+    try:
+        update_var(country, state_of_restArea)
+    except:
+        return redirect(url_for('index'))
+
     global product_with_categories, localities, categories, states, country_specific
 
     if (restArea):
@@ -104,12 +108,6 @@ def index(country=None, restArea=None):
     }
 
     return render_template('web/pages/home.html', **context)
-
-
-# Admin Panel Page
-@ app.route('/admin/kapilsingla/268468', methods=['GET', 'POST'])
-def admin():
-    return render_template('web/pages/admin.html')
 
 
 # index page with country name
@@ -246,9 +244,17 @@ def productDetails(country, name, category, restArea=None):
         return redirect(url_for('country', country=country, restArea=restArea), code=302)
 
 
-@ app.route('/admin/dashboard', methods=['GET', 'POST'])
-def adminDashboard():
-    return render_template('admin/pages/dashboard.html')
+@ app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
+def adminDashboard(name=None, password=None):
+    if request.method == 'POST':
+        for i in ['discount', 'valid_until', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada']:
+            print(request.form.get(i))
+
+    else:
+        if (name == 'kapilsingla' and password == '268468'):
+            return render_template('admin/pages/dashboard.html', name=name, password=password)
+        else:
+            return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
