@@ -18,17 +18,18 @@
 										</div>
 										{% if str(product[29]) == "nan" or str(product[29]) == "" %}
 										{% else %}
-											<div class="thumbnail">
-												<iframe
-														width="100%"
-														height="612px"
-														src=" {{product[29]}} "
-														title="Demo Background Sample Video"
-														frameborder="0"
-														allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-														allowfullscreen
-													></iframe>
-											</div>
+										<div class="thumbnail">
+											<iframe
+												width="100%"
+												height="612px"
+												src="{{product[29]}}"
+												title="Demo Background Sample Video"
+												frameborder="0"
+												class="vimeo-iframe"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+												allowfullscreen
+											></iframe>
+										</div>
 										{% endif %}
 									</div>
 								</div>
@@ -40,9 +41,13 @@
 									</div>
 									{% if str(product[29]) == "nan" or str(product[29]) == "" %}
 									{% else %}
-										<div class="small-thumb-img video-thumbnail">
-											<img src="" data-vimeo-href="{{product[29]}}" alt="thumb image" />
-										</div>
+									<div class="small-thumb-img video-thumbnail">
+										<img
+											src=""
+											data-vimeo-href="{{product[29]}}"
+											alt="thumb image"
+										/>
+									</div>
 									{% endif %}
 								</div>
 							</div>
@@ -227,26 +232,25 @@
 		$(this).html(starRating);
 	});
 
-  $('[data-vimeo-href]').each(function() {
-    var $this = $(this);
-    var url = $this.data('vimeo-href');
-    // extract id from url
-    var id = url.match(/(\d+)/)[0];
-    
-    var url = `http://vimeo.com/api/v2/video/${id}.json`;
-    $.get(url, function(data) {
-      $this.attr('src', data[0].thumbnail_medium);
-    });
-  });
+	$("[data-vimeo-href]").each(function () {
+		var $this = $(this);
+		var url = $this.data("vimeo-href");
+		// extract id from url
+		var id = url.match(/(\d+)/)[0];
 
-  // on click .small-thumb-img stop iframe video which is playing
-  $('.small-thumb-img:not(.video-thumbnail)').on('click', function() {
-    var $this = $(this);
-    var $iframe = $this.closest('.single-product-thumb').find('iframe');
-    setTimeout(function() {
-      $iframe.attr('src', $iframe.attr('src'));
-    }, 250);
-  });
+		var url = `http://vimeo.com/api/v2/video/${id}.json`;
+		$.get(url, function (data) {
+			$this.attr("src", data[0].thumbnail_medium);
+		});
+	});
 
+	// on click .small-thumb-img stop iframe video which is playing
+	$(".small-thumb-img:not(.video-thumbnail)").on("click", function () {
+		var $this = $(this);
+		var $iframe = $this.closest(".single-product-thumb").find("iframe");
+		setTimeout(function () {
+			$iframe.attr("src", $iframe.attr("src"));
+		}, 250);
+	});
 </script>
 {% endblock %}
