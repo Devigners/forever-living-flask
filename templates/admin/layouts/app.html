@@ -170,6 +170,26 @@
 		<!-- AdminLTE App -->
 		<script src="{{ url_for('static', filename='admin-assets/dist/js/app.min.js') }}" type="text/javascript"></script>
 
+		<script src="{{ url_for('static', filename='admin-assets/dist/js/jquery.validate.min.js') }}"></script>
+
+		<script>
+			$.validator.setDefaults({
+				errorPlacement: function(error, element) {
+					if (element.parent('.input-group').length) {
+						error.insertAfter(element.parent());
+					} else if (element.data('select2')) {
+						if (element.parent('td').length) {
+							element.parent('td').append(error);
+						} else if (element.parent().hasClass('form-group')) {
+							element.parent('.form-group').append(error);
+						}
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+		</script>
+
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		<!-- <script src="{{ url_for('static', filename='admin-assets/dist/js/pages/dashboard.js') }}" type="text/javascript"></script> -->
 
