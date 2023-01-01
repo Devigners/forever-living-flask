@@ -3,6 +3,7 @@ from utilities import *
 from flask_mobility import Mobility
 import regex as re
 import math
+import sqlalchemy as db
 
 # footer links
 footer_country_code = {'australia': 'aus',
@@ -47,6 +48,11 @@ blogs = None
 # flask app name
 app = Flask(__name__)
 Mobility(app)
+
+# flask integration with database
+engine = db.create_engine('mysql://root:root@localhost/foreverliving')
+connection = engine.connect()
+metadata = db.MetaData()
 
 
 @app.context_processor
@@ -247,11 +253,23 @@ def productDetails(country, name, category, restArea=None):
 @ app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
 def adminDashboard(name=None, password=None):
     if request.method == 'POST':
-        for i in ['discount', 'valid_until', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada']:
+        for i in ['cardType', 'discount', 'valid_until', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada']:
             print(request.form.get(i))
 
     else:
         if (name == 'kapilsingla' and password == '268468'):
+
+            census = db.Table('cards', metadata,
+                              autoload=True, autoload_with=engine)
+            columns = census.columns.keys()
+
+            query = db.select([census])
+            ResultProxy = connection.execute(query)
+            ResultSet = ResultProxy.fetchall()
+
+            print(columns)
+            print(ResultSet)
+
             return render_template('admin/pages/dashboard.html', name=name, password=password)
         else:
             return redirect(url_for('index'))
