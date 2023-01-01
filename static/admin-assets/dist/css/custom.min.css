@@ -38,3 +38,10 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 }
+
+label.error {
+	color: #f00;
+	font-size: 13px;
+	margin-top: 5px;
+	font-weight: normal;
+}

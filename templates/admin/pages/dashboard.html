@@ -39,12 +39,13 @@
 			$(this)
 				.closest(".form-group")
 				.find('input[type="text"]')
-				.prop("disabled", false);
+				.prop("disabled", false)
 		} else {
 			$(this)
 				.closest(".form-group")
 				.find('input[type="text"]')
-				.prop("disabled", true);
+				.prop("disabled", true)
+				.valid();
 		}
 	});
 
@@ -53,6 +54,60 @@
 		format: "dd-mm-yyyy",
 		autoclose: true,
 		todayHighlight: true,
+	})
+
+	$("#discount-card-form").validate({
+		rules: {
+			discount: {
+				required: true,
+			},
+			valid_until: {
+				required: true,
+			},
+			lUnitedStates: {
+				required: {
+					depends: function () {
+						return $("[name='vUnitedStates']").is(":checked");
+					},
+				},
+			},
+			lGreatBritain: {
+				required: {
+					depends: function () {
+						return $("[name='vGreatBritain']").is(":checked");
+					},
+				},
+			},
+			lAustralia: {
+				required: {
+					depends: function () {
+						return $("[name='vAustralia']").is(":checked");
+					},
+				},
+			},
+			lCanada: {
+				required: {
+					depends: function () {
+						return $("[name='vCanada']").is(":checked");
+					},
+				},
+			},
+		},
+		submitHandler: function (form) {
+			const data = new FormData(form);
+			$.ajax({
+				url: $(form).attr("action"),
+				type: "POST",
+				data: data,
+				contentType: false,
+				processData: false,
+				success: function (response) {
+					console.log(response);
+				},
+				error: function (error) {
+				},
+			});
+		},
 	})
 
 
