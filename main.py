@@ -3,7 +3,7 @@ from utilities import *
 from flask_mobility import Mobility
 import regex as re
 import math
-import sqlalchemy as db
+# import sqlalchemy as db
 
 # footer links
 footer_country_code = {'australia': 'aus',
@@ -49,10 +49,10 @@ blogs = None
 app = Flask(__name__)
 Mobility(app)
 
-# flask integration with database
-engine = db.create_engine('mysql://root:root@localhost/foreverliving')
-connection = engine.connect()
-metadata = db.MetaData()
+# # flask integration with database
+# engine = db.create_engine('mysql://root:root@localhost/foreverliving')
+# connection = engine.connect()
+# metadata = db.MetaData()
 
 
 @app.context_processor
@@ -250,29 +250,54 @@ def productDetails(country, name, category, restArea=None):
         return redirect(url_for('country', country=country, restArea=restArea), code=302)
 
 
-@ app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
-def adminDashboard(name=None, password=None):
-    if request.method == 'POST':
-        for i in ['cardType', 'discount', 'valid_until', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada']:
-            print(request.form.get(i))
+# @ app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
+# def adminDashboard(name=None, password=None):
+#     if request.method == 'POST':
+#         needed_columns = {
+#             'discount': ['discount', 'valid_until', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada'],
+#             'shipping': ['vUnitedStates', 'lUnitedStates'],
+#             'visit': ['vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada'],
+#             'join': ['vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada']
+#         }
 
-    else:
-        if (name == 'kapilsingla' and password == '268468'):
+#         data_dict = {}
+#         for card in ['discount', 'shipping', 'visit', 'join']:
+#             data_dict[card] = {}
+#             for form_field in needed_columns[card]:
+#                 data_dict[card][form_field] = request.form.get(
+#                     card+'_'+form_field)
 
-            census = db.Table('cards', metadata,
-                              autoload=True, autoload_with=engine)
-            columns = census.columns.keys()
+#         # after getting the updated values, we need to update the database entries
+#         print(data_dict)
 
-            query = db.select([census])
-            ResultProxy = connection.execute(query)
-            ResultSet = ResultProxy.fetchall()
+#     else:
+#         if (name == 'kapilsingla' and password == '268468'):
 
-            print(columns)
-            print(ResultSet)
+#             census = db.Table('cards', metadata,
+#                               autoload=True, autoload_with=engine)
+#             columns = census.columns.keys()
 
-            return render_template('admin/pages/dashboard.html', name=name, password=password)
-        else:
-            return redirect(url_for('index'))
+#             query = db.select([census])
+#             ResultProxy = connection.execute(query)
+#             ResultSet = ResultProxy.fetchall()
+
+#             cards = {}
+#             for set in ResultSet:
+#                 cards[set[1]] = {}
+#                 for col in columns:
+#                     cards[set[1]][col] = set[columns.index(col)]
+
+#             print(cards['discount']['discount'])
+
+#             context = {
+#                 'name': name,
+#                 'password': password,
+#                 'cards': cards
+#             }
+
+#             return render_template('admin/pages/dashboard.html', **context)
+#         else:
+#             return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

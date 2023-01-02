@@ -33,6 +33,10 @@
 {% endblock %} {% block scripts %}
 
 <script>
+	// $('[name="discount"]').val("{{cards['discount']['discount']}}").trigger("change")
+	// $('[name="vUnitedStates"]').prop("checked", false)
+
+
 	// on change cehckbox-to-input disable/enable input
 	$("body").on("change", ".checkbox-to-input", function () {
 		if ($(this).is(":checked")) {
