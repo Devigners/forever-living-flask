@@ -59,13 +59,13 @@
 					<div
 						class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20"
 					>
-						{% if footer_country_code == "usa" %}
+						{% if offer_cards['shipping']['v'+flag_data[0].replace(' ','')] == 1 %}
 							<div class="col">
 								<div class="home-service-box" data-color="green">
 									<h5>Free Shipping</h5>
 									<h6>for orders of 50$ or more</h6>	
 									<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}" alt="" class="mt-4">
-									<a class="btn" role="button" href="{{ offer_links[footer_country_code]['shipping'] }}">Get Now</a>
+									<a class="btn" role="button" href="{{ offer_cards['shipping']['l'+flag_data[0].replace(' ','')] }}">Get Now</a>
 								</div>
 							</div>
 						{% else %}
@@ -73,31 +73,55 @@
 								<div class="home-service-box" data-color="green">
 									<h5>Visit Our<br>Retail Store</h5>
 									<h6>in {{ flag_data[0] }}</h6>
-									<a class="btn" role="button" href="https://bit.ly/FLPRetailStore-{{footer_country_code.upper()}}">Check it Out</a>
+									<a class="btn" role="button" href="{{ offer_cards['visit']['l'+flag_data[0].replace(' ','')] }}">Check it Out</a>
 								</div>
 							</div>
 						{% endif %}
+						{% if offer_cards['discount']['v'+flag_data[0].replace(' ','')] == 1 %}
 						<div class="col">
 							<div class="home-service-box" data-color="light-blue">
-								<h5>5% Off</h5>
+								<h5>{{offer_cards['discount']['discount']}}% Off</h5>
 								<h6>Special Discount</h6>
 								<ul class="timer-box">
-									<li><span class="days">0</span>d</li>
-									<li><span class="hours">0</span>h</li>
-									<li><span class="minutes">0</span>m</li>
-									<li><span class="seconds">0</span>s</li>
+									<li><span class="days">0</span></li>
+									<li><span class="hours">0</span></li>
+									<li><span class="minutes">0</span></li>
+									<li><span class="seconds">0</span></li>
 								</ul>
-								<a class="btn" role="button" href="{{ offer_links[footer_country_code]['5%_off'] }}">Get Now</a>
+								<a class="btn" role="button" href="{{ offer_cards['discount']['l'+flag_data[0].replace(' ','')] }}">Get Now</a>
 							</div>
 						</div>
+						{% else %}
+							{% if offer_cards['visit']['v'+flag_data[0].replace(' ','')] == 1 %}
+							<div class="col">
+								<div class="home-service-box" data-color="green">
+									<h5>Visit Our<br>Retail Store</h5>
+									<h6>in {{ flag_data[0] }}</h6>
+									<a class="btn" role="button" href="{{ offer_cards['visit']['l'+flag_data[0].replace(' ','')] }}">Check it Out</a>
+								</div>
+							</div>
+							{% endif %}
+						{% endif %}
+						{% if offer_cards['join']['v'+flag_data[0].replace(' ','')] == 1 %}
 						<div class="col">
 							<div class="home-service-box" data-color="purple">
 								<h5>Join & Save</h5>
 								<h6>Instanly</h6>	
 								<h4>5% Off</h4>
-								<a class="btn" role="button" href="https://bit.ly/FLPJoinSave-{{footer_country_code.upper()}}">Join Now</a>
+								<a class="btn" role="button" href="{{ offer_cards['join']['l'+flag_data[0].replace(' ','')] }}">Join Now</a>
 							</div>
 						</div>
+						{% else %}
+							{% if offer_cards['visit']['v'+flag_data[0].replace(' ','')] == 1 %}
+							<div class="col">
+								<div class="home-service-box" data-color="green">
+									<h5>Visit Our<br>Retail Store</h5>
+									<h6>in {{ flag_data[0] }}</h6>
+									<a class="btn" role="button" href="{{ offer_cards['visit']['l'+flag_data[0].replace(' ','')] }}">Check it Out</a>
+								</div>
+							</div>
+							{% endif %}
+						{% endif %}
 					</div>
 				</div>
 			</div>

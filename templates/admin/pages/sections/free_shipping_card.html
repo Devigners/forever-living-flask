@@ -1,31 +1,39 @@
 <section class="col-lg-6 h-100">
 	<br />
 	<!-- quick email widget -->
-	<div class="box box-info">
-		<div class="box-header">
-			<i class="fa fa-envelope"></i>
-			<h3 class="box-title">Free Shipping Card</h3>
-			<!-- /. tools -->
-		</div>
-		<div class="box-body">
-			<form action="#" method="post" autocomplete="off" id="free-shipping-form">
+	<form method="post" action="{{url_for('adminDashboard',name='kapilsingla', password='268468')}}" autocomplete="off" id="free-shipping-form">
+		<input type="hidden" name="cardType" value="shipping">
+		<div class="box box-info">
+			<div class="box-header">
+				<i class="fa fa-envelope"></i>
+				<h3 class="box-title">Free Shipping Card</h3>
+				<!-- /. tools -->
+			</div>
+			<div class="box-body">
 				<div class="form-group mb-4">
-					<label for="">Link for Free Shipping</label>
+					<label class="label-checkbox font-normal mb-0 d-block">
+						<input 
+							type="checkbox" 
+							{% if cards['shipping']['vUnitedStates'] %}checked{% endif %} 
+							class="flat-red checkbox-to-input" 
+							name="shipping_vUnitedStates" 
+						/>
+						Visible for United States
+					</label>
+					<label>Link for Free Shipping</label>
 					<input
-						type="discount"
+						type="text"
 						class="form-control"
-						name="url"
+						name="shipping_lUnitedStates"
 						placeholder="Write your URL here"
+						{% if cards['shipping']['vUnitedStates'] == None %}disabled{% endif %}
+						value="{{ cards['shipping']['lUnitedStates'] }}"
 					/>
 				</div>
-				<label class="label-checkbox font-normal mb-0 d-block">
-					<input type="checkbox" class="flat-red" />
-					Visible for United States
-				</label>
-			</form>
+				<div class="box-footer clearfix">
+					<button class="pull-right btn btn-success" type="submit">Update</button>
+				</div>
+			</div>
 		</div>
-		<div class="box-footer clearfix">
-			<button class="pull-right btn btn-success">Update</button>
-		</div>
-	</div>
+	</form>
 </section>

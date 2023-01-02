@@ -4,9 +4,10 @@
 	<form
 		method="post"
 		autocomplete="off"
-		id="discount-card-form"
+		id="discount"
 		action="{{url_for('adminDashboard',name='kapilsingla', password='268468')}}"
 	>
+		<input type="hidden" name="cardType" value="discount">
 		<div class="box box-info">
 			<div class="box-header">
 				<i class="fa fa-envelope"></i>
@@ -24,30 +25,32 @@
 							id="discount"
 						>
 							<option value="">Select discount from below</option>
-							<option value="5">5% off</option>
-							<option value="10">10% off</option>
-							<option value="15">15% off</option>
-							<option value="20">20% off</option>
-							<option value="25">25% off</option>
-							<option value="30">30% off</option>
+							<option value="5" {% if cards['discount']['discount'] == 5 %}selected{% endif %}>5% off</option>
+							<option value="10" {% if cards['discount']['discount'] == 10 %}selected{% endif %}>10% off</option>
+							<option value="15" {% if cards['discount']['discount'] == 15 %}selected{% endif %}>15% off</option>
+							<option value="20" {% if cards['discount']['discount'] == 20 %}selected{% endif %}>20% off</option>
+							<option value="25" {% if cards['discount']['discount'] == 25 %}selected{% endif %}>25% off</option>
+							<option value="30" {% if cards['discount']['discount'] == 30 %}selected{% endif %}>30% off</option>
 						</select>
 					</div>
 					<div class="form-group col-lg-6 col-md-6 co-sm-6 col-xs-12">
 						<label>Valid Until</label>
 						<input
-							type="text"
+							type="date"
 							class="form-control"
-							name="discount_valid_until"
+							name="discount_validUntil"
 							placeholder="Select Date"
+							value="{{ cards['discount']['validUntil'] }}"
 						/>
 					</div>
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
 						<input
-							name="discount_vUnitedStates"
 							type="checkbox"
+							name="discount_vUnitedStates"
 							class="flat-red checkbox-to-input"
+							{% if cards['discount']['vUnitedStates'] %}checked{% endif %}
 						/>
 						Visible For United States
 					</label>
@@ -55,9 +58,10 @@
 					<input
 						type="text"
 						name="discount_lUnitedStates"
-						disabled
 						class="form-control"
 						placeholder="Write your URL here"
+						{% if cards['discount']['vUnitedStates'] == None %}disabled{% endif %}
+						value="{{ cards['discount']['lUnitedStates'] }}"
 					/>
 				</div>
 				<div class="form-group mb-4">
@@ -66,6 +70,7 @@
 							name="discount_vGreatBritain"
 							type="checkbox"
 							class="flat-red checkbox-to-input"
+							{% if cards['discount']['vGreatBritain'] %}checked{% endif %}
 						/>
 						Visible For Great Britain
 					</label>
@@ -73,7 +78,8 @@
 					<input
 						type="text"
 						name="discount_lGreatBritain"
-						disabled
+						{% if cards['discount']['vGreatBritain'] == None %}disabled{% endif %}
+						value="{{ cards['discount']['lGreatBritain'] }}"
 						class="form-control"
 						placeholder="Write your URL here"
 					/>
@@ -84,6 +90,7 @@
 							name="discount_vAustralia"
 							type="checkbox"
 							class="flat-red checkbox-to-input"
+							{% if cards['discount']['vAustralia'] %}checked{% endif %}
 						/>
 						Visible For Australia
 					</label>
@@ -91,7 +98,8 @@
 					<input
 						type="text"
 						name="discount_lAustralia"
-						disabled
+						{% if cards['discount']['vAustralia'] == None %}disabled{% endif %}
+						value="{{ cards['discount']['lAustralia'] }}"
 						class="form-control"
 						placeholder="Write your URL here"
 					/>
@@ -102,6 +110,7 @@
 							name="discount_vCanada"
 							type="checkbox"
 							class="flat-red checkbox-to-input"
+							{% if cards['discount']['vCanada'] %}checked{% endif %}
 						/>
 						Visible For Canada
 					</label>
@@ -109,7 +118,8 @@
 					<input
 						type="text"
 						name="discount_lCanada"
-						disabled
+						{% if cards['discount']['vCanada'] == None %}disabled{% endif %}
+						value="{{ cards['discount']['lCanada'] }}"
 						class="form-control input"
 						placeholder="Write your URL here"
 					/>

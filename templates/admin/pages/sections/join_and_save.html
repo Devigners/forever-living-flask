@@ -1,74 +1,79 @@
 <section class="col-lg-6 h-100">
 	<br />
 	<!-- quick email widget -->
-	<div class="box box-info">
-		<div class="box-header">
-			<i class="fa fa-envelope"></i>
-			<h3 class="box-title">Join and Save Card</h3>
-			<!-- /. tools -->
-		</div>
-		<div class="box-body">
-			<form action="#" method="post" autocomplete="off" id="join-and-save-form">
+	<form action="{{url_for('adminDashboard',name='kapilsingla', password='268468')}}" method="post" autocomplete="off" id="join-and-save-form">
+		<input type="hidden" name="cardType" value="join">
+		<div class="box box-info">
+			<div class="box-header">
+				<i class="fa fa-envelope"></i>
+				<h3 class="box-title">Join and Save Card</h3>
+				<!-- /. tools -->
+			</div>
+			<div class="box-body">
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input type="checkbox" {% if cards['join']['vUnitedStates'] %}checked{% endif %} name="join_vUnitedStates" class="flat-red checkbox-to-input" />
 						Visible For United States
 					</label>
 					<label for="">Link for United States</label>
 					<input
 						type="text"
-						disabled
 						class="form-control"
-						name="url"
+						name="join_lUnitedStates"
 						placeholder="Write your URL here"
+						{% if cards['join']['vUnitedStates'] == None %}disabled{% endif %}
+						value="{{ cards['join']['lUnitedStates'] }}"
 					/>
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input type="checkbox" {% if cards['join']['vGreatBritain'] %}checked{% endif %} name="join_vGreatBritain" class="flat-red checkbox-to-input" />
 						Visible For Great Britain
 					</label>
 					<label for="">Link for Great Britain</label>
 					<input
 						type="text"
-						disabled
+						{% if cards['join']['vGreatBritain'] == None %}disabled{% endif %}
+						value="{{ cards['join']['lGreatBritain'] }}"
 						class="form-control"
-						name="url"
+						name="join_lGreatBritain"
 						placeholder="Write your URL here"
 					/>
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input type="checkbox" {% if cards['join']['vAustralia'] %}checked{% endif %} name="join_vAustralia" class="flat-red checkbox-to-input" />
 						Visible For Australia
 					</label>
 					<label for="">Link for Australia</label>
 					<input
 						type="text"
-						disabled
 						class="form-control"
-						name="url"
+						{% if cards['join']['vAustralia'] == None %}disabled{% endif %}
+						value="{{ cards['join']['lAustralia'] }}"
+						name="join_lAustralia"
 						placeholder="Write your URL here"
 					/>
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input type="checkbox" {% if cards['join']['vCanada'] %}checked{% endif %} name="join_vCanada" class="flat-red checkbox-to-input" />
 						Visible For Canada
 					</label>
 					<label for="">Link for Canada</label>
 					<input
 						type="text"
-						disabled
+						{% if cards['join']['vCanada'] == None %}disabled{% endif %}
+						value="{{ cards['join']['lCanada'] }}"
 						class="form-control"
-						name="url"
+						name="join_lCanada"
 						placeholder="Write your URL here"
 					/>
 				</div>
-			</form>
+				<div class="box-footer clearfix">
+					<button class="pull-right btn btn-success" type="submit">Update</button>
+				</div>
+			</div>
 		</div>
-		<div class="box-footer clearfix">
-			<button class="pull-right btn btn-success">Update</button>
-		</div>
-	</div>
+	</form>
 </section>

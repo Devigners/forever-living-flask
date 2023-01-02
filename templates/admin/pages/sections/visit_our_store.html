@@ -1,74 +1,79 @@
 <section class="col-lg-6 h-100">
 	<br />
 	<!-- quick email widget -->
-	<div class="box box-info">
-		<div class="box-header">
-			<i class="fa fa-envelope"></i>
-			<h3 class="box-title">Visit our Store Card</h3>
-			<!-- /. tools -->
-		</div>
-		<div class="box-body">
-			<form action="#" method="post" autocomplete="off" id="visit-our-store-form">
+	<form action="{{url_for('adminDashboard',name='kapilsingla', password='268468')}}" method="post" autocomplete="off" id="visit">
+		<input type="hidden" name="cardType" value="visit">
+		<div class="box box-info">
+			<div class="box-header">
+				<i class="fa fa-envelope"></i>
+				<h3 class="box-title">Visit our Store Card</h3>
+				<!-- /. tools -->
+			</div>
+			<div class="box-body">
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+							<input type="checkbox" {% if cards['visit']['vUnitedStates'] %}checked{% endif %} name="visit_vUnitedStates" {% if cards['visit']['vUnitedStates'] %}checked{% endif %} class="flat-red checkbox-to-input" />
 						Visible For United States
 					</label>
-					<label for="">Link for United States</label>
+					<label>Link for United States</label>
 					<input
 						type="text"
-						disabled
+						{% if cards['visit']['vUnitedStates'] == None %}disabled{% endif %}
+						value="{{ cards['visit']['lUnitedStates'] }}"
 						class="form-control"
-						name="url"
+						name="visit_lUnitedStates"
 						placeholder="Write your URL here"
 					/>
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input type="checkbox" {% if cards['visit']['vGreatBritain'] %}checked{% endif %} name="visit_vGreatBritain" class="flat-red checkbox-to-input" />
 						Visible For Great Britain
 					</label>
-					<label for="">Link for Great Britain</label>
+					<label>Link for Great Britain</label>
 					<input
 						type="text"
-						disabled
 						class="form-control"
-						name="url"
+						name="visit_lGreatBritain"
 						placeholder="Write your URL here"
+						{% if cards['visit']['vGreatBritain'] == None %}disabled{% endif %}
+						value="{{ cards['visit']['lGreatBritain'] }}"
 					/>
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input type="checkbox" {% if cards['visit']['vAustralia'] %}checked{% endif %} name="visit_vAustralia" class="flat-red checkbox-to-input" />
 						Visible For Australia
 					</label>
-					<label for="">Link for Australia</label>
+					<label>Link for Australia</label>
 					<input
 						type="text"
-						disabled
 						class="form-control"
-						name="url"
+						name="visit_lAustralia"
 						placeholder="Write your URL here"
+						{% if cards['visit']['vAustralia'] == None %}disabled{% endif %}
+						value="{{ cards['visit']['lAustralia'] }}"
 					/>
 				</div>
 				<div class="form-group mb-4">
 					<label class="label-checkbox font-normal mb-0 d-block">
-						<input type="checkbox" class="flat-red checkbox-to-input" />
+						<input type="checkbox" {% if cards['visit']['vCanada'] %}checked{% endif %} name="visit_vCanada" class="flat-red checkbox-to-input" />
 						Visible For Canada
 					</label>
-					<label for="">Link for Canada</label>
+					<label>Link for Canada</label>
 					<input
 						type="text"
-						disabled
 						class="form-control"
-						name="url"
+						name="visit_lCanada"
 						placeholder="Write your URL here"
+						{% if cards['visit']['vCanada'] == None %}disabled{% endif %}
+						value="{{ cards['visit']['lCanada'] }}"
 					/>
 				</div>
-			</form>
+				<div class="box-footer clearfix">
+					<button class="pull-right btn btn-success" type="submit">Update</button>
+				</div>
+			</div>
 		</div>
-		<div class="box-footer clearfix">
-			<button class="pull-right btn btn-success">Update</button>
-		</div>
-	</div>
+	</form>
 </section>

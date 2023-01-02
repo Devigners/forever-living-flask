@@ -77,10 +77,14 @@
 
 	<body class="sticky-header">
 		<div class="floating-btn">
-			<div>
-				<a href="https://bit.ly/FLPJoinSave-{{footer_country_code.upper()}}">Join & Save 5%</a>
-			</div>
-			<div>
-				<a href="{{ offer_links[footer_country_code]['5%_off'] }}">Discount 5%</a>
-			</div>
+			{% if offer_cards['join']['v'+flag_data[0].replace(' ','')] == 1 %}
+				<div>
+					<a href="{{ offer_cards['join']['l'+flag_data[0].replace(' ','')] }}">Join & Save 5%</a>
+				</div>
+			{% endif %}
+			{% if offer_cards['discount']['v'+flag_data[0].replace(' ','')] == 1 %}
+				<div>
+					<a href="{{ offer_cards['discount']['l'+flag_data[0].replace(' ','')] }}">Discount {{offer_cards['discount']['discount']}}%</a>
+				</div>
+			{% endif %}
 		</div>
