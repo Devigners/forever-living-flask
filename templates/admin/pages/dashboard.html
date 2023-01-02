@@ -60,6 +60,14 @@
 		todayHighlight: true,
 	})
 
+	function requireDepend (selector) {
+		return {
+			depends: function () {
+				return $(selector).is(":checked");
+			},
+		}
+	}
+
 	$("#discount-card-form").validate({
 		rules: {
 			discount: {
@@ -69,32 +77,16 @@
 				required: true,
 			},
 			lUnitedStates: {
-				required: {
-					depends: function () {
-						return $("[name='vUnitedStates']").is(":checked");
-					},
-				},
+				required: requireDepend("[name='vUnitedStates']"),
 			},
 			lGreatBritain: {
-				required: {
-					depends: function () {
-						return $("[name='vGreatBritain']").is(":checked");
-					},
-				},
+				required: requireDepend("[name='vGreatBritain']"),
 			},
 			lAustralia: {
-				required: {
-					depends: function () {
-						return $("[name='vAustralia']").is(":checked");
-					},
-				},
+				required: requireDepend("[name='vAustralia']"),
 			},
 			lCanada: {
-				required: {
-					depends: function () {
-						return $("[name='vCanada']").is(":checked");
-					},
-				},
+				required: requireDepend("[name='vCanada']"),
 			},
 		},
 		submitHandler: function (form) {
