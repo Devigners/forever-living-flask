@@ -1,5 +1,11 @@
 {% extends "web/layouts/app.html" %} {% block content %}
 
+{% block meta %}
+	<title>{{ blog['Title'] }} | Forever Living</title>
+	<meta name="description" content="Forever Living website content" /> 
+	<meta name="keywords" content="Forever Living, product hunting" /> 
+{% endblock %}
+
 <main class="main-wrapper">
 	<!-- Start Blog Area  -->
 	<div class="axil-blog-area axil-section-gap">

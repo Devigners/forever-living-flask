@@ -51,8 +51,22 @@ Mobility(app)
 
 # flask integration with database
 engine = db.create_engine('mysql://root:root@localhost/foreverliving')
+# engine = db.create_engine('mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
 connection = engine.connect()
 metadata = db.MetaData()
+
+# fetching cards data from Mysql Database
+census = db.Table('cards', metadata, autoload=True, autoload_with=engine)
+columns = census.columns.keys()
+query = db.select([census])
+ResultProxy = connection.execute(query)
+ResultSet = ResultProxy.fetchall()
+
+cards = {}
+for set in ResultSet:
+    cards[set[1]] = {}
+    for col in columns:
+        cards[set[1]][col] = set[columns.index(col)]
 
 
 @app.context_processor
@@ -74,9 +88,9 @@ def update_var(new_country, restArea=None):
     states, localities = controller.findLocalities(new_country, restArea)
 
 
-@ app.route('/', methods=['GET', 'POST'])
-@ app.route('/<country>/', methods=['GET', 'POST'])
-@ app.route('/<country>/<restArea>/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/<country>/', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>/', methods=['GET', 'POST'])
 def index(country=None, restArea=None):
     if (not country):
         country = 'unitedstates'
@@ -88,12 +102,16 @@ def index(country=None, restArea=None):
 
         print('>>>>>>>>>>>>>', state_of_restArea)
 
+    print('>>>>>>>>>>', country)
+    print('>>>>>>>>>>', restArea)
+    print('>>>>>>>>>>', state_of_restArea)
+
     try:
         update_var(country, state_of_restArea)
     except:
         return redirect(url_for('index'))
 
-    global product_with_categories, localities, categories, states, country_specific
+    global product_with_categories, localities, categories, states, country_specific, cards
 
     if (restArea):
         name, img_file = controller.getFlag(country, state_of_restArea)
@@ -103,6 +121,7 @@ def index(country=None, restArea=None):
     context = {
         'country': country,
         'restArea': restArea,
+        'offer_cards': cards,
         'footer_country_code': footer_country_code[country],
         'categories': categories,
         'productsGroupByCategory': product_with_categories,
@@ -117,33 +136,17 @@ def index(country=None, restArea=None):
 
 
 # index page with country name
-@ app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
-@ app.route('/<country>/shop', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
+@app.route('/<country>/shop', methods=['GET', 'POST'])
 def country(country, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, all_products, controller, country_specific
+    global product_with_categories, localities, categories, all_products, controller, country_specific, cards
 
     if (restArea):
         name, img_file = controller.getFlag(country, ' '.join(
             re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
     else:
         name, img_file = controller.getFlag(country)
-
-    # fetching cards data from Mysql Database
-    census = db.Table('cards', metadata, autoload=True, autoload_with=engine)
-    columns = census.columns.keys()
-    query = db.select([census])
-    ResultProxy = connection.execute(query)
-    ResultSet = ResultProxy.fetchall()
-
-    cards = {}
-    for set in ResultSet:
-        cards[set[1]] = {}
-        for col in columns:
-            cards[set[1]][col] = set[columns.index(col)]
-
-    print('>>>>>>>>>>>>>>>>>>>>>>.')
-    print(cards)
 
     context = {
         'offer_links': country_specific,
@@ -162,31 +165,39 @@ def country(country, restArea=None):
 
 
 # about us page
-@ app.route('/<country>/<restArea>/products', methods=['GET', 'POST'])
-@ app.route('/<country>/products', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>/products', methods=['GET', 'POST'])
+@app.route('/<country>/products', methods=['GET', 'POST'])
 def shop(country, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, country_specific
+    global product_with_categories, localities, categories, country_specific, cards
+
+    if (restArea):
+        name, img_file = controller.getFlag(country, ' '.join(
+            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
+    else:
+        name, img_file = controller.getFlag(country)
 
     context = {
         'offer_links': country_specific,
+        'offer_cards': cards,
         'footer_country_code': footer_country_code[country],
         'categories': categories,
         'productsGroupByCategory': product_with_categories,
         'country': country,
         'localities': localities,
-        'restArea': restArea
+        'restArea': restArea,
+        'flag_data': (name, img_file)
     }
 
     return render_template('web/pages/shop.html', **context)
 
 
 # blog page
-@ app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
-@ app.route('/<country>/blogs', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
+@app.route('/<country>/blogs', methods=['GET', 'POST'])
 def blogs(country, restArea=None):
     update_var(country)
-    global localities, product_with_categories, blogs, country_specific
+    global localities, product_with_categories, blogs, country_specific, cards
     if (localities == None):
         localities = controller.findLocalities(country)
 
@@ -201,54 +212,76 @@ def blogs(country, restArea=None):
     if ('Uncategorized' in blog_categories):
         blog_categories.remove('Uncategorized')
 
+    if (restArea):
+        name, img_file = controller.getFlag(country, ' '.join(
+            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
+    else:
+        name, img_file = controller.getFlag(country)
+
     context = {
         'offer_links': country_specific,
         'blog_categories': blog_categories,
+        'offer_cards': cards,
         'blogs': blogs,
         'footer_country_code': footer_country_code[country],
         'country': country,
         'localities': localities,
         'restArea': restArea,
-        'productsGroupByCategory': product_with_categories
+        'productsGroupByCategory': product_with_categories,
+        'flag_data': (name, img_file)
     }
 
     return render_template('web/pages/blogs.html', **context)
 
 
 # blog details page
-@ app.route('/<country>/<restArea>/blog-details/<id>', methods=['GET', 'POST'])
-@ app.route('/<country>/blog-details/<id>', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>/blog-details/<id>', methods=['GET', 'POST'])
+@app.route('/<country>/blog-details/<id>', methods=['GET', 'POST'])
 def blogDetails(country, id, restArea=None):
     update_var(country)
-    global localities, product_with_categories, blogs, country_specific
+    global localities, product_with_categories, blogs, country_specific, cards
     if (localities == None):
         localities = controller.findLocalities(country)
 
     blogs = controller.getBlogs()
     id = int(id)
 
+    if (restArea):
+        name, img_file = controller.getFlag(country, ' '.join(
+            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
+    else:
+        name, img_file = controller.getFlag(country)
+
     context = {
         'offer_links': country_specific,
         'blog': blogs[id],
         'footer_country_code': footer_country_code[country],
         'country': country,
+        'offer_cards': cards,
         'localities': localities,
         'restArea': restArea,
-        'productsGroupByCategory': product_with_categories
+        'productsGroupByCategory': product_with_categories,
+        'flag_data': (name, img_file)
     }
 
     return render_template('web/pages/blog-details.html', **context)
 
 
 # product details page
-@ app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
-@ app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
+@app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
 def productDetails(country, name, category, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, country_specific
+    global product_with_categories, localities, categories, country_specific, cards
     product = controller.getProduct_with_name(name)
 
     category = ' '.join(category.split('-')).title()
+
+    if (restArea):
+        name, img_file = controller.getFlag(country, ' '.join(
+            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
+    else:
+        name, img_file = controller.getFlag(country)
 
     if (product):
         product = product[0]
@@ -258,25 +291,25 @@ def productDetails(country, name, category, restArea=None):
             'product_tags': product[14].split(','),
             'country': country,
             'productsGroupByCategory': product_with_categories,
+            'offer_cards': cards,
             'product_category': category,
             'localities': localities,
             'restArea': restArea,
-            'product': product
+            'product': product,
+            'flag_data': (name, img_file)
         }
         return render_template('web/pages/single-product.html', **context)
     else:
         return redirect(url_for('country', country=country, restArea=restArea), code=302)
 
 
-@ app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
+@app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
 def adminDashboard(name=None, password=None):
     census = db.Table('cards', metadata, autoload=True, autoload_with=engine)
     columns = census.columns.keys()
 
     if (name == 'kapilsingla' and password == '268468'):
         if request.method == 'POST':
-            print('>>>>>>>>>>>>>>>', )
-
             needed_columns = {
                 'discount': ['discount', 'validUntil', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada'],
                 'shipping': ['vUnitedStates', 'lUnitedStates'],
@@ -296,8 +329,6 @@ def adminDashboard(name=None, password=None):
                 else:
                     data_dict[card][form_field] = request.form.get(
                         card+'_'+form_field)
-
-            print(data_dict[card])
 
             # updating database entry
             query = db.update(census).where(

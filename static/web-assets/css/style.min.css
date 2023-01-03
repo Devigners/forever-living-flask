@@ -1876,8 +1876,7 @@ select,
 	appearance: none;
 	border: 1px solid var(--color-border-light);
 	border-radius: 6px;
-	background: url(../images/icons/arrow-icon.png) 95% center no-repeat
-		rgba(0, 0, 0, 0);
+	background: rgba(0, 0, 0, 0);
 	padding-right: 32px;
 	font-size: var(--font-size-b1);
 	line-height: var(--line-height-b1);
@@ -7421,7 +7420,7 @@ button.axil-btn.wishlist-btn:hover:before {
 	margin-bottom: 30px;
 }
 .mobile-nav-brand img {
-	max-height: 35px;
+	max-height: 45px;
 }
 @media only screen and (min-width: 992px) {
 	.mobile-nav-brand {
@@ -7434,6 +7433,12 @@ button.axil-btn.wishlist-btn:hover:before {
 @media only screen and (min-width: 992px) {
 	.axil-mobile-toggle {
 		display: none;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.mobile-nav-brand img {
+		max-height: 45px;
+		width: auto;
 	}
 }
 @media only screen and (max-width: 575px) {
