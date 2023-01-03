@@ -66,14 +66,14 @@
 
 	<body class="sticky-header">
 		<div class="floating-btn">
-			{% if offer_cards['join']['v'+flag_data[0].replace(' ','')] == 1 %}
+			{% if offer_cards['join']['v'+title_country[country]] == 1 %}
 				<div>
-					<a href="{{ offer_cards['join']['l'+flag_data[0].replace(' ','')] }}">Join & Save 5%</a>
+					<a href="{{ offer_cards['join']['l'+title_country[country]] }}">Join & Save 5%</a>
 				</div>
 			{% endif %}
-			{% if offer_cards['discount']['v'+flag_data[0].replace(' ','')] == 1 %}
+			{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
 				<div>
-					<a href="{{ offer_cards['discount']['l'+flag_data[0].replace(' ','')] }}">Discount {{offer_cards['discount']['discount']}}%</a>
+					<a href="{{ offer_cards['discount']['l'+title_country[country]] }}">Discount {{offer_cards['discount']['discount']}}%</a>
 				</div>
 			{% endif %}
 		</div>

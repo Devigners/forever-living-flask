@@ -9,6 +9,9 @@ import sqlalchemy as db
 footer_country_code = {'australia': 'aus',
                        'unitedstates': 'usa', 'canada': 'can', 'greatbritain': 'gbr'}
 
+title_country = {'australia': 'Australia',
+                 'unitedstates': 'UnitedStates', 'canada': 'Canada', 'greatbritain': 'GreatBritain'}
+
 country_specific = {
     'usa': {
         'shipping': 'https://thealoeveraco.shop/jfYACnZc',
@@ -100,12 +103,6 @@ def index(country=None, restArea=None):
         state_of_restArea = ' '.join(
             re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0]))
 
-        print('>>>>>>>>>>>>>', state_of_restArea)
-
-    print('>>>>>>>>>>', country)
-    print('>>>>>>>>>>', restArea)
-    print('>>>>>>>>>>', state_of_restArea)
-
     try:
         update_var(country, state_of_restArea)
     except:
@@ -128,6 +125,7 @@ def index(country=None, restArea=None):
         'localities': localities,
         'states': states,
         'flag_data': (name, img_file),
+        'title_country': title_country,
         'offer_links': country_specific,
         'state_of_restArea': state_of_restArea
     }
@@ -157,10 +155,9 @@ def country(country, restArea=None):
         'country': country,
         'localities': localities,
         'restArea': restArea,
+        'title_country': title_country,
         'flag_data': (name, img_file)
     }
-    print(context['offer_cards']['shipping']
-          ['l'+context['flag_data'][0].replace(' ', '')])
     return render_template('web/pages/index.html', **context)
 
 
@@ -212,12 +209,6 @@ def blogs(country, restArea=None):
     if ('Uncategorized' in blog_categories):
         blog_categories.remove('Uncategorized')
 
-    if (restArea):
-        name, img_file = controller.getFlag(country, ' '.join(
-            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
-    else:
-        name, img_file = controller.getFlag(country)
-
     context = {
         'offer_links': country_specific,
         'blog_categories': blog_categories,
@@ -228,7 +219,7 @@ def blogs(country, restArea=None):
         'localities': localities,
         'restArea': restArea,
         'productsGroupByCategory': product_with_categories,
-        'flag_data': (name, img_file)
+        'title_country': title_country
     }
 
     return render_template('web/pages/blogs.html', **context)
@@ -246,12 +237,6 @@ def blogDetails(country, id, restArea=None):
     blogs = controller.getBlogs()
     id = int(id)
 
-    if (restArea):
-        name, img_file = controller.getFlag(country, ' '.join(
-            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
-    else:
-        name, img_file = controller.getFlag(country)
-
     context = {
         'offer_links': country_specific,
         'blog': blogs[id],
@@ -261,7 +246,7 @@ def blogDetails(country, id, restArea=None):
         'localities': localities,
         'restArea': restArea,
         'productsGroupByCategory': product_with_categories,
-        'flag_data': (name, img_file)
+        'title_country': title_country
     }
 
     return render_template('web/pages/blog-details.html', **context)
@@ -277,12 +262,6 @@ def productDetails(country, name, category, restArea=None):
 
     category = ' '.join(category.split('-')).title()
 
-    if (restArea):
-        name, img_file = controller.getFlag(country, ' '.join(
-            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
-    else:
-        name, img_file = controller.getFlag(country)
-
     if (product):
         product = product[0]
         context = {
@@ -296,7 +275,7 @@ def productDetails(country, name, category, restArea=None):
             'localities': localities,
             'restArea': restArea,
             'product': product,
-            'flag_data': (name, img_file)
+            'title_country': title_country
         }
         return render_template('web/pages/single-product.html', **context)
     else:
