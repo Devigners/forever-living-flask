@@ -705,7 +705,7 @@ body {
 
 .floating-btn {
 	position: fixed;
-	top: 40%;
+	top: 35%;
 	right: -60px;
 	transform: translateY(-50%);
 	z-index: 10;
@@ -757,13 +757,13 @@ body {
 
 .floating-btn div:nth-child(1) {
 	top: -90px;
-	right: 10px;
+	right: 15px;
 	background-color: #c3b9d4;
 }
 
 .floating-btn div:nth-child(2) {
 	top: 75px;
-	right: 14px;
+	right: 20px;
 	background-color: #afbdd9;
 }
 

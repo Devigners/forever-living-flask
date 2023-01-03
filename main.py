@@ -166,7 +166,7 @@ def country(country, restArea=None):
 @app.route('/<country>/products', methods=['GET', 'POST'])
 def shop(country, restArea=None):
     update_var(country)
-    global product_with_categories, localities, categories, country_specific, cards
+    global product_with_categories, localities, categories, country_specific, cards, title_country
 
     if (restArea):
         name, img_file = controller.getFlag(country, ' '.join(
@@ -183,7 +183,8 @@ def shop(country, restArea=None):
         'country': country,
         'localities': localities,
         'restArea': restArea,
-        'flag_data': (name, img_file)
+        'flag_data': (name, img_file),
+        'title_country': title_country
     }
 
     return render_template('web/pages/shop.html', **context)
