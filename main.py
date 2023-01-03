@@ -305,10 +305,8 @@ def productDetails(country, name, category, restArea=None):
 
 @app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
 def adminDashboard(name=None, password=None):
-    census = db.Table('cards', metadata, autoload=True, autoload_with=engine)
-    columns = census.columns.keys()
-
     if (name == 'kapilsingla' and password == '268468'):
+        global db, cards, census, connection
         if request.method == 'POST':
             needed_columns = {
                 'discount': ['discount', 'validUntil', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada'],
@@ -331,13 +329,38 @@ def adminDashboard(name=None, password=None):
                         card+'_'+form_field)
 
             # updating database entry
+            engine = db.create_engine(
+                'mysql://root:root@localhost/foreverliving')
+            # engine = db.create_engine('mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+            connection = engine.connect()
+            metadata = db.MetaData()
+
+            # fetching cards data from Mysql Database
+            census = db.Table('cards', metadata,
+                              autoload=True, autoload_with=engine)
             query = db.update(census).where(
                 census.columns.cardType == card).values(data_dict[card])
             results = connection.execute(query)
 
+        engine = db.create_engine(
+            'mysql://root:root@localhost/foreverliving')
+        # engine = db.create_engine('mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+        connection = engine.connect()
+        metadata = db.MetaData()
+
+        # fetching cards data from Mysql Database
+        census = db.Table('cards', metadata, autoload=True,
+                          autoload_with=engine)
+        columns = census.columns.keys()
         query = db.select([census])
         ResultProxy = connection.execute(query)
         ResultSet = ResultProxy.fetchall()
+
+        cards = {}
+        for set in ResultSet:
+            cards[set[1]] = {}
+            for col in columns:
+                cards[set[1]][col] = set[columns.index(col)]
 
         cards = {}
         for set in ResultSet:
