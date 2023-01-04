@@ -47,12 +47,10 @@
 				"#offer-popup-modal"
 			);
 			axilInit.stickyHeaderMenu();
-			axilInit.salActivation();
 			axilInit.magnificPopupActivation();
 			axilInit.colorVariantActive();
 			axilInit.headerCampaignRemove();
 			// axilInit.offerPopupActivation();
-			axilInit.axilMasonary();
 			axilInit.counterUpActivation();
 			axilInit.scrollSmoth();
 		},
@@ -966,13 +964,6 @@
 			});
 		},
 
-		salActivation: function () {
-			sal({
-				threshold: 0.3,
-				once: true,
-			});
-		},
-
 		magnificPopupActivation: function () {
 			var yPopup = $(".popup-youtube");
 			if (yPopup.length) {
@@ -1021,36 +1012,6 @@
 					$("#offer-popup-modal").addClass("open");
 				}, 1000);
 			}
-		},
-
-		axilMasonary: function () {
-			$(".axil-isotope-wrapper").imagesLoaded(function () {
-				// filter items on button click
-				$(".isotope-button").on("click", "button", function () {
-					var filterValue = $(this).attr("data-filter");
-					$grid.isotope({
-						filter: filterValue,
-					});
-				});
-
-				// init Isotope
-				var $grid = $(".isotope-list").isotope({
-					itemSelector: ".product",
-					percentPosition: true,
-					transitionDuration: "0.7s",
-					layoutMode: "fitRows",
-					masonry: {
-						// use outer width of grid-sizer for columnWidth
-						columnWidth: 1,
-					},
-				});
-			});
-
-			$(".isotope-button button").on("click", function (event) {
-				$(this).siblings(".is-checked").removeClass("is-checked");
-				$(this).addClass("is-checked");
-				event.preventDefault();
-			});
 		},
 	};
 	axilInit.i();
