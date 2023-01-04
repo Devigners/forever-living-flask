@@ -29,9 +29,15 @@ class data():
 
         self.products = pd.read_csv(
             'static/web-assets/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
+
+        # firstly, it removed REGISTERED signs
+        # then, it removes TM signs
+        # then, it removes all -'es
+        # then, it replace ' ' with -'es
+        # then, it replace multiple dashes with single dash
         self.products['url_name'] = [
-            re.sub(r'[-]+', '-', i.replace('®', '').replace(
-                '™', '').replace('-', '').replace(' ', '-').lower()) for i in self.products['post_title'].values.tolist()]
+            re.sub(r'[ ]+', ' ', i.replace('®', '').replace(
+                '™', '').replace('-', ' ').title()) for i in self.products['post_title'].values.tolist()]
         self.products['review_stars'].fillna(0.0, inplace=True)
         self.products['total_reviews'].fillna('', inplace=True)
         self.products['quantities'].fillna('', inplace=True)

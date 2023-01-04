@@ -119,7 +119,7 @@
 								<li>
 									<a
 										href="{{ url_for('shop', restArea=restArea, country=country) }}"
-										>Products</a
+										>All Products</a
 									>
 								</li>
 								<li>
@@ -131,8 +131,8 @@
 							</ul>
 							<div class="profile-details">
 								<div class="inner">
-									<h5>Kapil Singla</h5>
-									<h6>FLP ID: 200002416566</h6>
+									<h5 style="font-size: large;">Kapil Singla</h5>
+									<h6 style="font-size: medium;">FBO ID: 200002416566</h6>
 									<div class="popover-details-wrapper">
 										<div class="popover-details">
 											<h6>Independent Distributor Since Jan 2011</h6>
@@ -140,7 +140,9 @@
 										</div>
 									</div>
 								</div>
-								<div class="dummy-profile-image"></div>
+								<div class="dummy-profile-image">
+									<img src="{{ url_for('static', filename='web-assets/images/about/profile.png') }}" style="border-radius: 100%;" />
+								</div>
 							</div>
 							<div class="mainmenu-nav-title fadeInDown">
 								<div class="d-flex align-items-center">

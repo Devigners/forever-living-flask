@@ -95,14 +95,24 @@ def update_var(new_country, restArea=None):
 @app.route('/<country>/', methods=['GET', 'POST'])
 @app.route('/<country>/<restArea>/', methods=['GET', 'POST'])
 def index(country=None, restArea=None):
+    pageType = 'index'
+    address = []
     if (not country):
         country = 'unitedstates'
+    else:
+        pageType = 'country'
 
     state_of_restArea = None
     if (restArea):
+        pageType = 'state'
+        if ('-' in restArea):
+            pageType = 'restarea'
+
         state_of_restArea = ' '.join(
             re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0]))
 
+    # updating var if we don't get any error
+    # else we are going to redirect to index page
     try:
         update_var(country, state_of_restArea)
     except:
@@ -110,14 +120,22 @@ def index(country=None, restArea=None):
 
     global product_with_categories, localities, categories, states, country_specific, cards
 
+    # getting flag data from the controller
+    # creating address of the place we are
+    address.append(title_country[country])
     if (restArea):
         name, img_file = controller.getFlag(country, state_of_restArea)
+        address.extend(restArea.split('-'))
     else:
         name, img_file = controller.getFlag(country)
 
+    # showing the address in the correct format on the homepage
+    address = [' '.join(re.split('(?<=.)(?=[A-Z])', i.split('-')[0]))
+               for i in address]
+
+    # sending following information to the template page
     context = {
-        'country': country,
-        'restArea': restArea,
+        'pageType': pageType,
         'offer_cards': cards,
         'footer_country_code': footer_country_code[country],
         'categories': categories,
@@ -127,7 +145,11 @@ def index(country=None, restArea=None):
         'flag_data': (name, img_file),
         'title_country': title_country,
         'offer_links': country_specific,
-        'state_of_restArea': state_of_restArea
+
+        'country': country,
+        'state_of_restArea': state_of_restArea,
+        'restArea': restArea,
+        'address': address
     }
 
     return render_template('web/pages/home.html', **context)
