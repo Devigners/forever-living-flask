@@ -49,6 +49,35 @@
 		}
 	});
 
+$('#discount').on('change', function() {
+	var selectedOption = $(this).val();
+	console.log(selectedOption);
+	
+	switch(selectedOption) {
+		case '5':
+			$('[name="discount_lUnitedStates"]').val('https://thealoeveraco.shop/HEYrCuwo');
+			$('[name="discount_lGreatBritain"]').val('https://thealoeveraco.shop/ZHJSRv5m');
+			$('[name="discount_lAustralia"]').val('https://thealoeveraco.shop/fTvVBTAm');
+			$('[name="discount_lCanada"]').val('https://thealoeveraco.shop/m1m6hsyO');
+			break;
+		case '10':
+			$('[name="discount_lUnitedStates"]').val('https://thealoeveraco.shop/QIunDW3C');
+			$('[name="discount_lGreatBritain"]').val('https://thealoeveraco.shop/WOVGEHb8');
+			$('[name="discount_lAustralia"]').val('https://thealoeveraco.shop/J0527gGp');
+			$('[name="discount_lCanada"]').val('https://thealoeveraco.shop/1QLH7Eh9');
+			// code to execute for option "10"
+			break;
+		case '15':
+			$('[name="discount_lUnitedStates"]').val('https://thealoeveraco.shop/wbQW2rEH');
+			$('[name="discount_lGreatBritain"]').val('https://thealoeveraco.shop/7MV6ZkIG');
+			$('[name="discount_lAustralia"]').val('https://thealoeveraco.shop/DLolWip7');
+			$('[name="discount_lCanada"]').val('https://thealoeveraco.shop/i2Y5dJzQ');
+			// code to execute for option "15"
+			break;
+	}
+});
+
+
 	// # singledatepicker
 	$('[name="valid_until"]').datepicker({
 		format: "dd-mm-yyyy",

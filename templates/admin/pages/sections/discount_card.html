@@ -4,7 +4,6 @@
 	<form
 		method="post"
 		autocomplete="off"
-		id="discount"
 		action="{{url_for('adminDashboard',name='kapilsingla', password='268468')}}"
 	>
 		<input type="hidden" name="cardType" value="discount">
@@ -28,9 +27,6 @@
 							<option value="5" {% if cards['discount']['discount'] == 5 %}selected{% endif %}>5% off</option>
 							<option value="10" {% if cards['discount']['discount'] == 10 %}selected{% endif %}>10% off</option>
 							<option value="15" {% if cards['discount']['discount'] == 15 %}selected{% endif %}>15% off</option>
-							<option value="20" {% if cards['discount']['discount'] == 20 %}selected{% endif %}>20% off</option>
-							<option value="25" {% if cards['discount']['discount'] == 25 %}selected{% endif %}>25% off</option>
-							<option value="30" {% if cards['discount']['discount'] == 30 %}selected{% endif %}>30% off</option>
 						</select>
 					</div>
 					<div class="form-group col-lg-6 col-md-6 co-sm-6 col-xs-12">
