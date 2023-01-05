@@ -444,17 +444,19 @@
 		<div class="container">
 			<hr class="my-5 w-100" />
 			<div class="product-detail-section">
-				{% if(restArea) %} {% if(restArea != state_of_restArea.replace(' ', ''))
-				%}
-				<h4>Delivering in Other Areas of {{ state_of_restArea }}</h4>
+				{% if(restArea) %} 
+					{% if(restArea != state_of_restArea.replace(' ', ''))%}
+						<h4>Delivering in Other Areas of {{ state_of_restArea }}</h4>
+					{% else %}
+						<h4>Delivering Throughout {{ state_of_restArea }}</h4>
+				{% endif %} 
+					{% for state in states %}
+						<a
+							href="{{ url_for('index', country=country, restArea=state_of_restArea.replace(' ', '')+'-'+state.replace(' ','')) }}"
+							>{{ state }},
+						</a>
+					{% endfor %} 
 				{% else %}
-				<h4>Delivering Throughout {{ state_of_restArea }}</h4>
-				{% endif %} {% for state in states %}
-				<a
-					href="{{ url_for('index', country=country, restArea=state_of_restArea.replace(' ', '')+'-'+state.replace(' ','')) }}"
-					>{{ state }},
-				</a>
-				{% endfor %} {% else %}
 				<h4>Delivering Throughout {{ country.title() }}</h4>
 				{% for state in states %}
 				<a
