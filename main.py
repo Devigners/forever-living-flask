@@ -71,6 +71,8 @@ for set in ResultSet:
     for col in columns:
         cards[set[1]][col] = set[columns.index(col)]
 
+print(cards)
+
 
 @app.context_processor
 def utility_processor():
