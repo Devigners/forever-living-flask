@@ -19,17 +19,19 @@
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
 	<div class="axil-header-top pb-0">
-		<div class="header-top-campaign">
-			<div class="container position-relative">
-				<div class="campaign-content">
-					<div class="campaign-countdown"></div>
-					<p style="color: white;">
-						Avail a special discount of {{offer_cards['discount']['discount']}}% off for limited time.
-						<br class="d-md-none d-block" /><a href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Your Offer</a>
-					</p>
+		{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
+			<div class="header-top-campaign">
+				<div class="container position-relative">
+					<div class="campaign-content">
+						<div class="campaign-countdown"></div>
+						<p style="color: white;">
+							Avail a special discount of {{offer_cards['discount']['discount']}}% off for limited time.
+							<br class="d-md-none d-block" /><a href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Your Offer</a>
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
+		{% endif %}
 		{% include "web/includes/_top_bar.html" %}
 		<div class="header-navbar bg-white pt-md-4 pb-md-4">
 			<div class="container">

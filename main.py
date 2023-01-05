@@ -134,6 +134,7 @@ def index(country=None, restArea=None):
                for i in address]
 
     # sending following information to the template page
+    print(states)
     context = {
         'pageType': pageType,
         'offer_cards': cards,

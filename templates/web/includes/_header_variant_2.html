@@ -16,17 +16,19 @@
 <![endif]-->
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
-	<div class="header-top-campaign">
-		<div class="container position-relative">
-			<div class="campaign-content">
-				<div class="campaign-countdown"></div>
-				<p style="color: white;">
-					Open Doors To A World Of Fashion Get
-					<br class="d-md-none d-block" /><a href="#">Get Your Offer</a>
-				</p>
+	{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
+		<div class="header-top-campaign">
+			<div class="container position-relative">
+				<div class="campaign-content">
+					<div class="campaign-countdown"></div>
+					<p style="color: white;">
+						Avail a special discount of {{offer_cards['discount']['discount']}}% off for limited time.
+						<br class="d-md-none d-block" /><a href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Your Offer</a>
+					</p>
+				</div>
 			</div>
 		</div>
-	</div>
+	{% endif %}
 	{% include "web/includes/_top_bar.html" %}
 	<!-- Start Mainmenu Area  -->
 	<div id="axil-sticky-placeholder"></div>
