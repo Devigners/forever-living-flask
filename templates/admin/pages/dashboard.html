@@ -39,12 +39,10 @@
 			$(this)
 				.closest(".form-group")
 				.find('input[type="text"]')
-				.prop("disabled", false)
 		} else {
 			$(this)
 				.closest(".form-group")
 				.find('input[type="text"]')
-				.prop("disabled", true)
 				.valid();
 		}
 	});

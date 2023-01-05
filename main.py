@@ -310,6 +310,8 @@ def adminDashboard(name=None, password=None):
     if (name == 'kapilsingla' and password == '268468'):
         global db, cards, census, connection
         if request.method == 'POST':
+            print(request.form.get('discount_lGreatBritain'))
+
             needed_columns = {
                 'discount': ['discount', 'validUntil', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada'],
                 'shipping': ['vUnitedStates', 'lUnitedStates'],
