@@ -1159,10 +1159,11 @@ h2 {
 	font-size: 16px;
 	font-weight: 500;
 	text-transform: uppercase;
+	width: 41px;
 }
 
 .floating-vertical-btn a + a {
-	margin-top: 5px;
+	margin-top: 8px;
 }
 
 .floating-vertical-btn a.join {
@@ -1179,6 +1180,7 @@ h2 {
 		right: 8px !important
 	}
 	.floating-vertical-btn a {
+		width: 29.8px;
 		padding: 15px 3px;
 		font-size: 14px !important;
 	}
