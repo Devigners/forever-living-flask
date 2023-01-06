@@ -703,30 +703,6 @@ body {
 	-webkit-box-orient: vertical;
 }
 
-.floating-btn {
-	position: fixed;
-	top: 35%;
-	right: -60px;
-	transform: translateY(-50%);
-	z-index: 10;
-	padding-left: 0;
-	list-style: none;
-}
-
-.floating-btn div {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	text-transform: uppercase;
-	font-weight: 400;
-	font-size: 16px;
-	display: inline-block;
-	rotate: 90deg;
-	position: absolute;
-	font-weight: 500;
-	border-radius: 4px;
-	overflow: hidden;
-}
-
 .single-blog h1,
 h2 {
 	margin-bottom: 4px;
@@ -748,24 +724,6 @@ h2 {
 
 .copyright-left a {
 	color: var(--color-body);
-}
-
-.floating-btn div a {
-	display: inline-block;
-	padding: 7px 20px;
-	color: black !important;
-}
-
-.floating-btn div:nth-child(1) {
-	top: -90px;
-	right: 13px;
-	background-color: #c3b9d4;
-}
-
-.floating-btn div:nth-child(2) {
-	top: 75px;
-	right: 20px;
-	background-color: #afbdd9;
 }
 
 .profile-details {
@@ -1138,6 +1096,7 @@ h2 {
 
 	#search-area {
 		font-size: 14px !important;
+		padding-right: 10px !important;
 	}
 }
 
@@ -1167,14 +1126,59 @@ h2 {
 		width: auto !important;
 		display: flex !important;
 	}
+	.axil-mainmenu > .header-navbar {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 768px) {
-	.axil-mainmenu.axil-sticky .header-navbar{
+	.axil-mainmenu.axil-sticky .header-navbar {
 		min-height: auto;
 		padding: 0 !important;
 	}
-	.aside-category-menu.axil-sticky .header-nav-department{
+	.aside-category-menu.axil-sticky .header-nav-department {
 		display: none !important;
+	}
+}
+
+.floating-vertical-btn {
+	position: fixed;
+	top: 20%;
+	right: 10px;
+	z-index: 999;
+}
+
+.floating-vertical-btn a {
+	display: block;
+	text-align: center;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	color: black !important;
+	padding: 20px 7px;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.floating-vertical-btn a + a {
+	margin-top: 5px;
+}
+
+.floating-vertical-btn a.join {
+	background-color: #c3b9d4;
+}
+
+.floating-vertical-btn a.discount {
+	background-color: #afbdd9;
+}
+
+@media screen and (max-width: 768px) {
+	.floating-vertical-btn {
+		top: 30% !important
+	}
+	.floating-vertical-btn a {
+		padding: 15px 3px;
+		font-size: 14px !important;
 	}
 }
