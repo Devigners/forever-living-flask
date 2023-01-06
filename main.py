@@ -291,6 +291,9 @@ def productDetails(country, name, category, restArea=None):
         for i in range(len(product)):
             print(i, ":>", product[i])
 
+        if (category not in categories):
+            category = 'All Products'
+
         context = {
             'offer_links': country_specific,
             'footer_country_code': footer_country_code[country],
