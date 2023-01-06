@@ -6770,6 +6770,9 @@ button.axil-btn.wishlist-btn:hover:before {
 	.axil-mainmenu.aside-category-menu {
 		padding: 10px 0;
 	}
+	.axil-mainmenu.axil-sticky {
+		padding: 10px 0;
+	}
 }
 .axil-mainmenu.aside-category-menu .header-main-nav {
 	margin-right: 0;
