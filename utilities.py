@@ -28,7 +28,7 @@ class data():
                                'SKU', 'short_description', 'total_reviews', 'url_name'] + self.categories
 
         self.products = pd.read_csv(
-            'static/web-assets/data/products/forever_products_en_'+self.country_code[self.country]+'_small.csv')
+            'static/web-assets/data/products/forever_products_en_'+self.country_code[self.country]+'_small_utf.csv')
 
         # firstly, it removed REGISTERED signs
         # then, it removes TM signs

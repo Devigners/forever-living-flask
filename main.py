@@ -71,8 +71,6 @@ for set in ResultSet:
     for col in columns:
         cards[set[1]][col] = set[columns.index(col)]
 
-print(cards)
-
 
 @app.context_processor
 def utility_processor():
@@ -136,7 +134,6 @@ def index(country=None, restArea=None):
                for i in address]
 
     # sending following information to the template page
-    print(states)
     context = {
         'pageType': pageType,
         'offer_cards': cards,
@@ -290,6 +287,10 @@ def productDetails(country, name, category, restArea=None):
 
     if (product):
         product = product[0]
+
+        for i in range(len(product)):
+            print(i, ":>", product[i])
+
         context = {
             'offer_links': country_specific,
             'footer_country_code': footer_country_code[country],
@@ -313,7 +314,6 @@ def adminDashboard(name=None, password=None):
     if (name == 'kapilsingla' and password == '268468'):
         global db, cards, census, connection
         if request.method == 'POST':
-            print(request.form.get('discount_lGreatBritain'))
 
             needed_columns = {
                 'discount': ['discount', 'validUntil', 'vUnitedStates', 'lUnitedStates', 'vGreatBritain', 'lGreatBritain', 'vAustralia', 'lAustralia', 'vCanada', 'lCanada'],

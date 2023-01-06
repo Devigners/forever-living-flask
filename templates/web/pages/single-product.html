@@ -22,13 +22,13 @@
 										<div class="thumbnail">
 											<img src="{{ product[9] }}" alt="Product Images" />
 										</div>
-										{% if str(product[29]) == "nan" or str(product[29]) == "" %}
+										{% if str(product[15]) == "nan" or str(product[15]) == "" %}
 										{% else %}
 										<div class="thumbnail">
 											<iframe
 												width="100%"
 												height="612px"
-												src="{{product[29]}}"
+												src="{{product[15]}}"
 												title="Demo Background Sample Video"
 												frameborder="0"
 												class="vimeo-iframe"
@@ -45,12 +45,12 @@
 									<div class="small-thumb-img">
 										<img src="{{ product[9] }}" alt="thumb image" />
 									</div>
-									{% if str(product[29]) == "nan" or str(product[29]) == "" %}
+									{% if str(product[15]) == "nan" or str(product[15]) == "" %}
 									{% else %}
 									<div class="small-thumb-img video-thumbnail">
 										<img
 											src=""
-											data-vimeo-href="{{product[29]}}"
+											data-vimeo-href="{{product[15]}}"
 											alt="thumb image"
 										/>
 									</div>
@@ -70,7 +70,7 @@
 										data-rating="{{ product[12] }}"
 									></div>
 									<div class="reSee-link">
-										<a href="#">{{ product[12] }} ({{ product[11] }})</a>
+										{{ product[12] }} ({{ product[11] }})
 									</div>
 								</div>
 
