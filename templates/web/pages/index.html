@@ -79,11 +79,11 @@
 							<div class="home-service-box" data-color="light-blue">
 								<h5>{{offer_cards['discount']['discount']}}% Off</h5>
 								<h6>Special Discount</h6>
-								<ul class="timer-box" data-time="{{offer_cards['discount']['validUntil']}}">
-									<li><span class="days">0</span></li>
-									<li><span class="hours">0</span></li>
-									<li><span class="minutes">0</span></li>
-									<li><span class="seconds">0</span></li>
+								<ul class="timer-box">
+									<li><span data-date="days">0</span>d</li>
+									<li><span data-date="hours">0</span>h</li>
+									<li><span data-date="minutes">0</span>m</li>
+									<li><span data-date="seconds">0</span>s</li>
 								</ul>
 								<a class="btn" role="button" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Now</a>
 							</div>
@@ -425,30 +425,6 @@
 			once: true,
 		});
 	});
-
-	$(function () {
-		var timerBox = $(".timer-box");
-		var days = timerBox.find(".days");
-		var hours = timerBox.find(".hours");
-		var minutes = timerBox.find(".minutes");
-		var seconds = timerBox.find(".seconds");
-		var time = new Date("2022-12-31 00:00:00").getTime();
-		var x = setInterval(function () {
-			var now = new Date().getTime();
-			var distance = time - now;
-			days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}`);
-			hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`);
-			minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`);
-			seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}`);
-			if (distance < 0) {
-				clearInterval(x);
-				days.text("0d");
-				hours.text("0h");
-				minutes.text("0m");
-				seconds.text("0s");
-			}
-		}, 1000);
-	})
 </script>
 
 {% endblock %}

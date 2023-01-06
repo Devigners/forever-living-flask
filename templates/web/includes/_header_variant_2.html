@@ -17,19 +17,48 @@
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
 	{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
-		<div class="header-top-campaign">
-			<div class="container position-relative">
-				<div class="campaign-content">
-					<div class="campaign-countdown"></div>
-					<p style="color: white;">
-						Avail a special discount of {{offer_cards['discount']['discount']}}% off for limited time.
-						<br class="d-md-none d-block" /><a href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Your Offer</a>
-					</p>
+	<div class="timer-box-date" data-time="{{offer_cards['discount']['validUntil']}}"></div>
+	<div class="header-top-campaign">
+		<div class="container position-relative">
+			<div class="campaign-content">
+				<div class="campaign-countdown">
+					<div class="countdown-section">
+						<div>
+							<div class="countdown-number" data-date="days">0</div>
+							<div class="countdown-unit">d</div>
+						</div>
+					</div>
+					<div class="countdown-section">
+						<div>
+							<div class="countdown-number" data-date="hours">0</div>
+							<div class="countdown-unit">h</div>
+						</div>
+					</div>
+					<div class="countdown-section">
+						<div>
+							<div class="countdown-number" data-date="minutes">0</div>
+							<div class="countdown-unit">m</div>
+						</div>
+					</div>
+					<div class="countdown-section">
+						<div>
+							<div class="countdown-number" data-date="seconds">0</div>
+							<div class="countdown-unit">s</div>
+						</div>
+					</div>
 				</div>
+				<p style="color: white">
+					Avail a special discount of {{offer_cards['discount']['discount']}}%
+					off for limited time.
+					<br class="d-md-none d-block" /><a
+						href="{{ offer_cards['discount']['l'+title_country[country]] }}"
+						>Get Your Offer</a
+					>
+				</p>
 			</div>
 		</div>
-	{% endif %}
-	{% include "web/includes/_top_bar.html" %}
+	</div>
+	{% endif %} {% include "web/includes/_top_bar.html" %}
 	<!-- Start Mainmenu Area  -->
 	<div id="axil-sticky-placeholder"></div>
 	<div class="axil-mainmenu">
@@ -40,13 +69,13 @@
 						href="{{ url_for('index', restArea=restArea, country=country) }}"
 						class="nav-title"
 					>
-						<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="sticky-navbar-logo" width="60" height="60" />
+						<img
+							src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+							alt="sticky-navbar-logo"
+							width="60"
+							height="60"
+						/>
 					</a>
-					{% if request.MOBILE %}
-					<div class="h-select-group navbar-lang">
-						<div id="google_translate_element"></div>
-					</div>
-					{% else %} {% endif %}
 				</div>
 				<div class="header-main-nav">
 					<!-- Start Mainmanu Nav -->
@@ -60,8 +89,12 @@
 									href="{{ url_for('index', restArea=restArea, country=country) }}"
 									class="nav-title"
 								>
-									<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="mainmenu-navbar-logo" width="80" height="80" />
-								
+									<img
+										src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+										alt="mainmenu-navbar-logo"
+										width="80"
+										height="80"
+									/>
 								</a>
 							</div>
 							<ul class="mainmenu justify-content-start">
@@ -93,8 +126,8 @@
 						</div>
 						<div class="profile-details">
 							<div class="inner">
-								<h5 style="font-size: large;">Kapil Singla</h5>
-								<h6 style="font-size: medium;">FBO ID: 200002416566</h6>
+								<h5 style="font-size: large">Kapil Singla</h5>
+								<h6 style="font-size: medium">FBO ID: 200002416566</h6>
 								<div class="popover-details-wrapper">
 									<div class="popover-details">
 										<h6>Independent Distributor Since Jan 2011</h6>
@@ -105,17 +138,36 @@
 								</div>
 							</div>
 							<div class="dummy-profile-image">
-								<img src="{{ url_for('static', filename='web-assets/images/about/profile.png') }}" style="border-radius: 100%;" />
+								<img
+									src="{{ url_for('static', filename='web-assets/images/about/profile.png') }}"
+									style="border-radius: 100%"
+								/>
 							</div>
 						</div>
 					</nav>
 					<!-- End Mainmanu Nav -->
 				</div>
-				<div class="header-action mt-0 d-flex align-items-center">
-					<button type="submit" class="axil-search header-variant-2-search">
-						<i class="far fa-search"></i>
-					</button>
-					<ul class="action-list">
+				<div class="header-action mt-0 d-flex align-items-center w-100 d-md-none d-block" style="margin-left: 0 !important;">
+					<div class="header-top-dropdown dropdown-box-style w-100">
+						<div
+							class="axil-search search-bar mr-0"
+							style="display: block !important"
+						>
+							<button type="submit" class="icon wooc-btn-search">
+								<i class="far fa-search"></i>
+							</button>
+							<input
+								type="search"
+								class="placeholder product-search-input"
+								readonly
+								value=""
+								maxlength="128"
+								placeholder="What are you looking for...."
+								autocomplete="off"
+							/>
+						</div>
+					</div>
+					<ul class="action-list" style="padding-left: 15px !important;">
 						<li class="axil-mobile-toggle">
 							<button class="menu-btn mobile-nav-toggler">
 								<i class="flaticon-menu-2"></i>

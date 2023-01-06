@@ -155,7 +155,7 @@
 						<a href="__PRODUCT_EXTERNAL_URL__" target="_blank">Buy Now</a>
 					</li>
 					<li class="select-option">
-						<a href="__PRODUCT_WEBSITE_URL__">See Details</a>
+						<a href="__PRODUCT_WEBSITE_URL__" class="default">See Details</a>
 					</li>
 				</ul>
 			</div>
@@ -173,7 +173,7 @@
 <script src="{{ url_for('static', filename='web-assets/js/vendor/jquery.easy-autocomplete.min.js') }}"></script>
 
 <!-- Main JS -->
-<script src="{{ url_for('static', filename='web-assets/js/main.js') }}?v=1.2"></script>
+<script src="{{ url_for('static', filename='web-assets/js/main.js') }}?v=1.3"></script>
 
 <script>
 
@@ -348,6 +348,33 @@
 		var $this = $(this);
 		var href = $this.attr('href');
 		window.location.href = href;
+	})
+
+
+	$(function () {
+		var timerBox = $(".timer-box-date");
+		var days = $("[data-date='days']");
+		var hours = $("[data-date='hours']");
+		var minutes = $("[data-date='minutes']");
+		var seconds = $("[data-date='seconds']");
+
+		var date = timerBox.attr("data-time");
+		var time = new Date(date).getTime();
+		var x = setInterval(function () {
+			var now = new Date().getTime();
+			var distance = time - now;
+			days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}`);
+			hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`);
+			minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`);
+			seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}`);
+			if (distance < 0) {
+				clearInterval(x);
+				days.text("0");
+				hours.text("0");
+				minutes.text("0");
+				seconds.text("0");
+			}
+		}, 1000);
 	})
 </script>
 <!--For google translate-->

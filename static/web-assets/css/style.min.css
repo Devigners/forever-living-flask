@@ -5851,6 +5851,7 @@ button.axil-btn.wishlist-btn:hover:before {
 @media only screen and (max-width: 767px) {
 	.header-top-campaign .campaign-content {
 		display: block;
+		margin: 0;
 	}
 }
 .header-top-campaign .campaign-content p {
@@ -5862,9 +5863,6 @@ button.axil-btn.wishlist-btn:hover:before {
 	color: var(--color-white);
 	text-decoration: underline;
 	transition: all 0.3s ease-in-out;
-}
-.header-top-campaign .campaign-content p a:hover {
-	color: var(--color-secondary);
 }
 .header-top-campaign .campaign-countdown {
 	display: flex;
@@ -5886,7 +5884,7 @@ button.axil-btn.wishlist-btn:hover:before {
 	content: "";
 	height: 14px;
 	width: 1px;
-	background-color: #c653e2;
+	background-color: #ffffff;
 	position: absolute;
 	top: 50%;
 	right: -7px;
@@ -6059,11 +6057,7 @@ button.axil-btn.wishlist-btn:hover:before {
 		margin-left: 0;
 	}
 }
-@media only screen and (max-width: 575px) {
-	.header-style-2 .axil-header-top .axil-search.search-bar {
-		display: none;
-	}
-}
+
 .axil-search.search-bar .icon {
 	width: auto;
 	position: absolute;
@@ -6162,8 +6156,10 @@ button.axil-btn.wishlist-btn:hover:before {
 }
 @media only screen and (max-width: 991px) {
 	.header-brand a img {
-		max-height: 45px;
-		width: auto;
+		min-height: 38px;
+		max-height: 38px;
+		min-width: 40px;
+		max-width: 40px;
 	}
 }
 @media only screen and (max-width: 320px) {
@@ -6499,7 +6495,7 @@ button.axil-btn.wishlist-btn:hover:before {
 .header-action .axil-search {
 	position: relative;
 }
-.header-action .axil-search .icon {
+/* .header-action .axil-search .icon {
 	position: absolute;
 	left: 15px;
 	width: auto;
@@ -6514,8 +6510,8 @@ button.axil-btn.wishlist-btn:hover:before {
 .header-action .axil-search .icon i {
 	display: inline-block;
 	line-height: 0;
-}
-.header-action .axil-search input {
+} */
+/* .header-action .axil-search input {
 	background: var(--color-white);
 	color: var(--color-heading);
 	border-radius: 6px;
@@ -6525,7 +6521,7 @@ button.axil-btn.wishlist-btn:hover:before {
 	height: 50px;
 	opacity: 1;
 	font-size: 14px;
-}
+} */
 .header-search-modal {
 	position: fixed;
 	top: 50%;

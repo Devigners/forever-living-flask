@@ -26,10 +26,6 @@
 			axilInit.priceRangeSlider();
 			axilInit.quantityRanger();
 			axilInit.axilSlickActivation();
-			axilInit.countdownInit(".coming-countdown", "2022/10/01");
-			axilInit.campaignCountdown(".campaign-countdown", "2022/10/01");
-			axilInit.countdownInit(".poster-countdown", "2022/10/01");
-			axilInit.countdownInit(".sale-countdown", "2022/10/31");
 			axilInit.sideOffcanvasToggle(".cart-dropdown-btn", "#cart-dropdown");
 			axilInit.sideOffcanvasToggle(".mobile-nav-toggler", ".header-main-nav");
 			axilInit.sideOffcanvasToggle(
@@ -40,7 +36,8 @@
 			axilInit.sideOffcanvasToggle(
 				".axil-search",
 				"#header-search-modal",
-				"#prod-search"
+				"#prod-search",
+				".psearch-results"
 			);
 			axilInit.sideOffcanvasToggle(
 				".popup-close, .closeMask",
@@ -880,33 +877,12 @@
 			});
 		},
 
-		countdownInit: function (countdownSelector, countdownTime) {
-			var eventCounter = $(countdownSelector);
-			if (eventCounter.length) {
-				eventCounter.countdown(countdownTime, function (e) {
-					$(this).html(
-						e.strftime(
-							"<div class='countdown-section'><div><div class='countdown-number'>%-D</div> <div class='countdown-unit'>Day</div> </div></div><div class='countdown-section'><div><div class='countdown-number'>%H</div> <div class='countdown-unit'>Hrs</div> </div></div><div class='countdown-section'><div><div class='countdown-number'>%M</div> <div class='countdown-unit'>Min</div> </div></div><div class='countdown-section'><div><div class='countdown-number'>%S</div> <div class='countdown-unit'>Sec</div> </div></div>"
-						)
-					);
-				});
-			}
-		},
-
-		campaignCountdown: function (countdownSelector, countdownTime) {
-			var eventCounter = $(countdownSelector);
-			if (eventCounter.length) {
-				eventCounter.countdown(countdownTime, function (e) {
-					$(this).html(
-						e.strftime(
-							"<div class='countdown-section'><div><div class='countdown-number'>%-D</div> <div class='countdown-unit'>D</div> </div></div><div class='countdown-section'><div><div class='countdown-number'>%H</div> <div class='countdown-unit'>H</div> </div></div><div class='countdown-section'><div><div class='countdown-number'>%M</div> <div class='countdown-unit'>M</div> </div></div><div class='countdown-section'><div><div class='countdown-number'>%S</div> <div class='countdown-unit'>S</div> </div></div>"
-						)
-					);
-				});
-			}
-		},
-
-		sideOffcanvasToggle: function (selectbtn, openElement, autoFocus) {
+		sideOffcanvasToggle: function (
+			selectbtn,
+			openElement,
+			autoFocus,
+			emptySelector
+		) {
 			$("body").on("click", selectbtn, function (e) {
 				e.preventDefault();
 
@@ -914,10 +890,18 @@
 					wrapp = $this.parents("body"),
 					wrapMask = $("<div / >").addClass("closeMask"),
 					cartDropdown = $(openElement);
-				if (autoFocus && cartDropdown.find(autoFocus).length && !cartDropdown.hasClass("open")) {
+				if (
+					autoFocus &&
+					cartDropdown.find(autoFocus).length &&
+					!cartDropdown.hasClass("open")
+				) {
 					setTimeout(function () {
 						cartDropdown.find(autoFocus).focus();
 					}, 300);
+				}
+
+				if (emptySelector && cartDropdown.find(emptySelector).length) {
+					cartDropdown.find(emptySelector).empty();
 				}
 
 				if (!cartDropdown.hasClass("open")) {
@@ -955,9 +939,11 @@
 						targrtScroll = topHeaderH + headerCampaign;
 					if ($(window).scrollTop() > targrtScroll) {
 						menu.addClass("axil-sticky");
+						$(".axil-mainmenu > .header-navbar").removeClass('d-none');
 						stickyPlaceHolder.height(menuH);
 					} else {
 						menu.removeClass("axil-sticky");
+						$(".axil-mainmenu > .header-navbar").addClass('d-none');
 						stickyPlaceHolder.height(0);
 					}
 				}

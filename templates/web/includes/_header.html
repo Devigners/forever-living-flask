@@ -20,49 +20,82 @@
 <header class="header axil-header header-style-2">
 	<div class="axil-header-top pb-0">
 		{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
-			<div class="header-top-campaign">
-				<div class="container position-relative">
-					<div class="campaign-content">
-						<div class="campaign-countdown"></div>
-						<p style="color: white;">
-							Avail a special discount of {{offer_cards['discount']['discount']}}% off for limited time.
-							<br class="d-md-none d-block" /><a href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Your Offer</a>
-						</p>
+		<div
+			class="timer-box-date"
+			data-time="{{offer_cards['discount']['validUntil']}}"
+		></div>
+		<div class="header-top-campaign">
+			<div class="container position-relative">
+				<div class="campaign-content">
+					<div class="campaign-countdown">
+						<div class="countdown-section">
+							<div>
+								<div class="countdown-number" data-date="days">0</div>
+								<div class="countdown-unit">d</div>
+							</div>
+						</div>
+						<div class="countdown-section">
+							<div>
+								<div class="countdown-number" data-date="hours">0</div>
+								<div class="countdown-unit">h</div>
+							</div>
+						</div>
+						<div class="countdown-section">
+							<div>
+								<div class="countdown-number" data-date="minutes">0</div>
+								<div class="countdown-unit">m</div>
+							</div>
+						</div>
+						<div class="countdown-section">
+							<div>
+								<div class="countdown-number" data-date="seconds">0</div>
+								<div class="countdown-unit">s</div>
+							</div>
+						</div>
 					</div>
+					<p style="color: white">
+						Avail a special discount of {{offer_cards['discount']['discount']}}%
+						off for limited time.
+						<br class="d-md-none d-block" /><a
+							href="{{ offer_cards['discount']['l'+title_country[country]] }}"
+							>Get Your Offer</a
+						>
+					</p>
 				</div>
 			</div>
-		{% endif %}
-		{% include "web/includes/_top_bar.html" %}
+		</div>
+		{% endif %} {% include "web/includes/_top_bar.html" %}
 		<div class="header-navbar bg-white pt-md-4 pb-md-4">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-lg-2 col-sm-3 col-7">
+					<div class="col-lg-2 col-sm-3 col-3">
 						<div class="header-brand">
 							<a
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="nav-title"
 							>
-								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="mainmenu-navbar-logo" width="60" height="60" />
-
+								<img
+									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo"
+									width="60"
+									height="60"
+								/>
 							</a>
 							<a
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo logo-light"
 							>
-								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="mainmenu-navbar-logo-2" width="60" height="60" />
-
+								<img
+									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo-2"
+									width="60"
+									height="60"
+								/>
 							</a>
 						</div>
 					</div>
-					{% if request.MOBILE %}
-					<div class="col-5">
-						<div class="h-select-group navbar-lang">
-							<div id="google_translate_element"></div>
-						</div>
-					</div>
-					{% else %} {% endif %}
-					<div class="col-lg-10 col-sm-9 col-7">
-						<div class="header-top-dropdown dropdown-box-style">
+					<div class="col-lg-10 col-sm-9 col-9 d-flex">
+						<div class="header-top-dropdown dropdown-box-style" style="flex: 1">
 							<div class="axil-search search-bar mr-0">
 								<button type="submit" class="icon wooc-btn-search">
 									<i class="far fa-search"></i>
@@ -78,6 +111,14 @@
 								/>
 							</div>
 						</div>
+
+						<ul class="action-list">
+							<li class="axil-mobile-toggle">
+								<button class="menu-btn mobile-nav-toggler">
+									<i class="flaticon-menu-2"></i>
+								</button>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -87,6 +128,64 @@
 	<div id="axil-sticky-placeholder"></div>
 	<!-- Start Mainmenu Area  -->
 	<div class="axil-mainmenu aside-category-menu">
+		<div class="header-navbar bg-white pt-md-4 pb-md-4 d-none">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-2 col-sm-3 col-3">
+						<div class="header-brand">
+							<a
+								href="{{ url_for('index', restArea=restArea, country=country) }}"
+								class="nav-title"
+							>
+								<img
+									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo"
+									width="60"
+									height="60"
+								/>
+							</a>
+							<a
+								href="{{ url_for('index', restArea=restArea, country=country) }}"
+								class="logo logo-light"
+							>
+								<img
+									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo-2"
+									width="60"
+									height="60"
+								/>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-10 col-sm-9 col-9 d-flex">
+						<div class="header-top-dropdown dropdown-box-style" style="flex: 1">
+							<div class="axil-search search-bar mr-0">
+								<button type="submit" class="icon wooc-btn-search">
+									<i class="far fa-search"></i>
+								</button>
+								<input
+									type="search"
+									class="placeholder product-search-input"
+									readonly
+									value=""
+									maxlength="128"
+									placeholder="What are you looking for...."
+									autocomplete="off"
+								/>
+							</div>
+						</div>
+
+						<ul class="action-list">
+							<li class="axil-mobile-toggle">
+								<button class="menu-btn mobile-nav-toggler">
+									<i class="flaticon-menu-2"></i>
+								</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="container">
 			<div class="header-navbar">
 				<div class="header-nav-department">
@@ -109,14 +208,18 @@
 								href="{{ url_for('index', restArea=restArea, country=country) }}"
 								class="logo"
 							>
-								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}" alt="mobile-mainmenu-navbar-logo" width="60" height="60" />
-
+								<img
+									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mobile-mainmenu-navbar-logo"
+									width="60"
+									height="60"
+								/>
 							</a>
 						</div>
 						<div
 							class="d-flex w-100 justify-content-between align-items-center mobile-nav-body"
 						>
-						<ul class="mainmenu">
+							<ul class="mainmenu">
 								<li>
 									<a
 										href="{{ url_for('index', restArea=restArea, country=country) }}"
@@ -144,17 +247,22 @@
 							</ul>
 							<div class="profile-details">
 								<div class="inner">
-									<h5 style="font-size: large;">Kapil Singla</h5>
-									<h6 style="font-size: medium;">FBO ID: 200002416566</h6>
+									<h5 style="font-size: large">Kapil Singla</h5>
+									<h6 style="font-size: medium">FBO ID: 200002416566</h6>
 									<div class="popover-details-wrapper">
 										<div class="popover-details">
 											<h6>Independent Distributor Since Jan 2011</h6>
-											<a href="mailto:yourflpdistributor@gmail.com">yourflpdistributor@gmail.com</a>
+											<a href="mailto:yourflpdistributor@gmail.com"
+												>yourflpdistributor@gmail.com</a
+											>
 										</div>
 									</div>
 								</div>
 								<div class="dummy-profile-image">
-									<img src="{{ url_for('static', filename='web-assets/images/about/profile.png') }}" style="border-radius: 100%;" />
+									<img
+										src="{{ url_for('static', filename='web-assets/images/about/profile.png') }}"
+										style="border-radius: 100%"
+									/>
 								</div>
 							</div>
 							<div class="mainmenu-nav-title fadeInDown">
@@ -173,18 +281,6 @@
 						</div>
 					</nav>
 					<!-- End Mainmanu Nav -->
-				</div>
-				<div class="header-action d-flex align-items-center">
-					<button type="submit" class="axil-search header-variant-2-search d-block d-lg-none">
-						<i class="far fa-search"></i>
-					</button>
-					<ul class="action-list">
-						<li class="axil-mobile-toggle">
-							<button class="menu-btn mobile-nav-toggler">
-								<i class="flaticon-menu-2"></i>
-							</button>
-						</li>
-					</ul>
 				</div>
 			</div>
 		</div>
