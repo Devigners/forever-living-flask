@@ -265,17 +265,22 @@
 									/>
 								</div>
 							</div>
-							<div class="mainmenu-nav-title fadeInDown">
+							<div class="mainmenu-nav-title fadeInDown w-100">
 								<div class="d-flex align-items-center">
-									<button type="submit" class="axil-search">
-										<i class="far fa-search"></i>
-									</button>
-									<a
-										href="{{ url_for('country', restArea=restArea, country=country) }}"
-										class=""
-									>
-										<b>FOREVER LIVING</b>
-									</a>
+									<div class="axil-search search-bar mr-0">
+										<button type="submit" class="icon wooc-btn-search">
+											<i class="far fa-search"></i>
+										</button>
+										<input
+											type="search"
+											class="placeholder product-search-input"
+											readonly
+											value=""
+											maxlength="128"
+											placeholder="What are you looking for...."
+											autocomplete="off"
+										/>
+									</div>
 								</div>
 							</div>
 						</div>

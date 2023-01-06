@@ -16277,16 +16277,6 @@ body.open .closeMask {
 	white-space: nowrap;
 }
 
-.mainmenu-nav-title .axil-search {
-	background-color: transparent;
-	border-radius: 100%;
-	border: 1px solid #f3f3f3;
-	height: 30px;
-	width: 30px;
-	font-size: 14px;
-	margin-right: 10px;
-}
-
 .axil-sticky .mainmenu-nav-title {
 	display: block;
 }
