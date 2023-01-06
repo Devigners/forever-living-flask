@@ -6072,13 +6072,17 @@ button.axil-btn.wishlist-btn:hover:before {
 .axil-search.search-bar .icon:hover {
 	color: var(--color-primary);
 }
+
+.axil-search.search-bar input:not(.pl-0){
+	padding-left: 50px;
+}
+
 .axil-search.search-bar input {
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid #d4d4d4;
 	border-radius: 6px;
 	font-size: 14px;
-	padding-left: 50px;
 	color: var(--color-heading);
 	font-weight: 500;
 }
@@ -6769,7 +6773,7 @@ button.axil-btn.wishlist-btn:hover:before {
 }
 @media only screen and (max-width: 991px) {
 	.axil-mainmenu.aside-category-menu {
-		padding: 10px 0;
+		padding: 0 0 10px;
 	}
 	.axil-mainmenu.axil-sticky {
 		padding: 10px 0;
@@ -7285,7 +7289,6 @@ button.axil-btn.wishlist-btn:hover:before {
 	}
 	.header-main-nav .mainmenu-nav .mainmenu {
 		display: block;
-		height: 100%;
 		overflow-y: auto;
 		margin: 0;
 		width: 100%;
@@ -7500,9 +7503,7 @@ button.axil-btn.wishlist-btn:hover:before {
 .mainmenu {
 	display: flex;
 	align-items: center;
-	flex-wrap: wrap;
 	justify-content: center;
-	margin: 0 -24px;
 }
 @media only screen and (max-width: 1199px) {
 	.mainmenu {
@@ -7510,10 +7511,8 @@ button.axil-btn.wishlist-btn:hover:before {
 	}
 }
 .mainmenu > li {
-	margin: 0 14px;
-}
-.mainmenu > li  + li{
-	margin-left: 24px !important;
+	padding: 0 15px;
+	margin: 0 !important;
 }
 @media only screen and (max-width: 1199px) {
 	.mainmenu > li {
@@ -7537,7 +7536,7 @@ button.axil-btn.wishlist-btn:hover:before {
 	width: 0;
 	background-color: var(--color-black);
 	position: absolute;
-	bottom: 29px;
+	bottom: 25px;
 	left: 0;
 	opacity: 0;
 	transition: 0.5s;
@@ -16228,5 +16227,12 @@ body.open .closeMask {
 	}
 	.mb_mobile--100 {
 		margin-bottom: 100px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.header-brand a img{
+		min-height: 60px;
+		min-width: 60px;
 	}
 }

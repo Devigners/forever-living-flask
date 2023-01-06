@@ -22,6 +22,11 @@
 	margin-right: 0px !important;
 }
 
+.mainmenu {
+	margin-right: 20px;
+	white-space: nowrap;
+}
+
 .mainmenu-nav-title {
 	display: none;
 	-webkit-animation-duration: 0.5s;
@@ -350,7 +355,7 @@ body {
 		text-align: center !important;
 	}
 	.header-navbar {
-		padding: 5px 0 !important;
+		padding: 10px 0 !important;
 	}
 	.axil-blog-area {
 		padding-top: 10px !important;
@@ -730,11 +735,13 @@ h2 {
 	display: flex;
 	align-items: center;
 	position: relative;
+	margin-left: 20px !important;
 }
 
 .profile-details .inner {
 	text-align: right;
 	margin-right: 10px;
+	white-space: nowrap;
 }
 
 .profile-details .inner h5 {
@@ -1145,7 +1152,7 @@ h2 {
 	position: fixed;
 	top: 20%;
 	right: 10px;
-	z-index: 999;
+	z-index: 10;
 }
 
 .floating-vertical-btn a {
