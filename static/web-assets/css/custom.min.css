@@ -1175,7 +1175,8 @@ h2 {
 
 @media screen and (max-width: 768px) {
 	.floating-vertical-btn {
-		top: 30% !important
+		top: 30% !important;
+		right: 8px !important
 	}
 	.floating-vertical-btn a {
 		padding: 15px 3px;
