@@ -5829,10 +5829,7 @@ button.axil-btn.wishlist-btn:hover:before {
 	display: none;
 }
 .header-top-campaign {
-	background-image: url("../images/color-bg.jpg");
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	background: linear-gradient(130.03deg, #346E9E 8.67%, #05A9DD 100%);
 	padding: 8px 0;
 	position: relative;
 }
