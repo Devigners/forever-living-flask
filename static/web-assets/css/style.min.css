@@ -7278,7 +7278,7 @@ button.axil-btn.wishlist-btn:hover:before {
 		background-color: var(--color-white);
 		z-index: 10000000000;
 		transition: all 0.3s ease-in-out;
-		padding: 20px 30px 10px;
+		padding: 20px 30px 10px 20px;
 		visibility: hidden;
 		opacity: 0;
 	}
@@ -8135,20 +8135,7 @@ body.open .closeMask {
 	position: relative;
 	z-index: 1;
 }
-.axil-product .cart-action li.select-option a:before {
-	content: "";
-	height: 100%;
-	width: 100%;
-	background-color: var(--color-secondary);
-	border-radius: 4px;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: -1;
-	transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+
 .axil-product .cart-action li.select-option a:hover {
 	background-color: var(--color-secondary);
 	color: var(--color-white);
@@ -17181,7 +17168,7 @@ h2 {
 	border: 1px solid var(--color-secondary);
 }
 
-.search-product-item .cart-action li.select-option a.default {
+.btn-default {
 	background-color: var(--color-white) !important;
 	color: var(--color-secondary) !important;
 	border: 1px solid var(--color-secondary) !important;
@@ -17201,7 +17188,7 @@ h2 {
 	z-index: -1;
 	transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.search-product-item .cart-action li.select-option a.default:before {
+.btn-default:before {
 	background-color: var(--color-white) !important;
 }
 .search-product-item .cart-action li.select-option a:hover {
@@ -17416,13 +17403,15 @@ h2 {
 	}
 }
 
-@media screen and (max-width: 768px) {
-	.google-language .h-select-group{
-		max-width: 130px !important;
-		width: 130px !important;
-		font-size: 12px !important;
-	}
+.google-language .h-select-group select{
+	font-size: 12px !important;
 }
+
+.google-language .h-select-group{
+	max-width: 130px !important;
+	width: 130px !important;
+}
+
 @media only screen and (max-width: 767px) {
 	.arrow-top-slide .slide-arrow.prev-arrow {
 		right: 50px;

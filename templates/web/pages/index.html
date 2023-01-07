@@ -163,6 +163,7 @@
 											</li>
 											<li class="select-option">
 												<a
+													class="btn-default"
 													href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
 													>See Details</a
 												>
@@ -231,6 +232,7 @@
 									</li>
 									<li class="select-option">
 										<a
+											class="btn-default"
 											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}"
 											>See Details</a
 										>
@@ -317,7 +319,7 @@
 							<a href="__PRODUCT_WEBSITE_URL__">Buy Now</a>
 						</li>
 						<li class="select-option">
-							<a href="__PRODUCT_WEBSITE_URL__">See Details</a>
+							<a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a>
 						</li>
 					</ul>
 				</div>
