@@ -17031,12 +17031,16 @@ h2 {
 	.mobile-nav-body {
 		flex-direction: column;
 	}
+	.profile-details .dummy-profile-image{
+		margin-top: 10px !important;
+	}
 	.profile-details {
 		margin-top: 50px;
 		position: relative;
 		flex-direction: column-reverse;
 		text-align: left;
 		align-items: flex-start;
+		margin-left: 0 !important;
 	}
 
 	.profile-details .inner {
@@ -17063,6 +17067,9 @@ h2 {
 	}
 	.profile-details .inner h6 {
 		font-size: 14px;
+	}
+	.profile-details .inner>h6 {
+		display: none;
 	}
 	.mainmenu-nav {
 		flex-direction: column;
