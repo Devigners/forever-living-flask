@@ -39,7 +39,7 @@
 									<div class="thumbnail">
 										<a href="{{ url_for('blogDetails', restArea=restArea, country=country, id=blogs[blog_id]['ID']) }}">
 											<img
-												src="{{ url_for('static', filename=blogs[blog_id]['Image']) }}"
+												src="{{ url_for('static', filename=blogs[blog_id]['Image'].replace('.','-small.')) }}"
 												alt="Blog Images"
 											/>
 										</a>
