@@ -3914,11 +3914,6 @@ button.axil-btn.wishlist-btn:hover:before {
 	left: auto;
 	right: 58px;
 }
-@media only screen and (max-width: 767px) {
-	.arrow-top-slide .slide-arrow.prev-arrow {
-		right: 50px;
-	}
-}
 .post-list-view .post-gallery-activation.axil-slick-arrow .slide-arrow {
 	background: #fff;
 	border: 1px solid #fff;
@@ -17286,7 +17281,7 @@ h2 {
 }
 
 .home-page .testimonial-slick-activation .slick-arrow {
-	top: -80px !important;
+	top: -80px;
 }
 
 /* .text-md-left */
@@ -17418,5 +17413,21 @@ h2 {
 		width: 29.8px;
 		padding: 15px 3px;
 		font-size: 14px !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.google-language .h-select-group{
+		max-width: 130px !important;
+		width: 130px !important;
+		font-size: 12px !important;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.arrow-top-slide .slide-arrow.prev-arrow {
+		right: 50px;
+	}
+	.arrow-top-slide .slide-arrow {
+		top: -55px !important;
 	}
 }
