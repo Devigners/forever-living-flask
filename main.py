@@ -130,8 +130,7 @@ def index(country=None, restArea=None):
         name, img_file = controller.getFlag(country)
 
     # showing the address in the correct format on the homepage
-    address = [' '.join(re.split('(?<=.)(?=[A-Z])', i.split('-')[0]))
-               for i in address]
+    address = [" ".join(l for l in re.findall('[A-Z][^A-Z]*', i)) for i in address]
 
     # sending following information to the template page
     context = {
