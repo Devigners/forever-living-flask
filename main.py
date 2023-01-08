@@ -287,9 +287,6 @@ def productDetails(country, name, category, restArea=None):
     if (product):
         product = product[0]
 
-        for i in range(len(product)):
-            print(i, ":>", product[i])
-
         if (category not in categories):
             category = 'All Products'
 
