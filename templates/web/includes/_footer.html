@@ -360,7 +360,8 @@
 		var seconds = $("[data-date='seconds']");
 
 		var date = timerBox.attr("data-time");
-		var time = new Date(date).getTime();
+		// add timezene United States
+		var time = new Date(date).getTime() + 1000 * 60 * 60 * 5;
 		var x = setInterval(function () {
 			var now = new Date().getTime();
 			var distance = time - now;
