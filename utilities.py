@@ -36,7 +36,7 @@ class data():
         # then, it replace ' ' with -'es
         # then, it replace multiple dashes with single dash
         self.products['url_name'] = [
-            re.sub(r'[ ]+', ' ', i.replace('Â', '').replace('®', '').replace(
+            re.sub(r'[ ]+', ' ', i.replace('&', 'and').replace('Â', '').replace('®', '').replace(
                 '™', '').replace('-', ' ').title()).replace(' ', '-') for i in self.products['post_title'].values.tolist()]
         self.products['review_stars'].fillna(0.0, inplace=True)
         self.products['total_reviews'].fillna('', inplace=True)
