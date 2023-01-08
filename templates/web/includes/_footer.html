@@ -24,7 +24,7 @@
 				<div class="col-xl-3 col-lg-12">
 					<div class="copyright-left">
 						<div class="col-xl-12">
-							<b class="d-block">Related to Forever Living Company:</b>
+							<b class="d-block">Relating Forever Living Company:</b>
 							<a
 								href="https://foreverliving.com/{{footer_country_code}}/en-us/business-opportunity-faq"
 								>Business Opportunity FAQs</a
@@ -360,7 +360,8 @@
 		var seconds = $("[data-date='seconds']");
 
 		var date = timerBox.attr("data-time");
-		var time = new Date(date).getTime();
+		// add timezene United States
+		var time = new Date(date).getTime() + 1000 * 60 * 60 * 5;
 		var x = setInterval(function () {
 			var now = new Date().getTime();
 			var distance = time - now;

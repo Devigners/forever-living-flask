@@ -1003,7 +1003,7 @@ ol li a {
 	background-image: url(../images/bg/bg-image-11.jpg);
 }
 .bg_image--12 {
-	background-image: url(../images/bg/newsletter-bg.png);
+	background-image: url(../images/bg/newsletter-bg.png?v=1.1);
 }
 .bg_image--13 {
 	background-image: url(../images/bg/bg-image-13.jpg);
@@ -16695,7 +16695,7 @@ body {
 		line-height: 24px;
 	}
 	.home-service-box h4 {
-		font-size: 24px;
+		font-size: 30px;
 		line-height: 24px;
 	}
 	.home-service-box .timer-box li {

@@ -108,8 +108,8 @@ def index(country=None, restArea=None):
         if ('-' in restArea):
             pageType = 'restarea'
 
-        state_of_restArea = ' '.join(
-            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0]))
+        state_of_restArea = " ".join(l for l in re.findall(
+            '[A-Z][^A-Z]*', restArea.split('-')[0]))
 
     # updating var if we don't get any error
     # else we are going to redirect to index page
@@ -130,7 +130,8 @@ def index(country=None, restArea=None):
         name, img_file = controller.getFlag(country)
 
     # showing the address in the correct format on the homepage
-    address = [" ".join(l for l in re.findall('[A-Z][^A-Z]*', i)) for i in address]
+    address = [" ".join(l for l in re.findall(
+        '[A-Z][^A-Z]*', i.split('-')[0])) for i in address]
 
     # sending following information to the template page
     context = {
@@ -144,7 +145,6 @@ def index(country=None, restArea=None):
         'flag_data': (name, img_file),
         'title_country': title_country,
         'offer_links': country_specific,
-
         'country': country,
         'state_of_restArea': state_of_restArea,
         'restArea': restArea,

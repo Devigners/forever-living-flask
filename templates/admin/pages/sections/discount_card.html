@@ -23,7 +23,7 @@
 							class="form-control"
 							id="discount"
 						>
-							<option value="">Select discount from below</option>
+							<option disabled value="">Select discount from below</option>
 							<option value="5" {% if cards['discount']['discount'] == 5 %}selected{% endif %}>5% off</option>
 							<option value="10" {% if cards['discount']['discount'] == 10 %}selected{% endif %}>10% off</option>
 							<option value="15" {% if cards['discount']['discount'] == 15 %}selected{% endif %}>15% off</option>
@@ -32,7 +32,7 @@
 					<div class="form-group col-lg-6 col-md-6 co-sm-6 col-xs-12">
 						<label>Valid Until</label>
 						<input
-							type="date"
+							type="text"
 							class="form-control"
 							name="discount_validUntil"
 							placeholder="Select Date"
@@ -121,7 +121,7 @@
 					/>
 				</div>
 				<div class="box-footer clearfix">
-					<button class="pull-right btn btn-success" type="submit">
+					<button class="pull-right btn btn-success" type="submit" id="onClickDiscountForm">
 						Update
 					</button>
 				</div>

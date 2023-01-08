@@ -42,7 +42,7 @@
 		/>
 		<link
 			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/style.min.css') }}?v=2.6"
+			href="{{ url_for('static', filename='web-assets/css/style.min.css') }}?v=2.7"
 		/>
 		<link
 			rel="stylesheet"
@@ -60,6 +60,6 @@
 				<a class="join" href="{{ offer_cards['join']['l'+title_country[country]] }}">Join & Save 5%</a>
 			{% endif %}
 			{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
-				<a class="discount" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Discount {{offer_cards['discount']['discount']}}%</a>
+				<a class="discount" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Special {{offer_cards['discount']['discount']}}% Off</a>
 			{% endif %}
 		</div>

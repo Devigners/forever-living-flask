@@ -93,6 +93,13 @@
 	});
 
 	// on change checkbox-to-input
+	$("body").on("click", "#onClickDiscountForm", function (e) {
+		if($('[name="discount_validUntil"]').val() == ""){
+			alert("Please select valid until date");
+			e.preventDefault();
+		}
+	});
+
 	$("body").on("change", ".checkbox-to-input", function () {
 		if ($(this).is(":checked")) {
 			$(this).closest(".form-group").find('input[type="text"]').prop(
@@ -108,11 +115,11 @@
 	});
 
 	// # singledatepicker
-	$('[name="valid_until"]').datepicker({
-		format: "dd-mm-yyyy",
+	$('[name="discount_validUntil"]').datepicker({
+		format: "yyyy-mm-dd",
 		autoclose: true,
-		todayHighlight: true,
-	});
+		startDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+	})
 
 	function requireDepend(selector) {
 		return {

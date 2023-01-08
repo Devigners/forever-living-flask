@@ -73,7 +73,7 @@
 								Forever Living Products is a leading health and wellness company that has been in operation for over 40 years. The Arizona-based company sells a range of natural supplements, drinks, beauty products, and health foods to customers all around the world. Over the years, Forever Living Products has expanded its reach significantly - making its presence felt in all states/counties across {{address[0]}}. The company boasts of an impressive selection of products available for sale in every state. From their best-selling aloe vera gelly to their weight management or Aloe Vera Drinks, customers can find everything they need to lead a healthy life without having to go too far. In addition to this, customers also have access to convenient online shopping options which allow them to shop from anywhere at any time.
 							<br>
 							<br>
-								Forever Living Products (FLP) is one of the world’s largest manufacturers and distributors of health, wellness, and beauty products. Over the past two decades, FLP has established its presence in numerous countries worldwide. As such, FLP Distributors can be found in various counties/cities across the {{address[1]}}. For instance, many new independent distributors have joined FLP in {{address[1]}} where customers can access quality aloe vera products with ease. Similarly, {{', '.join(states[:5])}} offer an array of distribution centers for customers seeking natural remedies that are effective yet affordable. In addition to these, there are also numerous local outlets located throughout {{', '.join(states[5:10])}}. Overall, FLP Distributors have become a core part of cities like {{', '.join(states[10:15])}} – providing customers with convenient access to superior-quality health and wellness solutions at competitive prices.
+								Forever Living Products (FLP) is one of the world’s largest manufacturers and distributors of health, wellness, and beauty products. Over the past two decades, FLP has established its presence in numerous countries worldwide. As such, FLP Distributors can be found in various counties/cities across the {{address[1]}}. For instance, many new independent distributors have joined FLP in {{address[1]}} where customers can access quality aloe vera products with ease. Similarly, <strong>{{', '.join(states[:5])}}</strong> offer an array of distribution centers for customers seeking natural remedies that are effective yet affordable. In addition to these, there are also numerous local outlets located throughout <strong>{{', '.join(states[5:10])}}</strong>. Overall, FLP Distributors have become a core part of cities like <strong>{{', '.join(states[10:15])}}</strong> – providing customers with convenient access to superior-quality health and wellness solutions at competitive prices.
 							<br>
 							<br>
 								With each state having its own set of regulations, allowing a business to operate requires that it meets certain criteria. Despite this, FLP has managed to penetrate most parts of  {{address[0]}} with its network of independent distributors operating across multiple cities. In fact, it is estimated that almost the majority of households in small or big cities have access to Forever Living Products within their vicinity. With a wide variety of products ranging from health supplements to skincare and homecare items, customers are able to satisfy their varied needs with ease.
@@ -434,9 +434,9 @@
 			<div class="product-detail-section">
 				{% if(restArea) %} 
 					{% if(restArea != state_of_restArea.replace(' ', ''))%}
-						<h4>Delivering in Other Areas of {{ state_of_restArea }}</h4>
+						<h4>Delivering in Other Areas of {{address[1]}}</h4>
 					{% else %}
-						<h4>Delivering Throughout {{ state_of_restArea }}</h4>
+						<h4>Delivering Throughout {{address[1]}}</h4>
 				{% endif %} 
 					{% for state in states %}
 						<a
@@ -445,7 +445,7 @@
 						</a>
 					{% endfor %} 
 				{% else %}
-				<h4>Delivering Throughout {{ country.title() }}</h4>
+				<h4>Delivering Throughout {{address[0]}}</h4>
 				{% for state in states %}
 				<a
 					href="{{ url_for('index', country=country, restArea=state.replace(' ','')) }}"
