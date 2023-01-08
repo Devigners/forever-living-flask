@@ -22,7 +22,7 @@
 		{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
 		<div
 			class="timer-box-date"
-			data-time="{{offer_cards['discount']['validUntil']}}"
+			data-time="{% if offer_cards['discount']['validUntil'] != None %}{{offer_cards['discount']['validUntil']}}{% endif %}"
 		></div>
 		<div class="header-top-campaign">
 			<div class="container position-relative">

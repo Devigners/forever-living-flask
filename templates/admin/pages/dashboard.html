@@ -93,6 +93,13 @@
 	});
 
 	// on change checkbox-to-input
+	$("body").on("click", "#onClickDiscountForm", function (e) {
+		if($('[name="discount_validUntil"]').val() == ""){
+			alert("Please select valid until date");
+			e.preventDefault();
+		}
+	});
+
 	$("body").on("change", ".checkbox-to-input", function () {
 		if ($(this).is(":checked")) {
 			$(this).closest(".form-group").find('input[type="text"]').prop(
