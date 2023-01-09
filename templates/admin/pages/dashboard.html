@@ -94,7 +94,7 @@
 
 	// on change checkbox-to-input
 	$("body").on("click", "#onClickDiscountForm", function (e) {
-		if($('[name="discount_validUntil"]').val() == ""){
+		if ($('[name="discount_validUntil"]').val() == "") {
 			alert("Please select valid until date");
 			e.preventDefault();
 		}
@@ -102,15 +102,15 @@
 
 	$("body").on("change", ".checkbox-to-input", function () {
 		if ($(this).is(":checked")) {
-			$(this).closest(".form-group").find('input[type="text"]').prop(
-				"disabled",
-				false
-			);
+			$(this)
+				.closest(".form-group")
+				.find('input[type="text"]')
+				.prop("disabled", false);
 		} else {
-			$(this).closest(".form-group").find('input[type="text"]').prop(
-				"disabled",
-				true
-			);
+			$(this)
+				.closest(".form-group")
+				.find('input[type="text"]')
+				.prop("disabled", true);
 		}
 	});
 
@@ -119,7 +119,7 @@
 		format: "yyyy-mm-dd",
 		autoclose: true,
 		startDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
-	})
+	});
 
 	function requireDepend(selector) {
 		return {
@@ -165,5 +165,9 @@
 			});
 		},
 	});
+
+	if (window.history.replaceState) {
+		window.history.replaceState(null, null, window.location.href);
+	}
 </script>
 {% endblock %}
