@@ -11,6 +11,8 @@ footer_country_code = {'australia': 'aus',
 
 title_country = {'australia': 'Australia',
                  'unitedstates': 'UnitedStates', 'canada': 'Canada', 'greatbritain': 'GreatBritain'}
+                 
+character_limit_title_country = {'Australia': 'Australia', 'United States': 'USA', 'Great Britain': 'UK', 'Canada': 'Canada'}
 
 country_specific = {
     'usa': {
@@ -74,7 +76,7 @@ for set in ResultSet:
 
 @app.context_processor
 def utility_processor():
-    return dict(str=str)
+    return dict(str=str, len=len)
 
 
 def update_var(new_country, restArea=None):
@@ -149,7 +151,8 @@ def index(country=None, restArea=None):
         'country': country,
         'state_of_restArea': state_of_restArea,
         'restArea': restArea,
-        'address': address
+        'address': address,
+        'character_limit_title_country': character_limit_title_country
     }
 
     return render_template('web/pages/home.html', **context)
