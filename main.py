@@ -108,7 +108,8 @@ def index(country=None, restArea=None):
         if ('-' in restArea):
             pageType = 'restarea'
 
-        state_of_restArea =  " ".join(l for l in re.findall('[A-Z][^A-Z]*', restArea.split('-')[0]))
+        state_of_restArea = " ".join(l for l in re.findall(
+            '[A-Z][^A-Z]*', restArea.split('-')[0]))
 
     # updating var if we don't get any error
     # else we are going to redirect to index page
@@ -128,11 +129,9 @@ def index(country=None, restArea=None):
     else:
         name, img_file = controller.getFlag(country)
 
-    
     # showing the address in the correct format on the homepage
-    address = [" ".join(l for l in re.findall('[A-Z][^A-Z]*', i.split('-')[0])) for i in address]
-
-    
+    address = [" ".join(l for l in re.findall(
+        '[A-Z][^A-Z]*', i.split('-')[0])) for i in address]
 
     # sending following information to the template page
     context = {
@@ -290,6 +289,9 @@ def productDetails(country, name, category, restArea=None):
 
         if (category not in categories):
             category = 'All Products'
+
+        for i in range(len(product)):
+            print(i, ": ", product[i])
 
         context = {
             'offer_links': country_specific,
