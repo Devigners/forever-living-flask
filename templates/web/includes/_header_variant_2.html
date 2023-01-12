@@ -17,10 +17,7 @@
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
 	{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
-	<div
-		class="timer-box-date"
-		data-time="{{offer_cards['discount']['validUntil']}}"
-	></div>
+	<div class="timer-box-date" data-time="{{offer_cards['discount']['validUntil']}}"></div>
 	<div class="header-top-campaign">
 		<div class="container position-relative">
 			<div class="campaign-content">
@@ -54,9 +51,7 @@
 					Avail a special discount of {{offer_cards['discount']['discount']}}%
 					off for limited time.
 					<br class="d-md-none d-block" /><a
-						href="{{ offer_cards['discount']['l'+title_country[country]] }}"
-						>Get Your Offer</a
-					>
+						href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Your Offer</a>
 				</p>
 			</div>
 		</div>
@@ -68,16 +63,9 @@
 		<div class="container">
 			<div class="header-navbar">
 				<div class="header-brand pb-0" style="padding-bottom: 0 !important">
-					<a
-						href="{{ url_for('index', restArea=restArea, country=country) }}"
-						class="nav-title"
-					>
-						<img
-							src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
-							alt="sticky-navbar-logo"
-							width="60"
-							height="60"
-						/>
+					<a href="{{ url_for('index', restArea=restArea, country=country) }}" class="nav-title">
+						<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+							alt="sticky-navbar-logo" width="60" height="60" />
 					</a>
 				</div>
 				<div class="header-main-nav">
@@ -87,121 +75,80 @@
 							<i class="fas fa-times"></i>
 						</button>
 						<div class="mobile-nav-brand">
-							<a
-								href="{{ url_for('index', restArea=restArea, country=country) }}"
-								class="nav-title"
-							>
-								<img
-									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
-									alt="mainmenu-navbar-logo"
-									width="80"
-									height="80"
-								/>
+							<a href="{{ url_for('index', restArea=restArea, country=country) }}" class="nav-title">
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo" width="80" height="80" />
 							</a>
 						</div>
 						<ul class="mainmenu justify-content-start">
 							<li>
-								<a
-									href="{{ url_for('index', restArea=restArea, country=country) }}"
-									>Home</a
-								>
+								<a href="{{ url_for('index', restArea=restArea, country=country) }}">Home</a>
 							</li>
 							<li>
-								<a
-									href="{{ url_for('country', restArea=restArea, country=country) }}"
-									>Shop</a
-								>
+								<a href="{{ url_for('country', restArea=restArea, country=country) }}">Shop</a>
 							</li>
 							<li>
-								<a
-									href="{{ url_for('shop', restArea=restArea, country=country) }}"
-									>All Products</a
-								>
+								<a href="{{ url_for('shop', restArea=restArea, country=country) }}">Browse Products</a>
 							</li>
 							<li>
-								<a
-									href="{{ url_for('blogs', restArea=restArea, country=country) }}"
-									>Blogs</a
-								>
+								<a href="{{ url_for('blogs', restArea=restArea, country=country) }}">Blogs</a>
 							</li>
 						</ul>
 						{% if request.MOBILE %}
-							<div class="profile-details d-sm-none d-flex">
-								<div class="inner">
-									<h5 style="font-size: large">Kapil Singla</h5>
-									<h6 style="font-size: medium">FBO ID: 200002416566</h6>
-									<div class="popover-details-wrapper">
-										<div class="popover-details">
-											<h6>A Licensed Dental Surgeon (BDS); MBA</h6>
-											<h6>Dental Public health Resident; Drug Safety Manager</h6>
-											<h6>Independent FLP Distributor Since Jan 2011</h6>
-											<a href="mailto:yourflpdistributor@gmail.com"
-												>yourflpdistributor@gmail.com</a
-											>
-										</div>
-									</div>
-								</div>
-								<div class="dummy-profile-image">
-									<img
-										src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
-										alt="about-me-profile"
-										style="border-radius: 100%"
-									/>
-								</div>
-							</div>
-						{% else %}
-						{% endif %}
-					</nav>
-					<!-- End Mainmanu Nav -->
-				</div>
-				<div class="header-top-dropdown dropdown-box-style w-100">
-					<div
-						class="axil-search search-bar mr-0"
-						style="display: block !important; margin-left: 0"
-					>
-						<input
-							type="search"
-							class="placeholder product-search-input pl-0"
-							readonly
-							value=""
-							maxlength="128"
-							placeholder="What are you looking for...."
-							autocomplete="off"
-						/>
-					</div>
-				</div>
-				{% if request.MOBILE %}
-				{% else %}
-					<div class="d-md-block d-none">
-						<div class="profile-details">
+						<div class="profile-details d-sm-none d-flex">
 							<div class="inner">
 								<h5 style="font-size: large">Kapil Singla</h5>
 								<h6 style="font-size: medium">FBO ID: 200002416566</h6>
 								<div class="popover-details-wrapper">
 									<div class="popover-details">
 										<h6>A Licensed Dental Surgeon (BDS); MBA</h6>
-										<h6>Dental Public Health Resident; Drug Safety Manager</h6>
+										<h6>Dental Public health Resident; Drug Safety Manager</h6>
 										<h6>Independent FLP Distributor Since Jan 2011</h6>
-										<a href="mailto:yourflpdistributor@gmail.com"
-											>yourFLPdistributor@gmail.com</a
-										>
+										<a href="mailto:yourflpdistributor@gmail.com">yourflpdistributor@gmail.com</a>
 									</div>
 								</div>
 							</div>
 							<div class="dummy-profile-image">
-								<img
-									src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
-									alt="about-me-profile-2"
-									style="border-radius: 100%"
-								/>
+								<img src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
+									alt="about-me-profile" style="border-radius: 100%" />
 							</div>
 						</div>
+						{% else %}
+						{% endif %}
+					</nav>
+					<!-- End Mainmanu Nav -->
+				</div>
+				<div class="header-top-dropdown dropdown-box-style w-100">
+					<div class="axil-search search-bar mr-0" style="display: block !important; margin-left: 0">
+						<input type="search" class="placeholder product-search-input pl-0" readonly value=""
+							maxlength="128" placeholder="What are you looking for...." autocomplete="off" />
 					</div>
+				</div>
+				{% if request.MOBILE %}
+				{% else %}
+				<div class="d-md-block d-none">
+					<div class="profile-details">
+						<div class="inner">
+							<h5 style="font-size: large">Kapil Singla</h5>
+							<h6 style="font-size: medium">FBO ID: 200002416566</h6>
+							<div class="popover-details-wrapper">
+								<div class="popover-details">
+									<h6>A Licensed Dental Surgeon (BDS); MBA</h6>
+									<h6>Dental Public Health Resident; Drug Safety Manager</h6>
+									<h6>Independent FLP Distributor Since Jan 2011</h6>
+									<a href="mailto:yourflpdistributor@gmail.com">yourFLPdistributor@gmail.com</a>
+								</div>
+							</div>
+						</div>
+						<div class="dummy-profile-image">
+							<img src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
+								alt="about-me-profile-2" style="border-radius: 100%" />
+						</div>
+					</div>
+				</div>
 				{% endif %}
-				<div
-					class="header-action mt-0 d-flex align-items-center d-md-none d-block"
-					style="margin-left: 0 !important"
-				>
+				<div class="header-action mt-0 d-flex align-items-center d-md-none d-block"
+					style="margin-left: 0 !important">
 					<ul class="action-list" style="padding-left: 15px !important">
 						<li class="axil-mobile-toggle">
 							<button class="menu-btn mobile-nav-toggler">

@@ -20,10 +20,9 @@
 <header class="header axil-header header-style-2">
 	<div class="axil-header-top pb-0">
 		{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
-		<div
-			class="timer-box-date"
-			data-time="{% if offer_cards['discount']['validUntil'] != None %}{{offer_cards['discount']['validUntil']}}{% endif %}"
-		></div>
+		<div class="timer-box-date"
+			data-time="{% if offer_cards['discount']['validUntil'] != None %}{{offer_cards['discount']['validUntil']}}{% endif %}">
+		</div>
 		<div class="header-top-campaign">
 			<div class="container position-relative">
 				<div class="campaign-content">
@@ -57,9 +56,7 @@
 						Avail a SPECIAL DISCOUNT of {{offer_cards['discount']['discount']}}%
 						off for a limited time.
 						<br class="d-md-none d-block" /><a
-							href="{{ offer_cards['discount']['l'+title_country[country]] }}"
-							>Get Your Offer</a
-						>
+							href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Your Offer</a>
 					</p>
 				</div>
 			</div>
@@ -70,27 +67,14 @@
 				<div class="row align-items-center">
 					<div class="col-lg-2 col-sm-3 col-3">
 						<div class="header-brand">
-							<a
-								href="{{ url_for('index', restArea=restArea, country=country) }}"
-								class="nav-title"
-							>
-								<img
-									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
-									alt="mainmenu-navbar-logo"
-									width="60"
-									height="60"
-								/>
+							<a href="{{ url_for('index', restArea=restArea, country=country) }}" class="nav-title">
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo" width="60" height="60" />
 							</a>
-							<a
-								href="{{ url_for('index', restArea=restArea, country=country) }}"
-								class="logo logo-light"
-							>
-								<img
-									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
-									alt="mainmenu-navbar-logo-2"
-									width="60"
-									height="60"
-								/>
+							<a href="{{ url_for('index', restArea=restArea, country=country) }}"
+								class="logo logo-light">
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo-2" width="60" height="60" />
 							</a>
 						</div>
 					</div>
@@ -100,15 +84,8 @@
 								<button type="submit" class="icon wooc-btn-search">
 									<i class="far fa-search"></i>
 								</button>
-								<input
-									type="search"
-									class="placeholder product-search-input"
-									readonly
-									value=""
-									maxlength="128"
-									placeholder="What are you looking for...."
-									autocomplete="off"
-								/>
+								<input type="search" class="placeholder product-search-input" readonly value=""
+									maxlength="128" placeholder="What are you looking for...." autocomplete="off" />
 							</div>
 						</div>
 
@@ -133,27 +110,14 @@
 				<div class="row align-items-center">
 					<div class="col-lg-2 col-sm-3 col-3">
 						<div class="header-brand">
-							<a
-								href="{{ url_for('index', restArea=restArea, country=country) }}"
-								class="nav-title"
-							>
-								<img
-									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
-									alt="mainmenu-navbar-logo"
-									width="60"
-									height="60"
-								/>
+							<a href="{{ url_for('index', restArea=restArea, country=country) }}" class="nav-title">
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo" width="60" height="60" />
 							</a>
-							<a
-								href="{{ url_for('index', restArea=restArea, country=country) }}"
-								class="logo logo-light"
-							>
-								<img
-									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
-									alt="mainmenu-navbar-logo-2"
-									width="60"
-									height="60"
-								/>
+							<a href="{{ url_for('index', restArea=restArea, country=country) }}"
+								class="logo logo-light">
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mainmenu-navbar-logo-2" width="60" height="60" />
 							</a>
 						</div>
 					</div>
@@ -163,15 +127,8 @@
 								<button type="submit" class="icon wooc-btn-search">
 									<i class="far fa-search"></i>
 								</button>
-								<input
-									type="search"
-									class="placeholder product-search-input"
-									readonly
-									value=""
-									maxlength="128"
-									placeholder="What are you looking for...."
-									autocomplete="off"
-								/>
+								<input type="search" class="placeholder product-search-input" readonly value=""
+									maxlength="128" placeholder="What are you looking for...." autocomplete="off" />
 							</div>
 						</div>
 
@@ -204,45 +161,25 @@
 							<i class="fas fa-times"></i>
 						</button>
 						<div class="mobile-nav-brand">
-							<a
-								href="{{ url_for('index', restArea=restArea, country=country) }}"
-								class="logo"
-							>
-								<img
-									src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
-									alt="mobile-mainmenu-navbar-logo"
-									width="60"
-									height="60"
-								/>
+							<a href="{{ url_for('index', restArea=restArea, country=country) }}" class="logo">
+								<img src="{{ url_for('static', filename='web-assets/images/logo.png') }}"
+									alt="mobile-mainmenu-navbar-logo" width="60" height="60" />
 							</a>
 						</div>
-						<div
-							class="d-flex w-100 justify-content-between align-items-center mobile-nav-body"
-						>
+						<div class="d-flex w-100 justify-content-between align-items-center mobile-nav-body">
 							<ul class="mainmenu">
 								<li>
-									<a
-										href="{{ url_for('index', restArea=restArea, country=country) }}"
-										>Home</a
-									>
+									<a href="{{ url_for('index', restArea=restArea, country=country) }}">Home</a>
 								</li>
 								<li>
-									<a
-										href="{{ url_for('country', restArea=restArea, country=country) }}"
-										>Shop</a
-									>
+									<a href="{{ url_for('country', restArea=restArea, country=country) }}">Shop</a>
 								</li>
 								<li>
-									<a
-										href="{{ url_for('shop', restArea=restArea, country=country) }}"
-										>All Products</a
-									>
+									<a href="{{ url_for('shop', restArea=restArea, country=country) }}">Browse
+										Products</a>
 								</li>
 								<li>
-									<a
-										href="{{ url_for('blogs', restArea=restArea, country=country) }}"
-										>Blogs</a
-									>
+									<a href="{{ url_for('blogs', restArea=restArea, country=country) }}">Blogs</a>
 								</li>
 							</ul>
 							<div class="profile-details">
@@ -255,18 +192,14 @@
 											<h6>Dental Public Health Resident; Drug Safety Manager</h6>
 											<h6>Forever Business Owner (FBO) ID: 200002416566</h6>
 											<h6>Independent FLP Distributor Since Jan 2011</h6>
-											<a href="mailto:yourflpdistributor@gmail.com"
-												>yourFLPdistributor@gmail.com</a
-											>
+											<a
+												href="mailto:yourflpdistributor@gmail.com">yourFLPdistributor@gmail.com</a>
 										</div>
 									</div>
 								</div>
 								<div class="dummy-profile-image">
-									<img
-										src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
-										alt="about-me-profile"
-										style="border-radius: 100%"
-									/>
+									<img src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
+										alt="about-me-profile" style="border-radius: 100%" />
 								</div>
 							</div>
 							<div class="mainmenu-nav-title fadeInDown w-100">
@@ -275,15 +208,9 @@
 										<button type="submit" class="icon wooc-btn-search">
 											<i class="far fa-search"></i>
 										</button>
-										<input
-											type="search"
-											class="placeholder product-search-input"
-											readonly
-											value=""
-											maxlength="128"
-											placeholder="What are you looking for...."
-											autocomplete="off"
-										/>
+										<input type="search" class="placeholder product-search-input" readonly value=""
+											maxlength="128" placeholder="What are you looking for...."
+											autocomplete="off" />
 									</div>
 								</div>
 							</div>
