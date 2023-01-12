@@ -4,6 +4,9 @@ from flask_mobility import Mobility
 import regex as re
 import math
 import sqlalchemy as db
+import dotenv
+dotenv.load_dotenv()
+import os
 
 # footer links
 footer_country_code = {'australia': 'aus',
@@ -64,11 +67,7 @@ app = Flask(__name__)
 Mobility(app)
 
 # flask integration with database
-if __name__ == '__main__':
-    engine = db.create_engine('mysql://root:root@localhost/foreverliving')
-else:
-    engine = db.create_engine(
-        'mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+engine = db.create_engine(os.environ.get("MONGO_DB_URI"))
 connection = engine.connect()
 metadata = db.MetaData()
 
@@ -353,12 +352,7 @@ def adminDashboard(name=None, password=None):
                         card+'_'+form_field)
 
             # updating database entry
-            if __name__ == '__main__':
-                engine = db.create_engine(
-                    'mysql://root:root@localhost/foreverliving')
-            else:
-                engine = db.create_engine(
-                    'mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+            engine = db.create_engine(os.environ.get("MONGO_DB_URI"))
             connection = engine.connect()
             metadata = db.MetaData()
 
@@ -369,13 +363,8 @@ def adminDashboard(name=None, password=None):
                 census.columns.cardType == card).values(data_dict[card])
             results = connection.execute(query)
 
-        if __name__ == '__main__':
-            engine = db.create_engine(
-                'mysql://root:root@localhost/foreverliving')
-        else:
-            engine = db.create_engine(
-                'mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
-
+        
+        engine = db.create_engine(os.environ.get("MONGO_DB_URI"))
         connection = engine.connect()
         metadata = db.MetaData()
 
