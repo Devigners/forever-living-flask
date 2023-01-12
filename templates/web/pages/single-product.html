@@ -1,9 +1,10 @@
-{% extends "web/layouts/app.html" %} {% block content %} {% block meta %}
+{% extends "web/layouts/app.html" %}
+{% block meta %}
 <title>{{ product[1] }} | Forever Living</title>
-<meta name="description" content="Forever Living website content" />
-<meta name="keywords" content="Forever Living, product hunting" />
+<meta name="description" content="{{ product[3][:150] }}{% if len(product[3])>150 %}...{% endif %}" />
+<meta name="keywords" content="{{ ', '.join(product_tags) }}" />
 {% endblock %}
-
+{% block content %} 
 <main class="main-wrapper">
 	<!-- Start Shop Area  -->
 	<div class="axil-single-product-area axil-section-gap pb--0 bg-color-white">
@@ -87,8 +88,8 @@
 										style="font-size: 16px; color: #7b7b7b; font-weight: normal"
 										>for {{ product[5] }}</small
 									>
-									<p style="font-size: 16px; opacity: 0.7">
-										Prices & Stock are subject to change anytime*
+									<p style="font-size: 10px; opacity: 0.7">
+										*Price & Stock are subject to change anytime
 									</p>
 									{% endif %}
 								</span>
@@ -180,8 +181,8 @@
 									<span class="price current-price">{{ product[2] }}</span>
 								</div>
 								<h6 class="description my-1">{{ product[11] }}</h6>
-								<p style="font-size: smaller; opacity: 0.7">
-									Prices & Stock are subject to change anytime*
+								<p style="font-size: 10px; opacity: 0.7">
+									*Price & Stock are subject to change anytime
 								</p>
 							</div>
 						</div>

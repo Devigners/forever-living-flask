@@ -1,10 +1,11 @@
-{% extends "web/layouts/home.html" %} {% block content %}
+{% extends "web/layouts/home.html" %}
 {% block meta %}
-	<title>Shop Page | Forever Living</title>
-	<meta name="description" content="Forever Living website content" /> 
-	<meta name="keywords" content="Forever Living, product hunting" /> 
+	<title>Shop Health and Wellness Products | Forever Living</title>
+	<meta name="description" content="Shop all-natural, organic health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best.">
+    <meta name="keywords" content="Shop, Products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic">
+    <link rel="canonical" href="https://foreverliving-products.com/{{country}}/shop"> 
 {% endblock %}
-
+{% block content %}
 <main class="main-wrapper">
 	<!-- Start Slider Area -->
 	<div class="axil-main-slider-area main-slider-style-2">
@@ -67,8 +68,8 @@
 						{% if offer_cards['shipping']['v'+title_country[country]] == 1 %}
 							<div class="col">
 								<div class="home-service-box" data-color="green">
-									<h5>Free Shipping</h5>
-									<h6>for orders of 50$ or more</h6>	
+									<h5>Hurry!</h5><h5>Free Shipping</h5>
+									<h6>on US orders of 50$ or more</h6>	
 									<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}" alt="free-shipping-icon" class="mt-4">
 									<a class="btn" role="button" href="{{ offer_cards['shipping']['l'+title_country[country]] }}">Get Now</a>
 								</div>
@@ -77,7 +78,7 @@
 						{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
 						<div class="col">
 							<div class="home-service-box" data-color="light-blue">
-								<h5>Special {{offer_cards['discount']['discount']}}% Off</h5>
+								<h5>Limited {{offer_cards['discount']['discount']}}% Off</h5>
 								<h6>No Joining Needed</h6>
 								<ul class="timer-box">
 									<li><span data-date="days">0</span>d</li>
@@ -85,17 +86,16 @@
 									<li><span data-date="minutes">0</span>m</li>
 									<li><span data-date="seconds">0</span>s</li>
 								</ul>
-								<a class="btn" role="button" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Get Now</a>
+								<a class="btn" role="button" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Click Now*</a>
 							</div>
 						</div>
 						{% endif %}
 						{% if offer_cards['join']['v'+title_country[country]] == 1 %}
 						<div class="col">
 							<div class="home-service-box" data-color="purple">
-								<h5>Become Preferred Customer</h5>
-								<h6>Save Instantly & Forever</h6>	
-								<h4>5%</h4>
-								<a class="btn" role="button" href="{{ offer_cards['join']['l'+title_country[country]] }}">Join Now</a>
+								<h5>Be A Preferred Customer</h5><h5>Get 5% Off</h5>
+								<h6>Instantly & Forever</h6>	
+								<a class="btn" role="button" href="{{ offer_cards['join']['l'+title_country[country]] }}">Join FLP Family</a>
 							</div>
 						</div>
 						{% endif %}
@@ -188,8 +188,8 @@
 									<h6 class="description my-1">
 										{{ product[11] }}
 									</h6>
-									<p style="font-size: smaller; opacity: 0.7;">
-										Prices & Stock are subject to change anytime*
+									<p style="font-size: 10px; opacity: 0.7;">
+										*Price & Stock are subject to change anytime
 									</p>
 								</div>
 							</div>
@@ -254,8 +254,8 @@
 								<h6 class="description my-1">
 									{{ product[11] }}
 								</h6>
-								<p style="font-size: smaller; opacity: 0.7;">
-									Prices & Stock are subject to change anytime*
+								<p style="font-size: 10px; opacity: 0.7;">
+									*Price & Stock are subject to change anytime
 								</p>
 							</div>
 						</div>
