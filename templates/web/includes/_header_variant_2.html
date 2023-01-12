@@ -125,29 +125,32 @@
 								>
 							</li>
 						</ul>
-						<div class="profile-details d-sm-none d-flex">
-							<div class="inner">
-								<h5 style="font-size: large">Kapil Singla</h5>
-								<h6 style="font-size: medium">FBO ID: 200002416566</h6>
-								<div class="popover-details-wrapper">
-									<div class="popover-details">
-										<h6>A Licensed Dental Surgeon (BDS); MBA</h6>
-										<h6>Dental Public health Resident; Drug Safety Manager</h6>
-										<h6>Independent FLP Distributor Since Jan 2011</h6>
-										<a href="mailto:yourflpdistributor@gmail.com"
-											>yourflpdistributor@gmail.com</a
-										>
+						{% if request.MOBILE %}
+							<div class="profile-details d-sm-none d-flex">
+								<div class="inner">
+									<h5 style="font-size: large">Kapil Singla</h5>
+									<h6 style="font-size: medium">FBO ID: 200002416566</h6>
+									<div class="popover-details-wrapper">
+										<div class="popover-details">
+											<h6>A Licensed Dental Surgeon (BDS); MBA</h6>
+											<h6>Dental Public health Resident; Drug Safety Manager</h6>
+											<h6>Independent FLP Distributor Since Jan 2011</h6>
+											<a href="mailto:yourflpdistributor@gmail.com"
+												>yourflpdistributor@gmail.com</a
+											>
+										</div>
 									</div>
 								</div>
+								<div class="dummy-profile-image">
+									<img
+										src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
+										alt="about-me-profile"
+										style="border-radius: 100%"
+									/>
+								</div>
 							</div>
-							<div class="dummy-profile-image">
-								<img
-									src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
-									alt="about-me-profile"
-									style="border-radius: 100%"
-								/>
-							</div>
-						</div>
+						{% else %}
+						{% endif %}
 					</nav>
 					<!-- End Mainmanu Nav -->
 				</div>
@@ -167,31 +170,34 @@
 						/>
 					</div>
 				</div>
-				<div class="d-md-block d-none">
-					<div class="profile-details">
-						<div class="inner">
-							<h5 style="font-size: large">Kapil Singla</h5>
-							<h6 style="font-size: medium">FBO ID: 200002416566</h6>
-							<div class="popover-details-wrapper">
-								<div class="popover-details">
-									<h6>A Licensed Dental Surgeon (BDS); MBA</h6>
-									<h6>Dental Public Health Resident; Drug Safety Manager</h6>
-									<h6>Independent FLP Distributor Since Jan 2011</h6>
-									<a href="mailto:yourflpdistributor@gmail.com"
-										>yourFLPdistributor@gmail.com</a
-									>
+				{% if request.MOBILE %}
+				{% else %}
+					<div class="d-md-block d-none">
+						<div class="profile-details">
+							<div class="inner">
+								<h5 style="font-size: large">Kapil Singla</h5>
+								<h6 style="font-size: medium">FBO ID: 200002416566</h6>
+								<div class="popover-details-wrapper">
+									<div class="popover-details">
+										<h6>A Licensed Dental Surgeon (BDS); MBA</h6>
+										<h6>Dental Public Health Resident; Drug Safety Manager</h6>
+										<h6>Independent FLP Distributor Since Jan 2011</h6>
+										<a href="mailto:yourflpdistributor@gmail.com"
+											>yourFLPdistributor@gmail.com</a
+										>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="dummy-profile-image">
-							<img
-								src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
-								alt="about-me-profile-2"
-								style="border-radius: 100%"
-							/>
+							<div class="dummy-profile-image">
+								<img
+									src="{{ url_for('static', filename='web-assets/images/about/about-me.jpg') }}"
+									alt="about-me-profile-2"
+									style="border-radius: 100%"
+								/>
+							</div>
 						</div>
 					</div>
-				</div>
+				{% endif %}
 				<div
 					class="header-action mt-0 d-flex align-items-center d-md-none d-block"
 					style="margin-left: 0 !important"

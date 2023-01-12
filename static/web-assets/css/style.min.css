@@ -17416,11 +17416,34 @@ h2 {
 	width: 130px !important;
 }
 
+.section-gap {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.section-gap + .section-gap {
+	padding-top: 0;
+}
+
 @media only screen and (max-width: 767px) {
 	.arrow-top-slide .slide-arrow.prev-arrow {
 		right: 50px;
 	}
 	.arrow-top-slide .slide-arrow {
 		top: -55px !important;
+	}
+	.section-gap {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.section-gap .about-thumbnail{
+		margin-bottom: 20px;
+	}
+
+	.section-gap + .section-gap {
+		padding-top: 10px;
+	}
+	.section-gap h3{
+		margin-bottom: 20px;
 	}
 }
