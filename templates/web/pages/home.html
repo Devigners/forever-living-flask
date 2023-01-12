@@ -1,8 +1,13 @@
+<!-- From saif -->
+
 {% extends "web/layouts/app.html" %}
 {% block meta %}
 	<title>Forever Living Products {{character_limit_title_country[address[0]]}} Distributor | Aloe Vera</title>
 	<meta name="description" content="Forever Living Products Distributor - Login ForeverLiving-Products.com For #1 Aloe vera Products, Discounts, FLP Sponsorship, Get FBO in {{character_limit_title_country[address[0]]}}." /> 
 	<meta name="keywords" content="Aloe vera, Forever Living, Skincare, Beauty, Health, Wellness, Natural, Organic, Hydration, Moisturization, Healing">
+	<meta name="keywords" content="forever living, aloe vera, aloe vera products, aloe vera gel, aloe vera drink, aloe vera supplements, aloe vera skincare, aloe vera wellness">
+    <link rel="canonical" href="https://foreverliving-products.com"> 
+
 {% endblock %}
 {% block content %}
 <main class="main-wrapper home-page">
@@ -71,10 +76,10 @@
 								Forever Living Products is a leading health and wellness company that has been in operation for over 40 years. The Arizona-based company sells a range of natural supplements, drinks, beauty products, and health foods to customers all around the world. Over the years, Forever Living Products has expanded its reach significantly - making its presence felt in all states/counties across {{address[0]}}. The company boasts of an impressive selection of products available for sale in every state. From their best-selling aloe vera gelly to their weight management or Aloe Vera Drinks, customers can find everything they need to lead a healthy life without having to go too far. In addition to this, customers also have access to convenient online shopping options which allow them to shop from anywhere at any time.
 							<br>
 							<br>
-								Forever Living Products (FLP) is one of the world’s largest manufacturers and distributors of health, wellness, and beauty products. Over the past two decades, FLP has established its presence in numerous countries worldwide. As such, FLP Distributors can be found in various counties/cities across the {{address[1]}}. For instance, many new independent distributors have joined FLP in {{address[1]}} where customers can access quality aloe vera products with ease. Similarly, <strong>{{', '.join(states[:5])}}</strong> offer an array of distribution centers for customers seeking natural remedies that are effective yet affordable. In addition to these, there are also numerous local outlets located throughout <strong>{{', '.join(states[5:10])}}</strong>. Overall, FLP Distributors have become a core part of cities like <strong>{{', '.join(states[10:15])}}</strong> – providing customers with convenient access to superior-quality health and wellness solutions at competitive prices.
+								Forever Living Products (FLP) is one of the world’s largest manufacturers and distributors of health, wellness, and beauty products. Over the past two decades, FLP has established its presence in numerous countries worldwide. As such, FLP Distributors can be found in various counties/cities across the <b><u>{{address[1]}}.</u></b> For instance, many new independent distributors have joined FLP in <u><b>{{address[1]}}</u></b> where customers can access quality aloe vera products with ease. Similarly, <strong>{{', '.join(states[:5])}}</strong> offer an array of distribution centers for customers seeking natural remedies that are effective yet affordable. In addition to these, there are also numerous local outlets located throughout {{', '.join(states[5:10])}}. Overall, FLP Distributors have become a core part of cities like {{', '.join(states[10:15])}} – providing customers with convenient access to superior-quality health and wellness solutions at competitive prices.
 							<br>
 							<br>
-								With each state having its own set of regulations, allowing a business to operate requires that it meets certain criteria. Despite this, FLP has managed to penetrate most parts of  {{address[0]}} with its network of independent distributors operating across multiple cities. In fact, it is estimated that almost the majority of households in small or big cities have access to Forever Living Products within their vicinity. With a wide variety of products ranging from health supplements to skincare and homecare items, customers are able to satisfy their varied needs with ease.
+								With each state having its own set of regulations, allowing a business to operate requires that it meets certain criteria. Despite this, FLP has managed to penetrate most parts of {{address[0]}} with its network of independent distributors operating across multiple cities. In fact, it is estimated that almost the majority of households in small or big cities have access to Forever Living Products within their vicinity. With a wide variety of products ranging from health supplements to skincare and homecare items, customers are able to satisfy their varied needs with ease.
 							</p>
 						{% elif(pageType == 'restarea') %}
 							<h3>Forever Living company in {{address[2]}}, {{address[1]}}, {{address[0]}}</h3>
@@ -199,7 +204,7 @@
 				<div class="col-lg-5 order-lg-2">
 					<div class="about-thumbnail">
 						<img
-							src="{{ url_for('static', filename='web-assets/images/aloe/1.jpg') }}"
+							src="{{ url_for('static', filename='web-assets/images/aloe/1-small.jpg') }}"
 							alt="about"
 						/>
 					</div>
@@ -207,7 +212,7 @@
 				<div class="col-lg-7 order-lg-1">
 					<div class="about-content content-left">
 						<h3>
-							Types Of Forever Living Products and How To Order Them?
+							How to Become a 'Preferred Customer' and Get 5% Off Forever?
 						</h3>
 						<p>
 							Forever Living has a range of health-promoting products that span
@@ -235,9 +240,9 @@
 							internationally.
 						</p>
 						<a
-							href="https://www.foreverliving-products.com/{{country}}/shop"
+							href="https://bit.ly/PreferredCustomer-{{footer_country_code.upper()}}"
 							class="axil-btn btn-bg-primary"
-							>Order Now*</a
+							>Become A Preferred Customer & Get 5% Off*</a
 						>
 					</div>
 				</div>
@@ -254,7 +259,7 @@
 				</div>
 				<div class="col-lg-7">
 					<div class="about-content content-right">
-						<h3>About Me</h3>
+						<h3>About Me and My FLP Journey</h3>
 						<p>
 							I am an experienced licensed dentist from India, completed my MBA
 							with a conc. in Healthcare Administration from the USA and now
@@ -263,24 +268,9 @@
 							focus on population health in preventative and cost-effective
 							ways. I strongly believe that the first step to staying healthy
 							and living a longer life is to eat and drink healthy food.
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="row align-items-center py-5">
-				<div class="col-lg-5 order-lg-2">
-					<div class="about-thumbnail">
-						<img
-							src="{{ url_for('static', filename='web-assets/images/about/about-06.png') }}"
-							alt="about"
-						/>
-					</div>
-				</div>
-				<div class="col-lg-7 order-lg-1">
-					<div class="about-content content-left">
-						<h3>My FLP Journey With 'Value Pak'</h3>
-						<p>
-							Joining Forever Living Products (FLP) can be an exciting new
+						<br>
+						<br>
+						    Joining Forever Living Products (FLP) can be an exciting new
 							venture for many entrepreneurs. It is a health/wellness and beauty
 							direct-selling product company that offers an entrepreneurial
 							opportunity to those looking to start their own business from
@@ -306,43 +296,88 @@
 							with my business. Once my application was approved, which didn’t 
 							take too long, I became an official FLP distributor/Forever Business 
 							Owner (FBO) right away! 
-						<br>
-						<br>
-							<b>LOOKING FOR  A SPONSOR?</b> – JOIN FLP FAMILY & SAVE 5% INSTANTLY ON YOUR FIRST ORDER,
-							<strong
-								>
-							    <br><a
-									style="color: var(--color-primary)"
-									href="https://bit.ly/FLPJoinSave-{{footer_country_code.upper()}}"
-									>FIND COMPLETE DETAILS HERE</a
-								></strong
-							>
 						</p>
-						We included a great range of products for you to use and market from our 
-						flagship Forever Aloe Vera Gel® to personal care, skincare and nutritional 
-						favorites. You’ll also find some helpful marketing materials ready to help 
-						you market your Forever business. 
-						<br>
-						<br>
-						• 12 pack of 330mL aloe vera gel minis • Forever ARGI+ • 
-						Forever Lemon and Lavender Essential Oils • Forever Arctic Sea • Forever 
-						Active Pro-B • Aloe Vera Gelly • Aloe Heat Lotion • Aloe Propolis Creme 
-						• Aloe Moisturizing Lotion • Aloe Liquid Soap • Forever Aloe Scrub 
-						• Forever Bright Toothgel • Aloe Lips • English Product Catalog 
-						• Aloe as Nature Intended (single) • Why Forever Value Pak
-						<br>
-						<br>
-						<a
-							href="https://bit.ly/FLPJourney-{{footer_country_code.upper()}}"
-							class="axil-btn btn-bg-primary"
-							>Start Your FBO Journey With 2cc Value Pak Now*</a
-						>
-						<br>
-						 *Price & Contents in pak are subject to change based on location & availability. 
 					</div>
 				</div>
 			</div>
-
+			<div class="row align-items-center py-5">
+				<div class="col-lg-5 order-lg-2">
+					<div class="about-thumbnail">
+						<img
+							src="{{ offer_links[footer_country_code]['home'] }}"
+							alt="about"
+						/>
+					</div>
+				</div>
+				<div class="col-lg-7 order-lg-1">
+					<div class="about-content content-left">
+					    <h3>How To Join FLP Business?<br>(Distributor/FBO Registration)</h3>
+						<p>
+							Forever Living products business is an amazing opportunity for
+							entrepreneurs who want to achieve financial freedom. If you’re
+							looking to join this lucrative industry, there are several steps
+							that you need to take. Here are the essential steps to get started
+							and succeed in this venture:
+						<br>
+						<br>
+							First, it’s important that you understand the basics of Forever
+							Living products business. Researching their products and getting
+							informed about their services will help you make informed
+							decisions. You can also check out customer reviews and feedback
+							from previous customers or distributors before signing up. Forever
+							Living provides a wealth of information on its website, including
+							detailed descriptions of each product they offer, as well as
+							helpful advice and tips on how to properly market them.
+							Additionally, there are many videos and tutorials available which
+							provide an in-depth look into the business model and methods used
+							by successful entrepreneurs who have been with Forever Living for
+							years. Furthermore, there are numerous discussion boards where
+							like-minded individuals can collaborate and share ideas about best
+							practices when it comes to joining this type of business.
+						<br>
+						<br>
+							Second, find a sponsor or mentor who can guide you
+							throughout your journey as a Forever Living product distributor
+							and invite you to join our FLP family. Look for someone with
+							experience in the industry so they can provide helpful advice and
+							tips on how to make more profits in the long run.
+						</p>
+						<p>
+							<b>LOOKING FOR  A FBO SPONSORSHIP IN {{footer_country_code.upper()}} ? </b> – JOIN OUR FLP BUSINESS FAMILY, SAVE 5% 
+							INSTANTLY ON YOUR FIRST ORDER & A LOT MORE ON YOUR NEXT ORDER
+							<strong
+								>
+							    <br>
+							    <br>
+							<a
+    							href="https://bit.ly/FBO-{{footer_country_code.upper()}}"
+    							class="axil-btn btn-bg-primary"
+    							style="margin: 5px 0px;"
+    							>Start Your FBO Journey With 2cc Value Pak Now*</a
+    						>
+								</strong
+							>
+							<br>
+							<br>
+    						We included a great range of products for you to use and market from our 
+    						flagship Forever Aloe Vera Gel® to personal care, skincare and nutritional 
+    						favorites. You’ll also find some helpful marketing materials ready to help 
+    						you market your Forever business. 
+    					</p>
+						{% if(country)=='australia' %}
+						    <h6 style="margin-bottom: 0px;">Start Your Journey C9 COMBO PACK - {{footer_country_code.upper()}}</h6>
+						{% else %}
+						    <h6 style="margin-bottom: 0px;">Start Your Journey Pak - {{footer_country_code.upper()}}</h6>
+					    {% endif %}
+					    <p>
+					        {{ offer_links[footer_country_code]['content'] }}
+				        </p>
+						<p>
+    						 *Price & Contents in pak are subject to change based on location & availability. 
+    					</p>
+					</div>
+				</div>
+			</div>
 			<div class="row bg-color-lighter p-5" style="border-radius: 5px">
 				<div class="section-title-wrapper py-0">
 					<h3 class="title">Customer Reviews</h3>
@@ -407,68 +442,15 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="row align-items-center  py-5">
-				<div class="col-lg-5">
-					<div class="about-thumbnail">
-						<img
-							src="{{ url_for('static', filename='web-assets/images/about/about-04.png') }}"
-							alt="about"
-						/>
-					</div>
-				</div>
-				<div class="col-lg-7">
-					<div class="about-content content-right">
-						<h3>How to Join Forever Living?</h3>
-						<h3>(Distributor Registration)</h3>
-						<p>
-							Forever Living products business is an amazing opportunity for
-							entrepreneurs who want to achieve financial freedom. If you’re
-							looking to join this lucrative industry, there are several steps
-							that you need to take. Here are the essential steps to get started
-							and succeed in this venture:
-						<br>
-						<br>
-							First, it’s important that you understand the basics of Forever
-							Living products business. Researching their products and getting
-							informed about their services will help you make informed
-							decisions. You can also check out customer reviews and feedback
-							from previous customers or distributors before signing up. Forever
-							Living provides a wealth of information on its website, including
-							detailed descriptions of each product they offer, as well as
-							helpful advice and tips on how to properly market them.
-							Additionally, there are many videos and tutorials available which
-							provide an in-depth look into the business model and methods used
-							by successful entrepreneurs who have been with Forever Living for
-							years. Furthermore, there are numerous discussion boards where
-							like-minded individuals can collaborate and share ideas about best
-							practices when it comes to joining this type of business.
-						<br>
-						<br>
-							Second, find a sponsor or mentor who can guide you
-							throughout your journey as a Forever Living product distributor
-							and invite you to join our FLP family. Look for someone with
-							experience in the industry so they can provide helpful advice and
-							tips on how to make more profits in the long run.
-						</p>
-
-						<a
-							href="https://bit.ly/FLPJoinSave-{{footer_country_code.upper()}}"
-							class="axil-btn btn-bg-primary"
-							>Join & Save 5% Off</a
-						>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="container">
 			<hr class="my-5 w-100" />
 			<div class="product-detail-section">
 				{% if(restArea) %} 
 					{% if(restArea != state_of_restArea.replace(' ', ''))%}
-						<h4>Delivering in Other Areas of {{address[1]}}</h4>
+						<h4>Delivering Across {{address[1]}}</h4>
 					{% else %}
-						<h4>Delivering Throughout {{address[1]}}</h4>
+						<h4>Delivering Across {{address[1]}}</h4>
 				{% endif %} 
 					{% for state in states %}
 						<a
@@ -477,7 +459,7 @@
 						</a>
 					{% endfor %} 
 				{% else %}
-				<h4>Delivering Throughout {{address[0]}}</h4>
+				<h4>Delivering Across {{address[0]}}</h4>
 				{% for state in states %}
 				<a
 					href="{{ url_for('index', country=country, restArea=state.replace(' ','')) }}"
@@ -489,7 +471,7 @@
 		<div class="container">
 			<hr class="my-5 w-100" />
 			<div class="product-detail-section">
-				<h4>Products We Deal In</h4>
+				<h4>Products Line In {{footer_country_code.upper()}}</h4>
 				{% for product in productsGroupByCategory['All Products'] %}
 				<a
 					href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}"

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, Markup
 from utilities import *
 from flask_mobility import Mobility
 import regex as re
@@ -20,25 +20,33 @@ country_specific = {
         '5%_off': 'https://thealoeveraco.shop/HEYrCuwo',
         '10%_off': 'https://thealoeveraco.shop/QIunDW3C',
         '15%_off': 'https://thealoeveraco.shop/wbQW2rEH',
-        'phone': '+1 888 440 2563'
+        'phone': '+1 888 440 2563',
+        'home': 'https://cdn.foreverliving.com/content/products/images/start_your_journey_pak_pd_main_512_X_512_1569428747899.png',
+        'content': '• 12 pack of 330mL aloe vera gel minis • Forever ARGI+ • Forever Lemon and Lavender Essential Oils • Forever Arctic Sea • Forever Active Pro-B • Aloe Vera Gelly • Aloe Heat Lotion • Aloe Propolis Creme • Aloe Moisturizing Lotion • Aloe Liquid Soap • Forever Aloe Scrub • Forever Bright Toothgel • Aloe Lips • English Product Catalog • Aloe as Nature Intended (single) • Why Forever Value Pak'.upper()
     },
     'gbr': {
         '5%_off': 'https://thealoeveraco.shop/ZHJSRv5m',
         '10%_off': 'https://thealoeveraco.shop/WOVGEHb8',
         '15%_off': 'https://thealoeveraco.shop/7MV6ZkIG',
-        'phone': '+44 1926 626 629'
+        'phone': '+44 1926 626 629',
+        'home': 'https://cdn.foreverliving.com/content/products/images/start_your_journey_pack_pd_main_512_X_512_1664568997643.jpg',
+        'content': '• Forever Aloe Vera Gel x 2 • Forever Aloe Berry Nectar x 2 • Forever Bright Toothgel x 2 • Aloe Ever-Shield Deodorant x 2 • Aloe Propolis Crème x 2 • Aloe Vera Gelly x 2 • Aloe Lips x 2 • Forever Lite Ultra – 15 serving pouch – Vanilla x 2 • Aloe Moisturising Lotion x 2 • Avocado Face & Body Soap x 2 • Aloe Shot Glass x 1 • Receipt Pad x 1 • Product Brochure x 1 • FBO Order form x 1 • First Steps to Manager Brochure x 1 • Aloe Flyer x 10 • Welcome Booklet x 1 • Eagle Pin x 1 • Product Manual x 1 • DSA Earnings Opportunities x 1 • DSA Shopping at home x 1 • Document Case • Product Information Flyer A5 x 10 • Business Information Flyer A5 x 10 • Contact Marketing Cards A6 folded x 25 • Collagen Flyer x 1 • Price List x 1'.upper()
     },
     'can': {
         '5%_off': 'https://thealoeveraco.shop/fTvVBTAm',
         '10%_off': 'https://thealoeveraco.shop/J0527gGp',
         '15%_off': 'https://thealoeveraco.shop/DLolWip7',
-        'phone': '+1 888 440 2563'
+        'phone': '+1 888 440 2563',
+        'home': 'https://cdn.foreverliving.com/content/products/images/start_your_journey_pak_pd_main_512_X_512_1569434726154.png',
+        'content': '• Forever Lite Ultra Vanilla • Aloe Lips (2) • Forever Bright (2) • Propolis Crème (2) • Aloe Vera Gelly (2) • Moisturizing Lotion (2) • Aloe Heat Lotion (2) • Ever Shield • Aloe MSM Gel • Aloe Scrub • Arctic Sea • Forever Active PRO-B • Jojoba Shampoo • Jojoba Conditioning Rinse • Aloe Liquid Soap Soap • Aloe Vera Gel (2) • Aloe Berry Nectar • Why Forever (Single) • Aloe Brochure • Product Brochure'.upper()
     },
     'aus': {
         '5%_off': 'https://thealoeveraco.shop/m1m6hsyO',
         '10%_off': 'https://thealoeveraco.shop/1QLH7Eh9',
         '15%_off': 'https://thealoeveraco.shop/i2Y5dJzQ',
-        'phone': '+61 2 9635 3011'
+        'phone': '+61 2 9635 3011',
+        'home': 'https://cdn.foreverliving.com/content/products/images/syj_c9_combo_pack_pd_main_512_X_512_1656638991235.jpg',
+        'content': Markup('C9 Combo Pack 1: • ALOE VERA GEL - 1LTR x2 • FOREVER LITE POUCH - VANILLA x 1 • FOREVER FIBER x1 • GARCINIA PLUS x 1 • THERM x 1<br>C9 Combo Pack 2: • ALOE VERA GEL - 1LTR x2 • FOREVER LITE POUCH - CHOCOLATE x 1 • FOREVER FIBER x1 • GARCINIA PLUS x 1 • THERM x 1'.upper())
     }
 }
 
@@ -119,7 +127,7 @@ def index(country=None, restArea=None):
     except:
         return redirect(url_for('index'))
 
-    global product_with_categories, localities, categories, states, country_specific, cards
+    global product_with_categories, localities, categories, states, country_specific, cards, footer_country_code
 
     # getting flag data from the controller
     # creating address of the place we are
