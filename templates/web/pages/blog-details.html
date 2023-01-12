@@ -1,8 +1,13 @@
 {% extends "web/layouts/app.html" %}
 {% block meta %}
-	<title>{{ blog['Title'] }} | Forever Living</title>
-	<meta name="description" content="Forever Living website content" /> 
-	<meta name="keywords" content="Forever Living, product hunting" /> 
+<title>{{ blog['Title'] }} | Forever Living</title>
+<meta name="description" content="Forever Living website content" />
+<meta name="keywords" content="Forever Living, product hunting" />
+{% if restArea == None %}
+<link rel="canonical" href="https://foreverliving-products.com/{{country}}/blog-details/{{id}}">
+{% else %}
+<link rel="canonical" href="https://foreverliving-products.com/{{country}}/{{restArea}}/blog-details/{{id}}">
+{% endif %}
 {% endblock %}
 {% block content %}
 <main class="main-wrapper">
@@ -46,7 +51,7 @@
 								<h6 class="widget-title">Tags</h6>
 								<div class="tagcloud">
 									{% for tag in blog['Tags'].split(',') %}
-										<p>{{ tag }}</p>
+									<p>{{ tag }}</p>
 									{% endfor %}
 								</div>
 							</div>
@@ -63,20 +68,19 @@
 	<!-- Start Axil Newsletter Area  -->
 	<div class="axil-newsletter-area axil-section-gap pt--0">
 		<div class="container">
-		  <div class="etrade-newsletter-wrapper bg_image bg_image--12">
-			<div class="newsletter-content">
-			  <span class="title-highlighter highlighter-primary2"
-				><i class="fas fa-envelope-open"></i>Newsletter</span
-			  >
-			  <h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
-			  <div class="input-group newsletter-form">
-				<div class="position-relative newsletter-inner mb--15">
-				  <input placeholder="example@gmail.com" type="text" />
+			<div class="etrade-newsletter-wrapper bg_image bg_image--12">
+				<div class="newsletter-content">
+					<span class="title-highlighter highlighter-primary2"><i
+							class="fas fa-envelope-open"></i>Newsletter</span>
+					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
+					<div class="input-group newsletter-form">
+						<div class="position-relative newsletter-inner mb--15">
+							<input placeholder="example@gmail.com" type="text" />
+						</div>
+						<button type="submit" class="axil-btn mb--15">Subscribe</button>
+					</div>
 				</div>
-				<button type="submit" class="axil-btn mb--15">Subscribe</button>
-			  </div>
 			</div>
-		  </div>
 		</div>
 		<!-- End .container -->
 	</div>
@@ -87,9 +91,9 @@
 
 
 {% block scripts %}
-	<script>
-		$(function () {
-			navbarActive("{{ url_for('blogs', country=country) }}");
-		})
-	</script>
+<script>
+	$(function () {
+		navbarActive("{{ url_for('blogs', country=country) }}");
+	})
+</script>
 {% endblock %}

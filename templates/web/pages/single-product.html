@@ -3,8 +3,13 @@
 <title>{{ product[1] }} | Forever Living</title>
 <meta name="description" content="{{ product[3][:150] }}{% if len(product[3])>150 %}...{% endif %}" />
 <meta name="keywords" content="{{ ', '.join(product_tags) }}" />
+{% if restArea == None %}
+<link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{category}}/{{name}}">
+{% else %}
+<link rel="canonical" href="https://foreverliving-products.com/{{country}}/{{restArea}}/product/{{category}}/{{name}}">
+{% endif %}
 {% endblock %}
-{% block content %} 
+{% block content %}
 <main class="main-wrapper">
 	<!-- Start Shop Area  -->
 	<div class="axil-single-product-area axil-section-gap pb--0 bg-color-white">
@@ -15,25 +20,18 @@
 						<div class="row">
 							<div class="col-lg-10 order-lg-2">
 								<div class="single-product-thumbnail-wrap zoom-gallery">
-									<div
-										class="single-product-thumbnail product-large-thumbnail-3 axil-product"
-									>
+									<div class="single-product-thumbnail product-large-thumbnail-3 axil-product">
 										<div class="thumbnail">
 											<img src="{{ product[9] }}" alt="Product Images" />
 										</div>
 										{% if str(product[15]) == "nan" or str(product[15]) == "" %}
 										{% else %}
 										<div class="thumbnail">
-											<iframe
-												width="100%"
-												height="612px"
-												src="{{product[15]}}"
-												title="Demo Background Sample Video"
-												frameborder="0"
+											<iframe width="100%" height="612px" src="{{product[15]}}"
+												title="Demo Background Sample Video" frameborder="0"
 												class="vimeo-iframe"
 												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-												allowfullscreen
-											></iframe>
+												allowfullscreen></iframe>
 										</div>
 										{% endif %}
 									</div>
@@ -47,11 +45,7 @@
 									{% if str(product[15]) == "nan" or str(product[15]) == "" %}
 									{% else %}
 									<div class="small-thumb-img video-thumbnail">
-										<img
-											src=""
-											data-vimeo-href="{{product[15]}}"
-											alt="thumb image"
-										/>
+										<img src="" data-vimeo-href="{{product[15]}}" alt="thumb image" />
 									</div>
 									{% endif %}
 								</div>
@@ -64,10 +58,7 @@
 								<h5 class="item-no">{{ product[2] }}</h5>
 								<h2 class="product-title mb-2">{{ product[1] }}</h2>
 								<div class="product-rating">
-									<div
-										class="star-rating"
-										data-rating="{{ product[12] }}"
-									></div>
+									<div class="star-rating" data-rating="{{ product[12] }}"></div>
 									<div class="reSee-link">
 										{{ product[12] }} ({{ product[11] }})
 									</div>
@@ -82,12 +73,9 @@
 
 								<hr class="my-5" />
 
-								<span class="price-amount mb-5"
-									>{{ product[4] }} {% if product[5] == "" %} {% else %}
-									<small
-										style="font-size: 16px; color: #7b7b7b; font-weight: normal"
-										>for {{ product[5] }}</small
-									>
+								<span class="price-amount mb-5">{{ product[4] }} {% if product[5] == "" %} {% else %}
+									<small style="font-size: 16px; color: #7b7b7b; font-weight: normal">for {{
+										product[5] }}</small>
 									<p style="font-size: 10px; opacity: 0.7">
 										*Price & Stock are subject to change anytime
 									</p>
@@ -98,10 +86,7 @@
 									<!-- Start Product Action  -->
 									<ul class="product-action d-flex-center mb--0">
 										<li class="add-to-cart m-0">
-											<a
-												href="{{ product[10] }}"
-												class="axil-btn btn-bg-primary"
-											>
+											<a href="{{ product[10] }}" class="axil-btn btn-bg-primary">
 												Buy Now
 											</a>
 										</li>
@@ -134,14 +119,11 @@
 		</div>
 	</div>
 	<!-- Start Recently Seeed Product Area  -->
-	<div
-		class="axil-product-area bg-color-white axil-section-gap pb--50 pb_sm--30"
-	>
+	<div class="axil-product-area bg-color-white axil-section-gap pb--50 pb_sm--30">
 		<div class="container">
 			<div class="section-title-wrapper">
-				<span class="title-highlighter highlighter-primary"
-					><i class="far fa-shopping-basket"></i>Same Category</span
-				>
+				<span class="title-highlighter highlighter-primary"><i class="far fa-shopping-basket"></i>Same
+					Category</span>
 				<h2 class="title">Similar Products</h2>
 			</div>
 			<div class="row row--15">
@@ -150,8 +132,7 @@
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}"
-							>
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}">
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
 							<div class="product-hover-action">
@@ -160,11 +141,9 @@
 										<a href="{{ product[9] }}" target="_blank">Buy Now</a>
 									</li>
 									<li class="select-option">
-										<a
-											class="btn-default"
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}"
-											>See Details</a
-										>
+										<a class="btn-default"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}">See
+											Details</a>
 									</li>
 								</ul>
 							</div>
@@ -173,9 +152,8 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}"
-										>{{ product[1] }}</a
-									>
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}">{{
+										product[1] }}</a>
 								</h5>
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
@@ -192,11 +170,8 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center mt--20 mt_sm--0">
-					<a
-						href="{{ url_for('shop', country=country, restArea=restArea) }}"
-						class="axil-btn btn-bg-lighter btn-load-more"
-						>See All Products</a
-					>
+					<a href="{{ url_for('shop', country=country, restArea=restArea) }}"
+						class="axil-btn btn-bg-lighter btn-load-more">See All Products</a>
 				</div>
 			</div>
 		</div>
@@ -207,9 +182,8 @@
 		<div class="container">
 			<div class="etrade-newsletter-wrapper bg_image bg_image--12">
 				<div class="newsletter-content">
-					<span class="title-highlighter highlighter-primary2"
-						><i class="fas fa-envelope-open"></i>Newsletter</span
-					>
+					<span class="title-highlighter highlighter-primary2"><i
+							class="fas fa-envelope-open"></i>Newsletter</span>
 					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
 					<div class="input-group newsletter-form">
 						<div class="position-relative newsletter-inner mb--15">

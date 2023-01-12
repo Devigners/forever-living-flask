@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, url_for, request, Markup
 from utilities import *
 from flask_mobility import Mobility
@@ -6,7 +7,6 @@ import math
 import sqlalchemy as db
 import dotenv
 dotenv.load_dotenv()
-import os
 
 # footer links
 footer_country_code = {'australia': 'aus',
@@ -274,6 +274,7 @@ def blogDetails(country, id, restArea=None):
     id = int(id)
 
     context = {
+        'id': id,
         'offer_links': country_specific,
         'blog': blogs[id],
         'footer_country_code': footer_country_code[country],
@@ -292,6 +293,7 @@ def blogDetails(country, id, restArea=None):
 @app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
 @app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
 def productDetails(country, name, category, restArea=None):
+    original_category = category
     update_var(country)
     global product_with_categories, localities, categories, country_specific, cards
     product = controller.getProduct_with_name(name)
@@ -312,9 +314,11 @@ def productDetails(country, name, category, restArea=None):
             'footer_country_code': footer_country_code[country],
             'product_tags': product[14].split(','),
             'country': country,
+            'name': name,
             'productsGroupByCategory': product_with_categories,
             'offer_cards': cards,
             'product_category': category,
+            'category': original_category,
             'localities': localities,
             'restArea': restArea,
             'product': product,
@@ -363,7 +367,6 @@ def adminDashboard(name=None, password=None):
                 census.columns.cardType == card).values(data_dict[card])
             results = connection.execute(query)
 
-        
         engine = db.create_engine(os.environ.get("MONGO_DB_URI"))
         connection = engine.connect()
         metadata = db.MetaData()

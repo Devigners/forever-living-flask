@@ -1,10 +1,18 @@
 {% extends "web/layouts/home.html" %}
 {% block meta %}
-	<title>Shop Health and Wellness Products | Forever Living</title>
-	<meta name="description" content="Shop all-natural, organic health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best.">
-    <meta name="keywords" content="Shop, Products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic">
-    <link rel="canonical" href="https://foreverliving-products.com/{{country}}/shop"> 
+<title>Shop Health and Wellness Products | Forever Living</title>
+<meta name="description"
+	content="Shop all-natural, organic health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best.">
+<meta name="keywords"
+	content="Shop, Products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic">
+{% if restArea == None %}
+<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/shop">
+{% else %}
+<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/{{ restArea }}/shop">
+{% endif %}
+
 {% endblock %}
+
 {% block content %}
 <main class="main-wrapper">
 	<!-- Start Slider Area -->
@@ -27,11 +35,9 @@
 												<span class="subtitle">{{ categories[0] }}</span>
 												<h1 class="title">{{ product[1] }}</h1>
 												<div class="shop-btn">
-													<a
-														href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
-														class="axil-btn"
-														>Shop Now <i class="fal fa-long-arrow-right"></i
-													></a>
+													<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
+														class="axil-btn">Shop Now <i
+															class="fal fa-long-arrow-right"></i></a>
 												</div>
 											</div>
 											<div class="main-slider-thumb">
@@ -43,37 +49,30 @@
 								</div>
 							</div>
 							<div class="col-lg-3">
-								<div
-									class="slider-product-box single-product-box"
-									style="height: 100%"
-								>
+								<div class="slider-product-box single-product-box" style="height: 100%">
 									<div class="product-thumb">
 										<a href="#">
-											<img
-												src="{{ flag_data[1] }}"
-												alt="Product"
-											/>
+											<img src="{{ flag_data[1] }}" alt="Product" />
 										</a>
 									</div>
-									<span class="price"
-										>{{ flag_data[0] }}</span
-									>
+									<span class="price">{{ flag_data[0] }}</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div
-						class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20"
-					>
+					<div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
 						{% if offer_cards['shipping']['v'+title_country[country]] == 1 %}
-							<div class="col">
-								<div class="home-service-box" data-color="green">
-									<h5>Hurry!</h5><h5>Free Shipping</h5>
-									<h6>on US orders of 50$ or more</h6>	
-									<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}" alt="free-shipping-icon" class="mt-4">
-									<a class="btn" role="button" href="{{ offer_cards['shipping']['l'+title_country[country]] }}">Get Now</a>
-								</div>
+						<div class="col">
+							<div class="home-service-box" data-color="green">
+								<h5>Hurry!</h5>
+								<h5>Free Shipping</h5>
+								<h6>on US orders of 50$ or more</h6>
+								<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}"
+									alt="free-shipping-icon" class="mt-4">
+								<a class="btn" role="button"
+									href="{{ offer_cards['shipping']['l'+title_country[country]] }}">Get Now</a>
 							</div>
+						</div>
 						{% endif %}
 						{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
 						<div class="col">
@@ -86,29 +85,36 @@
 									<li><span data-date="minutes">0</span>m</li>
 									<li><span data-date="seconds">0</span>s</li>
 								</ul>
-								<a class="btn" role="button" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Click Now*</a>
+								<a class="btn" role="button"
+									href="{{ offer_cards['discount']['l'+title_country[country]] }}">Click Now*</a>
 							</div>
 						</div>
 						{% endif %}
 						{% if offer_cards['join']['v'+title_country[country]] == 1 %}
 						<div class="col">
 							<div class="home-service-box" data-color="purple">
-								<h5>Be A Preferred Customer</h5><h5>Get 5% Off</h5>
-								<h6>Instantly & Forever</h6>	
-								<a class="btn" role="button" href="{{ offer_cards['join']['l'+title_country[country]] }}">Join FLP Family</a>
+								<h5>Be A Preferred Customer</h5>
+								<h5>Get 5% Off</h5>
+								<h6>Instantly & Forever</h6>
+								<a class="btn" role="button"
+									href="{{ offer_cards['join']['l'+title_country[country]] }}">Join FLP Family</a>
 							</div>
 						</div>
 						{% endif %}
-						{% if title_country[country]!='UnitedStates' or (title_country[country] == 'UnitedStates' and (offer_cards['shipping']['v'+title_country[country]] == 0 or offer_cards['discount']['v'+title_country[country]] == 0 or offer_cards['join']['v'+title_country[country]] == 0)) %}
-							{% if offer_cards['visit']['v'+title_country[country]] == 1 %}
-							<div class="col">
-								<div class="home-service-box" data-color="green">
-									<h5>Visit Our<br>Online Store</h5>
-									<h6>for {{ flag_data[0] }}</h6>
-									<a class="btn" role="button" href="{{ offer_cards['visit']['l'+title_country[country]] }}">Check it Out</a>
-								</div>
+						{% if title_country[country]!='UnitedStates' or (title_country[country] == 'UnitedStates' and
+						(offer_cards['shipping']['v'+title_country[country]] == 0 or
+						offer_cards['discount']['v'+title_country[country]] == 0 or
+						offer_cards['join']['v'+title_country[country]] == 0)) %}
+						{% if offer_cards['visit']['v'+title_country[country]] == 1 %}
+						<div class="col">
+							<div class="home-service-box" data-color="green">
+								<h5>Visit Our<br>Online Store</h5>
+								<h6>for {{ flag_data[0] }}</h6>
+								<a class="btn" role="button"
+									href="{{ offer_cards['visit']['l'+title_country[country]] }}">Check it Out</a>
 							</div>
-							{% endif %}
+						</div>
+						{% endif %}
 						{% endif %}
 					</div>
 				</div>
@@ -122,51 +128,32 @@
 		<div class="container">
 			<div class="product-area">
 				<div class="section-title-wrapper">
-					<span class="title-highlighter highlighter-primary"
-						><i class="far fa-shopping-basket"></i>New Arrivals</span
-					>
+					<span class="title-highlighter highlighter-primary"><i class="far fa-shopping-basket"></i>New
+						Arrivals</span>
 					<h2 class="title">Our {{ categories[0] }} Products</h2>
 				</div>
-				<div
-					class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide"
-				>
+				<div class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
 					{% for product in productsGroupByCategory[categories[0]] %}
 
 					<div class="slick-single-layout">
 						<div class="axil-product product-style-four">
 							<div class="thumbnail">
 								<a
-									href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
-								>
-									<img
-										data-sal="fade"
-										data-sal-delay="100"
-										data-sal-duration="1500"
-										src="{{ product[0] }}"
-										alt="Product Images"
-									/>
-									<img
-										class="hover-img"
-										src="{{ product[0] }}"
-										alt="Product Images"
-									/>
+									href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}">
+									<img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
+										src="{{ product[0] }}" alt="Product Images" />
+									<img class="hover-img" src="{{ product[0] }}" alt="Product Images" />
 								</a>
 								<div class="product-hover-action">
 									<ul class="cart-action">
 										<ul class="cart-action">
 											<li class="select-option">
-												<a
-													href="{{ product[9] }}"
-													target="_blank"
-													>Buy Now</a
-												>
+												<a href="{{ product[9] }}" target="_blank">Buy Now</a>
 											</li>
 											<li class="select-option">
-												<a
-													class="btn-default"
-													href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
-													>See Details</a
-												>
+												<a class="btn-default"
+													href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}">See
+													Details</a>
 											</li>
 										</ul>
 									</ul>
@@ -175,10 +162,9 @@
 							<div class="product-content">
 								<div class="inner">
 									<h5 class="title">
-										
+
 										<a
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
-										>
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}">
 											{{ product[1] }}
 										</a>
 									</h5>
@@ -207,8 +193,7 @@
 		<div class="container">
 			<div class="section-title-wrapper">
 				<span class="title-highlighter highlighter-primary">
-					<i class="far fa-shopping-basket"></i> Our Products</span
-				>
+					<i class="far fa-shopping-basket"></i> Our Products</span>
 				<h2 class="title">Explore Our Products</h2>
 			</div>
 			<div class="row row--15">
@@ -217,25 +202,18 @@
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}"
-							>
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}">
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
 							<div class="product-hover-action">
 								<ul class="cart-action">
 									<li class="select-option">
-										<a
-											href="{{ product[9] }}"
-											target="_blank"
-											>Buy Now</a
-										>
+										<a href="{{ product[9] }}" target="_blank">Buy Now</a>
 									</li>
 									<li class="select-option">
-										<a
-											class="btn-default"
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}"
-											>See Details</a
-										>
+										<a class="btn-default"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}">See
+											Details</a>
 									</li>
 								</ul>
 							</div>
@@ -244,9 +222,8 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}"
-										>{{ product[1] }}</a
-									>
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[1].split(' ')).lower()) }}">{{
+										product[1] }}</a>
 								</h5>
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
@@ -265,11 +242,8 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center mt--20">
-					<a
-						href="{{ url_for('shop', restArea=restArea, country=country) }}"
-						class="axil-btn btn-bg-lighter btn-load-more"
-						>See All Products</a
-					>
+					<a href="{{ url_for('shop', restArea=restArea, country=country) }}"
+						class="axil-btn btn-bg-lighter btn-load-more">See All Products</a>
 				</div>
 			</div>
 		</div>
@@ -281,9 +255,8 @@
 		<div class="container">
 			<div class="etrade-newsletter-wrapper bg_image bg_image--12">
 				<div class="newsletter-content">
-					<span class="title-highlighter highlighter-primary2"
-						><i class="fas fa-envelope-open"></i>Newsletter</span
-					>
+					<span class="title-highlighter highlighter-primary2"><i
+							class="fas fa-envelope-open"></i>Newsletter</span>
 					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
 					<div class="input-group newsletter-form">
 						<div class="position-relative newsletter-inner mb--15">
@@ -304,13 +277,8 @@
 		<div class="axil-product product-style-four">
 			<div class="thumbnail">
 				<a href="__PRODUCT_WEBSITE_URL__">
-					<img
-						data-sal="fade"
-						data-sal-delay="100"
-						data-sal-duration="1500"
-						data-image="0"
-						alt="Product Images"
-					/>
+					<img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" data-image="0"
+						alt="Product Images" />
 					<img class="hover-img" data-image="1" alt="Product Images" />
 				</a>
 				<div class="product-hover-action">
@@ -344,14 +312,10 @@
 <div id="top-banner-clone" style="display: none">
 	<div class="single-slide slick-slide">
 		<div class="main-slider-content">
-			<span class="subtitle"
-				><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span
-			>
+			<span class="subtitle"><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span>
 			<h1 class="title">__PRODUCT_NAME__</h1>
 			<div class="shop-btn">
-				<a href="__PRODUCT_WEBSITE_URL__" class="axil-btn"
-					>Shop Now <i class="fal fa-long-arrow-right"></i
-				></a>
+				<a href="__PRODUCT_WEBSITE_URL__" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a>
 			</div>
 		</div>
 		<div class="main-slider-thumb">
@@ -367,7 +331,7 @@
 		$(".search-result-header").hide();
 	});
 
-	const allProducts_byCategory = {{ productsGroupByCategory|tojson|safe }};
+	const allProducts_byCategory = {{ productsGroupByCategory| tojson | safe }};
 	var productUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='_PRODUCT_CATEGORY_') }}"
 
 	$("body").on("click", ".nav-menu-list li", function (e) {
@@ -386,7 +350,7 @@
 		$('.sticky-header').removeClass('open').removeAttr('style')
 		// Data
 		var data = allProducts_byCategory[category];
-		const replacing_category = category.replace(' ','-').toLowerCase();
+		const replacing_category = category.replace(' ', '-').toLowerCase();
 
 		$(".new-arrivals-product-activation").slick(
 			"removeSlide",
