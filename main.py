@@ -11,8 +11,9 @@ footer_country_code = {'australia': 'aus',
 
 title_country = {'australia': 'Australia',
                  'unitedstates': 'UnitedStates', 'canada': 'Canada', 'greatbritain': 'GreatBritain'}
-                 
-character_limit_title_country = {'Australia': 'Australia', 'United States': 'USA', 'Great Britain': 'UK', 'Canada': 'Canada'}
+
+character_limit_title_country = {'Australia': 'Australia',
+                                 'United States': 'USA', 'Great Britain': 'UK', 'Canada': 'Canada'}
 
 country_specific = {
     'usa': {
@@ -63,8 +64,11 @@ app = Flask(__name__)
 Mobility(app)
 
 # flask integration with database
-engine = db.create_engine('mysql://root:root@localhost/foreverliving')
-# engine = db.create_engine('mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+if __name__ == '__main__':
+    engine = db.create_engine('mysql://root:root@localhost/foreverliving')
+else:
+    engine = db.create_engine(
+        'mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
 connection = engine.connect()
 metadata = db.MetaData()
 
@@ -349,9 +353,12 @@ def adminDashboard(name=None, password=None):
                         card+'_'+form_field)
 
             # updating database entry
-            engine = db.create_engine(
-                'mysql://root:root@localhost/foreverliving')
-            # engine = db.create_engine('mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+            if __name__ == '__main__':
+                engine = db.create_engine(
+                    'mysql://root:root@localhost/foreverliving')
+            else:
+                engine = db.create_engine(
+                    'mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
             connection = engine.connect()
             metadata = db.MetaData()
 
@@ -362,9 +369,13 @@ def adminDashboard(name=None, password=None):
                 census.columns.cardType == card).values(data_dict[card])
             results = connection.execute(query)
 
-        engine = db.create_engine(
-            'mysql://root:root@localhost/foreverliving')
-        # engine = db.create_engine('mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+        if __name__ == '__main__':
+            engine = db.create_engine(
+                'mysql://root:root@localhost/foreverliving')
+        else:
+            engine = db.create_engine(
+                'mysql://herfmldc_ksingla:plokijPLOKIJ@premium186.web-hosting.com/herfmldc_foreverliving')
+
         connection = engine.connect()
         metadata = db.MetaData()
 
