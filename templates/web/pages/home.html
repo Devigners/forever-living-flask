@@ -8,7 +8,7 @@
 <meta name="keywords"
 	content="forever living, aloe vera, aloe vera products, aloe vera gel, aloe vera drink, aloe vera supplements, aloe vera skincare, aloe vera wellness">
 
-{% if country == None %}
+{% if country == None or pageType == 'index'%}
 <link rel="canonical" href="https://foreverliving-products.com">
 {% elif restArea == None %}
 <link rel="canonical" href="https://foreverliving-products.com/{{ country }}">
@@ -16,7 +16,6 @@
 <link rel="canonical" href="https://foreverliving-products.com/{{ country }}/{{ restArea }}">
 {% endif %}
 
-<link rel="canonical" href="https://foreverliving-products.com">
 {% endblock %}
 {% block content %}
 <main class="main-wrapper home-page">
