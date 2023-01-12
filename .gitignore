@@ -3,3 +3,10 @@
 .idea
 .ipynb_checkpoints
 *.zip
+/optimization
+.env
+
+.ftpquota
+.htaccess
+passenger_wsgi.py
+stderr.log
