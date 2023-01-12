@@ -1,65 +1,33 @@
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon"
+	href="{{ url_for('static', filename='web-assets/images/favicon.png') }}" />
 
-		<!-- Favicon -->
-		<link
-			rel="shortcut icon"
-			type="image/x-icon"
-			href="{{ url_for('static', filename='web-assets/images/favicon.png') }}"
-		/>
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" type="image/x-icon"
+	href="{{ url_for('static', filename='web-assets/images/favicon.png') }}" />
 
-		<!-- Apple Touch Icon -->
-		<link
-			rel="apple-touch-icon"
-			type="image/x-icon"
-			href="{{ url_for('static', filename='web-assets/images/favicon.png') }}"
-		/>
+<!-- CSS ============================================ -->
 
-		<!-- CSS ============================================ -->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/vendor/bootstrap.min.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/vendor/font-awesome.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/vendor/flaticon/flaticon.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/vendor/slick.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/vendor/slick-theme.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/vendor/jquery-ui.min.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/style.min.css') }}?v=2.8" />
+<link rel="stylesheet" href="{{ url_for('static', filename='web-assets/css/vendor/easy-autocomplete.css') }}?v=1.1" />
+<link rel="stylesheet"
+	href="{{ url_for('static', filename='web-assets/css/vendor/easy-autocomplete.themes.min.css') }}?v=1.1" />
+</head>
 
-		<!-- Bootstrap CSS -->
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/bootstrap.min.css') }}"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/font-awesome.css') }}"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/flaticon/flaticon.css') }}"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/slick.css') }}"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/slick-theme.css') }}"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/jquery-ui.min.css') }}"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/style.min.css') }}?v=2.7"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/easy-autocomplete.css') }}?v=1.1"
-		/>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='web-assets/css/vendor/easy-autocomplete.themes.min.css') }}?v=1.1"
-		/>
-	</head>
-
-	<body class="sticky-header">
-		<div class="floating-vertical-btn">
-			{% if offer_cards['join']['v'+title_country[country]] == 1 %}
-				<a class="join" href="{{ offer_cards['join']['l'+title_country[country]] }}">Join & Save 5%</a>
-			{% endif %}
-			{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
-				<a class="discount" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Limited {{offer_cards['discount']['discount']}}% Off</a>
-			{% endif %}
-		</div>
+<body class="sticky-header">
+	<div class="floating-vertical-btn">
+		{% if offer_cards['join']['v'+title_country[country]] == 1 %}
+		<a class="join" href="{{ offer_cards['join']['l'+title_country[country]] }}">Join & Save 5%</a>
+		{% endif %}
+		{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
+		<a class="discount" href="{{ offer_cards['discount']['l'+title_country[country]] }}">Limited
+			{{offer_cards['discount']['discount']}}% Off</a>
+		{% endif %}
+	</div>
