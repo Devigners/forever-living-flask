@@ -272,58 +272,6 @@
 	<!-- End Axil Newsletter Area  -->
 </main>
 
-<div id="product-clone" style="display: none">
-	<div class="slick-single-layout">
-		<div class="axil-product product-style-four">
-			<div class="thumbnail">
-				<a href="__PRODUCT_WEBSITE_URL__">
-					<img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" data-image="0"
-						alt="Product Images" />
-					<img class="hover-img" data-image="1" alt="Product Images" />
-				</a>
-				<div class="product-hover-action">
-					<ul class="cart-action">
-						<li class="select-option">
-							<a href="__PRODUCT_WEBSITE_URL__">Buy Now</a>
-						</li>
-						<li class="select-option">
-							<a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="product-content">
-				<div class="inner">
-					<h5 class="title">
-						<a href="__PRODUCT_WEBSITE_URL__"> __PRODUCT_NAME__ </a>
-					</h5>
-					<div class="product-price-variant">
-						<span class="price">__PRODUCT_PRICE__</span>
-					</div>
-					<h6 class="description">
-						__PRODUCT_DESCRIPTION__
-					</h6>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id="top-banner-clone" style="display: none">
-	<div class="single-slide slick-slide">
-		<div class="main-slider-content">
-			<span class="subtitle"><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span>
-			<h1 class="title">__PRODUCT_NAME__</h1>
-			<div class="shop-btn">
-				<a href="__PRODUCT_WEBSITE_URL__" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a>
-			</div>
-		</div>
-		<div class="main-slider-thumb">
-			<img data-image="0" alt="Product" />
-		</div>
-	</div>
-</div>
-
 {% endblock %} {% block scripts %}
 <script>
 	$("body").on('click', ".axil-search", function (e) {
@@ -363,9 +311,10 @@
 		let html = "";
 		let carouselHtml = "";
 		let i = 0;
+		$productClone = `<div class="slick-single-layout"> <div class="axil-product product-style-four"> <div class="thumbnail"> <a href="__PRODUCT_WEBSITE_URL__"> <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" data-image="0" alt="Product Images" /> <img class="hover-img" data-image="1" alt="Product Images" /> </a> <div class="product-hover-action"> <ul class="cart-action"> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__">Buy Now</a> </li> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a> </li> </ul> </div> </div> <div class="product-content"> <div class="inner"> <h5 class="title"> <a href="__PRODUCT_WEBSITE_URL__"> __PRODUCT_NAME__ </a> </h5> <div class="product-price-variant"> <span class="price">__PRODUCT_PRICE__</span> </div> <h6 class="description"> __PRODUCT_DESCRIPTION__ </h6> </div> </div> </div> </div>`;
+		$topbannerClone = `<div class="single-slide slick-slide"> <div class="main-slider-content"> <span class="subtitle"><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span> <h1 class="title">__PRODUCT_NAME__</h1> <div class="shop-btn"> <a href="__PRODUCT_WEBSITE_URL__" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a> </div> </div> <div class="main-slider-thumb"> <img data-image="0" alt="Product" /> </div> </div>`;
 		data.forEach((product) => {
-			html += $("#product-clone")
-				.html()
+			html += $productClone
 				.replace(/data-image="0"/g, `src="${product[0]}"`)
 				.replace(/data-image="1"/g, `src="${product[0]}"`)
 				.replace(/__PRODUCT_NAME__/g, product[1])
@@ -374,8 +323,7 @@
 				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]).replace(/_PRODUCT_CATEGORY_/g, replacing_category))
 				.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);
 			if (i < 3) {
-				carouselHtml += $("#top-banner-clone")
-					.html()
+				carouselHtml += $topbannerClone
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]).replace(/_PRODUCT_CATEGORY_/g, replacing_category))

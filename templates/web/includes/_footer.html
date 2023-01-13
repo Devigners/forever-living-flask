@@ -134,43 +134,6 @@
 </div>
 <!-- Header Search Modal End -->
 
-<!-- Product Search Filter clone -->
-<div id="search-product-clone" style="display: none">
-	<div class="axil-product-list search-product-item">
-		<div class="thumbnail">
-			<a>
-				<img
-					style="
-						width: 120px;
-						height: 120px;
-						object-fit: cover;
-						object-position: center;
-					"
-					data-image="0"
-				/>
-			</a>
-		</div>
-		<div class="product-content">
-			<h6 class="product-title">
-				<a href="">__PRODUCT_NAME__</a>
-			</h6>
-			<div class="product-price-variant">
-				<span class="price current-price">__PRODUCT_PRICE__</span>
-			</div>
-			<div class="product-cart">
-				<ul class="cart-action">
-					<li class="select-option">
-						<a href="__PRODUCT_EXTERNAL_URL__" target="_blank">Buy Now</a>
-					</li>
-					<li class="select-option">
-						<a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!-- jQuery JS -->
 <script src="{{ url_for('static', filename='web-assets/js/vendor/jquery.js') }}"></script>
 <!-- Bootstrap JS -->
@@ -249,12 +212,12 @@
 		);
 
 		if(value.trim()){
+			$html = `<div class="axil-product-list search-product-item"> <div class="thumbnail"> <a> <img style=" width: 120px; height: 120px; object-fit: cover; object-position: center; " data-image="0" /> </a> </div> <div class="product-content"> <h6 class="product-title"> <a href="">__PRODUCT_NAME__</a> </h6> <div class="product-price-variant"> <span class="price current-price">__PRODUCT_PRICE__</span> </div> <div class="product-cart"> <ul class="cart-action"> <li class="select-option"> <a href="__PRODUCT_EXTERNAL_URL__" target="_blank">Buy Now</a> </li> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a> </li> </ul> </div> </div> </div>`;
 			$(".search-result-header").show();
 			$("#total-result-found").show().text(`${data.length} Results Found`);
 			let html = "";
 			data.forEach((product) => {
-				html += $("#search-product-clone")
-					.html()
+				html += $html
 					.replace(/data-image="0"/g, `src="${product[0]}"`)
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
