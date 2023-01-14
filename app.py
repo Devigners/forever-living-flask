@@ -105,8 +105,8 @@ def update_var(new_country, restArea=None):
 
 
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/<country>/', methods=['GET', 'POST'])
-@app.route('/<country>/<restArea>/', methods=['GET', 'POST'])
+@app.route('/<country>', methods=['GET', 'POST'])
+@app.route('/<country>/<restArea>', methods=['GET', 'POST'])
 def index(country=None, restArea=None):
     pageType = 'index'
     address = []
