@@ -165,13 +165,13 @@ def index(country=None, restArea=None):
         'character_limit_title_country': character_limit_title_country
     }
 
-    return render_template('web/pages/home.html', **context)
+    return render_template('web/pages/index.html', **context)
 
 
 # index page with country name
 @app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
 @app.route('/<country>/shop', methods=['GET', 'POST'])
-def country(country, restArea=None):
+def shop(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories, all_products, controller, country_specific, cards
 
@@ -193,35 +193,6 @@ def country(country, restArea=None):
         'title_country': title_country,
         'flag_data': (name, img_file)
     }
-    return render_template('web/pages/index.html', **context)
-
-
-# about us page
-@app.route('/<country>/<restArea>/products', methods=['GET', 'POST'])
-@app.route('/<country>/products', methods=['GET', 'POST'])
-def shop(country, restArea=None):
-    update_var(country)
-    global product_with_categories, localities, categories, country_specific, cards, title_country
-
-    if (restArea):
-        name, img_file = controller.getFlag(country, ' '.join(
-            re.split('(?<=.)(?=[A-Z])', restArea.split('-')[0])))
-    else:
-        name, img_file = controller.getFlag(country)
-
-    context = {
-        'offer_links': country_specific,
-        'offer_cards': cards,
-        'footer_country_code': footer_country_code[country],
-        'categories': categories,
-        'productsGroupByCategory': product_with_categories,
-        'country': country,
-        'localities': localities,
-        'restArea': restArea,
-        'flag_data': (name, img_file),
-        'title_country': title_country
-    }
-
     return render_template('web/pages/shop.html', **context)
 
 
@@ -323,7 +294,7 @@ def productDetails(country, name, category, restArea=None):
         }
         return render_template('web/pages/single-product.html', **context)
     else:
-        return redirect(url_for('country', country=country, restArea=restArea), code=302)
+        return redirect(url_for('shop', country=country, restArea=restArea), code=302)
 
 
 @app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])

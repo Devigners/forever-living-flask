@@ -1,188 +1,283 @@
-{% extends "web/layouts/app.html" %}
+{% extends "web/layouts/home.html" %}
 {% block meta %}
-<title>Discover Our Wide Range of Health & Wellness Products | Forever Living</title>
+<title>Shop Health and Wellness Products | Forever Living</title>
 <meta name="description"
-  content="Explore our wide selection of health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best. All of our products are all-natural, organic, and made with aloe vera.">
+	content="Shop all-natural, organic health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best.">
 <meta name="keywords"
-  content="All products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic, Nutrition">
+	content="Shop, Products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic">
 {% if restArea == None %}
-<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/products">
+<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/shop">
 {% else %}
-<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/{{ restArea }}/products">
+<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/{{ restArea }}/shop">
 {% endif %}
+
 {% endblock %}
+
 {% block content %}
 <main class="main-wrapper">
-  <!-- Start Breadcrumb Area  -->
-  <div class="axil-breadcrumb-area">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 col-md-8">
-          <div class="inner">
-            <ul class="axil-breadcrumb">
-              <li class="axil-breadcrumb-item">
-                <a href="{{ url_for('country', country=country, restArea=restArea) }}">Home</a>
-              </li>
-              <li class="separator"></li>
-              <li class="axil-breadcrumb-item active" aria-current="page">
-                All Products
-              </li>
-            </ul>
-            <h1 class="title">Explore All Products</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Breadcrumb Area  -->
-  <!-- Start Shop Area  -->
-  <div class="axil-shop-area axil-section-gap bg-color-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="axil-shop-top">
-            <div class="row">
-              <div class="col-lg-9">
-                <div class="category-select">
-                  <!-- Start Single Select  -->
-                  <select class="single-select" id="category-filter">
-                    <option value="" disabled selected>Select Category</option>
-                    {% for category in categories %}
-                    <option>{{ category }}</option>
-                    {% endfor %}
-                  </select>
-                  <!-- End Single Select  -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row row--15" id="product-lists">
-        {% for product in productsGroupByCategory['All Products'] %}
-        <div class="col-xl-3 col-lg-4 col-sm-6">
-          <div class="axil-product product-style-one has-color-pick mt--40">
-            <div class="thumbnail">
-              <a
-                href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">
-                <img src="{{ product[0] }}" alt="Product Images" />
-              </a>
-              <div class="product-hover-action">
-                <ul class="cart-action">
-                  <li class="select-option">
-                    <a href="{{ product[9] }}" target="_blank">Buy Now</a>
-                  </li>
-                  <li class="select-option">
-                    <a class="btn-default"
-                      href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">See
-                      Details</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="inner text-center">
-                <h5 class="title">
-                  <a
-                    href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">{{
-                    product[1] }}</a>
-                </h5>
-                <div class="product-price-variant">
-                  <span class="price current-price">{{ product[2] }}</span>
-                </div>
-                <h6 class="description my-1">
-                  {{ product[11] }}
-                </h6>
-                <p style="font-size: 9px; opacity: 0.7;">
-                  *Price & Stock are subject to change anytime
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <!-- End .container -->
-  </div>
-  <!-- End Shop Area  -->
-  <!-- Start Axil Newsletter Area  -->
-  <div class="axil-newsletter-area axil-section-gap pt--0">
-    <div class="container">
-      <div class="etrade-newsletter-wrapper bg_image bg_image--12">
-        <div class="newsletter-content">
-          <span class="title-highlighter highlighter-primary2"><i class="fas fa-envelope-open"></i>Newsletter</span>
-          <h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
-          <div class="input-group newsletter-form">
-            <div class="position-relative newsletter-inner mb--15">
-              <input placeholder="example@gmail.com" type="text" />
-            </div>
-            <button type="submit" class="axil-btn mb--15">Subscribe</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End .container -->
-  </div>
-  <!-- End Axil Newsletter Area  -->
+	<!-- Start Slider Area -->
+	<div class="axil-main-slider-area main-slider-style-2">
+		<div class="container">
+			<div class="d-flex w-100">
+				<div class="department-menu-col">
+					{% include "web/includes/_categories_sidebar.html" %}
+				</div>
+				<div class="banner-area">
+					<div class="slider-offset-left">
+						<div class="row row--20">
+							<div class="col-lg-9">
+								<div class="slider-box-wrap">
+									<div class="slider-activation-one axil-slick-dots">
+										{% for product in productsGroupByCategory[categories[0]][:3]
+										%}
+										<div class="single-slide slick-slide">
+											<div class="main-slider-content">
+												<span class="subtitle">{{ categories[0] }}</span>
+												<h1 class="title">{{ product[1] }}</h1>
+												<div class="shop-btn">
+													<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
+														class="axil-btn">Shop Now <i
+															class="fal fa-long-arrow-right"></i></a>
+												</div>
+											</div>
+											<div class="main-slider-thumb">
+												<img src="{{ product[0] }}" alt="Product" />
+											</div>
+										</div>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="slider-product-box single-product-box" style="height: 100%">
+									<div class="product-thumb">
+										<a href="#">
+											<img src="{{ flag_data[1] }}" alt="Product" />
+										</a>
+									</div>
+									<span class="price">{{ flag_data[0] }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
+						{% if offer_cards['shipping']['v'+title_country[country]] == 1 %}
+						<div class="col">
+							<div class="home-service-box" data-color="green">
+								<h5>Hurry!</h5>
+								<h5>Free Shipping</h5>
+								<h6>on US orders of 50$ or more</h6>
+								<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}"
+									alt="free-shipping-icon" class="mt-4">
+								<a class="btn" role="button"
+									href="{{ offer_cards['shipping']['l'+title_country[country]] }}">Get Now</a>
+							</div>
+						</div>
+						{% endif %}
+						{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
+						<div class="col">
+							<div class="home-service-box" data-color="light-blue">
+								<h5>Limited {{offer_cards['discount']['discount']}}% Off</h5>
+								<h6>No Joining Needed</h6>
+								<ul class="timer-box">
+									<li><span data-date="days">0</span>d</li>
+									<li><span data-date="hours">0</span>h</li>
+									<li><span data-date="minutes">0</span>m</li>
+									<li><span data-date="seconds">0</span>s</li>
+								</ul>
+								<a class="btn" role="button"
+									href="{{ offer_cards['discount']['l'+title_country[country]] }}">Click Now*</a>
+							</div>
+						</div>
+						{% endif %}
+						{% if offer_cards['join']['v'+title_country[country]] == 1 %}
+						<div class="col">
+							<div class="home-service-box" data-color="purple">
+								<h5>Be A Preferred Customer</h5>
+								<h5>Get 5% Off</h5>
+								<h6>Instantly & Forever</h6>
+								<a class="btn" role="button"
+									href="{{ offer_cards['join']['l'+title_country[country]] }}">Join FLP Family</a>
+							</div>
+						</div>
+						{% endif %}
+						{% if title_country[country]!='UnitedStates' or (title_country[country] == 'UnitedStates' and
+						(offer_cards['shipping']['v'+title_country[country]] == 0 or
+						offer_cards['discount']['v'+title_country[country]] == 0 or
+						offer_cards['join']['v'+title_country[country]] == 0)) %}
+						{% if offer_cards['visit']['v'+title_country[country]] == 1 %}
+						<div class="col">
+							<div class="home-service-box" data-color="green">
+								<h5>Visit Our<br>Online Store</h5>
+								<h6>for {{ flag_data[0] }}</h6>
+								<a class="btn" role="button"
+									href="{{ offer_cards['visit']['l'+title_country[country]] }}">Check it Out</a>
+							</div>
+						</div>
+						{% endif %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Slider Area -->
+	<div class="axil-product-area bg-color-white axil-section-gap">
+		<div class="container">
+			<div class="section-title-wrapper">
+				<span class="title-highlighter highlighter-primary">
+					<i class="far fa-shopping-basket"></i> Our Products</span>
+				<h2 class="title">Explore Our Products</h2>
+			</div>
+			<!-- 
+				<div class="col-lg-9">
+					<div class="category-select">
+						<select class="single-select" id="category-filter">
+							<option value="" disabled selected>Select Category</option>
+							{% for category in categories %}
+							<option>{{ category }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			 -->
+			<div class="row row--15" id="product-lists">
+				{% for product in productsGroupByCategory['All Products'] %}
+				<div class="col-xl-3 col-lg-4 col-sm-6">
+					<div class="axil-product product-style-one has-color-pick mt--40">
+						<div class="thumbnail">
+							<a
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">
+								<img src="{{ product[0] }}" alt="Product Images" />
+							</a>
+							<div class="product-hover-action">
+								<ul class="cart-action">
+									<li class="select-option">
+										<a href="{{ product[9] }}" target="_blank">Buy Now</a>
+									</li>
+									<li class="select-option">
+										<a class="btn-default"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">See
+											Details</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="product-content">
+							<div class="inner text-center">
+								<h5 class="title">
+									<a
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">{{
+										product[1] }}</a>
+								</h5>
+								<div class="product-price-variant">
+									<span class="price current-price">{{ product[2] }}</span>
+								</div>
+								<h6 class="description my-1">
+									{{ product[11] }}
+								</h6>
+								<p style="font-size: 9px; opacity: 0.7;">
+									*Price & Stock are subject to change anytime
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<!-- End Expolre Product Area  -->
+
+	<!-- Start Axil Newsletter Area  -->
+	<div class="axil-newsletter-area axil-section-gap pt--0">
+		<div class="container">
+			<div class="etrade-newsletter-wrapper bg_image bg_image--12">
+				<div class="newsletter-content">
+					<span class="title-highlighter highlighter-primary2"><i
+							class="fas fa-envelope-open"></i>Newsletter</span>
+					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
+					<div class="input-group newsletter-form">
+						<div class="position-relative newsletter-inner mb--15">
+							<input placeholder="example@gmail.com" type="text" />
+						</div>
+						<button type="submit" class="axil-btn mb--15">Subscribe</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End .container -->
+	</div>
+	<!-- End Axil Newsletter Area  -->
 </main>
 
 {% endblock %} {% block scripts %}
 <script>
-  const dummyURl = "{{ url_for('productDetails', country=country, restArea=restArea, name='478649', category='replacement') }}";
-  const shopProducts = {{ productsGroupByCategory| tojson }};
+	$("body").on('click', ".axil-search", function (e) {
+		$("#prod-search").val("");
+		$(".search-result-header").hide();
+	});
 
-  // #category-filter on change filter products
-  $("#category-filter").on("change", function () {
-    const category = $(this).val();
-    const filteredProducts = shopProducts[category];
-    const replacing_category = category.replace(' ', '-').toLowerCase();
+	const allProducts_byCategory = {{ productsGroupByCategory| tojson | safe }};
+	var productUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='_PRODUCT_CATEGORY_') }}"
 
-    // clear products
-    $("#product-lists").html('');
-    $(".axil-product").remove();
-    // add filtered products
-    filteredProducts.forEach((product) => {
-      const url = dummyURl.replace('478649', product[13]).replace('replacement', replacing_category);
+	$("body").on("click", ".nav-menu-list li", function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		$(".nav-menu-list li").removeClass("active");
+		$this.addClass("active");
+		var category = $this.find(".menu-text").text();
 
-      $("#product-lists").append(`
-  			<div class="col-xl-3 col-lg-4 col-sm-6">
-  				<div class="axil-product product-style-one has-color-pick mt--40">
-  					<div class="thumbnail">
-  						<a href="${url}">
-  							<img
-  								src="${product[0]}"
-  								alt="Product Images"
-  							/>
-  						</a>
-  						<div class="product-hover-action">
-  							<ul class="cart-action">
-  								<li class="select-option">
-  									<a href="${product[9]}" target="_blank">Buy Now</a>
-  								</li>
-									<li class="select-option">
-										<a class="btn-default" href="${url}">See Details</a>
-									</li>
-  							</ul>
-  						</div>
-  					</div>
-  					<div class="product-content">
-  						<div class="inner text-center">
-  							<h5 class="title">
-  								<a href="${url}">${product[1]}</a>
-  							</h5>
-  							<div class="product-price-variant">
-  								<span class="price current-price">${product[2]}</span>
-  							</div>
-                <h6 class="description">
-  								${product[11]}
-  							</h6>
-  						</div>
-  					</div>
-  				</div>
-  			</div>
-  		`);
-    });
-  });
+		// if screen is mobile scroll to top
+		if ($(window).width() < 768) {
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+		}
+
+		$('.department-nav-menu').removeClass('open')
+		$('.sticky-header').removeClass('open').removeAttr('style')
+		// Data
+		var data = allProducts_byCategory[category];
+		const replacing_category = category.replace(' ', '-').toLowerCase();
+
+		$(".new-arrivals-product-activation").slick(
+			"removeSlide",
+			null,
+			null,
+			true
+		);
+		$(".slider-activation-one").slick("removeSlide", null, null, true);
+		$(".product-area .title").text(`Our ${category.replace(/Products/g, '')} Products`);
+		let html = "";
+		let carouselHtml = "";
+		let i = 0;
+		$productClone = `<div class="slick-single-layout"> <div class="axil-product product-style-four"> <div class="thumbnail"> <a href="__PRODUCT_WEBSITE_URL__"> <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" data-image="0" alt="Product Images" /> <img class="hover-img" data-image="1" alt="Product Images" /> </a> <div class="product-hover-action"> <ul class="cart-action"> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__">Buy Now</a> </li> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a> </li> </ul> </div> </div> <div class="product-content"> <div class="inner"> <h5 class="title"> <a href="__PRODUCT_WEBSITE_URL__"> __PRODUCT_NAME__ </a> </h5> <div class="product-price-variant"> <span class="price">__PRODUCT_PRICE__</span> </div> <h6 class="description"> __PRODUCT_DESCRIPTION__ </h6> </div> </div> </div> </div>`;
+		$topbannerClone = `<div class="single-slide slick-slide"> <div class="main-slider-content"> <span class="subtitle"><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span> <h1 class="title">__PRODUCT_NAME__</h1> <div class="shop-btn"> <a href="__PRODUCT_WEBSITE_URL__" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a> </div> </div> <div class="main-slider-thumb"> <img data-image="0" alt="Product" /> </div> </div>`;
+		data.forEach((product) => {
+			html += $productClone
+				.replace(/data-image="0"/g, `src="${product[0]}"`)
+				.replace(/data-image="1"/g, `src="${product[0]}"`)
+				.replace(/__PRODUCT_NAME__/g, product[1])
+				.replace(/__PRODUCT_DESCRIPTION__/g, product[11])
+				.replace(/__PRODUCT_PRICE__/g, product[2])
+				.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]).replace(/_PRODUCT_CATEGORY_/g, replacing_category))
+				.replace(/__PRODUCT_DETAIL_URL__/g, product[9]);
+			if (i < 3) {
+				carouselHtml += $topbannerClone
+					.replace(/data-image="0"/g, `src="${product[0]}"`)
+					.replace(/__PRODUCT_NAME__/g, product[1])
+					.replace(/__PRODUCT_WEBSITE_URL__/g, productUrl.replace(/_PRODUCT_NAME_/g, product[13]).replace(/_PRODUCT_CATEGORY_/g, replacing_category))
+					.replace(/__PRODUCT_CATEGORY__/g, category);
+			}
+			i++;
+			return;
+		});
+		$(".new-arrivals-product-activation").slick("slickAdd", html);
+		$(".slider-activation-one").slick("slickAdd", carouselHtml);
+		sal({
+			threshold: 0.3,
+			once: true,
+		});
+	});
 </script>
+
 {% endblock %}
