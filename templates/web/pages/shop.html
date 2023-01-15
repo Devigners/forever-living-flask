@@ -70,7 +70,12 @@
 								<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}"
 									alt="free-shipping-icon" class="mt-4">
 								<a class="btn" role="button"
-									href="{{ offer_cards['shipping']['l'+title_country[country]] }}">Get Now</a>
+									href="{{ offer_cards['shipping']['l'+title_country[country]] }}">
+									Get Now
+								</a>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
+									*This offer is subject to change anytime
+								</p>
 							</div>
 						</div>
 						{% endif %}
@@ -86,7 +91,12 @@
 									<li><span data-date="seconds">0</span>s</li>
 								</ul>
 								<a class="btn" role="button"
-									href="{{ offer_cards['discount']['l'+title_country[country]] }}">Click Now*</a>
+									href="{{ offer_cards['discount']['l'+title_country[country]] }}">
+									Click Now
+								</a>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
+									*This offer is subject to change anytime
+								</p>
 							</div>
 						</div>
 						{% endif %}
@@ -97,7 +107,12 @@
 								<h5>Get 5% Off</h5>
 								<h6>Instantly & Forever</h6>
 								<a class="btn" role="button"
-									href="{{ offer_cards['join']['l'+title_country[country]] }}">Join FLP Family</a>
+									href="{{ offer_cards['join']['l'+title_country[country]] }}">
+									Join FLP Family
+								</a>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
+									*This offer is subject to change anytime
+								</p>
 							</div>
 						</div>
 						{% endif %}
@@ -111,7 +126,12 @@
 								<h5>Visit Our<br>Online Store</h5>
 								<h6>for {{ flag_data[0] }}</h6>
 								<a class="btn" role="button"
-									href="{{ offer_cards['visit']['l'+title_country[country]] }}">Check it Out</a>
+									href="{{ offer_cards['visit']['l'+title_country[country]] }}">
+									Check it Out
+								</a>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
+									*This offer is subject to change anytime
+								</p>
 							</div>
 						</div>
 						{% endif %}
