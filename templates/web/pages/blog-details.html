@@ -1,8 +1,18 @@
+<!DOCTYPE html>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1F994LSFMR');
+</script></head>
 {% extends "web/layouts/app.html" %}
 {% block meta %}
-<title>{{ blog['Title'] }} | Forever Living</title>
-<meta name="description" content="Forever Living website content" />
-<meta name="keywords" content="Forever Living, product hunting" />
+<title>{{ blog['Title'] }} | Forever Living | Aloe Vera Health & Beauty Benefits</title>
+<meta name="description" content="Explore the natural benefits of Aloe Vera with Forever Living Products. From skincare to supplements, our aloe-based products promote health and beauty for a healthier you. Try them today!" />
+<meta name="keywords" content="Aloe Vera juice, Aloe Vera gel, Aloe Vera products, Aloe Vera benefits, natural beauty, natural health, organic skincare, organic supplements, forever living aloe vera, aloe vera blog" />
 {% if restArea == None %}
 <link rel="canonical" href="https://foreverliving-products.com/{{country}}/blog-details/{{id}}">
 {% else %}
