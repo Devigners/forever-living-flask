@@ -1,10 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-1F994LSFMR');
+	</script>
+</head>
 {% extends "web/layouts/home.html" %}
 {% block meta %}
-<title>Shop Health and Wellness Products | Forever Living</title>
+<title>Shop Health and Wellness Aloe vera Products | Forever Living</title>
 <meta name="description"
-	content="Shop all-natural, organic health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best.">
+	content="Shop for top-selling Aloe Vera products on foreverliving.com. From Aloe Vera gel to supplements, we offer natural solutions for skincare, weight loss, digestion and more. Order now and experience the benefits of Aloe Vera">
 <meta name="keywords"
-	content="Shop, Products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic">
+	content="Aloe Vera, forever living, shop, online shopping, health, beauty, skincare, supplements, weight loss, digestion, natural, organic, top-selling, Aloe Vera gel, Aloe Vera juice, Aloe Vera based products">
 {% if restArea == None %}
 <link rel="canonical" href="https://foreverliving-products.com/{{ country }}/shop">
 {% else %}
@@ -33,7 +45,7 @@
 										<div class="single-slide slick-slide">
 											<div class="main-slider-content">
 												<span class="subtitle">{{ categories[0] }}</span>
-												<h1 class="title">{{ product[1] }}</h1>
+												<h2 class="title">{{ product[1] }}</h2>
 												<div class="shop-btn">
 													<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
 														class="axil-btn">Shop Now <i
@@ -216,7 +228,7 @@
 				<div class="newsletter-content">
 					<span class="title-highlighter highlighter-primary2"><i
 							class="fas fa-envelope-open"></i>Newsletter</span>
-					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
+					<h3 class="title mb--40 mb_sm--30 text-white">Get weekly update</h3>
 					<div class="input-group newsletter-form">
 						<div class="position-relative newsletter-inner mb--15">
 							<input placeholder="example@gmail.com" type="text" />
@@ -271,7 +283,7 @@
 		let carouselHtml = "";
 		let i = 0;
 		$productClone = `<div class="slick-single-layout"> <div class="axil-product product-style-four"> <div class="thumbnail"> <a href="__PRODUCT_WEBSITE_URL__"> <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" data-image="0" alt="Product Images" /> <img class="hover-img" data-image="1" alt="Product Images" /> </a> <div class="product-hover-action"> <ul class="cart-action"> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__">Buy Now</a> </li> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a> </li> </ul> </div> </div> <div class="product-content"> <div class="inner"> <h5 class="title"> <a href="__PRODUCT_WEBSITE_URL__"> __PRODUCT_NAME__ </a> </h5> <div class="product-price-variant"> <span class="price">__PRODUCT_PRICE__</span> </div> <h6 class="description"> __PRODUCT_DESCRIPTION__ </h6> </div> </div> </div> </div>`;
-		$topbannerClone = `<div class="single-slide slick-slide"> <div class="main-slider-content"> <span class="subtitle"><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span> <h1 class="title">__PRODUCT_NAME__</h1> <div class="shop-btn"> <a href="__PRODUCT_WEBSITE_URL__" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a> </div> </div> <div class="main-slider-thumb"> <img data-image="0" alt="Product" /> </div> </div>`;
+		$topbannerClone = `<div class="single-slide slick-slide"> <div class="main-slider-content"> <span class="subtitle"><i class="fal fa-watch"></i> __PRODUCT_CATEGORY__</span> <h2 class="title">__PRODUCT_NAME__</h2> <div class="shop-btn"> <a href="__PRODUCT_WEBSITE_URL__" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a> </div> </div> <div class="main-slider-thumb"> <img data-image="0" alt="Product" /> </div> </div>`;
 		data.forEach((product) => {
 			html += $productClone
 				.replace(/data-image="0"/g, `src="${product[0]}"`)
