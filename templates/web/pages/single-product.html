@@ -1,22 +1,25 @@
 <!DOCTYPE html>
+
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1F994LSFMR');
-</script></head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-1F994LSFMR');
+	</script>
+</head>
 {% extends "web/layouts/app.html" %}
 {% block meta %}
 <title>{{ product[1] }} | Forever Living</title>
 <meta name="description" content="{{ product[3][:150] }}{% if len(product[3])>150 %}...{% endif %}" />
 <meta name="keywords" content="{{ ', '.join(product_tags) }}" />
 {% if restArea == None %}
-<link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{category}}/{{name}}">
+<link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{canonical_category}}/{{name}}">
 {% else %}
-<link rel="canonical" href="https://foreverliving-products.com/{{country}}/{{restArea}}/product/{{category}}/{{name}}">
+<link rel="canonical"
+	href="https://foreverliving-products.com/{{country}}/{{restArea}}/product/{{canonical_category}}/{{name}}">
 {% endif %}
 {% endblock %}
 {% block content %}

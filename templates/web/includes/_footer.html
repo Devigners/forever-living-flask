@@ -7,20 +7,24 @@
 				<div class="col-xl-6 col-lg-12">
 					<div class="col-xl-12 text-center text-md-left">
 						<p>
-							<b>Registered FBO Address</b>: 
+							<b>Registered FBO Address</b>:
 							200 Captains Row, Chelsea, Massachusetts, USA 02150
 						</p>
 					</div>
 					<div class="col-xl-12 copyright-left">
-						<p><b>Copyright 2023</b>: <a href="https://foreverliving-products.com/shop">ForeverLiving-Products.com</a></p>
+						<p><b>Copyright 2023</b>: <a
+								href="https://foreverliving-products.com/shop">ForeverLiving-Products.com</a></p>
 					</div>
 					<div class="col-xl-12 copyright-left">
 						<p>
-						    <b>Forever Business Owner (FBO) ID:</b> 200002416566</p>
-						 </div>
-						<div class="col-xl-12 copyright-left">
-						    <p>
-						<b>Disclaimer:</b><em> FLP products are not intended to diagnose, treat, cure or prevent any disease. Any statement on this website has not been evaluated by the FDA/EMA/MHRA or any other drug/food regulatory agency.</em>
+							<b>Forever Business Owner (FBO) ID:</b> 200002416566
+						</p>
+					</div>
+					<div class="col-xl-12 copyright-left">
+						<p>
+							<b>Disclaimer:</b><em> FLP products are not intended to diagnose, treat, cure or prevent any
+								disease. Any statement on this website has not been evaluated by the FDA/EMA/MHRA or any
+								other drug/food regulatory agency.</em>
 						</p>
 					</div>
 					<div class="col-xl-12 copyright-left d-block d-md-none">
@@ -31,23 +35,19 @@
 					<div class="copyright-left">
 						<div class="col-xl-12">
 							<b class="d-block">Relating Forever Living Company:</b>
-							<a
-								href="https://foreverliving.com/{{footer_country_code}}/en-us/forever-living-faq"
-								>Retail FAQs</a
-							>
+							<a href="https://foreverliving.com/{{footer_country_code}}/en-us/forever-living-faq">Retail
+								FAQs</a>
 						</div>
 						<div class="col-xl-12">
-							<a
-								href="https://foreverliving.com/{{footer_country_code}}/en-us/business-opportunity-faq"
-								>Business Opportunity FAQs</a
-							>
+							<a href="https://foreverliving.com/{{footer_country_code}}/en-us/business-opportunity-faq">Business
+								Opportunity FAQs</a>
 						</div>
 						<!-- <div class="col-xl-12">
 							<a href="https://joinnow.foreverliving.com/income-disclosure"
 								>Income Disclosure Statement</a
 							>
 						</div> -->
-							
+
 						<!-- <div class="col-xl-12">
 							<a
 								href="https://cdn.foreverliving.com/content/MarketingConfigurableContent/CAN/Updated%20Privacy%20Policy%20/2023-01-01%20-%20Privacy%20Notice%20-%20FNL.pdf"
@@ -56,9 +56,8 @@
 						</div> -->
 						<div class="col-xl-12">
 							<a
-								href="https://cdn.foreverliving.com/content/MarketingConfigurableContent/USA/Policy%20/20221201%20NA_Co_Policy_E%20Titan%20FINAL.pdf"
-								>Company Policies and Procedures</a
-							>
+								href="https://cdn.foreverliving.com/content/MarketingConfigurableContent/USA/Policy%20/20221201%20NA_Co_Policy_E%20Titan%20FINAL.pdf">Company
+								Policies and Procedures</a>
 						</div>
 					</div>
 				</div>
@@ -67,27 +66,17 @@
 						<div class="col-xl-12 copyright-left">
 							<p>
 								<b class="d-block">Forever Living Customer Care:</b>
-								<a href="tel:{{offer_links[footer_country_code]['phone']}}"
-									>{{offer_links[footer_country_code]['phone']}}</a
-								>
+								<a
+									href="tel:{{offer_links[footer_country_code]['phone']}}">{{offer_links[footer_country_code]['phone']}}</a>
 							</p>
 						</div>
 						<div class="social-share mt-1">
-							<a href="https://www.facebook.com/foreverglobalhq"
-								><i class="fab fa-facebook-f"></i
-							></a>
-							<a href="https://www.instagram.com/ForeverGlobalHQ/"
-								><i class="fab fa-instagram"></i
-							></a>
-							<a href="https://twitter.com/ForeverGlobalHQ"
-								><i class="fab fa-twitter"></i
-							></a>
-							<a href="https://www.youtube.com/channel/UC4TVgSTQYs94N57VDsoPsWA"
-								><i class="fab fa-youtube"></i
-							></a>
-							<a href="https://www.pinterest.com/ForeverGlobalHQ/"
-								><i class="fab fa-pinterest"></i
-							></a>
+							<a href="https://www.facebook.com/foreverglobalhq"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://www.instagram.com/ForeverGlobalHQ/"><i class="fab fa-instagram"></i></a>
+							<a href="https://twitter.com/ForeverGlobalHQ"><i class="fab fa-twitter"></i></a>
+							<a href="https://www.youtube.com/channel/UC4TVgSTQYs94N57VDsoPsWA"><i
+									class="fab fa-youtube"></i></a>
+							<a href="https://www.pinterest.com/ForeverGlobalHQ/"><i class="fab fa-pinterest"></i></a>
 						</div>
 					</div>
 				</div>
@@ -108,13 +97,8 @@
 		<div class="card-header">
 			<form action="#">
 				<div class="input-group">
-					<input
-						type="search"
-						class="form-control"
-						name="prod-search"
-						id="prod-search"
-						placeholder="Search your product here"
-					/>
+					<input type="search" class="form-control" name="prod-search" id="prod-search"
+						placeholder="Search your product here" />
 					<button type="submit" class="axil-btn btn-bg-primary">
 						f
 						<i class="far fa-search"></i>
@@ -149,17 +133,17 @@
 <script>
 
 	// on change prod-search
-	const allProducts = {{ productsGroupByCategory['All Products']|tojson|safe }};
-	var dummyProductUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='All Products') }}"
-	$(function  () {
+	const allProducts = {{ productsGroupByCategory['All Products']| tojson | safe }};
+	var dummyProductUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='all-products') }}"
+	$(function () {
 		$('.page-loader').fadeOut('fast');
 	})
 
-	 function googleTranslateElementInit() {
+	function googleTranslateElementInit() {
 		new google.translate.TranslateElement({
 			pageLanguage: 'en',
 			autoDisplay: 'true',
-			includedLanguages:'en,zh,hi,es,fr,ar,bn,ru,pt,id,ur,de,ja,sw,mr,te,tr,ta,pa,ko,vi,ha,jv,it,th,gu,kn,fa,pl,fil,ps,uk,yo,ml,or,my,om,uz,ro,sd,tl',
+			includedLanguages: 'en,zh,hi,es,fr,ar,bn,ru,pt,id,ur,de,ja,sw,mr,te,tr,ta,pa,ko,vi,ha,jv,it,th,gu,kn,fa,pl,fil,ps,uk,yo,ml,or,my,om,uz,ro,sd,tl',
 			layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
 		}, 'google_translate_element');
 	}
@@ -174,7 +158,7 @@
 
 	var country = "{{ country }}" ?? "unitedstates";
 	var restArea = "{{ restArea }}" !== "None" ? "{{ restArea }}" : "";
-	var locations = {{ localities|tojson|safe }};
+	var locations = {{ localities| tojson | safe }};
 	var url = window.location.pathname === "/" ? "/" : window.location.pathname;
 	if (url.includes(country)) {
 		url = url.replace(`/${country}`, "");
@@ -185,9 +169,11 @@
 
 	locations = locations.map((location) => {
 		var locationURL = location.replace(/, /g, "-").replace(/ /g, '');
+		let newUrl = `/${country}/${locationURL}/${url}`;
+		newUrl = newUrl.replace(/\/$/, "");
 		return {
 			name: location,
-			url: `/${country}/${locationURL}/${url}`,
+			url: newUrl
 		};
 	});
 
@@ -211,8 +197,8 @@
 				index === self.findIndex((t) => t[1] === product[1])
 		);
 
-		if(value.trim()){
-			$html = `<div class="axil-product-list search-product-item"> <div class="thumbnail"> <a> <img style=" width: 120px; height: 120px; object-fit: cover; object-position: center; " data-image="0" /> </a> </div> <div class="product-content"> <h6 class="product-title"> <a href="">__PRODUCT_NAME__</a> </h6> <div class="product-price-variant"> <span class="price current-price">__PRODUCT_PRICE__</span> </div> <div class="product-cart"> <ul class="cart-action"> <li class="select-option"> <a href="__PRODUCT_EXTERNAL_URL__" target="_blank">Buy Now</a> </li> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a> </li> </ul> </div> </div> </div>`;
+		if (value.trim()) {
+			$html = `<div class="axil-product-list search-product-item"> <div class="thumbnail"> <a> <img style=" width: 120px; height: 120px; object-fit: cover; object-position: center; " data-image="0" /> </a> </div> <div class="product-content"> <h6 class="product-title"> <a href="__PRODUCT_WEBSITE_URL__">__PRODUCT_NAME__</a> </h6> <div class="product-price-variant"> <span class="price current-price">__PRODUCT_PRICE__</span> </div> <div class="product-cart"> <ul class="cart-action"> <li class="select-option"> <a href="__PRODUCT_EXTERNAL_URL__" target="_blank">Buy Now</a> </li> <li class="select-option"> <a href="__PRODUCT_WEBSITE_URL__" class="btn-default">See Details</a> </li> </ul> </div> </div> </div>`;
 			$(".search-result-header").show();
 			$("#total-result-found").show().text(`${data.length} Results Found`);
 			let html = "";
@@ -222,13 +208,13 @@
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
 					.replace(/__PRODUCT_EXTERNAL_URL__/g, product[9])
-				.replace(/__PRODUCT_WEBSITE_URL__/g, dummyProductUrl.replace(/_PRODUCT_NAME_/g, product[13]))
+					.replace(/__PRODUCT_WEBSITE_URL__/g, dummyProductUrl.replace(/_PRODUCT_NAME_/g, product[13]))
 			});
 			$(".psearch-results").html(html);
-			if(data.length == 0){
+			if (data.length == 0) {
 				$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
 			}
-		}else{
+		} else {
 			$("#total-result-found").show().text(`0 Results Found`);
 			$(".psearch-results").html("<div class='text-center'>No product found!!</div>");
 		}
@@ -260,24 +246,18 @@
 		},
 	});
 
-	// on change select-country
-	$("#select-country").change(function () {
-		var country = $(this).val();
-		window.location.href = "/" + country + "/"+url;
-	});
-
 	$("#select-country").val(country ?? "");
 
-	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-	(function(){
-		var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-		s1.async=true;
-		s1.src='https://embed.tawk.to/6391384adaff0e1306db746e/1gjnk7omv';
-		s1.charset='UTF-8';
-		s1.setAttribute('crossorigin','*');
-		s0.parentNode.insertBefore(s1,s0);
+	var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+	(function () {
+		var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+		s1.async = true;
+		s1.src = 'https://embed.tawk.to/6391384adaff0e1306db746e/1gjnk7omv';
+		s1.charset = 'UTF-8';
+		s1.setAttribute('crossorigin', '*');
+		s0.parentNode.insertBefore(s1, s0);
 		window.Tawk_API.customStyle = {
-			zIndex : 1
+			zIndex: 1
 		};
 	})();
 
@@ -299,12 +279,12 @@
 		var val = $this.attr("value");
 		$this.addClass("selected").siblings().removeClass("selected");
 		$selectBox.find('.show-value').html($this.html())
-		window.location.href = "/" + val + "/"+url;
+		window.location.href = "/" + val + "/" + url;
 	});
 
-	if(country){
-		$('.select-item[value="'+country+'"]').addClass('selected').siblings().removeClass('selected');
-		$('.select-box .show-value').html($('.select-item[value="'+country+'"]').html())
+	if (country) {
+		$('.select-item[value="' + country + '"]').addClass('selected').siblings().removeClass('selected');
+		$('.select-box .show-value').html($('.select-item[value="' + country + '"]').html())
 	}
 
 	// outside click of select-box
@@ -350,7 +330,5 @@
 	})
 </script>
 <!--For google translate-->
-<script
-	type="text/javascript"
-	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-></script>
+<script type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

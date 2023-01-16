@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
-        
-        <!-- Body Content -->
-        {% block meta %} {% endblock %}
-        
-        <!-- Header -->
-        {% include "web/includes/_header_variant_2.html" %}
 
-        <!-- Body Content -->
-        {% block content %} {% endblock %}
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Footer -->
-        {% include "web/includes/_footer.html" %}
+    <!-- Body Content -->
+    {% block meta %} {% endblock %}
 
-        {% block scripts %} {% endblock %}
+    <!-- Header -->
+    {% include "web/includes/_header_variant_2.html" %}
 
-</body>
+    <!-- Body Content -->
+    {% block content %} {% endblock %}
+
+    <!-- Footer -->
+    {% include "web/includes/_footer.html" %}
+
+    {% block scripts %} {% endblock %}
+
+    </body>
+
 </html>

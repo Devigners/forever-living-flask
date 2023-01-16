@@ -1,13 +1,16 @@
-import os
-from flask import Flask, render_template, request, url_for, redirect
-from flask_sqlalchemy import SQLAlchemy
+# importing the module
+import json
+import pandas as pd
 
-from sqlalchemy.sql import func
+# Opening JSON file
+with open('static\\web-assets\\data\\flags\\us.json') as json_file:
+    data = json.load(json_file)
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+    flag_data = []
+    for key in data.keys():
+        flag_data.append([key, data[key]])
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
+    df = pd.DataFrame(flag_data, columns=['state', 'flag'])
+    print(df)
+    df.to_csv('static\\web-assets\\data\\flags\\us_small.csv',
+              index=False, header=True)
