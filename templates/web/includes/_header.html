@@ -19,7 +19,8 @@
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
 	<div class="axil-header-top pb-0">
-		{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
+		{% if offer_cards['discount']['v'+title_country[country]] == 1 and (offer_cards['discount']['validUntil'] -
+		datetime.date.today()).days > -1 %}
 		<div class="timer-box-date"
 			data-time="{% if offer_cards['discount']['validUntil'] != None %}{{offer_cards['discount']['validUntil']}}{% endif %}">
 		</div>

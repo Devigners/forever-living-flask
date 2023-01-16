@@ -89,7 +89,9 @@
 							</div>
 						</div>
 						{% endif %}
-						{% if offer_cards['discount']['v'+title_country[country]] == 1 %}
+						{% if offer_cards['discount']['v'+title_country[country]] == 1 and
+						(offer_cards['discount']['validUntil'] -
+						datetime.date.today()).days > -1 %}
 						<div class="col">
 							<div class="home-service-box" data-color="light-blue">
 								<h5>Limited {{offer_cards['discount']['discount']}}% Off</h5>

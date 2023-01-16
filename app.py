@@ -6,6 +6,8 @@ import regex as re
 import math
 import sqlalchemy as db
 import dotenv
+import datetime
+
 dotenv.load_dotenv()
 
 # footer links
@@ -87,7 +89,7 @@ for set in ResultSet:
 
 @app.context_processor
 def utility_processor():
-    return dict(str=str, len=len)
+    return dict(str=str, len=len, datetime=datetime)
 
 
 def update_var(new_country, restArea=None):
@@ -169,8 +171,8 @@ def index(country=None, restArea=None):
 
 
 # index page with country name
-@app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
-@app.route('/<country>/shop', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/shop', methods=['GET', 'POST'])
+@ app.route('/<country>/shop', methods=['GET', 'POST'])
 def shop(country, restArea=None):
     update_var(country)
     global product_with_categories, localities, categories, all_products, controller, country_specific, cards
@@ -197,8 +199,8 @@ def shop(country, restArea=None):
 
 
 # blog page
-@app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
-@app.route('/<country>/blogs', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])
+@ app.route('/<country>/blogs', methods=['GET', 'POST'])
 def blogs(country, restArea=None):
     update_var(country)
     global localities, product_with_categories, blogs, country_specific, cards
@@ -233,8 +235,8 @@ def blogs(country, restArea=None):
 
 
 # blog details page
-@app.route('/<country>/<restArea>/blog-details/<id>', methods=['GET', 'POST'])
-@app.route('/<country>/blog-details/<id>', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/blog-details/<id>', methods=['GET', 'POST'])
+@ app.route('/<country>/blog-details/<id>', methods=['GET', 'POST'])
 def blogDetails(country, id, restArea=None):
     update_var(country)
     global localities, product_with_categories, blogs, country_specific, cards
@@ -261,8 +263,8 @@ def blogDetails(country, id, restArea=None):
 
 
 # product details page
-@app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
-@app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
+@ app.route('/<country>/<restArea>/product/<category>/<name>', methods=['GET', 'POST'])
+@ app.route('/<country>/product/<category>/<name>', methods=['GET', 'POST'])
 def productDetails(country, name, category, restArea=None):
     original_category = category
     update_var(country)
