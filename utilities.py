@@ -25,7 +25,7 @@ class data():
 
         self.needed_columns = ['Image', 'post_title', 'Price', 'Description', 'Usage', 'quantities',
                                'Ingredients', 'Tags', 'review_stars', 'affiliate_link',
-                               'SKU', 'short_description', 'total_reviews', 'url_name'] + self.categories
+                               'SKU', 'short_description', 'total_reviews', 'url_name', 'canonical_category'] + self.categories
 
         self.products = pd.read_csv(
             'static/web-assets/data/products/forever_products_en_'+self.country_code[self.country]+'_small_utf.csv')
@@ -37,6 +37,17 @@ class data():
         # then, it replace multiple dashes with single dash
         self.products['url_name'] = [
             re.sub(r'[ ]+', ' ', i.replace('&', 'and').replace('Â', '').replace('®', '').replace('™', '').replace('-', ' ').title()).replace(' ', '-') for i in self.products['post_title'].values.tolist()]
+
+        canonical_categories = []
+        for product_categories in self.products[self.categories].values.tolist():
+            for category_index in range(len(product_categories)):
+                if (self.categories[category_index] not in ['New Products', 'Best Sellers'] and product_categories[category_index] == 1):
+                    canonical_categories.append(
+                        self.categories[category_index].replace(' ', '-'))
+                    break
+
+        self.products['canonical_category'] = canonical_categories
+
         self.products['review_stars'].fillna(0.0, inplace=True)
         self.products['total_reviews'].fillna('', inplace=True)
         self.products['quantities'].fillna('', inplace=True)

@@ -44,7 +44,7 @@
 												<span class="subtitle">{{ categories[0] }}</span>
 												<h2 class="title">{{ product[1] }}</h2>
 												<div class="shop-btn">
-													<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
+													<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product[14]) }}"
 														class="axil-btn">Shop Now <i
 															class="fal fa-long-arrow-right"></i></a>
 												</div>
@@ -183,7 +183,7 @@
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product[14]) }}">
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
 							<div class="product-hover-action">
@@ -193,7 +193,7 @@
 									</li>
 									<li class="select-option">
 										<a class="btn-default"
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">See
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product[14]) }}">See
 											Details</a>
 									</li>
 								</ul>
@@ -203,7 +203,7 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">{{
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product[14]) }}">{{
 										product[1] }}</a>
 								</h5>
 								<div class="product-price-variant">
@@ -272,7 +272,7 @@
 		$('.sticky-header').removeClass('open').removeAttr('style')
 		// Data
 		var data = allProducts_byCategory[category];
-		const replacing_category = category.replace(' ', '-').toLowerCase();
+		const replacing_category = category.replace(' ', '-');
 
 		$(".new-arrivals-product-activation").slick(
 			"removeSlide",

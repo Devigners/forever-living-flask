@@ -134,7 +134,7 @@
 
 	// on change prod-search
 	const allProducts = {{ productsGroupByCategory['All Products']| tojson | safe }};
-	var dummyProductUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='all-products') }}"
+	var dummyProductUrl = "{{ url_for('productDetails', country=country, restArea=restArea, name='_PRODUCT_NAME_', category='_PRODUCT_CATEGORY_') }}"
 	$(function () {
 		$('.page-loader').fadeOut('fast');
 	})
@@ -208,7 +208,7 @@
 					.replace(/__PRODUCT_NAME__/g, product[1])
 					.replace(/__PRODUCT_PRICE__/g, product[2])
 					.replace(/__PRODUCT_EXTERNAL_URL__/g, product[9])
-					.replace(/__PRODUCT_WEBSITE_URL__/g, dummyProductUrl.replace(/_PRODUCT_NAME_/g, product[13]))
+					.replace(/__PRODUCT_WEBSITE_URL__/g, dummyProductUrl.replace(/_PRODUCT_CATEGORY_/g, product[14]).replace(/_PRODUCT_NAME_/g, product[13]))
 			});
 			$(".psearch-results").html(html);
 			if (data.length == 0) {

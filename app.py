@@ -271,24 +271,17 @@ def productDetails(country, name, category, restArea=None):
     global product_with_categories, localities, categories, country_specific, cards
     product = controller.getProduct_with_name(name, return_list=False)
 
-    canonical_category = None
-    for category in categories:
-        if category not in ['New Products', 'Best Sellers']:
-            if product[category].values[0] == 1:
-                canonical_category = category
-
     product = product.values.tolist()
 
     category = ' '.join(category.split('-')).title()
 
-    if (product):
+    if (product and category in categories):
         product = product[0]
 
         if (category not in categories):
             category = 'All Products'
 
         context = {
-            'canonical_category': canonical_category.lower().replace(' ', '-'),
             'offer_links': country_specific,
             'footer_country_code': footer_country_code[country],
             'product_tags': product[14].split(','),
