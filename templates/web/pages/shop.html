@@ -2,28 +2,40 @@
 
 <head>
 	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"></script>
+	<script
+		async
+		src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"
+	></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-1F994LSFMR');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+		gtag("config", "G-1F994LSFMR");
 	</script>
 </head>
-{% extends "web/layouts/home.html" %}
-{% block meta %}
+{% extends "web/layouts/home.html" %} {% block meta %}
 <title>Shop Our Wide Range of Health & Wellness Products | Aloe vera</title>
-<meta name="description"
-	content="Explore our wide selection of health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best. All of our products are all-natural, organic, and made with aloe vera.">
-<meta name="keywords"
-	content="All products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic, Nutrition">
+<meta
+	name="description"
+	content="Explore our wide selection of health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best. All of our products are all-natural, organic, and made with aloe vera."
+/>
+<meta
+	name="keywords"
+	content="All products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic, Nutrition"
+/>
 {% if restArea == None %}
-<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/shop">
+<link
+	rel="canonical"
+	href="https://foreverliving-products.com/{{ country }}/shop"
+/>
 {% else %}
-<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/{{ restArea }}/shop">
-{% endif %}
-{% endblock %}
-{% block content %}
+<link
+	rel="canonical"
+	href="https://foreverliving-products.com/{{ country }}/{{ restArea }}/shop"
+/>
+{% endif %} {% endblock %} {% block content %}
 <main class="main-wrapper">
 	<!-- Start Slider Area -->
 	<div class="axil-main-slider-area main-slider-style-2">
@@ -45,9 +57,11 @@
 												<span class="subtitle">{{ categories[0] }}</span>
 												<h2 class="title">{{ product[1] }}</h2>
 												<div class="shop-btn">
-													<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
-														class="axil-btn">Shop Now <i
-															class="fal fa-long-arrow-right"></i></a>
+													<a
+														href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(categories[0].split(' ')).lower()) }}"
+														class="axil-btn"
+														>Shop Now <i class="fal fa-long-arrow-right"></i
+													></a>
 												</div>
 											</div>
 											<div class="main-slider-thumb">
@@ -59,7 +73,10 @@
 								</div>
 							</div>
 							<div class="col-lg-3">
-								<div class="slider-product-box single-product-box" style="height: 100%">
+								<div
+									class="slider-product-box single-product-box"
+									style="height: 100%"
+								>
 									<div class="product-thumb">
 										<a href="#">
 											<img src="{{ flag_data[1] }}" alt="Product" />
@@ -70,84 +87,108 @@
 							</div>
 						</div>
 					</div>
-					<div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
+					<div
+						class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20"
+					>
 						{% if offer_cards['shipping']['v'+title_country[country]] == 1 %}
-						<div class="col">
+						<div class="col mb-3">
 							<div class="home-service-box" data-color="green">
-								<h5>Hurry!</h5>
-								<h5>Free Shipping</h5>
-								<h6>on US orders of 50$ or more</h6>
-								<img src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}"
-									alt="free-shipping-icon" class="mt-4">
-								<a class="btn" role="button"
-									href="{{ offer_cards['shipping']['l'+title_country[country]] }}">
+								<div class="inner">
+									<h5>Hurry!</h5>
+									<h5>Free Shipping</h5>
+									<h6>on US orders of 50$ or more</h6>
+									<img
+										src="{{ url_for('static', filename='web-assets/images/icons/drop-shipping.png') }}"
+										alt="free-shipping-icon"
+										class="mt-4"
+									/>
+								</div>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px">
+									*This offer is subject to change anytime
+								</p>
+								<a
+									class="btn"
+									role="button"
+									href="{{ offer_cards['shipping']['l'+title_country[country]] }}"
+								>
 									Get Now
 								</a>
-								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
-									*This offer is subject to change anytime
-								</p>
 							</div>
 						</div>
-						{% endif %}
-						{% if offer_cards['discount']['v'+title_country[country]] == 1 and
-						(offer_cards['discount']['validUntil'] -
-						datetime.date.today()).days > -1 %}
-						<div class="col">
+						{% endif %} {% if
+						offer_cards['discount']['v'+title_country[country]] == 1 and
+						(offer_cards['discount']['validUntil'] - datetime.date.today()).days
+						> -1 %}
+						<div class="col mb-3">
 							<div class="home-service-box" data-color="light-blue">
-								<h5>Limited {{offer_cards['discount']['discount']}}% Off</h5>
-								<h6>No Joining Needed</h6>
-								<ul class="timer-box">
-									<li><span data-date="days">0</span>d</li>
-									<li><span data-date="hours">0</span>h</li>
-									<li><span data-date="minutes">0</span>m</li>
-									<li><span data-date="seconds">0</span>s</li>
-								</ul>
-								<a class="btn" role="button"
-									href="{{ offer_cards['discount']['l'+title_country[country]] }}">
+								<div class="inner">
+									<h5>Limited {{offer_cards['discount']['discount']}}% Off</h5>
+									<h6>No Joining Needed</h6>
+									<ul class="timer-box">
+										<li><span data-date="days">0</span>d</li>
+										<li><span data-date="hours">0</span>h</li>
+										<li><span data-date="minutes">0</span>m</li>
+										<li><span data-date="seconds">0</span>s</li>
+									</ul>
+								</div>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px">
+									*This offer is subject to change anytime
+								</p>
+								<a
+									class="btn"
+									role="button"
+									href="{{ offer_cards['discount']['l'+title_country[country]] }}"
+								>
 									Click Now
 								</a>
-								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
-									*This offer is subject to change anytime
-								</p>
 							</div>
 						</div>
-						{% endif %}
-						{% if offer_cards['join']['v'+title_country[country]] == 1 %}
-						<div class="col">
+						{% endif %} {% if offer_cards['join']['v'+title_country[country]] ==
+						1 %}
+						<div class="col mb-3">
 							<div class="home-service-box" data-color="purple">
-								<h5>Be A Preferred Customer</h5>
-								<h5>Get 5% Off</h5>
-								<h6>Instantly & Forever</h6>
-								<a class="btn" role="button"
-									href="{{ offer_cards['join']['l'+title_country[country]] }}">
+								<div class="inner">
+									<h5>Be A Preferred Customer</h5>
+									<h5>Get 5% Off</h5>
+									<h6>Instantly & Forever</h6>
+								</div>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px">
+									*This offer is subject to change anytime
+								</p>
+								<a
+									class="btn"
+									role="button"
+									href="{{ offer_cards['join']['l'+title_country[country]] }}"
+								>
 									Join FLP Family
 								</a>
-								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
-									*This offer is subject to change anytime
-								</p>
 							</div>
 						</div>
-						{% endif %}
-						{% if title_country[country]!='UnitedStates' or (title_country[country] == 'UnitedStates' and
+						{% endif %} {% if title_country[country]!='UnitedStates' or
+						(title_country[country] == 'UnitedStates' and
 						(offer_cards['shipping']['v'+title_country[country]] == 0 or
 						offer_cards['discount']['v'+title_country[country]] == 0 or
-						offer_cards['join']['v'+title_country[country]] == 0)) %}
-						{% if offer_cards['visit']['v'+title_country[country]] == 1 %}
-						<div class="col">
+						offer_cards['join']['v'+title_country[country]] == 0)) %} {% if
+						offer_cards['visit']['v'+title_country[country]] == 1 %}
+						<div class="col mb-3">
 							<div class="home-service-box" data-color="green">
-								<h5>Visit Our<br>Online Store</h5>
-								<h6>for {{ flag_data[0] }}</h6>
-								<a class="btn" role="button"
-									href="{{ offer_cards['visit']['l'+title_country[country]] }}">
-									Check it Out
-								</a>
-								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">
+								<div class="inner">
+									<h5>Visit Our<br />Online Store</h5>
+									<h6>for {{ flag_data[0] }}</h6>
+								</div>
+								<p style="font-size: 12px; opacity: 0.7; margin-top: 10px">
 									*This offer is subject to change anytime
 								</p>
+								<a
+									class="btn"
+									role="button"
+									href="{{ offer_cards['visit']['l'+title_country[country]] }}"
+								>
+									Check it Out
+								</a>
 							</div>
 						</div>
-						{% endif %}
-						{% endif %}
+						{% endif %} {% endif %}
 					</div>
 				</div>
 			</div>
@@ -158,7 +199,8 @@
 		<div class="container">
 			<div class="section-title-wrapper">
 				<span class="title-highlighter highlighter-primary">
-					<i class="far fa-shopping-basket"></i> Our Products</span>
+					<i class="far fa-shopping-basket"></i> Our Products</span
+				>
 				<h2 class="title">Explore Our Products</h2>
 			</div>
 			<!-- 
@@ -179,7 +221,8 @@
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}"
+							>
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
 							<div class="product-hover-action">
@@ -188,9 +231,11 @@
 										<a href="{{ product[9] }}" target="_blank">Buy Now</a>
 									</li>
 									<li class="select-option">
-										<a class="btn-default"
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">See
-											Details</a>
+										<a
+											class="btn-default"
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}"
+											>See Details</a
+										>
 									</li>
 								</ul>
 							</div>
@@ -199,16 +244,15 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">{{
-										product[1] }}</a>
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}"
+										>{{ product[1] }}</a
+									>
 								</h5>
 								<div class="product-price-variant">
 									<span class="price current-price">{{ product[2] }}</span>
 								</div>
-								<h6 class="description my-1">
-									{{ product[11] }}
-								</h6>
-								<p style="font-size: 9px; opacity: 0.7;">
+								<h6 class="description my-1">{{ product[11] }}</h6>
+								<p style="font-size: 9px; opacity: 0.7">
 									*Price & Stock are subject to change anytime
 								</p>
 							</div>
@@ -227,8 +271,9 @@
 		<div class="container">
 			<div class="etrade-newsletter-wrapper bg_image bg_image--12">
 				<div class="newsletter-content">
-					<span class="title-highlighter highlighter-primary2"><i
-							class="fas fa-envelope-open"></i>Newsletter</span>
+					<span class="title-highlighter highlighter-primary2"
+						><i class="fas fa-envelope-open"></i>Newsletter</span
+					>
 					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
 					<div class="input-group newsletter-form">
 						<div class="position-relative newsletter-inner mb--15">
