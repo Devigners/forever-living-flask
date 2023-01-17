@@ -19817,16 +19817,16 @@ body {
 	flex-direction: column;
 }
 
-.home-service-box .inner{
+.home-service-box .inner {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: start;
 	flex: 1;
 	padding-bottom: 10px !important;
 }
 
-.home-service-box .inner + p{
+.home-service-box .inner+p {
 	margin-bottom: 10px !important;
 }
 
