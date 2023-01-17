@@ -99,7 +99,7 @@
 									<!-- Start Product Action  -->
 									<ul class="product-action d-flex-center mb--0">
 										<li class="add-to-cart m-0">
-											<a href="{{ product[10] }}" class="axil-btn btn-bg-primary">
+											<a href="{{ product[10] }}" target="_blank" class="axil-btn btn-bg-primary">
 												Buy Now
 											</a>
 										</li>
@@ -145,7 +145,7 @@
 					<div class="axil-product product-style-one has-color-pick mt--40">
 						<div class="thumbnail">
 							<a
-								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}">
+								href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product_category.replace(' ','-')) }}">
 								<img src="{{ product[0] }}" alt="Product Images" />
 							</a>
 							<div class="product-hover-action">
@@ -155,7 +155,7 @@
 									</li>
 									<li class="select-option">
 										<a class="btn-default"
-											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}">See
+											href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product_category.replace(' ','-')) }}">See
 											Details</a>
 									</li>
 								</ul>
@@ -165,7 +165,7 @@
 							<div class="inner text-center">
 								<h5 class="title">
 									<a
-										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='-'.join(product_category.split(' ')).lower()) }}">{{
+										href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product_category.replace(' ','-')) }}">{{
 										product[1] }}</a>
 								</h5>
 								<div class="product-price-variant">

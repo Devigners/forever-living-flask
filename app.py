@@ -278,9 +278,6 @@ def productDetails(country, name, category, restArea=None):
     if (product and category in categories):
         product = product[0]
 
-        if (category not in categories):
-            category = 'All Products'
-
         context = {
             'offer_links': country_specific,
             'footer_country_code': footer_country_code[country],
