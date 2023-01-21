@@ -117,8 +117,8 @@
 	// # singledatepicker
 	$('[name="discount_validUntil"]').datepicker({
 		format: "yyyy-mm-dd",
-		autoclose: true,
-		startDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+		autoclose: true
+		// startDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
 	});
 
 	function requireDepend(selector) {
@@ -161,7 +161,7 @@
 				success: function (response) {
 					console.log(response);
 				},
-				error: function (error) {},
+				error: function (error) { },
 			});
 		},
 	});

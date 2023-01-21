@@ -7,6 +7,7 @@ import math
 import sqlalchemy as db
 import dotenv
 import datetime
+import pytz
 
 dotenv.load_dotenv()
 
@@ -85,6 +86,17 @@ for set in ResultSet:
     cards[set[1]] = {}
     for col in columns:
         cards[set[1]][col] = set[columns.index(col)]
+
+pacific = pytz.timezone('US/Pacific')
+us_time_now = datetime.datetime.now(pacific)
+
+cards['discount']['validUntil'] = datetime.datetime.combine(
+    cards['discount']['validUntil'], datetime.datetime.min.time())
+
+if ((cards['discount']['validUntil'].date() - us_time_now.date()).days > 0):
+    cards['discount']['available'] = True
+else:
+    cards['discount']['available'] = False
 
 
 @app.context_processor
@@ -298,7 +310,7 @@ def productDetails(country, name, category, restArea=None):
         return redirect(url_for('shop', country=country, restArea=restArea), code=302)
 
 
-@app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
+@ app.route('/admin/dashboard/<name>/<password>', methods=['GET', 'POST'])
 def adminDashboard(name=None, password=None):
     if (name == 'kapilsingla' and password == '268468'):
         global db, cards, census, connection

@@ -16,8 +16,7 @@
 <![endif]-->
 <!-- Start Header -->
 <header class="header axil-header header-style-2">
-	{% if offer_cards['discount']['v'+title_country[country]] == 1 and (offer_cards['discount']['validUntil'] -
-	datetime.date.today()).days > -1 %}
+	{% if offer_cards['discount']['v'+title_country[country]] == 1 and offer_cards['discount']['available'] == True %}
 	<div class="timer-box-date" data-time="{{offer_cards['discount']['validUntil']}}"></div>
 	<div class="header-top-campaign">
 		<div class="container position-relative">
