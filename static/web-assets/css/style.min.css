@@ -4188,6 +4188,7 @@ button.axil-btn.wishlist-btn:hover:before {
 @media only screen and (max-width: 767px) {
 	.section-title-wrapper {
 		margin-bottom: 30px;
+		padding-right: 20px !important;
 	}
 }
 

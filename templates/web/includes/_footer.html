@@ -7,24 +7,30 @@
 				<div class="col-xl-6 col-lg-12">
 					<div class="col-xl-12 text-center text-md-left">
 						<p>
-							<b>Registered FBO Address</b>:
-							200 Captains Row, Chelsea, Massachusetts, USA 02150
-						</p>
-					</div>
-					<div class="col-xl-12 copyright-left">
-						<p><b>Copyright 2023</b>: <a
-								href="https://foreverliving-products.com/shop">ForeverLiving-Products.com</a></p>
-					</div>
-					<div class="col-xl-12 copyright-left">
-						<p>
-							<b>Forever Business Owner (FBO) ID:</b> 200002416566
+							<b>Registered FBO Address</b>: 200 Captains Row, Chelsea,
+							Massachusetts, USA 02150
 						</p>
 					</div>
 					<div class="col-xl-12 copyright-left">
 						<p>
-							<b>Disclaimer:</b><em> FLP products are not intended to diagnose, treat, cure or prevent any
-								disease. Any statement on this website has not been evaluated by the FDA/EMA/MHRA or any
-								other drug/food regulatory agency.</em>
+							<b>Copyright 2023</b>:
+							<a href="https://foreverliving-products.com/shop"
+								>ForeverLiving-Products.com</a
+							>
+						</p>
+					</div>
+					<div class="col-xl-12 copyright-left">
+						<p><b>Forever Business Owner (FBO) ID:</b> 200002416566</p>
+					</div>
+					<div class="col-xl-12 copyright-left">
+						<p>
+							<b>Disclaimer:</b
+							><em>
+								FLP products are not intended to diagnose, treat, cure or
+								prevent any disease. Any statement on this website has not been
+								evaluated by the FDA/EMA/MHRA or any other drug/food regulatory
+								agency.</em
+							>
 						</p>
 					</div>
 					<div class="col-xl-12 copyright-left d-block d-md-none">
@@ -35,12 +41,16 @@
 					<div class="copyright-left">
 						<div class="col-xl-12">
 							<b class="d-block">Relating Forever Living Company:</b>
-							<a href="https://foreverliving.com/{{footer_country_code}}/en-us/forever-living-faq">Retail
-								FAQs</a>
+							<a
+								href="https://foreverliving.com/{{footer_country_code}}/en-us/forever-living-faq"
+								>Retail FAQs</a
+							>
 						</div>
 						<div class="col-xl-12">
-							<a href="https://foreverliving.com/{{footer_country_code}}/en-us/business-opportunity-faq">Business
-								Opportunity FAQs</a>
+							<a
+								href="https://foreverliving.com/{{footer_country_code}}/en-us/business-opportunity-faq"
+								>Business Opportunity FAQs</a
+							>
 						</div>
 						<!-- <div class="col-xl-12">
 							<a href="https://joinnow.foreverliving.com/income-disclosure"
@@ -56,8 +66,9 @@
 						</div> -->
 						<div class="col-xl-12">
 							<a
-								href="https://cdn.foreverliving.com/content/MarketingConfigurableContent/USA/Policy%20/20221201%20NA_Co_Policy_E%20Titan%20FINAL.pdf">Company
-								Policies and Procedures</a>
+								href="https://cdn.foreverliving.com/content/MarketingConfigurableContent/USA/Policy%20/20221201%20NA_Co_Policy_E%20Titan%20FINAL.pdf"
+								>Company Policies and Procedures</a
+							>
 						</div>
 					</div>
 				</div>
@@ -66,17 +77,27 @@
 						<div class="col-xl-12 copyright-left">
 							<p>
 								<b class="d-block">Forever Living Customer Care:</b>
-								<a
-									href="tel:{{offer_links[footer_country_code]['phone']}}">{{offer_links[footer_country_code]['phone']}}</a>
+								<a href="tel:{{offer_links[footer_country_code]['phone']}}"
+									>{{offer_links[footer_country_code]['phone']}}</a
+								>
 							</p>
 						</div>
 						<div class="social-share mt-1">
-							<a href="https://www.facebook.com/foreverglobalhq"><i class="fab fa-facebook-f"></i></a>
-							<a href="https://www.instagram.com/ForeverGlobalHQ/"><i class="fab fa-instagram"></i></a>
-							<a href="https://twitter.com/ForeverGlobalHQ"><i class="fab fa-twitter"></i></a>
-							<a href="https://www.youtube.com/channel/UC4TVgSTQYs94N57VDsoPsWA"><i
-									class="fab fa-youtube"></i></a>
-							<a href="https://www.pinterest.com/ForeverGlobalHQ/"><i class="fab fa-pinterest"></i></a>
+							<a href="https://www.facebook.com/foreverglobalhq"
+								><i class="fab fa-facebook-f"></i
+							></a>
+							<a href="https://www.instagram.com/ForeverGlobalHQ/"
+								><i class="fab fa-instagram"></i
+							></a>
+							<a href="https://twitter.com/ForeverGlobalHQ"
+								><i class="fab fa-twitter"></i
+							></a>
+							<a href="https://www.youtube.com/channel/UC4TVgSTQYs94N57VDsoPsWA"
+								><i class="fab fa-youtube"></i
+							></a>
+							<a href="https://www.pinterest.com/ForeverGlobalHQ/"
+								><i class="fab fa-pinterest"></i
+							></a>
 						</div>
 					</div>
 				</div>
@@ -97,8 +118,13 @@
 		<div class="card-header">
 			<form action="#">
 				<div class="input-group">
-					<input type="search" class="form-control" name="prod-search" id="prod-search"
-						placeholder="Search your product here" />
+					<input
+						type="search"
+						class="form-control"
+						name="prod-search"
+						id="prod-search"
+						placeholder="Search your product here"
+					/>
 					<button type="submit" class="axil-btn btn-bg-primary">
 						f
 						<i class="far fa-search"></i>
@@ -312,23 +338,30 @@
 		var date = timerBox.attr("data-time");
 		// add timezene United States
 		var time = new Date(date).getTime() + 1000 * 60 * 60 * 5;
-		var x = setInterval(function () {
-			var now = new Date().getTime();
-			var distance = time - now;
-			days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}`);
-			hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`);
-			minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`);
-			seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}`);
-			if (distance < 0) {
-				clearInterval(x);
-				days.text("0");
-				hours.text("0");
-				minutes.text("0");
-				seconds.text("0");
-			}
-		}, 1000);
+		var now = new Date().getTime();
+		var distance = time - now;
+		var expired = distance < 0;
+		if(expired){
+			$('.header-top-campaign').hide();
+		}else{
+			var x = setInterval(function () {
+				days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}`);
+				hours.text(`${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`);
+				minutes.text(`${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`);
+				seconds.text(`${Math.floor((distance % (1000 * 60)) / 1000)}`);
+				if (distance < 0) {
+					clearInterval(x);
+					days.text("0");
+					hours.text("0");
+					minutes.text("0");
+					seconds.text("0");
+				}
+			}, 1000);
+		}
 	})
 </script>
 <!--For google translate-->
-<script type="text/javascript"
-	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script
+	type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+></script>
