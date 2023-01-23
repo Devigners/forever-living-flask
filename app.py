@@ -87,19 +87,6 @@ for set in ResultSet:
     for col in columns:
         cards[set[1]][col] = set[columns.index(col)]
 
-pacific = pytz.timezone('US/Pacific')
-us_time_now = datetime.datetime.now(pacific)
-
-cards['discount']['validUntil'] = datetime.datetime.combine(
-    cards['discount']['validUntil'], datetime.datetime.min.time())
-
-# print((cards['discount']['validUntil'].date() - us_time_now.date()).days)
-
-if ((cards['discount']['validUntil'].date() - us_time_now.date()).days > 0):
-    cards['discount']['available'] = True
-else:
-    cards['discount']['available'] = False
-
 
 @app.context_processor
 def utility_processor():
@@ -400,6 +387,7 @@ def joinNow(country, restArea=None):
         'title_country': title_country
     }
     return render_template('web/pages/joinnow.html', **context)
+
 
 if __name__ == '__main__':
     # app.run(host='192.168.1.215')
