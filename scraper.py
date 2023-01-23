@@ -1,10 +1,3 @@
-# VitolizeÂ® for Men
-# VitolizeÂ® for Men
-# Forever ImmuBlend®
-# Vitâ™€lizeÂ® For Women
-# Vitâ™€lizeÂ® For Women
-
-
 from scrapy.selector import Selector
 import csv
 import time
@@ -12,62 +5,28 @@ import datetime
 import sys
 import os
 import re
-
-
 from selenium import webdriver
-# =============================================================================
-# from selenium.webdriver import ActionChains
-# =============================================================================
-
 from selenium.webdriver.common.keys import Keys
 from shutil import which
 from scrapy.selector import Selector
 from selenium.webdriver.chrome.options import Options
-
 from selenium.webdriver.common.action_chains import ActionChains
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+links = ['https://shopnow.foreverliving.com/usa/en-us/best-sellers',
+         'https://shopnow.foreverliving.com/can/en-ca/best-sellers',
+         'https://shopnow.foreverliving.com/aus/en-au/best-sellers',
+         'https://shopnow.foreverliving.com/gbr/en-gb/best-sellers']
 
-
-# process = Popen('cmd /K "C: & cd C:\Program Files\Google\Chrome\Application & chrome.exe --remote-debugging-port=8980 --user-data-dir="C:/Users/drkap/Desktop/amazon_affiliate/visa_profile""',shell=True)
-# time.sleep(10)
-
-# process = Popen('cmd /K "C: & cd C:\Program Files\Google\Chrome\Application & chrome.exe --remote-debugging-port=8983 --user-data-dir="D:/cpt/visa_profile/amazon_profile""',shell=True)
-
-# # input('click to go next')
-# ua="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36"
-# time.sleep(3)
-
-
-# if links are already collected and you dont want to recollect comment this section then
-links = [
-    # =============================================================================
-    'https://shopnow.foreverliving.com/usa/en-us/best-sellers',
-    'https://shopnow.foreverliving.com/can/en-ca/best-sellers',
-    'https://shopnow.foreverliving.com/aus/en-au/best-sellers',
-    'https://shopnow.foreverliving.com/gbr/en-gb/best-sellers',
-    # 'https://shopnow.foreverliving.com/can/fr-ca/best-sellers',
-    # 'https://shopnow.foreverliving.com/usa/es-us/best-sellers',
-
-
-]
 with open('forever_links1.csv', 'w') as fw:
     write = csv.writer(fw)
     fw.close()
+
 filename = datetime.datetime.now().strftime('%d')
-
 date_started = datetime.datetime.now().strftime('%d')
-
 chrome_path = which("chromedriver")
 co = Options()
 co.add_argument("--start-maximized")
-# ChromeOptions options = new ChromeOptions();
-# co.DebuggerAddress = "127.0.0.1:9222"
-# co.add_argument("no-sandbox")
-# co.add_argument("user-data-dir=D:\cpt\walmart_profile1")
-# --user-data-dir=
-# co.add_argument("user-data-dir=C:\environments\selenium")
-# co.add_experimental_option("debuggerAddress","localhost:8983")
 driver = webdriver.Chrome(executable_path=chrome_path, options=co)
 
 for link in links:
@@ -75,24 +34,14 @@ for link in links:
     driver.implicitly_wait(5)
     time.sleep(5)
     try:
-
         driver.find_element_by_xpath(
             '//button[@data-cookiefirst-action="reject"]').click()
         time.sleep(2)
     except:
         pass
-# =============================================================================
-#     try:
-#
-#         driver.find_element_by_xpath('//button[@class="header-logo-container btn-aria"]').click()
-#         time.sleep(4)
-#     except:pass
-#     driver.execute_script("document.body.style.zoom='50%'")
-# =============================================================================
 
     if '/en-us/' in link:
         link_country = 'en_us'
-
     elif '/es-us/' in link:
         link_country = 'es_us'
     elif '/en-ca/' in link:
@@ -225,43 +174,17 @@ for link in links:
                 write.writerow([link, cat_link, category_name,
                                category_complete_desc, cat_img])
 
-            # try:
-            #     with open('forever_links_{0}_{1}.csv'.format(country_name,country_lang),'+a',newline='') as f:
-            #         write=csv.writer(f)
-            #         write.writerow([category_name,product_a])
-            # except:
-            #     with open('forever_links_{0}_{1}.csv'.format(country_name,country_lang),'+a',newline='',encoding='utf-8') as f:
-            #         write=csv.writer(f)
-            #         write.writerow([category_name,product_a])
-
-
 try:
     driver.close()
     time.sleep(3)
 except:
     pass
 
-
-# link collection portion end
-
-
-# process = Popen('cmd /K "C: & cd C:\Program Files\Google\Chrome\Application & chrome.exe --remote-debugging-port=8989 --user-data-dir="D:/cpt/amazon_affiliate/foreever_profile""',shell=True)
-
 out_of_stock_products = True
 chrome_path = which("chromedriver")
 co = Options()
 co.add_argument("--start-maximized")
-# ChromeOptions options = new ChromeOptions();
-# co.DebuggerAddress = "127.0.0.1:9222"
-# co.add_argument("no-sandbox")
-# co.add_argument("user-data-dir=D:\cpt\walmart_profile1")
-# --user-data-dir=
-# co.add_argument("user-data-dir=C:\environments\selenium")
-# co.add_experimental_option("debuggerAddress","localhost:8989")
 driver = webdriver.Chrome(executable_path=chrome_path, options=co)
-
-
-#x=input('add extension and hit enter')
 
 all_products_done = []
 countries_done = []
@@ -273,12 +196,7 @@ with open('forever_links1.csv', 'r') as fr:
     for row in reader:
         category = row[0]
         link = row[1]
-
         link_country = row[2]
-        # if you dont want to collect products for specific country ,uncomment the below code and change en_us/es_us with country code
-        # if link_country=='en_us' or link_country=='es_us':
-        #     continue
-
         if on_start == 0:
             countries_done.append(link_country)
             on_start = 1
@@ -288,14 +206,6 @@ with open('forever_links1.csv', 'r') as fr:
         else:
             all_products_done = []
             countries_done.append(link_country)
-
-        # if previous_link_country=="":
-        #    previous_link_country=link_country
-        # else:
-
-        # if link_country=='en_gb':
-        #     pass
-        # else:continue
         if link_country == 'en_us' or link_country == 'es_us':
             country = 'United States,US,USA'
             country_cat = 'usa_categories'
@@ -344,7 +254,6 @@ with open('forever_links1.csv', 'r') as fr:
                     write = csv.writer(f)
                     write.writerow(suggest)
 
-            # suggest=[link,main_name1,item_no,short_desc,price,quantity,"All Products",complete_description_c,img,video_src,aff_link,total_rating,avg_rating,ingredients,complete_tag]
             suggest = ['Original URL', 'post_title', 'SKU', 'short_description', 'Price', 'quantities', country_cat, 'Description',
                        'Image', 'affiliate_link', 'total_reviews', 'review_stars', 'Ingredients', 'Tags', 'youtube_video_link', 'Out Of Stock']
             with open('forever_products_{0}_1.csv'.format(link_country), 'w') as fw:
@@ -398,24 +307,7 @@ with open('forever_links1.csv', 'r') as fr:
                     main_name1 = "Vitolize® for Men"
                     name = main_name1
                     main_name = main_name1
-
-                # try:
-                #     driver.find_element_by_xpath("//h1[contains(text(),'Vit♂lize® for Men')]")
-                #     main_name1="Vitolize® for Men"
-                #     name=main_name1
-                #     main_name=main_name1
-
-                # except:
-                #     try:
-                #         driver.find_element_by_xpath("//h1[contains(text(),'Vit♂lize® for Women')]")
-                #         main_name1="Vitolize® for Women"
-                #         name=main_name1
-                #         main_name=main_name1
-                #         pass
-                #     except:
-                #         pass
             except:
-                # continue
                 return
             short_desc = driver.find_element_by_xpath(
                 '//div[@id="product-detail-description"]').text
@@ -480,10 +372,6 @@ with open('forever_links1.csv', 'r') as fr:
             except:
                 img = ""
 
-            # try:
-            #     video_src=driver.find_element_by_xpath('//iframe[@allowfullscreen or @crossorigin]').get_attribute('src')
-            # except:
-            #     video_src=""
             try:
                 em = driver.find_element_by_xpath(
                     '//em[@class="video-icon fa fa-play-circle"]')
@@ -492,11 +380,6 @@ with open('forever_links1.csv', 'r') as fr:
                 time.sleep(3)
                 driver.find_element_by_xpath(
                     '//em[@class="video-icon fa fa-play-circle"]').click()
-                # /ancestor::div[@class="swiper-slide text-center pointer ng-star-inserted swiper-slide-next"]
-
-                # em.click()
-                # except:
-                #     print('not clickable')
 
                 time.sleep(3)
                 driver.find_element_by_xpath(
@@ -512,11 +395,9 @@ with open('forever_links1.csv', 'r') as fr:
                 driver.find_element_by_xpath(
                     '//button[@id="dismissModal"  and @aria-label="common.Close"]').click()
                 time.sleep(2)
-            # aff_link=link+'?store=US&distribID=200002416566&language=en'
 
             except:
                 video_src = ""
-            # aff_link=link+'?store=US&distribID=200002416566&language=en'
 
             try:
                 total_rating = driver.find_element_by_xpath(
@@ -633,7 +514,6 @@ with open('forever_links1.csv', 'r') as fr:
                 except:
                     desc = desc
                 complete_description_c += desc+'\n\n'
-            #print(complete_description_short)#
 
             a_link = driver.current_url
             slug = a_link.split('/')[-1]
@@ -651,12 +531,10 @@ with open('forever_links1.csv', 'r') as fr:
                     write = csv.writer(f)
                     write.writerow(suggest)
 
-            # all products entry
             if slug in all_products_done:
                 print('Slug exist in ', all_products_done)
                 pass
             else:
-
                 suggest = [link, main_name1, item_no, short_desc, price, quantity, "All Products", complete_description_c,
                            usage, img, aff_link, total_rating, avg_rating, ingredients, complete_tag, video_src, out_of_stock]
                 print(suggest)
@@ -698,9 +576,7 @@ with open('forever_links1.csv', 'r') as fr:
                     with open('forever_products_{0}_1.csv'.format(link_country), '+a', newline='', encoding='utf-8') as f:
                         write = csv.writer(f)
                         write.writerow(suggest)
-
             all_products_done.append(slug)
-
         try:
             print('here')
             varition_checks = driver.find_elements_by_xpath(
@@ -710,14 +586,10 @@ with open('forever_links1.csv', 'r') as fr:
                 for variation in varition_checks:
                     variation.click()
                     time.sleep(4)
-                    # try:
-                    #
-                    # except:pass
                     collect_data()
             else:
                 print('calling function')
                 collect_data()
-
         except:
             print('calling function')
             collect_data()

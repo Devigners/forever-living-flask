@@ -93,6 +93,8 @@ us_time_now = datetime.datetime.now(pacific)
 cards['discount']['validUntil'] = datetime.datetime.combine(
     cards['discount']['validUntil'], datetime.datetime.min.time())
 
+# print((cards['discount']['validUntil'].date() - us_time_now.date()).days)
+
 if ((cards['discount']['validUntil'].date() - us_time_now.date()).days > 0):
     cards['discount']['available'] = True
 else:
