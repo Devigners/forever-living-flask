@@ -198,6 +198,28 @@ def shop(country, restArea=None):
     }
     return render_template('web/pages/shop.html', **context)
 
+# joinnow page
+
+
+@ app.route('/<country>/<restArea>/joinnow', methods=['GET', 'POST'])
+@ app.route('/<country>/joinnow', methods=['GET', 'POST'])
+def joinnow(country, restArea=None):
+    update_var(country)
+    global product_with_categories, localities, categories, all_products, controller, country_specific, cards
+
+    context = {
+        'offer_links': country_specific,
+        'offer_cards': cards,
+        'footer_country_code': footer_country_code[country],
+        'categories': categories,
+        'productsGroupByCategory': product_with_categories,
+        'country': country,
+        'localities': localities,
+        'restArea': restArea,
+        'title_country': title_country,
+    }
+    return render_template('web/pages/joinnow.html', **context)
+
 
 # blog page
 @ app.route('/<country>/<restArea>/blogs', methods=['GET', 'POST'])

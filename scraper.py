@@ -7,10 +7,10 @@ import os
 import re
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from shutil import which
-from scrapy.selector import Selector
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
+from scrapy.selector import Selector
+from shutil import which
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 links = ['https://shopnow.foreverliving.com/usa/en-us/best-sellers',

@@ -2,10 +2,7 @@
 
 <head>
 	<!-- Google tag (gtag.js) -->
-	<script
-		async
-		src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"
-	></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F994LSFMR"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() {
@@ -24,9 +21,7 @@
 			<div class="inner">
 				<ul class="axil-breadcrumb">
 					<li class="axil-breadcrumb-item">
-						<a href="{{ url_for('index', country=country, restArea=restArea) }}"
-							>Home</a
-						>
+						<a href="{{ url_for('index', country=country, restArea=restArea) }}">Home</a>
 					</li>
 					<li class="separator"></li>
 					<li class="axil-breadcrumb-item active" aria-current="page">
@@ -49,10 +44,7 @@
 			<div class="row row--80">
 				<div class="col-12 col-md-6">
 					<div class="join-box green">
-						<img
-							src="{{ url_for('static', filename='web-assets/images/join/1.jpg') }}"
-							alt=""
-						/>
+						<img src="{{ url_for('static', filename='web-assets/images/join/1.jpg') }}" alt="" />
 						<h3>Forever Preferred Customer</h3>
 						<p>
 							As a Forever Preferred Customer, you'll get 5% off on future
@@ -60,15 +52,25 @@
 							will get updates on new products, promotions and news before
 							anyone else.
 						</p>
-						<button class="axil-btn btn-bg-primary">Join</button>
+						<a href="{{ offer_cards['join']['l'+title_country[country]] }}"
+							class="axil-btn btn-bg-primary">Join
+						</a>
+						<br>
+						<br>
+						<p>
+							Forever Living has a range of health-promoting products that span
+							nutrition and wellness, beauty, and home care. From Aloe Vera
+							drinks to essential oils and dietary supplements – there really is
+							something for everyone! All these products are made from natural
+							ingredients that are vegan-friendly and free from preservatives or
+							additives. When ordering from Forever Living, you can be sure
+							you’re getting the best quality product at an affordable price.
+						</p>
 					</div>
 				</div>
 				<div class="col-12 col-md-6">
 					<div class="join-box purple">
-						<img
-							src="{{ url_for('static', filename='web-assets/images/join/2.jpg') }}"
-							alt=""
-						/>
+						<img src="{{ url_for('static', filename='web-assets/images/join/2.jpg') }}" alt="" />
 						<h3>Forever Business Owner</h3>
 						<p>
 							Are you ready to build your Forever business and earn an extra
@@ -76,7 +78,31 @@
 							purchase products at a discount and retail them at full price, and
 							show others how to do the same.
 						</p>
-						<button class="axil-btn btn-bg-primary">Join</button>
+						<a class="axil-btn btn-bg-primary"
+							href="https://bit.ly/FBO-{{footer_country_code.upper()}}">Join
+						</a>
+						<br>
+						<br>
+						<p>
+							We included a great range of products for you to use and market from our
+							flagship Forever Aloe Vera Gel® to personal care, skincare and nutritional
+							favorites. You’ll also find some helpful marketing materials ready to help
+							you market your Forever business.
+						</p>
+						{% if(country)=='australia' %}
+						<h6 style="margin-bottom: 0px;">Start Your Journey C9 COMBO PACK -
+							{{footer_country_code.upper()}}
+						</h6>
+						{% else %}
+						<h6 style="margin-bottom: 0px;">Start Your Journey Pak - {{footer_country_code.upper()}}</h6>
+						{% endif %}
+						<p>
+							{{ offer_links[footer_country_code]['content'] }}
+						</p>
+						<p>
+							*Price & Contents in pak are subject to change based on location & availability.
+						</p>
+
 					</div>
 				</div>
 			</div>
@@ -87,9 +113,8 @@
 		<div class="container">
 			<div class="etrade-newsletter-wrapper bg_image bg_image--12">
 				<div class="newsletter-content">
-					<span class="title-highlighter highlighter-primary2"
-						><i class="fas fa-envelope-open"></i>Newsletter</span
-					>
+					<span class="title-highlighter highlighter-primary2"><i
+							class="fas fa-envelope-open"></i>Newsletter</span>
 					<h2 class="title mb--40 mb_sm--30 text-white">Get weekly update</h2>
 					<div class="input-group newsletter-form">
 						<div class="position-relative newsletter-inner mb--15">
