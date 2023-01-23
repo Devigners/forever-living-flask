@@ -385,6 +385,22 @@ def adminDashboard(name=None, password=None):
         return redirect(url_for('index'))
 
 
+@ app.route('/<country>/<restArea>/joinnow')
+@ app.route('/<country>/joinnow')
+def joinNow(country, restArea=None):
+    context = {
+        'offer_links': country_specific,
+        'offer_cards': cards,
+        'blogs': blogs,
+        'footer_country_code': footer_country_code[country],
+        'country': country,
+        'localities': localities,
+        'restArea': restArea,
+        'productsGroupByCategory': product_with_categories,
+        'title_country': title_country
+    }
+    return render_template('web/pages/joinnow.html', **context)
+
 if __name__ == '__main__':
     # app.run(host='192.168.1.215')
     app.run(debug=True)
