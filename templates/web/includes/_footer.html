@@ -342,7 +342,7 @@
 		var distance = time - now;
 		var expired = distance < 0;
 		if(expired){
-			$('.header-top-campaign').hide();
+			$('.campaign-data').hide();
 		}else{
 			var x = setInterval(function () {
 				days.text(`${Math.floor(distance / (1000 * 60 * 60 * 24))}`);
