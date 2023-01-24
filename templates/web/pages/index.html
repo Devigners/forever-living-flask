@@ -537,7 +537,7 @@
 				<h4>Products Line In {{footer_country_code.upper()}}</h4>
 				{% for product in productsGroupByCategory['All Products'] %}
 				<a
-					href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category='all-products') }}">{{
+					href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product[14]) }}">{{
 					product[13].replace('-', ' ') }}{% if productsGroupByCategory['All Products'][-1] != product
 					%}<span>, </span>{% endif %}
 				</a>
