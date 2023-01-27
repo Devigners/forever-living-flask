@@ -13,7 +13,16 @@
 	</script>
 </head>
 {% extends "web/layouts/app.html" %} {% block meta %}
-<title>Join Now | Forever Living</title>
+<title>Forever Living Preferred Customer and Business Owner Sponsorship</title>
+<meta name="description"
+	content="Learn about the benefits of becoming a Forever Preferred Customer and the opportunities available as a Forever Business Owner at ForeverLiving-Products.com" />
+<meta name="keywords"
+	content="Forever Living, Preferred Customer, FLP, Business Owner, Sponsorship, Benefits, Opportunities, Discounts, Income, Advance, Career, Training, Resources">
+	{% if restArea == None %}
+<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/joinnow" />
+{% else %}
+<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/{{ restArea }}/joinnow" />
+{% endif %}
 {% endblock %} {% block content %}
 <main class="main-wrapper">
 	<div class="axil-breadcrumb-area">
@@ -44,16 +53,16 @@
 			<div class="row row--80">
 				<div class="col-12 col-md-6">
 					<div class="join-box green">
+					    <h3>Forever Preferred Customer (FPC)</h3>
 						<img src="{{ url_for('static', filename='web-assets/images/join/1.jpg') }}" alt="" />
-						<h3>Forever Preferred Customer</h3>
 						<p>
-							As a Forever Preferred Customer, you'll get 5% off on future
-							purchases and be a part of our exclusive club of insiders that
+							As a Forever Preferred Customer, <b>you'll get 5% off on all future
+							purchases</b> and be a part of our exclusive club of insiders that
 							will get updates on new products, promotions and news before
 							anyone else.
 						</p>
 						<a href="https://bit.ly/PreferredCustomer-{{footer_country_code.upper()}}"
-							class="axil-btn btn-bg-primary">Join
+							class="axil-btn btn-bg-primary">Join as a FPC
 						</a>
 						<br>
 						<br>
@@ -70,16 +79,16 @@
 				</div>
 				<div class="col-12 col-md-6">
 					<div class="join-box purple">
-						<img src="{{ url_for('static', filename='web-assets/images/join/2.jpg') }}" alt="" />
-						<h3>Forever Business Owner</h3>
+					    <h3>Forever Business Owner (FBO)</h3>
+						<img src="{{ url_for('static', filename='web-assets/images/join/3.jpg') }}" alt="" />
 						<p>
 							Are you ready to build your Forever business and earn an extra
 							income by sharing the products? As an FBO, you'll be able to
-							purchase products at a discount and retail them at full price, and
+							<b>purchase products at a discount and retail them at full price</b>, and
 							show others how to do the same.
 						</p>
 						<a class="axil-btn btn-bg-primary"
-							href="https://bit.ly/FBO-{{footer_country_code.upper()}}">Join
+							href="https://bit.ly/FBO-{{footer_country_code.upper()}}">Join as a FBO
 						</a>
 						<br>
 						<br>

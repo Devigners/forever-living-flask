@@ -16,10 +16,10 @@
 <meta name="description" content="{{ product[3][:150] }}{% if len(product[3])>150 %}...{% endif %}" />
 <meta name="keywords" content="{{ ', '.join(product_tags) }}" />
 {% if restArea == None %}
-<link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{product[14]}}/{{name}}">
+<link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{name}}">
 {% else %}
 <link rel="canonical"
-	href="https://foreverliving-products.com/{{country}}/{{restArea}}/product/{{product[14]}}/{{name}}">
+	href="https://foreverliving-products.com/{{country}}/{{restArea}}/product/{{name}}">
 {% endif %}
 {% endblock %}
 {% block content %}

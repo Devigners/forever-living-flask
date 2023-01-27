@@ -10,15 +10,12 @@ Disallow: /members/
 Disallow: /search
 Disallow: /_api/
 
-User-agent: AhrefsBot
-Disallow: /
+
 User-agent: Majestic12
 Disallow: /
 User-agent: MJ12bot
 Disallow: /
 User-agent: Linkdex
-Disallow: /
-User-agent: rogerbot
 Disallow: /
 User-agent: XoviBot
 Disallow: /
@@ -28,6 +25,3 @@ User-agent: scan-apispider
 Disallow: /
 User-agent: PetalBot
 Disallow: /
-
-Allow: /
-Sitemap: https://foreverliving-products.com/sitemap.xml
