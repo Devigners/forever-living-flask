@@ -10,14 +10,11 @@
 </script></head>
 {% extends "web/layouts/app.html" %}
 {% block meta %}
-<title>{{ blog['Title'] }} | Forever Living | Aloe Vera Health & Beauty Benefits</title>
-<meta name="description" content="Explore the natural benefits of Aloe Vera with Forever Living Products. From skincare to supplements, our aloe-based products promote health and beauty for a healthier you. Try them today!" />
+<title>{{ blog['Title'] }} | Forever Living | Aloe Vera Benefits</title>
+<meta name="description" content="Explore the natural benefits of Aloe Vera Gel. From skincare to supplements, our products promote health & beauty for a healthier you. Try them today!" />
 <meta name="keywords" content="Aloe Vera juice, Aloe Vera gel, Aloe Vera products, Aloe Vera benefits, natural beauty, natural health, organic skincare, organic supplements, forever living aloe vera, aloe vera blog" />
-{% if restArea == None %}
 <link rel="canonical" href="https://foreverliving-products.com/{{country}}/blog-details/{{id}}">
-{% else %}
-<link rel="canonical" href="https://foreverliving-products.com/{{country}}/{{restArea}}/blog-details/{{id}}">
-{% endif %}
+
 {% endblock %}
 {% block content %}
 <main class="main-wrapper">

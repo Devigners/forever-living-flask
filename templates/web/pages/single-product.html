@@ -15,12 +15,7 @@
 <title>{{ product[1] }} | Forever Living</title>
 <meta name="description" content="{{ product[3][:150] }}{% if len(product[3])>150 %}...{% endif %}" />
 <meta name="keywords" content="{{ ', '.join(product_tags) }}" />
-{% if restArea == None %}
 <link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{name}}">
-{% else %}
-<link rel="canonical"
-	href="https://foreverliving-products.com/{{country}}/{{restArea}}/product/{{name}}">
-{% endif %}
 {% endblock %}
 {% block content %}
 <main class="main-wrapper">
@@ -69,7 +64,7 @@
 						<div class="single-product-content">
 							<div class="inner">
 								<h5 class="item-no">{{ product[2] }}</h5>
-								<h2 class="product-title mb-2">{{ product[1] }}</h2>
+								<h1 class="product-title mb-2">{{ product[1] }}</h1>
 								<div class="product-rating">
 									<div class="star-rating" data-rating="{{ product[12] }}"></div>
 									<div class="reSee-link">
@@ -117,12 +112,12 @@
 	</div>
 	<div class="container">
 		<div class="product-detail-section">
-			<h4>Description</h4>
+			<h2>Description</h2>
 			<p>{{ product[7] }}</p>
 		</div>
 		<hr class="my-5 w-50" />
 		<div class="product-detail-section">
-			<h4>Ingredients</h4>
+			<h2>Ingredients</h2>
 			<p>{{ product[13] }}</p>
 			<ul class="ingredients mt-3">
 				{% for tag in product_tags %}
@@ -137,7 +132,7 @@
 			<div class="section-title-wrapper">
 				<span class="title-highlighter highlighter-primary"><i class="far fa-shopping-basket"></i>Same
 					Category</span>
-				<h2 class="title">Similar Products</h2>
+				<h3 class="title">Similar Products</h3>
 			</div>
 			<div class="row row--15">
 				{% for product in productsGroupByCategory[product_category][:4] %}

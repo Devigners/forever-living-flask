@@ -15,14 +15,12 @@
 {% extends "web/layouts/home.html" %} {% block meta %}
 <title>Shop Our Wide Range of Health & Wellness Products | Aloe vera</title>
 <meta name="description"
-	content="Explore our wide selection of health and wellness products from Forever Living. From skincare to nutrition, we have everything you need to feel your best. All of our products are all-natural, organic, and made with aloe vera." />
+	content="Explore our wide products selection made with natural & organic aloe vera gel. From skincare to nutrition, we have everything you need to feel your best." />
 <meta name="keywords"
 	content="All products, Health, Wellness, Forever Living, Aloe vera, Skincare, Beauty, Natural, Organic, Nutrition" />
-{% if restArea == None %}
 <link rel="canonical" href="https://foreverliving-products.com/{{ country }}/shop" />
-{% else %}
-<link rel="canonical" href="https://foreverliving-products.com/{{ country }}/{{ restArea }}/shop" />
-{% endif %} {% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 <main class="main-wrapper">
 	<!-- Start Slider Area -->
 	<div class="axil-main-slider-area main-slider-style-2">
@@ -42,7 +40,7 @@
 										<div class="single-slide slick-slide">
 											<div class="main-slider-content">
 												<span class="subtitle">{{ categories[0] }}</span>
-												<h2 class="title">{{ product[1] }}</h2>
+												<h1 class="title">{{ product[1] }}</h1>
 												<div class="shop-btn">
 													<a href="{{ url_for('productDetails', country=country, restArea=restArea, name=product[13], category=product[14]) }}"
 														class="axil-btn">Shop Now <i
