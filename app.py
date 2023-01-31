@@ -301,6 +301,8 @@ def productDetails(country, name, category, restArea=None):
     if (product and category in categories):
         product = product[0]
 
+        print(product[-1])
+
         context = {
             'offer_links': country_specific,
             'footer_country_code': footer_country_code[country],

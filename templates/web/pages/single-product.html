@@ -15,7 +15,7 @@
 <title>{{ product[1] }} | Forever Living</title>
 <meta name="description" content="{{ product[3][:150] }}{% if len(product[3])>150 %}...{% endif %}" />
 <meta name="keywords" content="{{ ', '.join(product_tags) }}" />
-<link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{name}}">
+<link rel="canonical" href="https://foreverliving-products.com/{{country}}/product/{{product[-1]}}/{{name}}">
 {% endblock %}
 {% block content %}
 <main class="main-wrapper">
