@@ -92,7 +92,9 @@ class data():
         my_file = open("static/web-assets/data/countries/" +
                        self.country_code[required_country] + " data.txt", "r", encoding='windows-1252')
         data = my_file.read()
-        data_into_list = data.split("\n")
+        data_into_list = [re.sub(r'[^a-zA-Z0-9-, ]+', '', da)
+                          for da in data.split("\n")]
+
         my_file.close()
 
         # finding states
@@ -103,12 +105,14 @@ class data():
                 if (entry.startswith(restArea+', ')):
                     state = entry.split(', ')[1]
                     if (state not in states):
-                        states.append(state)
+                        print(state, ':> ', self.removeSpecialChars(state))
+                        states.append(self.removeSpecialChars(state))
         else:
             for entry in data_into_list:
                 if (',' not in entry):
                     if (entry not in states):
-                        states.append(entry)
+                        print(entry, ':> ', self.removeSpecialChars(entry))
+                        states.append(self.removeSpecialChars(entry))
                 else:
                     break
 
