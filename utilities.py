@@ -19,6 +19,9 @@ class data():
         self.categories = None
         self.category_json = None
 
+    def removeSpecialChars(self, input_string):
+        return re.sub(r'[^a-zA-Z0-9- ]+', '', input_string)
+
     def setCountry(self, country):
         self.country = country
         self.categories = self.getCategories()
@@ -31,12 +34,8 @@ class data():
             'static/web-assets/data/products/forever_products_en_'+self.country_code[self.country]+'_small_utf.csv')
 
         # firstly, it removed REGISTERED signs
-        # then, it removes TM signs
-        # then, it removes all -'es
-        # then, it replace ' ' with -'es
-        # then, it replace multiple dashes with single dash
         self.products['url_name'] = [
-            re.sub(r'[ ]+', ' ', i.replace('&', 'and').replace('Â', '').replace('®', '').replace('™', '').replace("'", '').replace('+', '').replace('è', 'e').replace('-', ' ').title()).replace(' ', '-') for i in self.products['post_title'].values.tolist()]
+            re.sub(r'[ ]+', ' ', self.removeSpecialChars(i).replace('-', ' ').title()).replace(' ', '-') for i in self.products['post_title'].values.tolist()]
 
         canonical_categories = []
         for product_categories in self.products[self.categories].values.tolist():
