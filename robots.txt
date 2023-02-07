@@ -25,3 +25,16 @@ User-agent: scan-apispider
 Disallow: /
 User-agent: PetalBot
 Disallow: /
+
+
+Allow: /
+Sitemap: https://foreverliving-products.com/sitemap.xml
+
+Allow: /
+Sitemap: https://foreverliving-products.com/sitemap_set1.xml
+
+Allow: /
+Sitemap: https://foreverliving-products.com/sitemap_set2.xml
+
+Allow: /
+Sitemap: https://foreverliving-products.com/sitemap_set3.xml
